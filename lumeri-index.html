@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LumeRI — Write what is actually true.</title>
+<meta name="description" content="LumeRI is your private space to write honestly and receive a reflection grounded in psychology and ancient wisdom. Not a diary. Not a mood tracker. A mirror. By Reflective Intelligence."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet"/>
+<style>
+/* ══════════════════════════════════════════════
+   DESIGN INTENT: Intimate candlelight. Like the
+   glow of a screen in a quiet room at night.
+   Warmer than the RI site — more personal.
+   DM Sans for body, Cormorant for soul.
+   The drop logo breathes at every threshold.
+══════════════════════════════════════════════ */
+
+:root {
+  --abyss:  #030a0e;
+  --deep:   #071820;
+  --mid:    #0a2e38;
+  --teal:   #0d5c63;
+  --brand:  #14b8a6;
+  --lite:   #5eead4;
+  --foam:   #a7f3d0;
+  --ivory:  #e2f8f5;
+  --warm:   #f0faf8;
+  --body:   #7ab0b6;
+  --soft:   #3d6b72;
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'DM Sans', sans-serif;
+  --max:    1080px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--abyss);
+  color: var(--body);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.85;
+  overflow-x: hidden;
+}
+
+/* Grain overlay */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.35;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 48px;
+  background: linear-gradient(to bottom, rgba(3,10,14,0.97), transparent);
+  backdrop-filter: blur(10px);
+}
+.nav-brand {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+}
+.nav-brand img { width: 44px; height: 39px; object-fit: contain; }
+.nav-brand-text {
+  display: flex; flex-direction: column;
+}
+.nav-brand-text .lume {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--ivory);
+  line-height: 1;
+}
+.nav-brand-text .by-ri {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--brand);
+  opacity: 0.6;
+  margin-top: 3px;
+}
+.nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lite);
+  text-decoration: none;
+  opacity: 0.65;
+  transition: opacity 0.3s;
+}
+.nav-links a:hover { opacity: 1; }
+.nav-begin {
+  background: var(--brand);
+  color: var(--abyss) !important;
+  padding: 10px 22px;
+  opacity: 1 !important;
+  border-radius: 2px;
+  transition: background 0.3s !important;
+}
+.nav-begin:hover { background: var(--lite) !important; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 35%, rgba(20,184,166,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 30% at 75% 65%, rgba(13,92,99,0.06) 0%, transparent 50%),
+    var(--abyss);
+}
+/* Vertical light shaft */
+.hero-shaft {
+  position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 1px;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(94,234,212,0.08) 15%,
+    rgba(255,255,255,0.3) 45%,
+    rgba(94,234,212,0.08) 75%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: var(--max);
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+.hero-text { padding-right: 40px; }
+.hero-eyeline {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--brand);
+  opacity: 0.75;
+  margin-bottom: 28px;
+}
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(38px, 5.5vw, 68px);
+  font-weight: 300;
+  color: var(--ivory);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.hero-h2 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--brand);
+  line-height: 1.3;
+  margin-bottom: 32px;
+}
+.hero-body {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--body);
+  line-height: 1.9;
+  margin-bottom: 40px;
+  max-width: 480px;
+}
+.hero-cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--abyss);
+  background: var(--brand);
+  padding: 16px 36px;
+  border: none; cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--lite); transform: translateY(-2px); }
+.btn-ghost {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--lite);
+  background: transparent;
+  padding: 16px 36px;
+  border: 1px solid rgba(94,234,212,0.3);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--lite); }
+
+/* Hero logo side */
+.hero-logo-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+.hero-logo-img {
+  width: 280px;
+  height: 248px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 60px rgba(20,184,166,0.25));
+  animation: breathe 5s ease-in-out infinite;
+}
+@keyframes breathe {
+  0%,100% { transform: scale(1) translateY(0); filter: drop-shadow(0 0 60px rgba(20,184,166,0.25)); }
+  50% { transform: scale(1.03) translateY(-8px); filter: drop-shadow(0 0 80px rgba(20,184,166,0.40)); }
+}
+.hero-rumi {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: clamp(15px, 2vw, 19px);
+  font-style: italic;
+  color: var(--lite);
+  opacity: 0.75;
+  line-height: 1.6;
+  max-width: 320px;
+}
+.hero-rumi cite {
+  display: block;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--brand);
+  opacity: 0.6;
+  margin-top: 10px;
+  font-style: normal;
+}
+
+/* ── SECTIONS ── */
+section { padding: 110px 24px; position: relative; }
+.container { max-width: var(--max); margin: 0 auto; }
+.section-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--brand);
+  opacity: 0.7;
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-label::before { content:''; width:32px; height:1px; background: var(--brand); opacity:0.5; }
+.section-h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--ivory);
+  line-height: 1.25;
+  margin-bottom: 24px;
+}
+.section-h2 em { color: var(--lite); font-style: italic; }
+.section-body {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--body);
+  margin-bottom: 20px;
+}
+
+/* ── DROP IDEOLOGY ── */
+.drop-ideology {
+  border-left: 2px solid var(--brand);
+  padding: 24px 32px;
+  margin: 36px 0;
+  background: rgba(20,184,166,0.04);
+}
+.drop-ideology p {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 26px);
+  font-style: italic;
+  color: var(--lite);
+  line-height: 1.55;
+}
+
+/* ── HOW IT WORKS ── */
+#how { background: linear-gradient(to bottom, var(--abyss), var(--deep)); }
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 800px;
+  margin-top: 56px;
+  position: relative;
+}
+.steps::before {
+  content: '';
+  position: absolute;
+  left: 28px; top: 32px; bottom: 32px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(20,184,166,0.3) 20%, rgba(20,184,166,0.3) 80%, transparent);
+}
+.step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 32px;
+  padding: 36px 0;
+  border-bottom: 1px solid rgba(20,184,166,0.07);
+  align-items: start;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  width: 56px; height: 56px;
+  border: 1px solid rgba(20,184,166,0.25);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--brand);
+  flex-shrink: 0;
+  background: rgba(20,184,166,0.05);
+  position: relative;
+  z-index: 1;
+}
+.step-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--ivory);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.step-body {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--body);
+  font-weight: 300;
+}
+
+/* ── CONSTRUCTS ── */
+#constructs { background: var(--abyss); }
+.constructs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 56px;
+}
+.construct-card {
+  background: rgba(7,24,32,0.9);
+  padding: 32px 28px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+}
+.construct-card:hover {
+  background: rgba(13,46,56,0.9);
+  border-bottom-color: var(--brand);
+}
+.construct-letter {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-style: italic;
+  color: rgba(20,184,166,0.2);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.construct-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--lite);
+  margin-bottom: 10px;
+}
+.construct-desc {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--body);
+  font-weight: 300;
+}
+
+/* ── DEEP LENS ── */
+#deeplens { background: linear-gradient(135deg, var(--deep) 0%, var(--abyss) 100%); }
+.deeplens-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.thinker-pills {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px;
+}
+.pill {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--lite);
+  border: 1px solid rgba(94,234,212,0.2);
+  padding: 8px 18px;
+  background: rgba(94,234,212,0.04);
+  transition: all 0.3s;
+}
+.pill:hover { border-color: var(--lite); background: rgba(94,234,212,0.08); }
+
+/* ── PRIVACY ── */
+#privacy { background: var(--deep); }
+.privacy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+}
+.privacy-card {
+  padding: 36px;
+  border: 1px solid rgba(20,184,166,0.10);
+  background: rgba(3,10,14,0.6);
+  transition: border-color 0.3s;
+}
+.privacy-card:hover { border-color: rgba(20,184,166,0.25); }
+.privacy-icon {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+.privacy-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--ivory);
+  margin-bottom: 12px;
+}
+.privacy-body {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--body);
+  font-weight: 300;
+}
+
+/* ── ABOUT ── */
+#about { background: var(--abyss); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 100px;
+  align-items: center;
+}
+.about-logo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+.about-logo {
+  width: 240px; height: 213px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 50px rgba(20,184,166,0.2));
+  animation: breathe 6s ease-in-out infinite;
+}
+.about-quote {
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 18px;
+  font-style: italic;
+  color: var(--lite);
+  opacity: 0.75;
+  line-height: 1.6;
+}
+.about-body {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 300;
+  color: var(--body-txt, var(--body));
+  line-height: 2;
+  margin-bottom: 20px;
+}
+.about-body em { color: var(--lite); font-style: italic; }
+.about-sig {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--brand);
+  margin-top: 32px;
+}
+
+/* ── FAQ ── */
+#faq { background: var(--deep); }
+.faq-list { max-width: 760px; margin-top: 48px; }
+.faq-item {
+  border-bottom: 1px solid rgba(20,184,166,0.08);
+  padding: 0;
+  overflow: hidden;
+}
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 0;
+  cursor: pointer;
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--ivory);
+  line-height: 1.3;
+  gap: 24px;
+  transition: color 0.3s;
+}
+.faq-q:hover { color: var(--lite); }
+.faq-toggle {
+  flex-shrink: 0;
+  width: 24px; height: 24px;
+  border: 1px solid rgba(94,234,212,0.3);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--brand);
+  transition: all 0.3s;
+  font-style: normal;
+}
+.faq-item.open .faq-toggle { background: var(--brand); color: var(--abyss); transform: rotate(45deg); }
+.faq-a {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--body);
+  font-weight: 300;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+  padding-bottom: 0;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 28px; }
+
+/* ── HERO CTA BOTTOM ── */
+#cta-bottom {
+  background: linear-gradient(to bottom, var(--abyss), var(--deep), var(--abyss));
+  text-align: center;
+}
+.cta-inner { max-width: 640px; margin: 0 auto; }
+.cta-logo { width: 140px; height: 124px; object-fit: contain; margin-bottom: 40px; filter: drop-shadow(0 0 40px rgba(20,184,166,0.25)); animation: breathe 5s ease-in-out infinite; }
+.cta-h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  color: var(--ivory);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.cta-h2 em { color: var(--lite); font-style: italic; }
+.cta-sub {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--brand);
+  opacity: 0.8;
+  margin-bottom: 48px;
+}
+.cta-note {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--soft);
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #010609;
+  padding: 56px 24px 36px;
+  border-top: 1px solid rgba(20,184,166,0.07);
+}
+.footer-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+}
+.footer-logo-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.footer-logo-wrap img { width: 40px; height: 35px; object-fit: contain; }
+.footer-tagline {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--brand);
+  opacity: 0.65;
+  line-height: 1.6;
+}
+.footer-col h4 {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--brand);
+  opacity: 0.55;
+  margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--body);
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.3s;
+}
+.footer-col ul li a:hover { color: var(--lite); }
+.footer-bottom {
+  max-width: var(--max); margin: 40px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(20,184,166,0.05);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom p { font-family: var(--sans); font-size: 12px; color: var(--soft); font-weight: 300; }
+
+/* ── REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.38s; }
+
+/* ── QUOTE ── */
+.quote-block {
+  text-align: center; padding: 56px 40px;
+  max-width: 720px; margin: 0 auto;
+}
+.quote-block blockquote {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.8vw, 32px);
+  font-style: italic; font-weight: 300;
+  color: var(--ivory); line-height: 1.5; margin-bottom: 18px;
+}
+.quote-block cite {
+  font-family: var(--sans); font-size: 11px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--brand); opacity: 0.65;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .hero-logo-side { order: -1; }
+  .hero-logo-img { width: 180px; height: 160px; }
+  .hero-text { padding-right: 0; }
+  .deeplens-grid, .about-grid, .research-cols { grid-template-columns: 1fr; }
+  .constructs-grid { grid-template-columns: repeat(2, 1fr); }
+  .privacy-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 10px; }
+}
+
+.rule { width: 50px; height: 1px; background: var(--brand); opacity: 0.35; margin: 0 0 36px; }
+.rule.center { margin-left: auto; margin-right: auto; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <img src="lumeri-logo.png" alt="LumeRI"/>
+    <span class="nav-brand-text">
+      <span class="lume">LumeRI</span>
+      <span class="by-ri">by Reflective Intelligence</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#drop">The Drop</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#constructs">The Lens</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#cta-bottom" class="nav-begin">Begin Writing</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-shaft"></div>
+  <div class="hero-inner container">
+    <div class="hero-text reveal">
+      <p class="hero-eyeline">By Reflective Intelligence</p>
+      <h1 class="hero-h1">Write what is<br/>actually true.</h1>
+      <h2 class="hero-h2">And watch something quietly begin to shift.</h2>
+      <p class="hero-body">Not a diary. Not a mood tracker. Not another app asking how you feel on a scale of one to ten. LumeRI is a private space to write honestly — and a quiet intelligence that reads what you write and reflects back what it notices.</p>
+      <div class="hero-cta-row">
+        <a href="#cta-bottom" class="btn-primary">Begin Writing — Free</a>
+        <a href="#how" class="btn-ghost">How it works</a>
+      </div>
+    </div>
+    <div class="hero-logo-side reveal reveal-delay-2">
+      <img src="lumeri-logo.png" alt="LumeRI — The ocean inside a drop" class="hero-logo-img"/>
+      <p class="hero-rumi">
+        "You are not a drop in the ocean.<br/>You are the ocean inside a drop."
+        <cite>Rumi</cite>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- THE DROP -->
+<section id="drop">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">The Symbol — Our Drop</div>
+      <h2 class="section-h2">Why a <em>drop of light?</em></h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1.6fr 1fr; gap: 80px; align-items: center;">
+      <div class="reveal">
+        <div class="drop-ideology">
+          <p>"You are not a drop in the ocean. You are the ocean inside a drop." — Rumi</p>
+        </div>
+        <p class="section-body">The LumeRI logo is a single drop of water — luminous, teal, shaped from light — with a star burning at its centre. It is one of the most ancient and precise metaphors in human tradition for what it means to hold an entire world within a single moment of attention.</p>
+        <p class="section-body">Rumi's paradox is not a poetic exaggeration. It is a precise description of what happens in a genuine moment of self-reflection: the vastness of your inner life — every grief carried, every pattern repeated, every unnamed longing — is held within a single private moment of honest writing. Not reduced by the container. <em style="color: var(--lite);">Concentrated by it.</em></p>
+        <p class="section-body">The star inside the drop is the point of recognition — the moment the writing lands and something becomes visible. Light in a contained space. The whole illuminated by a single source.</p>
+        <p class="section-body">Water is also the oldest mirror. A still surface of water is the first reflective surface human beings ever used. What LumeRI holds is that still surface — the page — on which your inner life becomes, for the first time, visible to you.</p>
+      </div>
+      <div class="reveal reveal-delay-2" style="display: flex; flex-direction: column; align-items: center; gap: 28px;">
+        <img src="lumeri-logo.png" alt="LumeRI — The ocean inside a drop"
+             style="width: 260px; height: 231px; object-fit: contain; filter: drop-shadow(0 0 60px rgba(20,184,166,0.3)); animation: breathe 5s ease-in-out infinite;"/>
+        <div class="drop-ideology" style="text-align: center; padding: 20px 24px;">
+          <p style="font-size: 16px;">"Every time you write in LumeRI, you are not adding a drop to an ocean. You are discovering the ocean that was always inside the drop."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">The Experience</div>
+      <h2 class="section-h2">You write.<br/>LumeRI reads.<br/><em>Something reflects.</em></h2>
+      <p class="section-body" style="max-width: 600px;">Five minutes or fifty. A few lines or many. The only requirement is honesty. Everything else follows from that.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">You write anything.</div>
+          <div class="step-body">What happened today. What you are carrying. What you can't stop thinking about. There are no rules about length, topic, or structure. The only rule is honesty. Everything is completely private — no other person ever reads what you write.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">LumeRI reads the structure, not just the words.</div>
+          <div class="step-body">A carefully designed intelligence — trained on decades of psychological research — reads nine dimensions of how your mind was moving when you wrote. Not what you said. How you were thinking. The quality of attention, the emotional weight, the self-relational tone.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">You receive a reflection.</div>
+          <div class="step-body">A short, personal response drawn from what you actually wrote. Not a generic prompt. Not a motivational quote. Something that lands differently because it was built from what you put on the page. Sometimes a single line. Sometimes uncomfortably precise.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">If you are ready — the Deep Lens.</div>
+          <div class="step-body">A philosophical layer drawn from Krishnamurti, Rumi, Ramana Maharshi, the Tao, and others — matched to your specific psychological pattern. Not advice. Not a prescription. A different quality of light on the same moment. The thinker is named at the close: an invitation to explore further.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-title">Over time, you begin to see.</div>
+          <div class="step-body">Your patterns. The themes your mind keeps returning to. How your Openness, Stillness, Self-Warmth and Clarity have moved across sessions. Not grades. Not a mental health score. A quiet, honest picture of where you have been. The ocean, gradually visible inside the drop.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTRUCTS -->
+<section id="constructs">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">The Intelligence</div>
+      <h2 class="section-h2">Nine dimensions of<br/><em>how your mind was moving.</em></h2>
+      <p class="section-body" style="max-width: 640px;">LumeRI does not read the content of your writing. It reads the quality of mind that produced it. These nine psychological constructs — grounded in validated research — are the lens through which your writing is seen.</p>
+    </div>
+    <div class="constructs-grid">
+      <div class="construct-card reveal">
+        <div class="construct-letter">C1</div>
+        <div class="construct-name">Cognitive Flexibility</div>
+        <div class="construct-desc">Was the mind moving freely between possibilities, or locked into a single frame? Rigidity or openness to alternative perspectives.</div>
+      </div>
+      <div class="construct-card reveal reveal-delay-1">
+        <div class="construct-letter">C2</div>
+        <div class="construct-name">Emotional Intensity</div>
+        <div class="construct-desc">How much weight was the writing carrying? Not good or bad — just how full. The measure of emotional presence in the session.</div>
+      </div>
+      <div class="construct-card reveal reveal-delay-2">
+        <div class="construct-letter">C3</div>
+        <div class="construct-name">Attribution Balance</div>
+        <div class="construct-desc">Were things attributed to self, others, or context — and in what proportion? Where does the mind place the source of events?</div>
+      </div>
+      <div class="construct-card reveal">
+        <div class="construct-letter">C4</div>
+        <div class="construct-name">Reflective Depth</div>
+        <div class="construct-desc">Was the writing exploring or reporting? Going under the surface or staying on it? The degree of genuine inquiry present.</div>
+      </div>
+      <div class="construct-card reveal reveal-delay-1">
+        <div class="construct-letter">C5</div>
+        <div class="construct-name">Narrative Coherence</div>
+        <div class="construct-desc">Did things connect? Did events have causes, feelings have sources? The degree to which the mind is making sense of experience.</div>
+      </div>
+      <div class="construct-card reveal reveal-delay-2">
+        <div class="construct-letter">C6</div>
+        <div class="construct-name">Attentional Stability</div>
+        <div class="construct-desc">Was the mind circling the same ground, or more settled? Rumination patterns versus groundedness in the present.</div>
+      </div>
+      <div class="construct-card reveal">
+        <div class="construct-letter">C7</div>
+        <div class="construct-name">Self-Relational Tone</div>
+        <div class="construct-desc">What was the quality of the voice turned inward — warm, neutral, or hard? The self-compassion dimension of the writing.</div>
+      </div>
+      <div class="construct-card reveal reveal-delay-1">
+        <div class="construct-letter">C8</div>
+        <div class="construct-name">Compassion Orientation</div>
+        <div class="construct-desc">Was there care present — toward self, toward others, or both? The capacity to hold difficulty with warmth rather than judgment.</div>
+      </div>
+      <div class="construct-card reveal reveal-delay-2">
+        <div class="construct-letter">C9</div>
+        <div class="construct-name">Perspective Breadth</div>
+        <div class="construct-desc">Could the mind hold more than one angle, or was it operating from one fixed point? The range of the mind's field of view.</div>
+      </div>
+    </div>
+    <div class="drop-ideology reveal" style="max-width: 700px; margin: 60px 0 0;">
+      <p>"The drop holds an ocean. Every session, LumeRI reads the fullness of what is inside — not to measure it, but to reflect it back so you can see it."</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP LENS -->
+<section id="deeplens">
+  <div class="container">
+    <div class="deeplens-grid">
+      <div class="reveal">
+        <div class="section-label">The Deep Lens</div>
+        <h2 class="section-h2">Centuries of human wisdom<br/>brought to <em>your specific moment.</em></h2>
+        <p class="section-body">When a session has sufficient depth, the Deep Lens becomes available. It draws from a curated library of over 60 wisdom entries — matched to your specific construct scores.</p>
+        <p class="section-body">The thinker and tradition are named at the close — an invitation to explore further, not a prescription. The wisdom itself is dissolved into the response. You will never feel lectured. You may feel seen.</p>
+        <div class="thinker-pills">
+          <span class="pill">Krishnamurti</span>
+          <span class="pill">Rumi</span>
+          <span class="pill">Ramana Maharshi</span>
+          <span class="pill">Nisargadatta</span>
+          <span class="pill">Lao Tzu</span>
+          <span class="pill">Meister Eckhart</span>
+          <span class="pill">Ibn Arabi</span>
+          <span class="pill">Zhuangzi</span>
+          <span class="pill">The Upanishads</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="drop-ideology" style="margin-bottom: 32px;">
+          <p>"Not a prescription. A different quality of light on the same moment."</p>
+        </div>
+        <p class="section-body">The pattern beneath your writing — one of 12 Human Condition patterns detected from your construct combination — shapes which wisdom tradition LumeRI draws from, and how.</p>
+        <p class="section-body">These are not diagnoses. They are the shapes the ocean makes when held inside a particular drop, at a particular time. Seeing the pattern named is often the beginning of something shifting.</p>
+        <div class="quote-block" style="text-align: left; padding: 0; margin: 32px 0 0;">
+          <blockquote style="font-size: 20px;">"The wound is where the light enters."</blockquote>
+          <cite>Rumi — held in the Deep Lens</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section id="privacy">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Privacy</div>
+      <h2 class="section-h2">Your words<br/><em>belong to you.</em></h2>
+      <p class="section-body" style="max-width: 600px;">A tool for honest self-reflection that doesn't fully protect what you write is not a mirror — it is a window. We refused to build a window.</p>
+    </div>
+    <div class="privacy-grid">
+      <div class="privacy-card reveal">
+        <div class="privacy-icon">🔒</div>
+        <div class="privacy-title">Complete privacy — always.</div>
+        <div class="privacy-body">Your entries are never shown to other users, never sold, never used to target you with advertising, never analysed by a human being without your explicit consent.</div>
+      </div>
+      <div class="privacy-card reveal reveal-delay-1">
+        <div class="privacy-icon">🗑️</div>
+        <div class="privacy-title">Your data is yours to delete.</div>
+        <div class="privacy-body">At any time, you can request deletion of all your entries, scores, and data we hold. We will execute that within 24 hours. No questions asked.</div>
+      </div>
+      <div class="privacy-card reveal reveal-delay-2">
+        <div class="privacy-icon">🔬</div>
+        <div class="privacy-title">Research participation is always optional.</div>
+        <div class="privacy-body">If you chose to share anonymously, some anonymised pattern data may contribute to research. You control this choice. You can change it at any time.</div>
+      </div>
+      <div class="privacy-card reveal reveal-delay-3">
+        <div class="privacy-icon">👁️</div>
+        <div class="privacy-title">The intelligence reads structure, not secrets.</div>
+        <div class="privacy-body">LumeRI reads linguistic and psychological patterns in your writing. It does not report, store, or act on the content beyond generating your reflection. It sees patterns. Not you as broken.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-logo-wrap reveal">
+        <img src="lumeri-logo.png" alt="LumeRI" class="about-logo"/>
+        <div class="about-quote">
+          "You are not a drop in the ocean.<br/>You are the ocean inside a drop."
+          <br/><span style="font-family: var(--sans); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--brand); opacity: 0.6; margin-top: 10px; display: block;">Rumi</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="section-label">About</div>
+        <h2 class="section-h2" style="margin-bottom: 32px;">A note from the<br/><em>person who built this.</em></h2>
+        <p class="about-body">I spent years in research trying to understand one question: why do intelligent, self-aware people keep repeating the same painful patterns?</p>
+        <p class="about-body">Not because they lack insight. They have plenty of it. The gap is not one of knowledge. It is one of <em>mirror.</em> We process our inner lives in our heads — where the same voice that created the pattern is also the one trying to analyse it.</p>
+        <p class="about-body">Writing provides that surface. The distance between you and your own words — even a few centimetres on a page — is enough for something to become visible that was not visible before.</p>
+        <p class="about-body">Rumi was right: <em>the ocean is inside the drop.</em> I built LumeRI to be the still surface of that drop — where the full depth of who you are becomes, for the first time, visible to you.</p>
+        <p class="about-body">If something in you is ready for that — <em>you are welcome here.</em></p>
+        <p class="about-sig">— Nupur<br/><span style="font-size: 14px; font-family: var(--sans); font-weight: 300; color: var(--soft); font-style: normal;">Founder, LumeRI / Reflective Intelligence</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Questions</div>
+      <h2 class="section-h2">Honest answers<br/><em>to real questions.</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">Is this therapy? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">No. LumeRI is not a substitute for therapy and does not provide mental health treatment. If you are experiencing a mental health crisis, please reach out to a qualified professional. LumeRI is a tool for self-reflection — for the everyday, ongoing work of understanding yourself. Many users find it valuable as a complement to therapy, capturing what happens between sessions.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I write something very dark or distressing? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">LumeRI is designed to recognise when writing carries significant distress markers. In those moments, the reflection shifts — to a gentler, more grounded mode. It will not give you a philosophical response when you are in crisis. It will hold the moment with care, and encourage you toward support.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can other people see what I write? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">No. Never. Your entries are completely private. No other user, no employee, no researcher ever reads your individual entries without your explicit consent. See our Privacy section for the full commitment.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I don't know what to write? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Write that. "I don't know what to write. Today was ordinary. I feel vaguely unsettled but I can't say why." That is already enough. LumeRI does not need a lot of words. It needs whatever is true. The ocean does not need to be the whole ocean at once — a single drop contains it.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How is this different from other journaling apps? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Most journaling apps store what you write. A few prompt you with questions. LumeRI reads what you write — using a psychological intelligence built on decades of research — and reflects back a personal response. Over time, it shows you patterns across your writing. This is not a diary with a better interface. It is a fundamentally different kind of tool.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is it free? <span class="faq-toggle">+</span></div>
+        <div class="faq-a">Yes. LumeRI is free to use. A premium tier with expanded features — including the full Deep Lens library and extended pattern history — is in development. The core experience: write, reflect, see your patterns — will always have a free version.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section id="cta-bottom">
+  <div class="container">
+    <div class="cta-inner">
+      <img src="lumeri-logo.png" alt="LumeRI" class="cta-logo reveal"/>
+      <div class="reveal reveal-delay-1">
+        <h2 class="cta-h2">Begin. <em>The page is waiting.</em></h2>
+        <p class="cta-sub">"You are not a drop in the ocean.<br/>You are the ocean inside a drop."</p>
+        <a href="https://script.google.com/macros/s/AKfycbwWkTVwUnOgp8LPYkkiaotu6qZx2G9_u8i8trLjwGMethwiHexkI7UqNhQQjJOQGdcwIQ/exec" class="btn-primary" style="font-size: 13px; padding: 18px 44px;">Open LumeRI — Free</a>
+        <p class="cta-note" style="margin-top: 20px;">No account required · No credit card · Your words stay yours</p>
+      </div>
+    </div>
+    <div class="quote-block reveal reveal-delay-2" style="margin-top: 60px; border-top: 1px solid rgba(20,184,166,0.08); padding-top: 60px;">
+      <blockquote>"The mirror has always been inside you.<br/>We just built something to hold it steady."</blockquote>
+      <cite>Reflective Intelligence</cite>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo-wrap">
+        <img src="lumeri-logo.png" alt="LumeRI"/>
+        <span style="font-family: var(--serif); font-style: italic; color: var(--ivory); font-size: 20px;">LumeRI</span>
+      </div>
+      <p class="footer-tagline">You are not a drop in the ocean.<br/>You are the ocean inside a drop.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#drop">The Symbol</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#constructs">The Intelligence</a></li>
+        <li><a href="#deeplens">The Deep Lens</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://reflectiveintelligence.life">Reflective Intelligence →</a></li>
+        <li><a href="https://linkedin.com/company/lumeri">LinkedIn</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#f29a979e9e9db29e879f97809bdc919ddc9b9c">Write to us</a></li>
+        <li><a href="#privacy">Privacy commitment</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 LumeRI — by Reflective Intelligence. All rights reserved.</p>
+    <p style="font-family: var(--serif); font-style: italic; color: var(--brand);">The ocean inside a drop.</p>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Nav scroll state
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a:not(.nav-begin)');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) current = s.id; });
+  navLinks.
