@@ -681,17 +681,87 @@ footer {
 
 /* ── MOBILE ── */
 @media (max-width: 768px) {
-  nav { padding: 14px 20px; }
+  /* Nav */
+  nav { padding: 12px 18px; }
   .nav-links { display: none; }
-  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .nav-brand img { width: 38px; height: 34px; }
+  .nav-brand-text .lume { font-size: 20px; }
+  .nav-brand-text .by-ri { font-size: 8px; letter-spacing: 2px; }
+
+  /* Body text smaller on mobile */
+  body { font-size: 16px; }
+  .section-body { font-size: 16px; }
+  .section-h2 { font-size: clamp(24px, 7vw, 36px); }
+
+  /* Hero — single column */
+  #hero { padding: 90px 20px 60px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 32px; }
   .hero-logo-side { order: -1; }
-  .hero-logo-img { width: 180px; height: 160px; }
+  .hero-logo-img { width: 140px; height: 124px; }
   .hero-text { padding-right: 0; }
-  .deeplens-grid, .about-grid, .research-cols { grid-template-columns: 1fr; }
-  .constructs-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-h1 { font-size: clamp(30px, 9vw, 46px); }
+  .hero-h2 { font-size: clamp(18px, 5vw, 26px); }
+  .hero-body { font-size: 15px; }
+  .hero-rumi { font-size: 14px; }
+
+  /* Sections */
+  section { padding: 70px 20px; }
+
+  /* Drop section grid */
+  #drop .container > div[style] { grid-template-columns: 1fr !important; gap: 40px !important; }
+
+  /* How it works */
+  .step { grid-template-columns: 44px 1fr; gap: 20px; }
+  .step-title { font-size: 19px; }
+  .step-body { font-size: 15px; }
+
+  /* Constructs — single column on mobile */
+  .constructs-grid { grid-template-columns: 1fr; gap: 16px; }
+  .construct-card { padding: 24px 20px; }
+  .construct-name { font-size: 18px; }
+  .construct-desc { font-size: 15px; }
+
+  /* Deep lens */
+  .deeplens-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  /* Privacy */
   .privacy-grid { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; }
-  .footer-bottom { flex-direction: column; gap: 10px; }
+  .privacy-card { padding: 24px 20px; }
+  .privacy-title { font-size: 18px; }
+  .privacy-body { font-size: 15px; }
+
+  /* About */
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-logo { width: 160px; height: auto; }
+  .about-body { font-size: 17px; }
+
+  /* FAQ */
+  .faq-q { font-size: 17px; padding: 20px 0; }
+  .faq-a { font-size: 15px; }
+
+  /* CTA bottom */
+  .cta-logo { width: 100px; height: auto; }
+  .cta-h2 { font-size: clamp(22px, 7vw, 36px); }
+
+  /* Footer */
+  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+
+  /* Drop ideology block */
+  .drop-ideology { padding: 16px 20px; }
+  .drop-ideology p { font-size: 17px; }
+
+  /* Pills */
+  .thinker-pills { gap: 8px; }
+  .pill { font-size: 14px; padding: 8px 14px; }
+
+  /* Quote block */
+  .quote-block { padding: 40px 16px; }
+  .quote-block blockquote { font-size: clamp(18px, 5vw, 26px); }
+
+  /* Buttons */
+  .btn-primary, .btn-ghost { padding: 14px 24px; font-size: 11px; }
+  .hero-cta-row { flex-direction: column; gap: 12px; }
 }
 
 .rule { width: 50px; height: 1px; background: var(--brand); opacity: 0.35; margin: 0 0 36px; }
@@ -1059,7 +1129,7 @@ footer {
       <ul>
         <li><a href="https://reflectiveintelligence.life">Reflective Intelligence →</a></li>
         <li><a href="https://linkedin.com/company/lumeri">LinkedIn</a></li>
-        <li><a href="mailto:lumeri.support@gmail.com">Write to us</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#4f233a222a3d26613c3a3f3f203d3b0f28222e2623612c2022">Write to us</a></li>
         <li><a href="#privacy">Privacy commitment</a></li>
       </ul>
     </div>
@@ -1070,7 +1140,7 @@ footer {
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Scroll reveal
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
@@ -1092,5 +1162,10 @@ const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a:not(.nav-begin)');
 window.addEventListener('scroll', () => {
   let current = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) current = s.id; });
-  navLinks.
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.style.opacity = a.getAttribute('href') === '#' + current ? '1' : '0.8';
+  });
+});
