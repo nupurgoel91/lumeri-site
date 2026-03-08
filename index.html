@@ -136,18 +136,7 @@ nav {
   background: linear-gradient(160deg, #0c2e34 0%, #0f3d45 45%, #0a2830 100%);
 }
 /* Vertical light shaft */
-.hero-shaft {
-  position: absolute;
-  left: 50%; top: 0; bottom: 0; width: 1px;
-  background: linear-gradient(to bottom,
-    transparent 0%,
-    rgba(94,234,212,0.08) 15%,
-    rgba(255,255,255,0.3) 45%,
-    rgba(94,234,212,0.08) 75%,
-    transparent 100%
-  );
-  pointer-events: none;
-}
+
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -689,7 +678,7 @@ footer {
   .nav-brand-text .by-ri { font-size: 8px; letter-spacing: 2px; }
 
   /* Body text smaller on mobile */
-  body { font-size: 16px; }
+  body { font-size: 16px; line-height: 1.7; word-break: normal; overflow-wrap: break-word; }
   .section-body { font-size: 16px; }
   .section-h2 { font-size: clamp(24px, 7vw, 36px); }
 
@@ -731,9 +720,10 @@ footer {
   .privacy-body { font-size: 15px; }
 
   /* About */
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-logo { width: 160px; height: auto; }
-  .about-body { font-size: 17px; }
+  .about-grid { grid-template-columns: 1fr !important; gap: 32px; }
+  .about-logo { width: 140px; height: auto; }
+  .about-body { font-size: 16px; line-height: 1.7; }
+  .about-sig { font-size: 18px; }
 
   /* FAQ */
   .faq-q { font-size: 17px; padding: 20px 0; }
@@ -793,7 +783,7 @@ footer {
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-shaft"></div>
+  
   <div class="hero-inner container">
     <div class="hero-text reveal">
       <p class="hero-eyeline">By Reflective Intelligence</p>
@@ -1148,12 +1138,14 @@ const obs = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 // FAQ accordion
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item=q.parentElement;
+    var wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){
+      i.classList.remove('open');
+    });
+    if(!wasOpen){ item.classList.add('open'); }
   });
 });
 
