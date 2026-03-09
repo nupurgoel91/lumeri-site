@@ -290,6 +290,683 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
   .thinker-pills{gap:8px}
   .pill{font-size:14px;padding:8px 14px}
 }
+
+/* ── SECTIONS: awareness · trust-strip · sample-entry · explainer ── */
+/* ─────────────────────────────────────────────
+   SECTION LABEL & SHARED
+───────────────────────────────────────────── */
+
+.section-label::before{content:'';width:36px;height:2px;background:var(--brand);border-radius:2px}
+
+
+/* ══════════════════════════════════════════════
+   SECTION 1 — WHO IS READING THIS?
+   The stillness / awareness moment
+   Sits BEFORE "How it Works"
+══════════════════════════════════════════════ */
+#awareness {
+  background: #040f11;
+  padding: 130px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial atmosphere */
+#awareness::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(15,184,164,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 30% 40% at 20% 80%, rgba(13,92,99,0.08) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* Slow-pulse ring */
+.awareness-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  border: 1px solid rgba(45,212,191,0.06);
+  pointer-events: none;
+  animation: ring-breathe 9s ease-in-out infinite;
+}
+.awareness-ring:nth-child(2){width:420px;height:420px;animation-delay:3s;border-color:rgba(45,212,191,0.05)}
+.awareness-ring:nth-child(3){width:240px;height:240px;animation-delay:6s;border-color:rgba(45,212,191,0.08)}
+@keyframes ring-breathe{
+  0%,100%{opacity:0.4;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.04)}
+}
+
+.awareness-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.awareness-eyeline {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: rgba(45,212,191,0.5);
+  margin-bottom: 56px;
+}
+
+/* The central pause dot */
+.awareness-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--brand);
+  margin: 0 auto 64px;
+  box-shadow: 0 0 20px rgba(15,184,164,0.6);
+  animation: dot-pulse 4s ease-in-out infinite;
+}
+@keyframes dot-pulse{
+  0%,100%{opacity:0.6;transform:scale(1)}
+  50%{opacity:1;transform:scale(1.5)}
+}
+
+/* The questions */
+.awareness-questions {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.awareness-q {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3.2vw, 38px);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(232,253,251,0.82);
+  line-height: 1.45;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(45,212,191,0.07);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.awareness-q:last-child{border-bottom:none}
+.awareness-q.visible{opacity:1;transform:translateY(0)}
+.awareness-q em{color:var(--lite);font-style:italic}
+
+/* The landing line */
+.awareness-landing {
+  margin-top: 64px;
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(45,212,191,0.45);
+  opacity: 0;
+  transition: opacity 1.2s ease 0.6s;
+}
+.awareness-landing.visible{opacity:1}
+
+/* The quiet invitation below */
+.awareness-invitation {
+  margin-top: 80px;
+  padding-top: 56px;
+  border-top: 1px solid rgba(45,212,191,0.10);
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-style: italic;
+  color: rgba(128,237,224,0.6);
+  line-height: 1.8;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+
+/* ══════════════════════════════════════════════
+   SECTION 2 — SAMPLE ENTRY VISUAL
+   "This is what you receive"
+   Shows the actual mirror
+══════════════════════════════════════════════ */
+#sample-entry {
+  background: var(--bg-light);
+  padding: 130px 24px;
+}
+
+.sample-intro {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 80px;
+}
+.sample-h2 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 4vw, 50px);
+  font-weight: 300;
+  color: var(--heading);
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+.sample-h2 em{color:var(--brand-dark);font-style:italic}
+.sample-body {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--body-soft);
+  line-height: 1.9;
+}
+
+/* The entry + reflection card */
+.mirror-card {
+  max-width: 960px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(12,46,52,0.12);
+  border: 1px solid var(--card-border);
+}
+
+/* LEFT — the raw entry */
+.entry-panel {
+  background: #fff;
+  padding: 52px 44px;
+  position: relative;
+  border-right: 1px solid var(--card-border);
+}
+
+.panel-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--soft);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.panel-label svg{
+  width:14px;height:14px;
+  fill:none;stroke:var(--soft);stroke-width:1.4;
+  stroke-linecap:round;stroke-linejoin:round;
+  flex-shrink:0;
+}
+
+.entry-text {
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.9vw, 21px);
+  font-weight: 300;
+  color: var(--subhead);
+  line-height: 2;
+}
+
+/* Simulated cursor blink at end */
+.cursor {
+  display: inline-block;
+  width: 2px; height: 1.1em;
+  background: var(--brand);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1.2s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* Date stamp */
+.entry-date {
+  margin-top: 32px;
+  font-family: var(--sans);
+  font-size: 12px;
+  color: rgba(90,154,164,0.5);
+  letter-spacing: 1px;
+}
+
+/* RIGHT — the reflection */
+.reflection-panel {
+  background: linear-gradient(160deg, #0c2e34 0%, #0f3d45 100%);
+  padding: 52px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.reflection-panel::before {
+  content:'';
+  position:absolute;
+  top:-60px;right:-60px;
+  width:240px;height:240px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(15,184,164,0.08) 0%, transparent 70%);
+  pointer-events:none;
+}
+
+/* Construct scores */
+.constructs-mini {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+.construct-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.construct-row-name {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(128,237,224,0.55);
+  width: 150px;
+  flex-shrink: 0;
+}
+.construct-bar-track {
+  flex: 1;
+  height: 3px;
+  background: rgba(45,212,191,0.10);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.construct-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--brand-dark), var(--lite));
+  border-radius: 2px;
+  transform-origin: left;
+  animation: bar-in 1.4s ease forwards;
+  transform: scaleX(0);
+}
+@keyframes bar-in{to{transform:scaleX(1)}}
+.construct-bar-fill[data-delay="1"]{animation-delay:0.1s}
+.construct-bar-fill[data-delay="2"]{animation-delay:0.25s}
+.construct-bar-fill[data-delay="3"]{animation-delay:0.4s}
+.construct-bar-fill[data-delay="4"]{animation-delay:0.55s}
+
+.construct-score {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(128,237,224,0.4);
+  width: 20px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* The reflection text */
+.reflection-divider {
+  width: 36px; height: 1px;
+  background: rgba(45,212,191,0.25);
+  margin-bottom: 28px;
+}
+
+.reflection-heading {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(45,212,191,0.45);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.reflection-heading svg{
+  width:14px;height:14px;
+  fill:none;stroke:rgba(45,212,191,0.45);stroke-width:1.4;
+  stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;
+}
+
+.reflection-body {
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.6vw, 18px);
+  font-weight: 300;
+  color: rgba(200,240,238,0.82);
+  line-height: 1.9;
+  margin-bottom: 28px;
+}
+
+/* Deep Lens quote */
+.deep-lens-quote {
+  border-left: 2px solid rgba(15,184,164,0.4);
+  padding: 18px 22px;
+  background: rgba(15,184,164,0.05);
+  border-radius: 0 6px 6px 0;
+}
+.deep-lens-label {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--brand);
+  opacity: 0.6;
+  margin-bottom: 10px;
+}
+.deep-lens-text {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.5vw, 17px);
+  font-style: italic;
+  color: rgba(128,237,224,0.8);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.deep-lens-author {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--brand);
+  opacity: 0.55;
+}
+
+/* Caption below card */
+.sample-caption {
+  text-align: center;
+  margin-top: 40px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: rgba(90,154,164,0.65);
+  letter-spacing: 1px;
+}
+.sample-caption em{
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--brand-dark);
+}
+
+/* Toggle tabs for multiple examples */
+.sample-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 48px;
+}
+.sample-tab {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--soft);
+  padding: 10px 20px;
+  border: 1px solid var(--card-border);
+  border-radius: 3px;
+  cursor: pointer;
+  background: transparent;
+  transition: all 0.3s;
+}
+.sample-tab.active, .sample-tab:hover {
+  background: var(--brand);
+  color: var(--abyss);
+  border-color: var(--brand);
+}
+
+/* ══════════════════════════════════════════════
+   SECTION 3 — PRIVACY TRUST STRIP
+   Fast, specific, above the fold energy
+   Sits just above or below the hero
+══════════════════════════════════════════════ */
+#trust-strip {
+  background: #040f11;
+  border-top: 1px solid rgba(45,212,191,0.08);
+  border-bottom: 1px solid rgba(45,212,191,0.08);
+  padding: 22px 24px;
+}
+
+.trust-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 28px;
+  border-right: 1px solid rgba(45,212,191,0.10);
+}
+.trust-item:last-child{border-right:none}
+
+.trust-icon {
+  width: 15px; height: 15px;
+  fill: none;
+  stroke: rgba(45,212,191,0.5);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.trust-text {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(128,237,224,0.45);
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════
+   SECTION 4 — VIDEO PLACEHOLDER
+   Explainer video section
+══════════════════════════════════════════════ */
+#explainer {
+  background: var(--bg-warm);
+  padding: 130px 24px;
+  text-align: center;
+}
+
+.explainer-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.explainer-h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.8vw, 46px);
+  font-weight: 300;
+  color: var(--heading);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.explainer-h2 em{color:var(--brand-dark);font-style:italic}
+
+.explainer-sub {
+  font-family: var(--sans);
+  font-size: 17px;
+  color: var(--body-soft);
+  margin-bottom: 52px;
+  font-weight: 300;
+}
+
+/* Video frame */
+.video-frame {
+  position: relative;
+  background: #040f11;
+  border-radius: 10px;
+  border: 1px solid rgba(45,212,191,0.15);
+  overflow: hidden;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+  max-width: 680px;
+  margin: 0 auto;
+  box-shadow: 0 24px 80px rgba(12,46,52,0.20);
+  transition: transform 0.3s;
+}
+.video-frame:hover{transform:translateY(-4px)}
+
+.video-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(15,184,164,0.08) 0%, transparent 65%);
+}
+
+/* Typing animation inside video placeholder */
+.video-typing {
+  position: absolute;
+  left: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: left;
+  max-width: 45%;
+}
+.vt-label {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(45,212,191,0.4);
+  margin-bottom: 14px;
+}
+.vt-text {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(200,240,238,0.7);
+  line-height: 1.8;
+}
+
+/* Arrow in middle */
+.video-arrow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.va-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(45,212,191,0.3));
+}
+.va-dots {
+  display: flex; gap: 4px;
+}
+.va-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--brand);
+  opacity: 0.4;
+  animation: dot-seq 1.5s ease-in-out infinite;
+}
+.va-dot:nth-child(2){animation-delay:0.3s}
+.va-dot:nth-child(3){animation-delay:0.6s}
+@keyframes dot-seq{0%,100%{opacity:0.2}50%{opacity:0.9}}
+
+/* Reflection preview on right */
+.video-reflection {
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: left;
+  max-width: 40%;
+}
+.vr-label {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(45,212,191,0.4);
+  margin-bottom: 14px;
+}
+.vr-bar {
+  height: 3px;
+  background: linear-gradient(to right, var(--brand-dark), var(--lite));
+  border-radius: 2px;
+  margin-bottom: 10px;
+  animation: bar-grow 2s ease-in-out infinite alternate;
+}
+@keyframes bar-grow{from{opacity:0.4;width:30%}to{opacity:0.9;width:95%}}
+.vr-bar:nth-child(2){animation-delay:0.4s}
+.vr-bar:nth-child(3){animation-delay:0.8s;width:60%}
+
+/* Play button overlay */
+.play-btn {
+  position: absolute;
+  bottom: 24px; right: 24px;
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: rgba(15,184,164,0.15);
+  border: 1px solid rgba(15,184,164,0.35);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s;
+}
+.video-frame:hover .play-btn{
+  background: var(--brand);
+  border-color: var(--brand);
+}
+.play-triangle {
+  width: 0; height: 0;
+  border-style: solid;
+  border-width: 9px 0 9px 15px;
+  border-color: transparent transparent transparent rgba(45,212,191,0.8);
+  margin-left: 3px;
+  transition: border-color 0.3s;
+}
+.video-frame:hover .play-triangle{
+  border-color: transparent transparent transparent #0c2e34;
+}
+
+.video-caption {
+  margin-top: 20px;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--body-soft);
+}
+
+
+/* ══════════════════════════════════════════════
+   DEMO PAGE LAYOUT (preview scaffold)
+══════════════════════════════════════════════ */
+
+
+@media(max-width: 768px) {
+  .mirror-card {
+    grid-template-columns: 1fr;
+  }
+  .entry-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--card-border);
+  }
+  .trust-item {
+    padding: 6px 14px;
+  }
+  .trust-text {
+    font-size: 10px;
+  }
+  .video-typing, .video-reflection {
+    display: none;
+  }
+  .video-frame { aspect-ratio: 4/3; }
+}
+
+/* ── FRAMEWORK SECTIONS ── */
+.iq-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.compass-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.inquiry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.journey-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.inquiry-card{background:rgba(255,255,255,0.04);border:1px solid rgba(45,212,191,0.12);border-radius:10px;padding:28px 24px;transition:all 0.3s}
+.inquiry-card:hover{background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.35);transform:translateY(-2px)}
+.map-stage{transition:background 0.3s}
+.map-stage:hover{background:rgba(45,212,191,0.12)!important}
+@media(max-width:900px){
+  .iq-grid,.map-grid,.compass-grid{grid-template-columns:1fr;gap:40px}
+  .inquiry-grid{grid-template-columns:1fr 1fr}
+  .journey-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:600px){
+  .inquiry-grid{grid-template-columns:1fr}
+  .journey-grid{grid-template-columns:1fr 1fr}
+}
+
 </style>
 </head>
 <body>
@@ -416,6 +1093,54 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
   </div>
 </section>
 
+
+<!-- TRUST STRIP ══════════════════════════════════════════ -->
+<div id="trust-strip">
+  <div class="trust-inner">
+
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 15 15">
+        <rect x="2" y="7" width="11" height="7" rx="1.5"/>
+        <path d="M5,7 L5,4.5 A2.5,2.5 0 0,1 10,4.5 L10,7"/>
+        <circle cx="7.5" cy="10.5" r="1" fill="rgba(45,212,191,0.5)" stroke="none"/>
+      </svg>
+      <span class="trust-text">End-to-end encrypted</span>
+    </div>
+
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 15 15">
+        <circle cx="7.5" cy="7.5" r="5.5"/>
+        <path d="M7.5,4.5 L7.5,7.5 L10,9"/>
+      </svg>
+      <span class="trust-text">Never read by a human</span>
+    </div>
+
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 15 15">
+        <path d="M7.5,2 L9.5,5.5 L13.5,6 L10.7,8.8 L11.5,13 L7.5,11 L3.5,13 L4.3,8.8 L1.5,6 L5.5,5.5 Z"/>
+      </svg>
+      <span class="trust-text">No ads · No selling your data</span>
+    </div>
+
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 15 15">
+        <polyline points="2,8 6,12 13,3"/>
+      </svg>
+      <span class="trust-text">Delete everything, anytime</span>
+    </div>
+
+    <div class="trust-item">
+      <svg class="trust-icon" viewBox="0 0 15 15">
+        <path d="M7.5,2 C4,2 2,5 2,7.5 C2,11 4.5,13 7.5,13 C10.5,13 13,11 13,7.5 C13,5 11,2 7.5,2 Z"/>
+        <line x1="7.5" y1="5" x2="7.5" y2="8"/>
+        <circle cx="7.5" cy="10" r="0.8" fill="rgba(45,212,191,0.5)" stroke="none"/>
+      </svg>
+      <span class="trust-text">No account needed to start</span>
+    </div>
+
+  </div>
+</div>
+
 <!-- THE DROP -->
 <section id="drop">
   <div class="container">
@@ -441,6 +1166,55 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- AWARENESS ══════════════════════════════════════════ -->
+<section id="awareness">
+
+  <!-- Three concentric rings -->
+  <div class="awareness-ring"></div>
+  <div class="awareness-ring"></div>
+  <div class="awareness-ring"></div>
+
+  <div class="awareness-inner">
+
+    <p class="awareness-eyeline">Before you continue</p>
+
+    <div class="awareness-dot"></div>
+
+    <ul class="awareness-questions" id="awarenessQs">
+
+      <li class="awareness-q">
+        Who is the one <em>reading</em> these words right now?
+      </li>
+
+      <li class="awareness-q">
+        What feeling brought you <em>here</em> today?
+      </li>
+
+      <li class="awareness-q">
+        Is there something you have been <em>carrying</em><br/>
+        that you haven't yet said out loud?
+      </li>
+
+      <li class="awareness-q">
+        What would it mean to <em>actually see</em><br/>
+        what is happening inside you?
+      </li>
+
+    </ul>
+
+    <p class="awareness-landing" id="awarenessLanding">
+      Notice what just happened in you as you read those.
+    </p>
+
+    <p class="awareness-invitation">
+      LumeRI begins here — not when you open the tool,<br/>
+      but in the moment you become curious about yourself.
+    </p>
+
   </div>
 </section>
 
@@ -489,6 +1263,228 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+
+<!-- SAMPLE ENTRY ══════════════════════════════════════════ -->
+<section id="sample-entry">
+  <div class="container">
+
+    <div class="sample-intro">
+      <div class="section-label">What you receive</div>
+      <h2 class="sample-h2">A real entry.<br/><em>A real reflection.</em></h2>
+      <p class="sample-body">
+        This is what LumeRI actually does. Someone wrote honestly. 
+        The mirror read it across nine psychological dimensions 
+        and reflected back what it noticed — not advice, not diagnosis. 
+        Just a clearer view of what was already there.
+      </p>
+    </div>
+
+    <!-- Tab switcher — 2 example entries -->
+    <div class="sample-tabs">
+      <button class="sample-tab active" onclick="showEntry(0, this)">Entry One</button>
+      <button class="sample-tab" onclick="showEntry(1, this)">Entry Two</button>
+    </div>
+
+    <!-- ENTRY 1 -->
+    <div class="mirror-card" id="entry-0">
+      <div class="entry-panel">
+        <div class="panel-label">
+          <svg viewBox="0 0 14 14"><path d="M2,12 L4,8 L11,2 Q13,0 14,2 Q15,3 13,4 L6,11 Z"/><line x1="2" y1="12" x2="1" y2="14"/></svg>
+          What you wrote
+        </div>
+        <p class="entry-text">
+          I keep telling myself I'm fine. That the tiredness is just work, 
+          just the season, just temporary. But something underneath 
+          that is harder to name — a kind of weight I keep moving 
+          around instead of setting down. I don't know when I stopped 
+          asking myself what I actually want.<span class="cursor"></span>
+        </p>
+        <p class="entry-date">Written today · Private</p>
+      </div>
+
+      <div class="reflection-panel">
+        <div class="panel-label" style="color:rgba(45,212,191,0.45);">
+          <svg viewBox="0 0 14 14" stroke="rgba(45,212,191,0.45)"><circle cx="7" cy="7" r="5"/><line x1="7" y1="4" x2="7" y2="7"/><line x1="7" y1="7" x2="9" y2="9"/></svg>
+          LumeRI read
+        </div>
+
+        <div class="constructs-mini">
+          <div class="construct-row">
+            <span class="construct-row-name">Emotional Intensity</span>
+            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="1" style="width:78%"></div></div>
+            <span class="construct-score">78</span>
+          </div>
+          <div class="construct-row">
+            <span class="construct-row-name">Reflective Depth</span>
+            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="2" style="width:85%"></div></div>
+            <span class="construct-score">85</span>
+          </div>
+          <div class="construct-row">
+            <span class="construct-row-name">Self-Relational Tone</span>
+            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="3" style="width:42%"></div></div>
+            <span class="construct-score">42</span>
+          </div>
+          <div class="construct-row">
+            <span class="construct-row-name">Cognitive Flexibility</span>
+            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="4" style="width:61%"></div></div>
+            <span class="construct-score">61</span>
+          </div>
+        </div>
+
+        <div class="reflection-divider"></div>
+
+        <div class="reflection-heading">
+          <svg viewBox="0 0 14 14"><circle cx="5" cy="5" r="3.5"/><line x1="8" y1="8" x2="13" y2="13"/></svg>
+          What the mirror noticed
+        </div>
+
+        <p class="reflection-body">
+          You are not describing tiredness. You are describing someone 
+          who has been very good at continuing — and is beginning to 
+          notice the cost of that. The phrase "moving around instead 
+          of setting down" suggests real self-awareness. The question 
+          you end with is not rhetorical. It is the actual question.
+        </p>
+
+        <div class="deep-lens-quote">
+          <p class="deep-lens-label">Deep Lens · Krishnamurti</p>
+          <p class="deep-lens-text">
+            "The first step in freedom is to see what is 
+            — not what should be, not what was, 
+            but what is actually happening now."
+          </p>
+          <p class="deep-lens-author">— J. Krishnamurti</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ENTRY 2 -->
+    <div class="mirror-card" id="entry-1" style="display:none">
+      <div class="entry-panel">
+        <div class="panel-label">
+          <svg viewBox="0 0 14 14"><path d="M2,12 L4,8 L11,2 Q13,0 14,2 Q15,3 13,4 L6,11 Z"/><line x1="2" y1="12" x2="1" y2="14"/></svg>
+          What you wrote
+        </div>
+        <p class="entry-text">
+          I had a fight with someone I love and I know I was right 
+          but I also feel terrible about how I said it. I keep 
+          rehearsing it — what I said, what they said. 
+          Why does being right feel so hollow when the other 
+          person is hurt? I think I use clarity as a weapon 
+          sometimes and I don't know what to do with that.<span class="cursor"></span>
+        </p>
+        <p class="entry-date">Written today · Private</p>
+      </div>
+
+      <div class="reflection-panel">
+        <div class="panel-label" style="color:rgba(45,212,191,0.45);">
+          <svg viewBox="0 0 14 14" stroke="rgba(45,212,191,0.45)"><circle cx="7" cy="7" r="5"/><line x1="7" y1="4" x2="7" y2="7"/><line x1="7" y1="7" x2="9" y2="9"/></svg>
+          LumeRI read
+        </div>
+
+        <div class="constructs-mini">
+          <div class="construct-row">
+            <span class="construct-row-name">Emotional Intensity</span>
+            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="1" style="width:88%"></div></div>
+            <span class="construct-score">88</span>
+          </div>
+          <div class="construct-row">
+            <span class="construct-row-name">Self-Relational Tone</span>
+            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="2" style="width:71%"></div></div>
+            <span class="construct-score">71</span>
+          </div>
+          <div class="construct-row">
+            <span class="construct-row-name">Cognitive Flexibility</span>
+            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="3" style="width:79%"></div></div>
+            <span class="construct-score">79</span>
+          </div>
+          <div class="construct-row">
+            <span class="construct-row-name">Reflective Depth</span>
+            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="4" style="width:91%"></div></div>
+            <span class="construct-score">91</span>
+          </div>
+        </div>
+
+        <div class="reflection-divider"></div>
+
+        <div class="reflection-heading">
+          <svg viewBox="0 0 14 14"><circle cx="5" cy="5" r="3.5"/><line x1="8" y1="8" x2="13" y2="13"/></svg>
+          What the mirror noticed
+        </div>
+
+        <p class="reflection-body">
+          The discomfort you feel is not weakness — it is 
+          the beginning of something more important than being right. 
+          "I use clarity as a weapon" is a rare and honest thing 
+          to see about yourself. Most people don't. That you see it 
+          and sit with it rather than defending it — that is already 
+          a different quality of attention.
+        </p>
+
+        <div class="deep-lens-quote">
+          <p class="deep-lens-label">Deep Lens · Rumi</p>
+          <p class="deep-lens-text">
+            "Out beyond ideas of wrongdoing and rightdoing, 
+            there is a field. I'll meet you there."
+          </p>
+          <p class="deep-lens-author">— Rumi</p>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="sample-caption">
+      Entries are shown with permission · Names and identifying details changed · 
+      <em>Your writing is never shared.</em>
+    </p>
+
+  </div>
+</section>
+
+<!-- EXPLAINER ══════════════════════════════════════════ -->
+<section id="explainer">
+  <div class="explainer-inner">
+    <div class="section-label" style="justify-content:center">See it in two minutes</div>
+    <h2 class="explainer-h2">Not sure what LumeRI<br/><em>actually does?</em></h2>
+    <p class="explainer-sub">Watch someone write honestly — and see what the mirror reflects back.</p>
+
+    <!-- Replace this entire .video-frame div with your embed -->
+    <div class="video-frame">
+      <div class="video-bg"></div>
+
+      <div class="video-typing">
+        <p class="vt-label">You write</p>
+        <p class="vt-text">"I keep telling myself<br/>I'm fine, but there's<br/>something underneath..."</p>
+      </div>
+
+      <div class="video-arrow">
+        <div class="va-line"></div>
+        <div class="va-dots">
+          <div class="va-dot"></div>
+          <div class="va-dot"></div>
+          <div class="va-dot"></div>
+        </div>
+        <div class="va-line" style="background:linear-gradient(to top, transparent, rgba(45,212,191,0.3))"></div>
+      </div>
+
+      <div class="video-reflection">
+        <p class="vr-label">The mirror sees</p>
+        <div class="vr-bar"></div>
+        <div class="vr-bar"></div>
+        <div class="vr-bar"></div>
+      </div>
+
+      <div class="play-btn">
+        <div class="play-triangle"></div>
+      </div>
+    </div>
+    <!-- END video placeholder -->
+
+    <p class="video-caption">2 minutes · No sound needed · Free to try after</p>
   </div>
 </section>
 
@@ -573,6 +1569,169 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
         <div class="privacy-title">The intelligence reads structure, not secrets.</div>
         <div class="privacy-body">LumeRI reads linguistic and psychological patterns in your writing. It does not report, store, or act on the content beyond generating your reflection.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- IQ EQ RQ ══════════════════════════════════════════ -->
+<section id="rq" style="background:#040c0f;padding:110px 24px;border-top:1px solid rgba(45,212,191,0.08);">
+  <div class="container">
+    <div style="text-align:center;max-width:760px;margin:0 auto 64px;">
+      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">Why This Matters Now</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">The missing intelligence<br/><em style="color:#2dd4bf;">in the age of AI.</em></h2>
+      <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.7);line-height:1.9;font-weight:300;text-align:center;max-width:640px;margin:0 auto;">AI is accelerating analytical intelligence. Emotional intelligence is essential. But the dimension that determines the quality of both is rarely developed.</p>
+    </div>
+    <div class="iq-grid" style="margin-bottom:56px;">
+      <div style="background:rgba(255,255,255,0.03);padding:44px 32px;border-radius:10px 0 0 10px;border:1px solid rgba(45,212,191,0.10);border-right:none;text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.1);line-height:1;margin-bottom:12px;">IQ</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.4);margin-bottom:16px;">Analytical Intelligence</div>
+        <p style="font-family:var(--sans);font-size:16px;color:rgba(200,240,238,0.6);line-height:1.8;font-weight:300;">The ability to analyse, calculate, and solve problems. Powers science, technology, and rational thinking.</p>
+      </div>
+      <div style="background:rgba(45,212,191,0.06);padding:44px 32px;border:2px solid rgba(45,212,191,0.5);text-align:center;position:relative;border-radius:10px;margin:-4px -2px;z-index:2;box-shadow:0 0 40px rgba(45,212,191,0.08);">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:rgba(45,212,191,0.9);color:#040c0f;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 6px 6px;font-weight:500;white-space:nowrap;">The Next Evolution</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.8);line-height:1;margin-bottom:12px;">RQ</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.85);margin-bottom:16px;">Reflective Intelligence</div>
+        <p style="font-family:var(--sans);font-size:16px;color:rgba(200,240,238,0.75);line-height:1.8;font-weight:300;">The ability to observe one's own thinking, question assumptions, and gain deeper clarity. Enables insight, wisdom, and conscious action.</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);padding:44px 32px;border-radius:0 10px 10px 0;border:1px solid rgba(45,212,191,0.10);border-left:none;text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.1);line-height:1;margin-bottom:12px;">EQ</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.4);margin-bottom:16px;">Emotional Intelligence</div>
+        <p style="font-family:var(--sans);font-size:16px;color:rgba(200,240,238,0.6);line-height:1.8;font-weight:300;">The ability to understand emotions, relationships, and social dynamics. Shapes leadership, empathy, and collaboration.</p>
+      </div>
+    </div>
+    <div style="text-align:center;padding:44px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.15);border-radius:12px;max-width:820px;margin:0 auto;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.8vw,32px);font-style:italic;color:#e8fdfb;line-height:1.6;margin-bottom:16px;">IQ solves problems.<br/>EQ understands people.<br/><em style="color:#5eead4;">RQ understands thinking itself.</em></p>
+      <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.4);line-height:1.8;">LumeRI is a practice in Reflective Intelligence.<br/>Writing is how RQ is developed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE MAP ══════════════════════════════════════════ -->
+<section id="map" style="background:#061a1e;padding:110px 24px;">
+  <div class="container">
+    <div class="map-grid">
+      <div>
+        <div class="section-label" style="color:rgba(45,212,191,0.6);">The Reflective Intelligence Map</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;">Where does writing<br/><em style="color:#2dd4bf;">take you?</em></h2>
+        <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.7);line-height:1.9;font-weight:300;margin-bottom:24px;">LumeRI is a tool for moving through the Map — from the automatic reactions that fill most inner life, toward something more clear and more true.</p>
+        <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.7);line-height:1.9;font-weight:300;">Each session is a step on this ladder. Writing honestly is how you move upward.</p>
+      </div>
+      <div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:20px 26px;background:rgba(45,212,191,0.18);border:1px solid rgba(45,212,191,0.4);border-radius:10px 10px 0 0;border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#5eead4;min-width:34px;text-align:center;">6</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;margin-bottom:3px;">Wisdom</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.5);font-weight:300;">Insight integrated into how you live.</div></div></div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:20px 26px;background:rgba(45,212,191,0.13);border:1px solid rgba(45,212,191,0.3);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#5eead4;min-width:34px;text-align:center;opacity:0.8;">5</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;margin-bottom:3px;">Clarity</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.5);font-weight:300;">Perception becomes conscious and deliberate.</div></div></div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:20px 26px;background:rgba(45,212,191,0.09);border:1px solid rgba(45,212,191,0.22);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#5eead4;min-width:34px;text-align:center;opacity:0.65;">4</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;margin-bottom:3px;">Insight</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.5);font-weight:300;">Direct perception — not analysis.</div></div></div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:20px 26px;background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.16);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#5eead4;min-width:34px;text-align:center;opacity:0.5;">3</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:rgba(200,240,238,0.85);margin-bottom:3px;">Reflection</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.45);font-weight:300;">Examining assumptions, beliefs, patterns.</div></div></div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:20px 26px;background:rgba(45,212,191,0.03);border:1px solid rgba(45,212,191,0.10);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:rgba(200,240,238,0.25);min-width:34px;text-align:center;">2</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:rgba(200,240,238,0.6);margin-bottom:3px;">Observation</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.35);font-weight:300;">Noticing the thinking process itself.</div></div></div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:20px 26px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:0 0 10px 10px;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:rgba(200,240,238,0.15);min-width:34px;text-align:center;">1</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:rgba(200,240,238,0.3);margin-bottom:3px;">Reaction</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.22);font-weight:300;">Automatic. Unconscious. Conditioned.</div></div></div>
+        </div>
+        <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:right;margin-top:10px;">↑ writing moves you upward</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE COMPASS ══════════════════════════════════════════ -->
+<section id="compass" style="background:#040c0f;padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto 72px;">
+      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The Reflective Intelligence Compass</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">Four directions your<br/><em style="color:#2dd4bf;">writing can take you.</em></h2>
+      <p style="font-family:var(--sans);font-size:17px;color:rgba(200,240,238,0.65);line-height:1.9;font-weight:300;text-align:center;">When you write in LumeRI, the intelligence reads which direction your mind is moving — and reflects back what it notices.</p>
+    </div>
+    <div class="compass-grid">
+      <div style="display:flex;justify-content:center;align-items:center;">
+        <svg viewBox="0 0 440 440" width="380" height="380" style="max-width:100%;overflow:visible;">
+          <defs>
+            <radialGradient id="cg2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#0d5c63" stop-opacity="0.6"/><stop offset="100%" stop-color="#040c0f" stop-opacity="0"/></radialGradient>
+            <filter id="glow2"><feGaussianBlur stdDeviation="4" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+          </defs>
+          <circle cx="220" cy="220" r="195" fill="url(#cg2)" stroke="rgba(45,212,191,0.12)" stroke-width="1"/>
+          <circle cx="220" cy="220" r="145" fill="none" stroke="rgba(45,212,191,0.07)" stroke-width="1" stroke-dasharray="4,7"/>
+          <circle cx="220" cy="220" r="90" fill="none" stroke="rgba(45,212,191,0.05)" stroke-width="1" stroke-dasharray="2,9"/>
+          <line x1="220" y1="28" x2="220" y2="412" stroke="rgba(45,212,191,0.15)" stroke-width="1"/>
+          <line x1="28" y1="220" x2="412" y2="220" stroke="rgba(45,212,191,0.15)" stroke-width="1"/>
+          <polygon points="220,42 213,110 227,110" fill="rgba(45,212,191,0.85)"/>
+          <circle cx="220" cy="40" r="16" fill="#040c0f" stroke="rgba(45,212,191,0.6)" stroke-width="1.5"/>
+          <text x="220" y="45.5" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="#5eead4">N</text>
+          <text x="220" y="24" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" letter-spacing="2.5" fill="rgba(94,234,212,0.9)" font-weight="300">AWARENESS</text>
+          <polygon points="220,398 213,330 227,330" fill="rgba(45,212,191,0.45)"/>
+          <circle cx="220" cy="400" r="16" fill="#040c0f" stroke="rgba(45,212,191,0.35)" stroke-width="1.5"/>
+          <text x="220" y="405.5" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="#2dd4bf">S</text>
+          <text x="220" y="424" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" letter-spacing="2.5" fill="rgba(94,234,212,0.6)" font-weight="300">INTEGRATION</text>
+          <polygon points="398,220 330,213 330,227" fill="rgba(45,212,191,0.65)"/>
+          <circle cx="400" cy="220" r="16" fill="#040c0f" stroke="rgba(45,212,191,0.5)" stroke-width="1.5"/>
+          <text x="400" y="225.5" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="#5eead4">E</text>
+          <text x="400" y="204" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" letter-spacing="2.5" fill="rgba(94,234,212,0.8)" font-weight="300">INQUIRY</text>
+          <polygon points="42,220 110,213 110,227" fill="rgba(45,212,191,0.65)"/>
+          <circle cx="40" cy="220" r="16" fill="#040c0f" stroke="rgba(45,212,191,0.5)" stroke-width="1.5"/>
+          <text x="40" y="225.5" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="13" font-style="italic" fill="#5eead4">W</text>
+          <text x="34" y="204" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="10" letter-spacing="2.5" fill="rgba(94,234,212,0.8)" font-weight="300">UNDERSTANDING</text>
+          <circle cx="220" cy="220" r="10" fill="#2dd4bf" filter="url(#glow2)"/>
+          <circle cx="220" cy="220" r="5" fill="#e8fdfb"/>
+          <text x="220" y="210" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="12" font-style="italic" fill="rgba(200,240,238,0.4)">LumeRI</text>
+          <text x="220" y="232" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="12" font-style="italic" fill="rgba(200,240,238,0.4)">reflects this</text>
+        </svg>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="padding:24px 26px;border-left:3px solid rgba(45,212,191,0.8);background:rgba(45,212,191,0.04);border-radius:0 8px 8px 0;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.8);margin-bottom:8px;">North · Awareness</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;margin-bottom:8px;">"What am I actually thinking right now?"</p><p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.6);font-weight:300;line-height:1.7;">The starting point. LumeRI reads the texture of your awareness — is it open, contracted, defended, spacious?</p></div>
+        <div style="padding:24px 26px;border-left:3px solid rgba(45,212,191,0.6);background:rgba(45,212,191,0.04);border-radius:0 8px 8px 0;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.6);margin-bottom:8px;">East · Inquiry</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;margin-bottom:8px;">"Is this belief actually true?"</p><p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.6);font-weight:300;line-height:1.7;">Writing that genuinely wonders opens the mind. The intelligence reads this quality in your words.</p></div>
+        <div style="padding:24px 26px;border-left:3px solid rgba(45,212,191,0.6);background:rgba(45,212,191,0.04);border-radius:0 8px 8px 0;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.6);margin-bottom:8px;">West · Understanding</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;margin-bottom:8px;">"What pattern keeps showing up?"</p><p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.6);font-weight:300;line-height:1.7;">Over sessions, patterns emerge. The Narrative Recurrence mapping shows what your mind keeps returning to.</p></div>
+        <div style="padding:24px 26px;border-left:3px solid rgba(45,212,191,0.3);background:rgba(45,212,191,0.03);border-radius:0 8px 8px 0;"><div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.4);margin-bottom:8px;">South · Integration</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;margin-bottom:8px;">"How does this change how I act?"</p><p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.6);font-weight:300;line-height:1.7;">The Deep Lens — wisdom matched to your construct scores — is the integration layer. Not advice. A different quality of light.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 QUESTIONS ══════════════════════════════════════════ -->
+<section id="inquiry-q" style="background:#061a1e;padding:110px 24px;">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto 72px;">
+      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The Reflective Intelligence Inquiry</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">Twelve questions worth<br/><em style="color:#2dd4bf;">writing into.</em></h2>
+      <p style="font-family:var(--sans);font-size:17px;color:rgba(200,240,238,0.65);line-height:1.9;font-weight:300;text-align:center;">Not questions to answer quickly. Questions to write into — honestly, slowly. That is how Reflective Intelligence is developed.</p>
+    </div>
+    <div class="inquiry-grid">
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">01</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Assumption</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">What assumptions am I making right now that I have not examined?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">02</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Reaction</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">Am I responding to the situation — or reacting to my interpretation of it?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">03</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Identity</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">Is my opinion shaped by clear observation — or by the need to defend my identity?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">04</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Certainty</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">How certain am I that my interpretation is correct?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">05</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Influence</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">Where did this belief originally come from?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">06</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Perspective</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">What might this look like from a completely different perspective?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">07</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Pattern</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">Is this reaction part of a recurring pattern in my thinking?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">08</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Emotion</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">What emotion is influencing my thinking right now?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">09</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Narrative</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">What story am I telling myself about this situation?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">10</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Clarity</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">If I were completely clear, what might I see differently?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">11</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Responsibility</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">What part of this am I responsible for that I may not be acknowledging?</p></div>
+      <div class="inquiry-card" style="border:2px solid rgba(45,212,191,0.4);background:rgba(45,212,191,0.06);"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.25);line-height:1;margin-bottom:12px;">12</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.85);margin-bottom:10px;">The Observer</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">Who is the one noticing these thoughts?</p></div>
+    </div>
+    <div style="text-align:center;margin-top:56px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(200,240,238,0.55);margin-bottom:28px;">Write any one of these in LumeRI tonight.</p>
+      <a href="#cta-bottom" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.9);padding:16px 40px;text-decoration:none;border-radius:3px;font-weight:500;">Begin Writing →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 7-DAY JOURNEY ══════════════════════════════════════════ -->
+<section id="journey" style="background:#040c0f;padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
+  <div class="container">
+    <div style="text-align:center;max-width:680px;margin:0 auto 64px;">
+      <div class="section-label" style="color:rgba(45,212,191,0.6);justify-content:center;">Begin The Practice</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">A 7-day writing journey<br/><em style="color:#2dd4bf;">into your own mind.</em></h2>
+      <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.65);line-height:1.9;font-weight:300;">One session. One theme. Seven days. This is how Reflective Intelligence begins — not with a course, but with seven small honest acts of writing.</p>
+    </div>
+    <div class="journey-grid" style="margin-bottom:56px;">
+      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 1</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Pause</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about what is actually in your mind right now.</div></div>
+      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 2</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Observe</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write what you notice about your own thoughts.</div></div>
+      <div style="background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.20);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 3</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Notice</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about a reaction that surprised you.</div></div>
+      <div style="background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.24);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Question</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about a belief you have never examined.</div></div>
+      <div style="background:rgba(45,212,191,0.09);border:1px solid rgba(45,212,191,0.26);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 5</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">See</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about a pattern you keep repeating.</div></div>
+      <div style="background:rgba(45,212,191,0.10);border:1px solid rgba(45,212,191,0.30);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 6</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Listen</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about a conversation you were not fully present for.</div></div>
+      <div style="background:rgba(45,212,191,0.13);border:2px solid rgba(45,212,191,0.5);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#5eead4;margin-bottom:10px;">Day 7</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#5eead4;margin-bottom:8px;">The Observer</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.55);line-height:1.5;">Write: who has been watching all of this?</div></div>
+    </div>
+    <div style="text-align:center;">
+      <a href="#cta-bottom" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.9);padding:18px 44px;text-decoration:none;border-radius:3px;font-weight:500;">Start Day 1 →</a>
     </div>
   </div>
 </section>
@@ -723,7 +1882,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
       <h4>Connect</h4>
       <ul>
         <li><a href="https://reflectiveintelligence.life">Reflective Intelligence</a></li>
-        <li><a href="mailto:lumeri.support@gmail.com">Contact Us</a></li>
+        <li><a href="/cdn-cgi/l/email-protection#94f8e1f9f1e6fdbae7e1e4e4fbe6e0d4f3f9f5fdf8baf7fbf9">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -733,7 +1892,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // FAQ accordion
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
@@ -750,10 +1909,4 @@ const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
-  navLinks.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-}, { passive: true });
-</script>
-</body>
-</html>
+ 
