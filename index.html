@@ -1452,39 +1452,25 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
     <h2 class="explainer-h2">Not sure what LumeRI<br/><em>actually does?</em></h2>
     <p class="explainer-sub">Watch someone write honestly — and see what the mirror reflects back.</p>
 
-    <!-- Replace this entire .video-frame div with your embed -->
-    <div class="video-frame">
-      <div class="video-bg"></div>
-
-      <div class="video-typing">
-        <p class="vt-label">You write</p>
-        <p class="vt-text">"I keep telling myself<br/>I'm fine, but there's<br/>something underneath..."</p>
-      </div>
-
-      <div class="video-arrow">
-        <div class="va-line"></div>
-        <div class="va-dots">
-          <div class="va-dot"></div>
-          <div class="va-dot"></div>
-          <div class="va-dot"></div>
+    <!-- Video embed — replace with actual URL when ready -->
+    <div style="position:relative;max-width:680px;margin:0 auto;border-radius:10px;overflow:hidden;background:#040f11;border:1px solid rgba(45,212,191,0.15);box-shadow:0 24px 80px rgba(12,46,52,0.22);">
+      <div style="aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px;gap:28px;position:relative;">
+        <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%, rgba(15,184,164,0.07) 0%, transparent 65%);pointer-events:none;"></div>
+        <div style="width:64px;height:64px;border-radius:50%;background:rgba(15,184,164,0.1);border:1px solid rgba(45,212,191,0.3);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(45,212,191,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10,8 18,12 10,16" fill="rgba(45,212,191,0.5)" stroke="none"/></svg>
         </div>
-        <div class="va-line" style="background:linear-gradient(to top, transparent, rgba(45,212,191,0.3))"></div>
-      </div>
-
-      <div class="video-reflection">
-        <p class="vr-label">The mirror sees</p>
-        <div class="vr-bar"></div>
-        <div class="vr-bar"></div>
-        <div class="vr-bar"></div>
-      </div>
-
-      <div class="play-btn">
-        <div class="play-triangle"></div>
+        <div style="text-align:center;position:relative;z-index:1;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:rgba(200,240,238,0.7);margin-bottom:10px;">A short film is coming.</p>
+          <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.4);">Someone writes honestly. The mirror reflects back.</p>
+        </div>
+        <div style="display:flex;gap:8px;position:relative;z-index:1;">
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(45,212,191,0.5);animation:dot-seq 1.5s ease-in-out infinite;"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(45,212,191,0.5);animation:dot-seq 1.5s ease-in-out infinite;animation-delay:0.3s;"></div>
+          <div style="width:5px;height:5px;border-radius:50%;background:rgba(45,212,191,0.5);animation:dot-seq 1.5s ease-in-out infinite;animation-delay:0.6s;"></div>
+        </div>
       </div>
     </div>
-    <!-- END video placeholder -->
-
-    <p class="video-caption">2 minutes · No sound needed · Free to try after</p>
+    <p class="video-caption" style="margin-top:20px;">Until then — the best way to understand LumeRI is to try it.</p>
   </div>
 </section>
 
@@ -1802,10 +1788,10 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
             The research was clear. Expressive writing changes your physiology. Metacognition — the ability to observe your own thinking — is the brain's highest function. Every wisdom tradition had been saying the same thing for thousands of years. None of it was being put in anyone's hands in a form they would actually use.
           </p>
           <p style="font-family:var(--serif);font-size:clamp(16px,1.8vw,20px);font-weight:300;color:rgba(200,240,238,0.75);line-height:2;margin-bottom:22px;">
-            LumeRI is the result of that frustration — built carefully, over time, grounded in evidence, and shaped by a single question: <em style="color:var(--lite);">what would it actually mean to give someone a mirror?</em>
+            LumeRI was built carefully, over time, shaped by a single question: <em style="color:var(--lite);">what would it actually mean to give someone a mirror?</em>
           </p>
           <p style="font-family:var(--serif);font-size:clamp(16px,1.8vw,20px);font-weight:300;color:rgba(200,240,238,0.75);line-height:2;">
-            Not a mirror that tells you what you want to hear. Not one that grades your mental health. A mirror that shows you, as honestly as it can, the shape of your mind as it actually was in this moment of writing.
+            Not a mirror that tells you what you want to hear. Not one that measures or grades. A mirror that reflects, as honestly as it can, the quality of mind present in the writing — right now, in this moment.
           </p>
           <p style="font-family:var(--serif);font-size:19px;font-style:italic;color:var(--brand);margin-top:32px;">— Nupur Goel</p>
         </div>
@@ -1909,4 +1895,51 @@ const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.id; });
- 
+  navLinks.forEach(l => {
+    l.classList.remove('active');
+    if (l.getAttribute('href') === '#' + current) l.classList.add('active');
+  });
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+}, { threshold: 0.15 });
+reveals.forEach(r => revealObserver.observe(r));
+
+// ── Awareness questions staggered reveal ──
+(function(){
+  var qs = document.querySelectorAll('.awareness-q');
+  var landing = document.getElementById('awarenessLanding');
+  if(!qs.length) return;
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        qs.forEach(function(q,i){ setTimeout(function(){ q.classList.add('visible'); }, i*500); });
+        if(landing) setTimeout(function(){ landing.classList.add('visible'); }, qs.length*500+400);
+        obs.disconnect();
+      }
+    });
+  },{threshold:0.25});
+  var sec = document.getElementById('awareness');
+  if(sec) obs.observe(sec);
+})();
+
+// ── Sample entry tab toggle ──
+function showEntry(idx, btn) {
+  document.querySelectorAll('.mirror-card').forEach(function(c,i){
+    c.style.display = (i === idx) ? 'grid' : 'none';
+  });
+  document.querySelectorAll('.sample-tab').forEach(function(t){ t.classList.remove('active'); });
+  btn.classList.add('active');
+  var bars = document.querySelectorAll('#entry-' + idx + ' .construct-bar-fill');
+  bars.forEach(function(bar){
+    bar.style.animation = 'none';
+    bar.offsetHeight;
+    bar.style.animation = '';
+  });
+}
+</script>
+</body>
+</html>
