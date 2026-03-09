@@ -1591,133 +1591,295 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
   </div>
 </section>
 
-<!-- THE COMPASS ══════════════════════════════════════════ -->
+<!-- THE MIRROR FRAMEWORK ══════════════════════════════════════════ -->
 <section id="compass" style="background:#040c0f;padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
   <div class="container">
-    <div style="text-align:center;max-width:760px;margin:0 auto 80px;">
-      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The Reflective Intelligence Compass</div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:24px;text-align:center;">Every time you write in LumeRI,<br/><em style="color:#2dd4bf;">you are moving through this.</em></h2>
-      <p style="font-family:var(--sans);font-size:17px;color:rgba(200,240,238,0.65);line-height:1.9;font-weight:300;text-align:center;">A compass doesn't tell you where to go. It orients you — shows you where you actually are. LumeRI works the same way. Each writing session is a movement inward: from the noise of the surface, through honest attention, toward something truer. The Reflective Intelligence Compass maps that journey.</p>
+
+    <!-- Heading -->
+    <div style="text-align:center;max-width:720px;margin:0 auto 80px;">
+      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The Mirror Framework</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:24px;">LumeRI makes the<br/><em style="color:#2dd4bf;">unconscious conscious.</em></h2>
+      <p style="font-family:var(--sans);font-size:17px;color:rgba(200,240,238,0.6);line-height:1.9;font-weight:300;">Most of what runs your life operates below the surface. You don't see it — you live <em style="color:rgba(200,240,238,0.85);">from</em> it. Self-Inquiry is the mirror held across that threshold. LumeRI facilitates it: through the silence of honest writing, and the awareness that writing makes possible. What was unconscious rises into the light. Seen — it is no longer unconscious. That is the whole practice.</p>
     </div>
-    <div class="compass-grid">
-      <div style="display:flex;justify-content:center;align-items:center;">
-        <svg viewBox="0 0 440 440" width="400" height="400" style="max-width:100%;overflow:visible;">
+
+    <!-- Diagram + Panels -->
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:start;max-width:1060px;margin:0 auto;">
+
+      <!-- SVG: The Mirror Diagram -->
+      <div style="position:sticky;top:40px;display:flex;justify-content:center;">
+        <svg viewBox="0 0 300 560" width="300" height="560" style="max-width:100%;overflow:visible;">
           <defs>
-            <radialGradient id="cg2" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#0d5c63" stop-opacity="0.7"/>
-              <stop offset="100%" stop-color="#040c0f" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="northGlow" cx="50%" cy="0%" r="60%">
-              <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.18"/>
-              <stop offset="100%" stop-color="#040c0f" stop-opacity="0"/>
-            </radialGradient>
-            <filter id="glow2"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
-            <filter id="softglow"><feGaussianBlur stdDeviation="6" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
+            <linearGradient id="consciousGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0fb8a4" stop-opacity="0.20"/>
+              <stop offset="100%" stop-color="#0fb8a4" stop-opacity="0.03"/>
+            </linearGradient>
+            <linearGradient id="unconsciousGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6b4c2a" stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#3a2510" stop-opacity="0.30"/>
+            </linearGradient>
+            <linearGradient id="mirrorBand" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0"/>
+              <stop offset="15%" stop-color="#2dd4bf" stop-opacity="0.85"/>
+              <stop offset="50%" stop-color="#5eead4" stop-opacity="1"/>
+              <stop offset="85%" stop-color="#2dd4bf" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="stillnessGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.5"/>
+              <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0.05"/>
+            </linearGradient>
+            <linearGradient id="awarenessGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0.05"/>
+              <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0.5"/>
+            </linearGradient>
+            <filter id="mglow"><feGaussianBlur stdDeviation="5" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+            <filter id="sglow"><feGaussianBlur stdDeviation="3" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
           </defs>
 
-          <!-- Background -->
-          <circle cx="220" cy="220" r="195" fill="url(#cg2)" stroke="rgba(45,212,191,0.10)" stroke-width="1"/>
-          <circle cx="220" cy="220" r="195" fill="url(#northGlow)"/>
-          <circle cx="220" cy="220" r="148" fill="none" stroke="rgba(45,212,191,0.07)" stroke-width="1" stroke-dasharray="4,8"/>
-          <circle cx="220" cy="220" r="92" fill="none" stroke="rgba(45,212,191,0.05)" stroke-width="1" stroke-dasharray="2,10"/>
+          <!-- PURE BEING zone (top) -->
+          <rect x="16" y="16" width="268" height="170" rx="10" fill="url(#consciousGrad)" stroke="rgba(45,212,191,0.10)" stroke-width="1"/>
+          <text x="150" y="44" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" letter-spacing="4" fill="rgba(94,234,212,0.45)" font-weight="300">PURE BEING</text>
+          <text x="150" y="90" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="28" font-style="italic" fill="rgba(200,240,238,0.9)">Whole.</text>
+          <text x="150" y="122" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="28" font-style="italic" fill="rgba(200,240,238,0.65)">Complete.</text>
+          <text x="150" y="154" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="28" font-style="italic" fill="rgba(200,240,238,0.35)">Already here.</text>
+          <!-- rising arrows -->
+          <text x="60"  y="168" text-anchor="middle" font-size="10" fill="rgba(45,212,191,0.2)">↑</text>
+          <text x="150" y="168" text-anchor="middle" font-size="10" fill="rgba(45,212,191,0.35)">↑</text>
+          <text x="240" y="168" text-anchor="middle" font-size="10" fill="rgba(45,212,191,0.2)">↑</text>
 
-          <!-- Axes -->
-          <line x1="220" y1="30" x2="220" y2="410" stroke="rgba(45,212,191,0.12)" stroke-width="1"/>
-          <line x1="30" y1="220" x2="410" y2="220" stroke="rgba(45,212,191,0.08)" stroke-width="1" stroke-dasharray="5,6"/>
+          <!-- ═══════ THE MIRROR BAND ═══════ -->
+          <rect x="0" y="192" width="300" height="82" fill="rgba(8,55,60,0.55)" rx="2"/>
+          <!-- main glow line -->
+          <line x1="0" y1="233" x2="300" y2="233" stroke="url(#mirrorBand)" stroke-width="2.5" filter="url(#mglow)"/>
+          <!-- shimmer -->
+          <line x1="16" y1="228" x2="284" y2="228" stroke="rgba(94,234,212,0.07)" stroke-width="1"/>
+          <line x1="16" y1="238" x2="284" y2="238" stroke="rgba(94,234,212,0.07)" stroke-width="1"/>
 
-          <!-- Journey arc East→West (the path of inquiry) -->
-          <path d="M 372 220 A 152 152 0 0 1 68 220" fill="none" stroke="rgba(45,212,191,0.18)" stroke-width="1.5" stroke-dasharray="6,5"/>
-          <text x="220" y="84" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="11" font-style="italic" fill="rgba(94,234,212,0.35)" letter-spacing="1">the path of self-inquiry</text>
+          <!-- Self-Inquiry label (centre) -->
+          <text x="150" y="212" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" letter-spacing="3.5" fill="rgba(94,234,212,0.85)" font-weight="400">SELF-INQUIRY · LUMERI</text>
+          <text x="150" y="258" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="11" font-style="italic" fill="rgba(94,234,212,0.38)">Who am I?</text>
 
-          <!-- NORTH — Pure Being (brightest, the destination) -->
-          <polygon points="220,44 213,112 227,112" fill="rgba(45,212,191,0.9)" filter="url(#glow2)"/>
-          <circle cx="220" cy="42" r="18" fill="#040c0f" stroke="rgba(45,212,191,0.7)" stroke-width="1.5"/>
-          <text x="220" y="47" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="14" font-style="italic" fill="#5eead4">N</text>
-          <text x="220" y="26" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" letter-spacing="3" fill="rgba(94,234,212,0.95)" font-weight="400">PURE BEING</text>
+          <!-- STILLNESS label — left wing of mirror -->
+          <rect x="16" y="196" width="90" height="26" rx="4" fill="url(#stillnessGrad)"/>
+          <text x="22" y="213" font-family="'DM Sans',sans-serif" font-size="8" letter-spacing="2" fill="rgba(94,234,212,0.7)" font-weight="300">STILLNESS</text>
 
-          <!-- SOUTH — Conditioning (muted, warm amber — the weight pulling down) -->
-          <polygon points="220,396 213,328 227,328" fill="rgba(180,140,100,0.5)"/>
-          <circle cx="220" cy="398" r="18" fill="#040c0f" stroke="rgba(180,140,100,0.35)" stroke-width="1.5"/>
-          <text x="220" y="403" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="14" font-style="italic" fill="rgba(200,165,120,0.75)">S</text>
-          <text x="220" y="422" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" letter-spacing="3" fill="rgba(200,165,120,0.6)" font-weight="300">CONDITIONING</text>
+          <!-- AWARENESS label — right wing of mirror -->
+          <rect x="194" y="196" width="90" height="26" rx="4" fill="url(#awarenessGrad)"/>
+          <text x="200" y="213" font-family="'DM Sans',sans-serif" font-size="8" letter-spacing="2" fill="rgba(94,234,212,0.7)" font-weight="300">AWARENESS</text>
 
-          <!-- EAST — Stillness (where the journey begins, soft light) -->
-          <polygon points="396,220 328,213 328,227" fill="rgba(45,212,191,0.6)"/>
-          <circle cx="398" cy="220" r="18" fill="#040c0f" stroke="rgba(45,212,191,0.5)" stroke-width="1.5"/>
-          <text x="398" y="225" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="14" font-style="italic" fill="#5eead4">E</text>
-          <text x="398" y="204" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" letter-spacing="3" fill="rgba(94,234,212,0.85)" font-weight="300">SILENCE · MAUNA</text>
+          <!-- small divider dots in mirror band -->
+          <circle cx="150" cy="233" r="3" fill="#5eead4" filter="url(#sglow)"/>
+          <circle cx="110" cy="233" r="1.5" fill="rgba(94,234,212,0.4)"/>
+          <circle cx="190" cy="233" r="1.5" fill="rgba(94,234,212,0.4)"/>
 
-          <!-- WEST — Inquiry (Ramana's Who am I?, strong but not brightest) -->
-          <polygon points="44,220 112,213 112,227" fill="rgba(45,212,191,0.7)"/>
-          <circle cx="42" cy="220" r="18" fill="#040c0f" stroke="rgba(45,212,191,0.55)" stroke-width="1.5"/>
-          <text x="42" y="225" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="14" font-style="italic" fill="#5eead4">W</text>
-          <text x="38" y="204" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" letter-spacing="3" fill="rgba(94,234,212,0.85)" font-weight="300">AWARENESS</text>
+          <!-- UNCONSCIOUS zone (bottom) -->
+          <rect x="16" y="280" width="268" height="214" rx="10" fill="url(#unconsciousGrad)" stroke="rgba(160,120,80,0.10)" stroke-width="1"/>
+          <text x="150" y="306" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" letter-spacing="4" fill="rgba(180,140,100,0.4)" font-weight="300">UNCONSCIOUS</text>
 
-          <!-- Centre — Self-Inquiry as the whole process -->
-          <circle cx="220" cy="220" r="44" fill="rgba(45,212,191,0.03)" stroke="rgba(45,212,191,0.20)" stroke-width="1" stroke-dasharray="3,5"/>
-          <circle cx="220" cy="220" r="30" fill="rgba(13,92,99,0.55)" stroke="rgba(45,212,191,0.30)" stroke-width="1"/>
-          <circle cx="220" cy="220" r="5" fill="#5eead4" filter="url(#softglow)"/>
-          <text x="220" y="213" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="10" font-style="italic" fill="rgba(94,234,212,0.85)">Self-</text>
-          <text x="220" y="225" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="10" font-style="italic" fill="rgba(94,234,212,0.85)">Inquiry</text>
-          <text x="220" y="237" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="9" font-style="italic" fill="rgba(94,234,212,0.4)">Who am I?</text>
+          <text x="150" y="348" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="21" font-style="italic" fill="rgba(210,180,140,0.65)">Conditioning</text>
+          <text x="150" y="382" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="21" font-style="italic" fill="rgba(200,165,120,0.45)">Noise</text>
+          <text x="150" y="416" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="21" font-style="italic" fill="rgba(185,150,105,0.30)">Inherited Belief</text>
+          <text x="150" y="450" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="21" font-style="italic" fill="rgba(175,140,95,0.18)">Lost in Thought</text>
+
+          <!-- dust particles -->
+          <circle cx="50"  cy="340" r="2.5" fill="rgba(160,120,80,0.22)"/>
+          <circle cx="120" cy="368" r="2"   fill="rgba(160,120,80,0.16)"/>
+          <circle cx="200" cy="350" r="3"   fill="rgba(160,120,80,0.18)"/>
+          <circle cx="250" cy="390" r="2"   fill="rgba(160,120,80,0.13)"/>
+          <circle cx="75"  cy="420" r="1.5" fill="rgba(160,120,80,0.10)"/>
+          <circle cx="220" cy="440" r="2.5" fill="rgba(160,120,80,0.08)"/>
+          <circle cx="150" cy="468" r="1.5" fill="rgba(160,120,80,0.06)"/>
+
+          <text x="150" y="546" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="10" font-style="italic" fill="rgba(94,234,212,0.18)">writing is the act of looking</text>
         </svg>
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:16px;">
+      <!-- 3 Panels -->
+      <div style="display:flex;flex-direction:column;gap:0;">
 
-        <!-- NORTH -->
-        <div style="padding:24px 26px;border-left:3px solid rgba(45,212,191,0.9);background:linear-gradient(135deg,rgba(45,212,191,0.08),rgba(45,212,191,0.02));border-radius:0 8px 8px 0;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-            <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(94,234,212,0.9);">North · True North</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:#5eead4;">Pure Being</div>
-          </div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.6;margin-bottom:8px;">The place writing is always trying to return you to.</p>
-          <p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.65);font-weight:300;line-height:1.75;">Not a reward for writing well. Not a state you reach after enough sessions. The ground that was always there — beneath the noise, beneath the conditioning, beneath the story you've been telling yourself. LumeRI doesn't take you there. It removes what was covering it. The needle was always pointing here.</p>
+        <!-- Panel 1: UNCONSCIOUS -->
+        <div style="padding:32px 30px;background:linear-gradient(135deg,rgba(100,70,40,0.10),rgba(50,30,10,0.05));border:1px solid rgba(160,120,80,0.16);border-radius:12px 12px 0 0;border-bottom:none;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(200,165,120,0.55);margin-bottom:14px;">The Unconscious — Before You Write</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:rgba(220,190,155,0.85);line-height:1.5;margin-bottom:14px;">The dust on the mirror. You live from it without seeing it.</p>
+          <p style="font-family:var(--sans);font-size:14px;color:rgba(200,225,222,0.55);font-weight:300;line-height:1.85;">Inherited beliefs run quietly as background assumptions. Habitual reactions feel like considered responses. Patterns repeat so reliably they feel like personality. You are not seeing your life — you are living from inside a story about it. The story is invisible precisely because you are inside it. This is the unconscious: not mysterious, not buried — simply unseen.</p>
         </div>
 
-        <!-- EAST -->
-        <div style="padding:24px 26px;border-left:3px solid rgba(45,212,191,0.6);background:linear-gradient(135deg,rgba(45,212,191,0.05),rgba(45,212,191,0.01));border-radius:0 8px 8px 0;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-            <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(94,234,212,0.7);">East · where you enter</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:#4dd9c0;">Silence <span style="font-size:13px;opacity:0.55;">· Mauna</span></div>
+        <!-- Panel 2: THE MIRROR — LumeRI -->
+        <div style="padding:32px 30px;background:linear-gradient(135deg,rgba(15,184,164,0.10),rgba(13,92,99,0.14));border:1px solid rgba(45,212,191,0.28);position:relative;overflow:hidden;">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.65),transparent);"></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.65),transparent);"></div>
+
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(94,234,212,0.8);margin-bottom:14px;">Self-Inquiry · The Mirror · LumeRI</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;line-height:1.5;margin-bottom:20px;">The mirror has two qualities. LumeRI holds both.</p>
+
+          <!-- Two wings of the mirror -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+            <div style="padding:16px 18px;background:rgba(45,212,191,0.05);border-left:2px solid rgba(45,212,191,0.5);border-radius:0 6px 6px 0;">
+              <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(94,234,212,0.65);margin-bottom:8px;">Stillness</div>
+              <p style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.7);font-weight:300;line-height:1.7;">Writing in LumeRI creates a quality of silence — no notifications, no audience, no performance. Just you and the page. This is Ramana's Mauna: not the absence of sound but the presence of receptive attention. The noise drops. The conditioned mind slows. What is underneath becomes audible.</p>
+            </div>
+            <div style="padding:16px 18px;background:rgba(45,212,191,0.05);border-right:2px solid rgba(45,212,191,0.5);border-radius:6px 0 0 6px;">
+              <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(94,234,212,0.65);margin-bottom:8px;">Awareness</div>
+              <p style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.7);font-weight:300;line-height:1.7;">Putting words to your thoughts is the act of Self-Inquiry. You are not just recording — you are watching yourself think. Facing your own questions, your own beliefs, your own reactions. LumeRI reflects back what that awareness reveals: the patterns underneath the words. The unconscious, now lit.</p>
+            </div>
           </div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.6;margin-bottom:8px;">What happens the moment you begin to write honestly.</p>
-          <p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.65);font-weight:300;line-height:1.75;">The outer world recedes. The performing self goes quiet. Something underneath becomes audible. This is not something LumeRI creates — it is what writing, when it is genuine, always does. You arrive at the page and the noise drops away. That quality of silence is not empty. It is the most receptive state a human mind can be in. It is where the inner journey becomes possible.</p>
+
+          <p style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(94,234,212,0.4);line-height:1.7;">"Remaining quiet is what is called wisdom-insight. To remain quiet is to resolve the mind in the Self." — Ramana Maharshi</p>
         </div>
 
-        <!-- WEST -->
-        <div style="padding:24px 26px;border-left:3px solid rgba(45,212,191,0.65);background:linear-gradient(135deg,rgba(45,212,191,0.05),rgba(45,212,191,0.01));border-radius:0 8px 8px 0;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-            <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(94,234,212,0.7);">West · what the journey reveals</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:#4dd9c0;">Awareness</div>
-          </div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.6;margin-bottom:8px;">Not awareness <em style="color:var(--lite);">of</em> something. Awareness as the ground itself.</p>
-          <p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.65);font-weight:300;line-height:1.75;">When LumeRI reflects what it notices in your writing, it is not evaluating you — it is pointing at the quality of awareness present in this moment. Over time, that pointing does something. You begin to notice the noticing. The watcher becomes visible. And when awareness recognises itself — not as a thought, not as a story, but as the silent knowing behind both — something that seemed far away turns out to have been here all along.</p>
-        </div>
-
-        <!-- SOUTH -->
-        <div style="padding:24px 26px;border-left:3px solid rgba(180,140,100,0.45);background:linear-gradient(135deg,rgba(180,140,100,0.06),rgba(180,140,100,0.01));border-radius:0 8px 8px 0;">
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
-            <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(200,165,120,0.65);">South · what pulls the needle down</div>
-            <div style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(210,180,140,0.85);">Conditioning</div>
-          </div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,200,175,0.9);line-height:1.6;margin-bottom:8px;">The dust on the mirror. Everything you've taken to be yourself that isn't.</p>
-          <p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.55);font-weight:300;line-height:1.75;">Inherited belief. Habitual reaction. The story accumulated over a lifetime and mistaken for identity. It doesn't announce itself — it simply pulls the needle away from True North so gradually you stop noticing. This is what LumeRI reads between the lines of your writing. Not to judge it. Not to fix it. But to make it visible. Because conditioning, once seen clearly, begins to lose its grip. Dust does not resist light. It simply yields.</p>
+        <!-- Panel 3: PURE BEING -->
+        <div style="padding:32px 30px;background:linear-gradient(135deg,rgba(45,212,191,0.08),rgba(45,212,191,0.01));border:1px solid rgba(45,212,191,0.18);border-radius:0 0 12px 12px;border-top:none;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(94,234,212,0.7);margin-bottom:14px;">Pure Being — What Remains</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;line-height:1.5;margin-bottom:14px;">Not a reward for enough sessions. The ground that was always there.</p>
+          <p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.7);font-weight:300;line-height:1.85;">When the unconscious pattern is seen clearly — not analysed, not fixed, simply <em style="color:rgba(94,234,212,0.85);">seen</em> — it begins to lose its grip. The conditioning that was pulling you away from yourself has nothing left to hide in. The mirror clears. What remains is not something new. It is the joy of pure being: whole, complete, not assembled from anything. LumeRI does not create this. It removes what was obscuring it. You were always already here.</p>
         </div>
 
       </div>
     </div>
 
-    <!-- Journey summary line -->
-    <div style="text-align:center;margin-top:64px;padding:40px 44px;background:rgba(45,212,191,0.03);border:1px solid rgba(45,212,191,0.10);border-radius:12px;max-width:820px;margin-left:auto;margin-right:auto;">
-      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.45);margin-bottom:20px;">What LumeRI does, every session</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.4vw,26px);font-style:italic;color:#e8fdfb;line-height:1.75;margin-bottom:20px;">You write. <em style="color:#5eead4;">Silence</em> arrives.<br/>Self-Inquiry moves through you — honestly, without force.<br/><em style="color:rgba(210,180,140,0.85);">Conditioning</em> becomes visible and begins to fall away.<br/>What remains is <em style="color:#5eead4;">Awareness</em> — clear, whole, already here.</p>
-      <p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.45);line-height:1.9;font-weight:300;max-width:580px;margin:0 auto 20px;">This is not a framework invented for LumeRI. It is the oldest and most precise map of the inner life ever drawn. Reflective Intelligence is its modern expression. Your journal is where you walk it.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(94,234,212,0.35);">"Silence is the most potent form of work." — Ramana Maharshi</p>
+    <!-- Closing -->
+    <div style="text-align:center;margin-top:80px;max-width:640px;margin-left:auto;margin-right:auto;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2vw,23px);font-style:italic;color:#e8fdfb;line-height:1.85;margin-bottom:18px;">Every time you write in LumeRI, Self-Inquiry is alive.<br/><em style="color:#5eead4;">Stillness</em> clears the noise. <em style="color:#5eead4;">Awareness</em> sees what was hidden.<br/>The unconscious becomes conscious.<br/>The dust falls. The mirror clears.<br/>Pure Being — you were never away from it.</p>
+      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.28);">Reflective Intelligence · rooted in the oldest wisdom traditions</p>
     </div>
 
   </div>
 </section>
+
+
+
+    <!-- Mirror Diagram + 3 panels side by side -->
+    <div style="display:grid;grid-template-columns:340px 1fr;gap:72px;align-items:center;max-width:1100px;margin:0 auto;">
+
+      <!-- SVG: The Mirror Diagram -->
+      <div style="display:flex;justify-content:center;">
+        <svg viewBox="0 0 320 520" width="320" height="520" style="max-width:100%;overflow:visible;">
+          <defs>
+            <linearGradient id="consciousGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0fb8a4" stop-opacity="0.22"/>
+              <stop offset="100%" stop-color="#0fb8a4" stop-opacity="0.04"/>
+            </linearGradient>
+            <linearGradient id="unconsciousGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6b4c2a" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#3a2510" stop-opacity="0.28"/>
+            </linearGradient>
+            <linearGradient id="mirrorLine" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#2dd4bf" stop-opacity="0"/>
+              <stop offset="20%" stop-color="#2dd4bf" stop-opacity="0.9"/>
+              <stop offset="50%" stop-color="#5eead4" stop-opacity="1"/>
+              <stop offset="80%" stop-color="#2dd4bf" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="mirrorGlow">
+              <feGaussianBlur stdDeviation="6" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+            <filter id="softglow2">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+
+          <!-- CONSCIOUS zone (top) -->
+          <rect x="20" y="20" width="280" height="200" rx="12" fill="url(#consciousGrad)" stroke="rgba(45,212,191,0.12)" stroke-width="1"/>
+
+          <!-- Conscious label -->
+          <text x="160" y="50" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" letter-spacing="4" fill="rgba(94,234,212,0.5)" font-weight="300">CONSCIOUS</text>
+
+          <!-- Conscious qualities -->
+          <text x="160" y="90" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="22" font-style="italic" fill="#e8fdfb">Silence</text>
+          <text x="160" y="120" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="22" font-style="italic" fill="rgba(200,240,238,0.75)">Awareness</text>
+          <text x="160" y="150" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="22" font-style="italic" fill="rgba(200,240,238,0.5)">Pure Being</text>
+
+          <!-- Rising light particles -->
+          <circle cx="80" cy="160" r="2" fill="rgba(45,212,191,0.4)"/>
+          <circle cx="130" cy="140" r="1.5" fill="rgba(45,212,191,0.3)"/>
+          <circle cx="190" cy="155" r="2" fill="rgba(45,212,191,0.35)"/>
+          <circle cx="240" cy="135" r="1.5" fill="rgba(45,212,191,0.25)"/>
+          <circle cx="100" cy="120" r="1" fill="rgba(45,212,191,0.2)"/>
+          <circle cx="220" cy="110" r="1" fill="rgba(45,212,191,0.2)"/>
+
+          <!-- Up arrows (movement toward conscious) -->
+          <text x="70" y="195" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="rgba(45,212,191,0.25)">↑</text>
+          <text x="160" y="195" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="rgba(45,212,191,0.35)">↑</text>
+          <text x="250" y="195" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="11" fill="rgba(45,212,191,0.25)">↑</text>
+
+          <!-- THE MIRROR LINE (horizontal, luminous) -->
+          <rect x="0" y="225" width="320" height="70" rx="4" fill="rgba(13,92,99,0.35)" stroke="none"/>
+          <line x1="0" y1="260" x2="320" y2="260" stroke="url(#mirrorLine)" stroke-width="2" filter="url(#mirrorGlow)"/>
+          <!-- Mirror shimmer lines -->
+          <line x1="20" y1="255" x2="300" y2="255" stroke="rgba(94,234,212,0.06)" stroke-width="1"/>
+          <line x1="20" y1="265" x2="300" y2="265" stroke="rgba(94,234,212,0.06)" stroke-width="1"/>
+
+          <!-- Mirror label -->
+          <text x="160" y="247" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="8" letter-spacing="4" fill="rgba(94,234,212,0.7)" font-weight="400">LUMERI · SELF-INQUIRY</text>
+          <text x="160" y="278" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="12" font-style="italic" fill="rgba(94,234,212,0.4)">Who am I?</text>
+
+          <!-- UNCONSCIOUS zone (bottom) -->
+          <rect x="20" y="300" width="280" height="200" rx="12" fill="url(#unconsciousGrad)" stroke="rgba(160,120,80,0.12)" stroke-width="1"/>
+
+          <!-- Unconscious label -->
+          <text x="160" y="326" text-anchor="middle" font-family="'DM Sans',sans-serif" font-size="9" letter-spacing="4" fill="rgba(180,140,100,0.45)" font-weight="300">UNCONSCIOUS</text>
+
+          <!-- Unconscious qualities — dusty, muted amber -->
+          <text x="160" y="366" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="22" font-style="italic" fill="rgba(210,180,140,0.65)">Conditioning</text>
+          <text x="160" y="396" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="22" font-style="italic" fill="rgba(200,165,120,0.45)">Noise</text>
+          <text x="160" y="426" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="22" font-style="italic" fill="rgba(190,155,110,0.3)">Lost in Thought</text>
+
+          <!-- Dust particles (scattered, heavy) -->
+          <circle cx="75" cy="355" r="2.5" fill="rgba(160,120,80,0.25)"/>
+          <circle cx="140" cy="380" r="2" fill="rgba(160,120,80,0.18)"/>
+          <circle cx="200" cy="360" r="3" fill="rgba(160,120,80,0.2)"/>
+          <circle cx="250" cy="400" r="2" fill="rgba(160,120,80,0.15)"/>
+          <circle cx="90" cy="420" r="1.5" fill="rgba(160,120,80,0.12)"/>
+          <circle cx="230" cy="440" r="2.5" fill="rgba(160,120,80,0.1)"/>
+          <circle cx="160" cy="450" r="1.5" fill="rgba(160,120,80,0.08)"/>
+
+          <!-- Mirror surface reflection text -->
+          <text x="160" y="510" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-size="10" font-style="italic" fill="rgba(94,234,212,0.2)">writing is the act of looking</text>
+        </svg>
+      </div>
+
+      <!-- 3 Framework Panels -->
+      <div style="display:flex;flex-direction:column;gap:0;">
+
+        <!-- Panel 1: UNCONSCIOUS -->
+        <div style="padding:30px 28px;background:linear-gradient(135deg,rgba(100,70,40,0.12),rgba(60,38,16,0.06));border:1px solid rgba(160,120,80,0.18);border-radius:12px 12px 0 0;border-bottom:none;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(200,165,120,0.6);margin-bottom:12px;">The Unconscious</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(220,190,155,0.9);line-height:1.5;margin-bottom:12px;">Conditioning. Noise. Thought mistaken for truth.</p>
+          <p style="font-family:var(--sans);font-size:14px;color:rgba(200,220,218,0.55);font-weight:300;line-height:1.8;">Before you write, this is the operating layer. Inherited beliefs run quietly in the background. Habitual reactions feel like responses. Patterns repeat so reliably they feel like personality. You are not seeing your life — you are living from inside a story about it, and the story is invisible to you.</p>
+        </div>
+
+        <!-- Panel 2: THE MIRROR — LumeRI -->
+        <div style="padding:30px 28px;background:linear-gradient(135deg,rgba(15,184,164,0.10),rgba(13,92,99,0.15));border:1px solid rgba(45,212,191,0.30);position:relative;overflow:hidden;">
+          <!-- Glow line at top of mirror panel -->
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.7),transparent);"></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.7),transparent);"></div>
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(94,234,212,0.8);margin-bottom:12px;">The Mirror · LumeRI</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#e8fdfb;line-height:1.5;margin-bottom:12px;">Self-Inquiry. Writing. Honest seeing.</p>
+          <p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.7);font-weight:300;line-height:1.8;">You open LumeRI. You write what is actually here. The page receives it without judgment. A silence arrives — Ramana called it Mauna — the quality of attention where honest looking becomes possible. Then LumeRI reflects back: not what you said, but what was moving underneath. The unconscious pattern, now visible. The dust, now seen. Seen is no longer unconscious. This is the whole movement of Self-Inquiry — and it happens every time you write.</p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(94,234,212,0.45);margin-top:14px;">"The thought 'Who am I?' will destroy all other thoughts — and like the stick used for stirring the pyre, will itself in the end be destroyed. What remains is the Self." — Ramana Maharshi</p>
+        </div>
+
+        <!-- Panel 3: CONSCIOUS -->
+        <div style="padding:30px 28px;background:linear-gradient(135deg,rgba(45,212,191,0.08),rgba(45,212,191,0.02));border:1px solid rgba(45,212,191,0.20);border-radius:0 0 12px 12px;border-top:none;">
+          <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(94,234,212,0.75);margin-bottom:12px;">The Conscious</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:#e8fdfb;line-height:1.5;margin-bottom:12px;">Silence. Awareness. Pure Being.</p>
+          <p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.7);font-weight:300;line-height:1.8;">This is not a place you reach. It is what you already are, beneath the conditioning. When the unconscious pattern is seen clearly — not analysed, not fixed, simply <em style="color:rgba(94,234,212,0.8);">seen</em> — it loses its grip. The mirror clears. Awareness recognises itself. What remains is the joy of pure being: whole, complete, not assembled from anything. LumeRI does not create this. It removes what was covering it.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Closing line -->
+    <div style="text-align:center;margin-top:72px;max-width:660px;margin-left:auto;margin-right:auto;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-style:italic;color:#e8fdfb;line-height:1.8;margin-bottom:16px;">Every journal entry is an act of Self-Inquiry.<br/>Every reflection LumeRI offers is the mirror doing its work.<br/>Session by session — the unconscious becomes conscious.<br/><em style="color:#5eead4;">The dust falls. The mirror clears. You were always already here.</em></p>
+      <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.3);">Reflective Intelligence · rooted in the oldest wisdom traditions</p>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- 12 QUESTIONS ══════════════════════════════════════════ -->
 <section id="inquiry-q" style="background:#061a1e;padding:110px 24px;">
