@@ -1608,18 +1608,22 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
     <p class="mf-title">LumeRI makes the<br/><em>unconscious conscious.</em></p>
     <p class="mf-sub">It was never missing. Only covered.</p>
 
-    <svg class="mf-visual" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg">
+    <svg class="mf-visual" viewBox="0 0 600 720" xmlns="http://www.w3.org/2000/svg">
       <defs>
+        <!-- Sky gradients -->
         <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%"   stop-color="#010810"/>
           <stop offset="45%"  stop-color="#021520"/>
           <stop offset="100%" stop-color="#041c28"/>
         </linearGradient>
+        <!-- Dust ground gradient - rich amber layered -->
         <linearGradient id="dustG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#160801"/>
-          <stop offset="55%"  stop-color="#271005"/>
-          <stop offset="100%" stop-color="#0c0402"/>
+          <stop offset="0%"   stop-color="#1a0a01"/>
+          <stop offset="30%"  stop-color="#2e1406"/>
+          <stop offset="70%"  stop-color="#3d1c08"/>
+          <stop offset="100%" stop-color="#0e0503"/>
         </linearGradient>
+        <!-- Mirror line -->
         <linearGradient id="mirrorLineG" x1="0" y1="0" x2="1" y2="0">
           <stop offset="0%"   stop-color="#2dd4bf" stop-opacity="0"/>
           <stop offset="18%"  stop-color="#2dd4bf" stop-opacity="0.8"/>
@@ -1628,26 +1632,58 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
           <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
         </linearGradient>
         <linearGradient id="mirrorBandG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"  stop-color="#09383f" stop-opacity="0.95"/>
+          <stop offset="0%"   stop-color="#09383f" stop-opacity="0.95"/>
           <stop offset="100%" stop-color="#041c28" stop-opacity="0.95"/>
         </linearGradient>
-        <radialGradient id="nebula1" cx="30%" cy="40%" r="50%">
-          <stop offset="0%"  stop-color="#0d4a58" stop-opacity="0.22"/>
+        <!-- Nebula -->
+        <radialGradient id="neb1" cx="28%" cy="35%" r="55%">
+          <stop offset="0%"  stop-color="#0d4a58" stop-opacity="0.25"/>
           <stop offset="100%" stop-color="#0d4a58" stop-opacity="0"/>
         </radialGradient>
-        <radialGradient id="nebula2" cx="75%" cy="25%" r="40%">
-          <stop offset="0%"  stop-color="#083544" stop-opacity="0.18"/>
+        <radialGradient id="neb2" cx="78%" cy="22%" r="42%">
+          <stop offset="0%"  stop-color="#083544" stop-opacity="0.20"/>
           <stop offset="100%" stop-color="#083544" stop-opacity="0"/>
         </radialGradient>
+        <radialGradient id="neb3" cx="55%" cy="65%" r="40%">
+          <stop offset="0%"  stop-color="#062c38" stop-opacity="0.18"/>
+          <stop offset="100%" stop-color="#062c38" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Dust cloud radials - layered amber -->
+        <radialGradient id="dc1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#c8620a" stop-opacity="0.55"/>
+          <stop offset="60%"  stop-color="#8a3a05" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#4a1c02" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="dc2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#e07820" stop-opacity="0.42"/>
+          <stop offset="55%"  stop-color="#a04808" stop-opacity="0.22"/>
+          <stop offset="100%" stop-color="#4a1c02" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="dc3" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#b05010" stop-opacity="0.38"/>
+          <stop offset="100%" stop-color="#3a1202" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Concentric ring gradient -->
+        <radialGradient id="ringG" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"  stop-color="#d4700a" stop-opacity="0.0"/>
+          <stop offset="100%" stop-color="#c06010" stop-opacity="0.0"/>
+        </radialGradient>
+        <!-- Filters -->
         <filter id="fglow"><feGaussianBlur stdDeviation="2.5" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
         <filter id="fmirror" x="-10%" y="-300%" width="120%" height="700%"><feGaussianBlur stdDeviation="9" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
         <filter id="fdust"><feGaussianBlur stdDeviation="1.8" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+        <filter id="fcloud"><feGaussianBlur stdDeviation="22" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+        <filter id="fcloudmed"><feGaussianBlur stdDeviation="14" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
+        <filter id="fring"><feGaussianBlur stdDeviation="2" result="b"/><feComposite in="SourceGraphic" in2="b" operator="over"/></filter>
       </defs>
 
-      <!-- ══ COSMIC SKY ══ -->
+      <!-- ══════════════════════════════════════
+           COSMIC SKY — top 330px
+      ══════════════════════════════════════ -->
       <rect x="0" y="0" width="600" height="330" fill="url(#skyG)"/>
-      <rect x="0" y="0" width="600" height="330" fill="url(#nebula1)"/>
-      <rect x="0" y="0" width="600" height="330" fill="url(#nebula2)"/>
+      <rect x="0" y="0" width="600" height="330" fill="url(#neb1)"/>
+      <rect x="0" y="0" width="600" height="330" fill="url(#neb2)"/>
+      <rect x="0" y="0" width="600" height="330" fill="url(#neb3)"/>
 
       <!-- Stars -->
       <g fill="white" filter="url(#fglow)">
@@ -1687,162 +1723,182 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
         <circle cx="568" cy="275" r="0.6" opacity="0.30"/>
       </g>
 
-      <!-- ══ CONSCIOUS WORDS — above mirror, cosmic, luminous ══ -->
+      <!-- ══ CONSCIOUS WORDS ══ -->
 
-      <!-- Sky breathes — no label, no destination, already here -->
+      <!-- "That which you already are" — primary, centred, parallel to Conditioned Self -->
+      <text x="300" y="78"
+        text-anchor="middle"
+        font-family="'Cormorant Garamond',Georgia,serif"
+        font-size="26" font-style="italic" font-weight="300"
+        fill="#e8fdfb" opacity="0.90" filter="url(#fglow)">That which you already are</text>
 
-      <!-- Silence — left, strong -->
-      <text x="118" y="148"
+      <!-- Silence — left -->
+      <text x="112" y="148"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="24" font-style="italic"
         fill="#5eead4" opacity="0.72">Silence</text>
 
-      <!-- Awareness — right, strong -->
-      <text x="478" y="148"
+      <!-- Awareness — right -->
+      <text x="485" y="148"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="24" font-style="italic"
         fill="#5eead4" opacity="0.72">Awareness</text>
 
-      <!-- Stillness — left-mid, softer -->
-      <text x="185" y="208"
+      <!-- Stillness — left-mid -->
+      <text x="178" y="208"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="18" font-style="italic"
         fill="#94e8dd" opacity="0.48">Stillness</text>
 
-      <!-- Being Present — right-mid, softer -->
-      <text x="420" y="205"
+      <!-- Being Present — right-mid -->
+      <text x="428" y="205"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="18" font-style="italic"
         fill="#94e8dd" opacity="0.48">Being Present</text>
 
-      <!-- faintest — near mirror, almost dissolved into light -->
-      <text x="300" y="268"
+      <!-- Whisper near mirror -->
+      <text x="300" y="272"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="13" font-style="italic"
-        fill="#7dd8cf" opacity="0.28">what you already are</text>
+        fill="#7dd8cf" opacity="0.28">always here · always whole</text>
 
-      <!-- ══ MIRROR BAND ══ -->
+      <!-- ══════════════════════════════════════
+           MIRROR BAND
+      ══════════════════════════════════════ -->
       <rect x="0" y="316" width="600" height="68" fill="url(#mirrorBandG)"/>
-
-      <!-- glow halo above line -->
-      <ellipse cx="300" cy="348" rx="300" ry="18" fill="rgba(45,212,191,0.08)"/>
-
-      <!-- The mirror line -->
+      <ellipse cx="300" cy="348" rx="300" ry="18" fill="rgba(45,212,191,0.07)"/>
       <line x1="0" y1="348" x2="600" y2="348"
-        stroke="url(#mirrorLineG)" stroke-width="2.5"
-        filter="url(#fmirror)"/>
+        stroke="url(#mirrorLineG)" stroke-width="2.5" filter="url(#fmirror)"/>
       <line x1="30" y1="344" x2="570" y2="344" stroke="rgba(94,234,212,0.07)" stroke-width="1"/>
       <line x1="30" y1="352" x2="570" y2="352" stroke="rgba(94,234,212,0.07)" stroke-width="1"/>
 
       <!-- Mirror label pill -->
       <rect x="200" y="323" width="200" height="21" rx="10.5"
         fill="rgba(6,45,52,0.90)" stroke="rgba(45,212,191,0.32)" stroke-width="1"/>
-      <text x="300" y="338"
-        text-anchor="middle"
+      <text x="300" y="338" text-anchor="middle"
         font-family="'DM Sans',sans-serif"
         font-size="8" letter-spacing="3"
         fill="rgba(94,234,212,0.88)">SELF-INQUIRY · LUMERI</text>
 
-      <!-- Who am I — whisper below line -->
-      <text x="300" y="374"
-        text-anchor="middle"
+      <text x="300" y="374" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="12.5" font-style="italic"
         fill="rgba(94,234,212,0.35)">Who am I?</text>
 
-      <!-- ══ DUST ZONE — warm amber, compassionate ══ -->
-      <rect x="0" y="384" width="600" height="316" fill="url(#dustG)"/>
+      <!-- ══════════════════════════════════════
+           DUST ZONE — rich amber clouds + concentric rings
+      ══════════════════════════════════════ -->
+      <rect x="0" y="384" width="600" height="336" fill="url(#dustG)"/>
 
-      <!-- Dust cloud atmospherics -->
-      <ellipse cx="180" cy="460" rx="200" ry="72" fill="#6e3408" opacity="0.32"/>
-      <ellipse cx="430" cy="490" rx="185" ry="65" fill="#5e2c06" opacity="0.28"/>
-      <ellipse cx="300" cy="545" rx="260" ry="85" fill="#7a3c0a" opacity="0.25"/>
-      <ellipse cx="90"  cy="590" rx="145" ry="55" fill="#4e2204" opacity="0.22"/>
-      <ellipse cx="530" cy="570" rx="130" ry="50" fill="#452005" opacity="0.20"/>
-      <ellipse cx="300" cy="638" rx="280" ry="70" fill="#361503" opacity="0.32"/>
+      <!-- Deep layered dust clouds — large blurred ellipses -->
+      <ellipse cx="300" cy="460" rx="310" ry="95" fill="#7a3808" opacity="0.55" filter="url(#fcloud)"/>
+      <ellipse cx="140" cy="490" rx="190" ry="75" fill="#9a4c10" opacity="0.45" filter="url(#fcloud)"/>
+      <ellipse cx="470" cy="500" rx="200" ry="80" fill="#8a4008" opacity="0.40" filter="url(#fcloud)"/>
+      <ellipse cx="300" cy="570" rx="280" ry="90" fill="#6e3006" opacity="0.50" filter="url(#fcloud)"/>
+      <ellipse cx="80"  cy="610" rx="140" ry="60" fill="#5a2804" stop-opacity="0.35" filter="url(#fcloudmed)"/>
+      <ellipse cx="520" cy="600" rx="150" ry="65" fill="#522205" opacity="0.32" filter="url(#fcloudmed)"/>
+      <!-- bright inner cores -->
+      <ellipse cx="180" cy="455" rx="110" ry="50" fill="#c86010" opacity="0.30" filter="url(#fcloudmed)"/>
+      <ellipse cx="430" cy="465" rx="120" ry="55" fill="#b85510" opacity="0.28" filter="url(#fcloudmed)"/>
+      <ellipse cx="300" cy="545" rx="160" ry="55" fill="#a84808" opacity="0.25" filter="url(#fcloudmed)"/>
 
-      <!-- Dust particles -->
+      <!-- ══ CONCENTRIC RINGS — centred on Conditioned Self ══ -->
+      <g opacity="1" filter="url(#fring)">
+        <!-- outermost - very faint -->
+        <circle cx="300" cy="480" r="195" fill="none" stroke="#c07030" stroke-width="0.6" opacity="0.12"/>
+        <circle cx="300" cy="480" r="168" fill="none" stroke="#c87235" stroke-width="0.7" opacity="0.16"/>
+        <circle cx="300" cy="480" r="142" fill="none" stroke="#d07838" stroke-width="0.8" opacity="0.20"/>
+        <circle cx="300" cy="480" r="116" fill="none" stroke="#d87e3c" stroke-width="0.9" opacity="0.25"/>
+        <circle cx="300" cy="480" r="90"  fill="none" stroke="#e08840" stroke-width="1.0" opacity="0.30"/>
+        <circle cx="300" cy="480" r="66"  fill="none" stroke="#e89045" stroke-width="1.1" opacity="0.35"/>
+        <circle cx="300" cy="480" r="44"  fill="none" stroke="#f09848" stroke-width="1.2" opacity="0.40"/>
+        <circle cx="300" cy="480" r="24"  fill="none" stroke="#f8a050" stroke-width="1.3" opacity="0.45"/>
+        <!-- innermost - brightest -->
+        <circle cx="300" cy="480" r="10"  fill="rgba(240,150,60,0.18)" stroke="#ffa855" stroke-width="1.5" opacity="0.55"/>
+      </g>
+
+      <!-- Dust particles — scattered -->
       <g fill="#c07848" filter="url(#fdust)">
-        <circle cx="75"  cy="418" r="2.0" opacity="0.55"/>
-        <circle cx="148" cy="435" r="1.7" opacity="0.48"/>
-        <circle cx="228" cy="408" r="2.3" opacity="0.60"/>
-        <circle cx="335" cy="422" r="1.9" opacity="0.52"/>
-        <circle cx="418" cy="404" r="2.2" opacity="0.58"/>
-        <circle cx="510" cy="430" r="1.8" opacity="0.48"/>
-        <circle cx="572" cy="412" r="2.0" opacity="0.54"/>
-        <circle cx="48"  cy="475" r="1.6" opacity="0.40"/>
-        <circle cx="178" cy="488" r="2.2" opacity="0.50"/>
-        <circle cx="285" cy="465" r="1.5" opacity="0.38"/>
-        <circle cx="398" cy="480" r="1.9" opacity="0.46"/>
-        <circle cx="555" cy="462" r="1.7" opacity="0.42"/>
-        <circle cx="112" cy="532" r="2.4" opacity="0.46"/>
-        <circle cx="245" cy="520" r="1.8" opacity="0.38"/>
-        <circle cx="372" cy="545" r="2.2" opacity="0.44"/>
-        <circle cx="490" cy="528" r="1.7" opacity="0.36"/>
-        <circle cx="598" cy="540" r="2.0" opacity="0.42"/>
+        <circle cx="75"  cy="415" r="2.0" opacity="0.55"/>
+        <circle cx="148" cy="432" r="1.7" opacity="0.48"/>
+        <circle cx="228" cy="406" r="2.3" opacity="0.60"/>
+        <circle cx="335" cy="420" r="1.9" opacity="0.52"/>
+        <circle cx="418" cy="402" r="2.2" opacity="0.58"/>
+        <circle cx="510" cy="428" r="1.8" opacity="0.48"/>
+        <circle cx="572" cy="410" r="2.0" opacity="0.54"/>
+        <circle cx="48"  cy="472" r="1.6" opacity="0.40"/>
+        <circle cx="178" cy="485" r="2.2" opacity="0.50"/>
+        <circle cx="285" cy="462" r="1.5" opacity="0.38"/>
+        <circle cx="398" cy="478" r="1.9" opacity="0.46"/>
+        <circle cx="555" cy="460" r="1.7" opacity="0.42"/>
+        <circle cx="112" cy="530" r="2.4" opacity="0.46"/>
+        <circle cx="245" cy="518" r="1.8" opacity="0.38"/>
+        <circle cx="372" cy="542" r="2.2" opacity="0.44"/>
+        <circle cx="490" cy="525" r="1.7" opacity="0.36"/>
+        <circle cx="590" cy="538" r="2.0" opacity="0.42"/>
       </g>
       <g fill="#e09a60" opacity="0.25">
-        <circle cx="160" cy="398" r="0.9"/>
-        <circle cx="292" cy="390" r="0.8"/>
-        <circle cx="452" cy="396" r="1.0"/>
-        <circle cx="55"  cy="386" r="0.8"/>
-        <circle cx="560" cy="392" r="0.9"/>
+        <circle cx="160" cy="396" r="0.9"/>
+        <circle cx="292" cy="388" r="0.8"/>
+        <circle cx="452" cy="394" r="1.0"/>
+        <circle cx="55"  cy="384" r="0.8"/>
+        <circle cx="555" cy="390" r="0.9"/>
       </g>
 
-      <!-- ══ UNCONSCIOUS WORDS — warm, compassionate, no shame ══ -->
+      <!-- ══ UNCONSCIOUS WORDS — written above the clouds ══ -->
 
-      <!-- Conditioned Self — primary, centred, most visible -->
-      <text x="300" y="456"
+      <!-- Conditioned Self — primary, centred, over the rings -->
+      <text x="300" y="458"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="32" font-style="italic"
-        fill="#d4855a" opacity="0.78" filter="url(#fdust)">Conditioned Self</text>
+        fill="#e8a06a" opacity="0.88" filter="url(#fdust)">Conditioned Self</text>
 
       <!-- Chattering Mind — left -->
-      <text x="138" y="515"
+      <text x="132" cy="515" y="515"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="20" font-style="italic"
-        fill="#b86e40" opacity="0.62">Chattering Mind</text>
+        fill="#c87848" opacity="0.68">Chattering Mind</text>
 
       <!-- Restlessness — right -->
-      <text x="462" y="510"
+      <text x="468" y="510"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="20" font-style="italic"
-        fill="#b06838" opacity="0.58">Restlessness</text>
+        fill="#c07040" opacity="0.62">Restlessness</text>
 
-      <!-- World of Thoughts — mid left, softer -->
-      <text x="195" y="572"
+      <!-- World of Thoughts — mid left -->
+      <text x="188" y="572"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="16" font-style="italic"
-        fill="#9a5828" opacity="0.46">World of Thoughts</text>
+        fill="#a85e30" opacity="0.50">World of Thoughts</text>
 
-      <!-- Living in Past or Future — mid right, softer -->
+      <!-- Past or Future — mid right -->
       <text x="422" y="578"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="15" font-style="italic"
-        fill="#945425" opacity="0.44">Past or Future</text>
+        font-size="16" font-style="italic"
+        fill="#a05828" opacity="0.46">Past or Future</text>
 
-      <!-- faintest — near bottom, dissolving into dark -->
-      <text x="300" y="638"
+      <!-- bottom whispers — compassionate -->
+      <text x="300" y="640"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="13" font-style="italic"
-        fill="#6e3818" opacity="0.30">we all begin here</text>
+        fill="#7a4018" opacity="0.32">we all begin here</text>
 
-      <text x="300" y="664"
+      <text x="300" y="665"
         text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
         font-size="11" font-style="italic"
-        fill="#5a2e12" opacity="0.20">and this is human</text>
+        fill="#5a2e10" opacity="0.20">and this is human</text>
 
     </svg>
 
