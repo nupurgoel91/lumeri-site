@@ -1620,31 +1620,43 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
           <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
         </linearGradient>
         <linearGradient id="bandG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#020f18" stop-opacity="0.78"/>
-          <stop offset="50%"  stop-color="#041824" stop-opacity="0.88"/>
-          <stop offset="100%" stop-color="#020f18" stop-opacity="0.78"/>
+          <stop offset="0%"   stop-color="#020f18" stop-opacity="0.85"/>
+          <stop offset="50%"  stop-color="#041824" stop-opacity="0.92"/>
+          <stop offset="100%" stop-color="#020f18" stop-opacity="0.85"/>
         </linearGradient>
+        <!-- Strong scrims for text legibility -->
         <linearGradient id="skyScrim" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#000" stop-opacity="0.10"/>
-          <stop offset="100%" stop-color="#000" stop-opacity="0.22"/>
+          <stop offset="0%"   stop-color="#000" stop-opacity="0.52"/>
+          <stop offset="60%"  stop-color="#000" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="#000" stop-opacity="0.42"/>
         </linearGradient>
         <linearGradient id="dustScrim" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stop-color="#000" stop-opacity="0.22"/>
-          <stop offset="100%" stop-color="#000" stop-opacity="0.10"/>
+          <stop offset="0%"   stop-color="#000" stop-opacity="0.48"/>
+          <stop offset="50%"  stop-color="#000" stop-opacity="0.32"/>
+          <stop offset="100%" stop-color="#000" stop-opacity="0.55"/>
         </linearGradient>
-        <filter id="fWG" x="-30%" y="-80%" width="160%" height="260%">
-          <feGaussianBlur stdDeviation="5" result="blur"/>
-          <feFlood flood-color="#ffffff" flood-opacity="0.22" result="col"/>
+        <!-- Bold white glow — strong halo + sharp text -->
+        <filter id="fWG" x="-40%" y="-100%" width="180%" height="300%">
+          <feGaussianBlur stdDeviation="6" result="blur"/>
+          <feFlood flood-color="#ffffff" flood-opacity="0.35" result="col"/>
           <feComposite in="col" in2="blur" operator="in" result="glow"/>
           <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <!-- Stronger glow for primary words -->
+        <filter id="fWGStrong" x="-40%" y="-100%" width="180%" height="300%">
+          <feGaussianBlur stdDeviation="8" result="blur"/>
+          <feFlood flood-color="#ffffff" flood-opacity="0.50" result="col"/>
+          <feComposite in="col" in2="blur" operator="in" result="glow"/>
+          <feGaussianBlur in="SourceGraphic" stdDeviation="0.4" result="sharp"/>
+          <feMerge><feMergeNode in="glow"/><feMergeNode in="sharp"/></feMerge>
         </filter>
         <filter id="fMirror" x="-5%" y="-2000%" width="110%" height="4100%">
           <feGaussianBlur stdDeviation="11" result="b"/>
           <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
         <filter id="fTeal" x="-20%" y="-60%" width="140%" height="220%">
-          <feGaussianBlur stdDeviation="3" result="b"/>
-          <feFlood flood-color="#2dd4bf" flood-opacity="0.40" result="c"/>
+          <feGaussianBlur stdDeviation="4" result="b"/>
+          <feFlood flood-color="#2dd4bf" flood-opacity="0.55" result="c"/>
           <feComposite in="c" in2="b" operator="in" result="g"/>
           <feMerge><feMergeNode in="g"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
@@ -1655,117 +1667,116 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
         x="0" y="0" width="700" height="896"
         preserveAspectRatio="xMidYMid slice"/>
 
-      <!-- Light scrims -->
+      <!-- Strong scrims over both zones -->
       <rect x="0" y="0"   width="700" height="418" fill="url(#skyScrim)"/>
       <rect x="0" y="478" width="700" height="418" fill="url(#dustScrim)"/>
 
-      <!-- ══════════════════════════════
-           ABOVE THE MIRROR (y=0–418)
-           Mirror band top: y=418
-      ══════════════════════════════ -->
+      <!-- ══════════════════════
+           ABOVE THE MIRROR
+      ══════════════════════ -->
 
       <!-- Top whisper -->
       <text x="350" y="52" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="13" font-style="italic" letter-spacing="1.5"
-        fill="rgba(255,255,255,0.28)">that which you already are</text>
+        font-size="14" font-style="italic" letter-spacing="1.5"
+        fill="rgba(255,255,255,0.55)">that which you already are</text>
 
-      <!-- STILLNESS (left) ←→ RESTLESSNESS (right, same y below) -->
+      <!-- STILLNESS — large, bold, strong glow -->
       <text x="155" y="168" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="38" font-style="italic" font-weight="300"
-        fill="#ffffff" filter="url(#fWG)">Stillness</text>
+        font-size="42" font-style="italic" font-weight="400"
+        fill="#ffffff" filter="url(#fWGStrong)">Stillness</text>
 
-      <!-- BEING PRESENT (right) ←→ PAST OR FUTURE (same y below) -->
+      <!-- BEING PRESENT — large, bold, strong glow -->
       <text x="545" y="168" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="38" font-style="italic" font-weight="300"
-        fill="#ffffff" filter="url(#fWG)">Being Present</text>
+        font-size="42" font-style="italic" font-weight="400"
+        fill="#ffffff" filter="url(#fWGStrong)">Being Present</text>
 
-      <!-- KNOWING YOU ARE ENOUGH (centre) ←→ NEVER-ENDING RACE (same y below) -->
+      <!-- KNOWING YOU ARE ENOUGH -->
       <text x="350" y="268" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="26" font-style="italic"
+        font-size="30" font-style="italic" font-weight="400"
         fill="#ffffff" filter="url(#fWG)">Knowing you are enough</text>
 
-      <!-- CHOICELESS AWARENESS (centre) ←→ CONDITIONED SELF (same y below) -->
+      <!-- CHOICELESS AWARENESS -->
       <text x="350" y="368" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="22" font-style="italic"
-        fill="rgba(255,255,255,0.82)" filter="url(#fWG)">Choiceless Awareness</text>
+        font-size="26" font-style="italic" font-weight="400"
+        fill="#ffffff" filter="url(#fWG)">Choiceless Awareness</text>
 
-      <!-- ══════════════════════════════
-           MIRROR BAND  y=418–478
-      ══════════════════════════════ -->
+      <!-- ══════════════════════
+           MIRROR BAND y=418–478
+      ══════════════════════ -->
       <rect x="0" y="418" width="700" height="60" fill="url(#bandG)"/>
 
-      <!-- Glow halos -->
-      <ellipse cx="350" cy="448" rx="350" ry="22" fill="rgba(45,212,191,0.12)"/>
+      <ellipse cx="350" cy="448" rx="350" ry="22" fill="rgba(45,212,191,0.14)"/>
       <ellipse cx="350" cy="448" rx="210" ry="13" fill="rgba(94,234,212,0.10)"/>
 
-      <!-- Mirror line -->
-      <line x1="0" y1="448" x2="700" y2="448"
+      <line x1="0"  y1="448" x2="700" y2="448"
         stroke="url(#mlG)" stroke-width="1.5" filter="url(#fMirror)"/>
-      <line x1="0" y1="448" x2="700" y2="448"
+      <line x1="0"  y1="448" x2="700" y2="448"
         stroke="url(#mlG)" stroke-width="1.5"/>
-      <line x1="30" y1="444" x2="670" y2="444" stroke="rgba(94,234,212,0.07)" stroke-width="0.7"/>
-      <line x1="30" y1="452" x2="670" y2="452" stroke="rgba(94,234,212,0.07)" stroke-width="0.7"/>
+      <line x1="30" y1="444" x2="670" y2="444" stroke="rgba(94,234,212,0.08)" stroke-width="0.8"/>
+      <line x1="30" y1="452" x2="670" y2="452" stroke="rgba(94,234,212,0.08)" stroke-width="0.8"/>
 
-      <!-- SILENCE (left) — quiet while writing -->
+      <!-- SILENCE -->
       <text x="108" y="436" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="18" font-style="italic"
-        fill="rgba(160,255,242,0.92)" filter="url(#fTeal)">Silence</text>
+        font-size="20" font-style="italic" font-weight="400"
+        fill="#ffffff" filter="url(#fTeal)">Silence</text>
 
-      <!-- Centre pill: SELF-INQUIRY · LUMERI -->
+      <!-- Centre pill -->
       <rect x="252" y="437" width="196" height="20" rx="10"
-        fill="rgba(4,26,34,0.94)" stroke="rgba(45,212,191,0.42)" stroke-width="0.8"/>
+        fill="rgba(4,26,34,0.96)" stroke="rgba(45,212,191,0.50)" stroke-width="1"/>
       <text x="350" y="451" text-anchor="middle"
         font-family="'DM Sans',sans-serif"
-        font-size="7.5" letter-spacing="2.5" font-weight="400"
-        fill="rgba(94,234,212,0.95)">SELF-INQUIRY · LUMERI</text>
+        font-size="7.5" letter-spacing="2.5" font-weight="500"
+        fill="rgba(94,234,212,0.98)">SELF-INQUIRY · LUMERI</text>
 
-      <!-- ATTENTION (right) — attending to what's being written -->
+      <!-- ATTENTION -->
       <text x="592" y="436" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="18" font-style="italic"
-        fill="rgba(160,255,242,0.92)" filter="url(#fTeal)">Attention</text>
+        font-size="20" font-style="italic" font-weight="400"
+        fill="#ffffff" filter="url(#fTeal)">Attention</text>
 
-      <!-- ══════════════════════════════
-           BELOW THE MIRROR (y=478–896)
-           Each element at mirror-distance of its pair above
-      ══════════════════════════════ -->
+      <!-- ══════════════════════
+           BELOW THE MIRROR
+      ══════════════════════ -->
 
-      <!-- CONDITIONED SELF ←→ CHOICELESS AWARENESS (same distance from mirror) -->
-      <!-- Choiceless was at y=368, distance=80 above band top(418). Mirror: 478+80=558 -->
+      <!-- CONDITIONED SELF — mirrors Choiceless Awareness -->
       <text x="350" y="558" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="22" font-style="italic"
-        fill="rgba(255,255,255,0.82)" filter="url(#fWG)">Conditioned Self</text>
+        font-size="26" font-style="italic" font-weight="400"
+        fill="#ffffff" filter="url(#fWG)">Conditioned Self</text>
 
-      <!-- NEVER-ENDING RACE ←→ KNOWING YOU ARE ENOUGH (268→150 above, 478+150=628) -->
+      <!-- THE NEVER-ENDING RACE — mirrors Knowing you are enough -->
       <text x="350" y="658" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="26" font-style="italic"
+        font-size="30" font-style="italic" font-weight="400"
         fill="#ffffff" filter="url(#fWG)">The never-ending race</text>
 
-      <!-- RESTLESSNESS (left) ←→ STILLNESS (168→250 above, 478+250=728) -->
+      <!-- RESTLESSNESS — mirrors Stillness -->
       <text x="155" y="728" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="38" font-style="italic" font-weight="300"
-        fill="#ffffff" filter="url(#fWG)">Restlessness</text>
+        font-size="42" font-style="italic" font-weight="400"
+        fill="#ffffff" filter="url(#fWGStrong)">Restlessness</text>
 
-      <!-- LIVING IN PAST OR FUTURE (right) ←→ BEING PRESENT (same y) -->
-      <text x="545" y="728" text-anchor="middle"
+      <!-- LIVING IN PAST OR FUTURE — mirrors Being Present -->
+      <text x="545" y="718" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="28" font-style="italic" font-weight="300"
-        fill="#ffffff" filter="url(#fWG)">Living in Past or Future</text>
+        font-size="32" font-style="italic" font-weight="400"
+        fill="#ffffff" filter="url(#fWGStrong)">Living in Past</text>
+      <text x="545" y="755" text-anchor="middle"
+        font-family="'Cormorant Garamond',Georgia,serif"
+        font-size="32" font-style="italic" font-weight="400"
+        fill="#ffffff" filter="url(#fWGStrong)">or Future</text>
 
-      <!-- Compassion whisper at base (mirrors top whisper) -->
-      <text x="350" y="860" text-anchor="middle"
+      <!-- Compassion whisper -->
+      <text x="350" y="858" text-anchor="middle"
         font-family="'Cormorant Garamond',Georgia,serif"
-        font-size="13" font-style="italic"
-        fill="rgba(255,255,255,0.26)">we all begin here · and this is human</text>
+        font-size="14" font-style="italic"
+        fill="rgba(255,255,255,0.45)">we all begin here · and this is human</text>
 
     </svg>
 
