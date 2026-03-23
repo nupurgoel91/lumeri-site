@@ -23,9 +23,9 @@
   --bg-warm:    #f0faf9;
   --heading:    #0c2e34;
   --subhead:    #0f4a52;
-  --body:       #2a5c64;
-  --body-soft:  #3d7a84;
-  --soft:       #5a9aa4;
+  --body:       #1a4a52;
+  --body-soft:  #2a6070;
+  --soft:       #3d7a84;
   --ivory:      #e8fdfb;
   --label-txt:  #0a8a7a;
   --card-border:#c8efeb;
@@ -85,7 +85,7 @@ nav{
 .nav-icon{
   width:18px;height:18px;display:block;flex-shrink:0;
   fill:none;
-  stroke:rgba(128,237,224,0.46);
+  stroke:rgba(128,237,224,0.70);
   stroke-linecap:round;stroke-linejoin:round;
   transition:stroke 0.3s;
 }
@@ -96,7 +96,7 @@ nav{
 .nav-label{
   font-family:var(--sans);font-size:9px;font-weight:300;
   letter-spacing:2px;text-transform:uppercase;
-  color:rgba(128,237,224,0.42);
+  color:rgba(128,237,224,0.72);
   transition:color 0.3s;white-space:nowrap;
 }
 .nav-links li a:hover .nav-label{color:#2dd4bf}
@@ -133,7 +133,7 @@ nav{
 .hero-eyeline{font-family:var(--sans);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--brand);opacity:0.75;margin-bottom:28px}
 .hero-h1{font-family:var(--serif);font-size:clamp(38px,5.5vw,68px);font-weight:300;color:#e8fdfb;line-height:1.15;margin-bottom:12px}
 .hero-h2{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:300;font-style:italic;color:var(--brand);line-height:1.3;margin-bottom:32px}
-.hero-body{font-family:var(--sans);font-weight:300;font-size:16px;color:rgba(200,240,238,0.85);line-height:1.9;margin-bottom:40px;max-width:480px}
+.hero-body{font-family:var(--sans);font-weight:300;font-size:16px;color:rgba(220,245,242,0.92);line-height:1.9;margin-bottom:40px;max-width:480px}
 .hero-cta-row{display:flex;gap:16px;flex-wrap:wrap}
 .btn-primary{font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--abyss);background:var(--brand);padding:16px 36px;border:none;cursor:pointer;text-decoration:none;transition:all 0.3s;display:inline-block}
 .btn-primary:hover{background:var(--lite);transform:translateY(-2px)}
@@ -235,7 +235,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 .footer-col h4{font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--brand);opacity:0.55;margin-bottom:18px}
 .footer-col ul{list-style:none}
 .footer-col ul li{margin-bottom:10px}
-.footer-col ul li a{font-family:var(--sans);font-size:16px;color:rgba(200,240,238,0.7);text-decoration:none;font-weight:300;transition:color 0.3s}
+.footer-col ul li a{font-family:var(--sans);font-size:16px;color:rgba(220,245,242,0.86);text-decoration:none;font-weight:300;transition:color 0.3s}
 .footer-col ul li a:hover{color:var(--lite)}
 .footer-bottom{max-width:var(--max);margin:40px auto 0;padding-top:20px;border-top:1px solid rgba(20,184,166,0.05);display:flex;justify-content:space-between;align-items:center}
 .footer-bottom p{font-family:var(--sans);font-size:12px;color:var(--soft);font-weight:300}
@@ -962,7 +962,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 .inquiry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .journey-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
 .inquiry-card{background:rgba(255,255,255,0.04);border:1px solid rgba(45,212,191,0.12);border-radius:10px;padding:28px 24px;transition:all 0.3s}
-.inquiry-card:hover{background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.35);transform:translateY(-2px)}
+.inquiry-card:hover{background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.65);transform:translateY(-2px)}
 .map-stage{transition:background 0.3s}
 .map-stage:hover{background:rgba(45,212,191,0.12)!important}
 @media(max-width:900px){
@@ -1186,7 +1186,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
   <div class="reveal" style="max-width:680px;margin:0 auto 64px;text-align:center;">
     <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The Intelligence Within</div>
     <h2 class="section-h2" style="color:#e8fdfb;">Your mind runs a cycle.<br/><em>There is one moment in it<br/>that changes everything.</em></h2>
-    <p class="section-body" style="color:rgba(200,240,238,0.75);max-width:560px;margin:0 auto;">Most people never feel it. LumeRI is built around it. This is what Reflective Intelligence means — and why it matters.</p>
+    <p class="section-body" style="color:rgba(220,245,242,0.88);max-width:560px;margin:0 auto;">Most people never feel it. LumeRI is built around it. This is what Reflective Intelligence means — and why it matters.</p>
   </div>
 
   <!-- Two-tab switcher — Diagram / Resonance -->
@@ -1228,11 +1228,11 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
           <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid rgba(45,212,191,0.2);border-radius:8px;">
             <div style="width:14px;height:14px;border-radius:50%;border:2px solid rgba(45,212,191,0.8);flex-shrink:0;"></div>
-            <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(200,240,238,0.65);line-height:1.4;">K · E · M · T · A<br/><span style="color:rgba(45,212,191,0.5);font-size:10px;">The conditioning cycle</span></div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(220,245,242,0.84);line-height:1.4;">K · E · M · T · A<br/><span style="color:rgba(45,212,191,0.78);font-size:10px;">The conditioning cycle</span></div>
           </div>
           <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid rgba(255,196,80,0.5);border-radius:8px;background:rgba(255,196,80,0.04);">
             <div style="width:14px;height:14px;border-radius:50%;border:2px solid rgba(255,196,80,0.9);flex-shrink:0;box-shadow:0 0 8px rgba(255,196,80,0.4);"></div>
-            <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(200,240,238,0.65);line-height:1.4;">RI — centre<br/><span style="color:rgba(255,196,80,0.6);font-size:10px;">The still field within</span></div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(220,245,242,0.84);line-height:1.4;">RI — centre<br/><span style="color:rgba(255,196,80,0.6);font-size:10px;">The still field within</span></div>
           </div>
         </div>
         <div style="border:1px solid rgba(45,212,191,0.22);border-radius:10px;background:rgba(15,184,164,0.04);padding:22px 20px;margin-bottom:16px;position:relative;overflow:hidden;">
@@ -1241,7 +1241,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
           <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(15px,3.8vw,20px);font-weight:300;color:#e8fdfb;line-height:1.55;margin-bottom:10px;">
             Most of us move from Memory straight into Thought — automatically, without noticing. <em style="color:#5eead4;">That is the conditioned life.</em>
           </div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(200,240,238,0.62);line-height:1.85;font-weight:300;">
+          <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(220,245,242,0.84);line-height:1.85;font-weight:300;">
             Reflective Intelligence is the capacity to <strong style="color:#e8fdfb;font-weight:400;">pause in that gap</strong> — to see your own mind moving before it pulls you somewhere you didn't choose. It is not a skill to acquire. It is the awareness that was always there, at the centre of the cycle.
           </div>
         </div>
@@ -1266,7 +1266,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 
             <!-- 5 Dimensions -->
       <div style="margin-bottom:40px;">
-        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:20px;">Five Capacities · One Return</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);text-align:center;margin-bottom:20px;">Five Capacities · One Return</div>
         <div id="ri-dims"></div>
       </div>
 
@@ -1289,14 +1289,14 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 
       <!-- Three parallel paths -->
       <div style="margin-bottom:12px;">
-        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:20px;">How Each Arrived at Reflective Intelligence</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);text-align:center;margin-bottom:20px;">How Each Arrived at Reflective Intelligence</div>
         <div id="ri-paths"></div>
       </div>
 
       <!-- Convergence bar -->
       <div style="border:1.5px solid rgba(45,212,191,0.2);border-radius:10px;background:rgba(15,184,164,0.05);padding:24px 20px;text-align:center;margin-bottom:28px;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--brand),transparent);opacity:.3;"></div>
-        <div style="font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:12px;">Where All Three Converge</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.78);margin-bottom:12px;">Where All Three Converge</div>
         <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(14px,4vw,19px);font-weight:300;color:#e8fdfb;line-height:1.7;">
           Krishnamurti's insight.<br/>
           Graham's prefrontal pause.<br/>
@@ -1380,14 +1380,14 @@ function renderPaths(){
         <div style="width:10px;height:10px;border-radius:50%;background:${p.color};flex-shrink:0;"></div>
         <div>
           <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:${p.color};margin-bottom:3px;">${p.name}</div>
-          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:13px;font-style:italic;color:rgba(200,240,238,0.45);">${p.disc}</div>
+          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:13px;font-style:italic;color:rgba(220,245,242,0.72);">${p.disc}</div>
         </div>
       </div>
       <div style="padding:4px 18px 18px;">
         ${p.steps.map((s,i)=>`
           <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.04);">
             <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:1px;opacity:.3;flex-shrink:0;padding-top:2px;width:16px;text-align:right;">→</div>
-            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;color:rgba(200,240,238,0.55);line-height:1.8;font-style:italic;">${s}</div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;color:rgba(220,245,242,0.80);line-height:1.8;font-style:italic;">${s}</div>
           </div>`).join('')}
         <div style="display:flex;gap:12px;align-items:flex-start;padding:12px 0 4px;">
           <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:1px;opacity:.4;flex-shrink:0;padding-top:2px;width:16px;text-align:right;">↓</div>
@@ -1426,14 +1426,14 @@ function renderThinkers(){
   const el = document.getElementById('ri-thinkers');
   if(!el || el.innerHTML.trim()) return;
   el.innerHTML = `
-    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:16px;">Go Deeper Into Each Thinker</div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);text-align:center;margin-bottom:16px;">Go Deeper Into Each Thinker</div>
     ${THINKERS.map(t=>`
     <div id="wrap-${t.id}" style="margin-bottom:8px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;">
       <div onclick="riToggle('${t.id}')" style="padding:18px;display:flex;align-items:center;gap:12px;cursor:pointer;background:rgba(255,255,255,0.02);-webkit-tap-highlight-color:transparent;">
         <div style="width:10px;height:10px;border-radius:50%;background:${t.color};flex-shrink:0;"></div>
         <div style="flex:1;">
           <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:${t.color};margin-bottom:3px;">${t.name}</div>
-          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:12px;font-style:italic;color:rgba(200,240,238,0.4);">${t.tag}</div>
+          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:12px;font-style:italic;color:rgba(220,245,242,0.70);">${t.tag}</div>
         </div>
         <div id="chev-${t.id}" style="color:rgba(200,240,238,0.2);font-size:13px;transition:transform .3s ease;">▾</div>
       </div>
@@ -1441,12 +1441,12 @@ function renderThinkers(){
         ${t.sections.map(s=>`
           <div style="margin-top:14px;">
             <div style="font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:3.5px;text-transform:uppercase;opacity:.35;margin-bottom:6px;color:#e8fdfb;">${s.label}</div>
-            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;color:rgba(200,240,238,0.55);line-height:1.85;font-style:italic;">${s.body}</div>
+            <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;color:rgba(220,245,242,0.80);line-height:1.85;font-style:italic;">${s.body}</div>
           </div>`).join('')}
         <div style="margin-top:12px;padding:12px 14px;border-left:2px solid rgba(255,255,255,0.1);font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;font-style:italic;color:rgba(232,240,235,0.75);line-height:1.8;">${t.quote}</div>
         <div style="margin-top:14px;padding:14px 16px;border-radius:8px;background:rgba(15,184,164,0.05);border:1px solid rgba(15,184,164,0.15);">
           <div style="font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:3px;color:rgba(45,212,191,0.6);margin-bottom:7px;text-transform:uppercase;">→ How This Points to RI</div>
-          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:13.5px;color:rgba(200,240,238,0.55);line-height:1.85;">${t.bridge}</div>
+          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:13.5px;color:rgba(220,245,242,0.80);line-height:1.85;">${t.bridge}</div>
         </div>
       </div>
     </div>`).join('')}`;
@@ -1874,7 +1874,7 @@ function showEntry(idx, btn) {
       </div>
 
       <div class="reflection-panel">
-        <div class="panel-label" style="color:rgba(45,212,191,0.45);">
+        <div class="panel-label" style="color:rgba(45,212,191,0.72);">
           <svg viewBox="0 0 14 14" stroke="rgba(45,212,191,0.45)"><circle cx="7" cy="7" r="5"/><line x1="7" y1="4" x2="7" y2="7"/><line x1="7" y1="7" x2="9" y2="9"/></svg>
           LumeRI read
         </div>
@@ -1949,7 +1949,7 @@ function showEntry(idx, btn) {
       </div>
 
       <div class="reflection-panel">
-        <div class="panel-label" style="color:rgba(45,212,191,0.45);">
+        <div class="panel-label" style="color:rgba(45,212,191,0.72);">
           <svg viewBox="0 0 14 14" stroke="rgba(45,212,191,0.45)"><circle cx="7" cy="7" r="5"/><line x1="7" y1="4" x2="7" y2="7"/><line x1="7" y1="7" x2="9" y2="9"/></svg>
           LumeRI read
         </div>
@@ -2107,29 +2107,29 @@ function showEntry(idx, btn) {
     <div style="text-align:center;max-width:760px;margin:0 auto 64px;">
       <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">Why This Matters Now</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">The missing intelligence<br/><em style="color:#2dd4bf;">in the age of AI.</em></h2>
-      <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.7);line-height:1.9;font-weight:300;text-align:center;max-width:640px;margin:0 auto;">AI is accelerating analytical intelligence. Emotional intelligence is essential. But the dimension that determines the quality of both is rarely developed.</p>
+      <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.86);line-height:1.9;font-weight:300;text-align:center;max-width:640px;margin:0 auto;">AI is accelerating analytical intelligence. Emotional intelligence is essential. But the dimension that determines the quality of both is rarely developed.</p>
     </div>
     <div class="iq-grid" style="margin-bottom:56px;">
       <div style="background:rgba(255,255,255,0.03);padding:44px 32px;border-radius:10px 0 0 10px;border:1px solid rgba(45,212,191,0.10);border-right:none;text-align:center;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.1);line-height:1;margin-bottom:12px;">IQ</div>
-        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.4);margin-bottom:16px;">Analytical Intelligence</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:16px;">Analytical Intelligence</div>
         <p style="font-family:var(--sans);font-size:16px;color:rgba(200,240,238,0.6);line-height:1.8;font-weight:300;">The ability to analyse, calculate, and solve problems. Powers science, technology, and rational thinking.</p>
       </div>
       <div style="background:rgba(45,212,191,0.06);padding:44px 32px;border:2px solid rgba(45,212,191,0.5);text-align:center;position:relative;border-radius:10px;margin:-4px -2px;z-index:2;box-shadow:0 0 40px rgba(45,212,191,0.08);">
         <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:rgba(45,212,191,0.9);color:#040c0f;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 6px 6px;font-weight:500;white-space:nowrap;">The Next Evolution</div>
         <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.8);line-height:1;margin-bottom:12px;">RQ</div>
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.85);margin-bottom:16px;">Reflective Intelligence</div>
-        <p style="font-family:var(--sans);font-size:16px;color:rgba(200,240,238,0.75);line-height:1.8;font-weight:300;">The ability to observe one's own thinking, question assumptions, and gain deeper clarity. Enables insight, wisdom, and conscious action.</p>
+        <p style="font-family:var(--sans);font-size:16px;color:rgba(220,245,242,0.88);line-height:1.8;font-weight:300;">The ability to observe one's own thinking, question assumptions, and gain deeper clarity. Enables insight, wisdom, and conscious action.</p>
       </div>
       <div style="background:rgba(255,255,255,0.03);padding:44px 32px;border-radius:0 10px 10px 0;border:1px solid rgba(45,212,191,0.10);border-left:none;text-align:center;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.1);line-height:1;margin-bottom:12px;">EQ</div>
-        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.4);margin-bottom:16px;">Emotional Intelligence</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:16px;">Emotional Intelligence</div>
         <p style="font-family:var(--sans);font-size:16px;color:rgba(200,240,238,0.6);line-height:1.8;font-weight:300;">The ability to understand emotions, relationships, and social dynamics. Shapes leadership, empathy, and collaboration.</p>
       </div>
     </div>
     <div style="text-align:center;padding:44px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.15);border-radius:12px;max-width:820px;margin:0 auto;">
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.8vw,32px);font-style:italic;color:#e8fdfb;line-height:1.6;margin-bottom:16px;">IQ solves problems.<br/>EQ understands people.<br/><em style="color:#5eead4;">RQ understands thinking itself.</em></p>
-      <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.4);line-height:1.8;">LumeRI is a practice in Reflective Intelligence.<br/>Writing is how RQ is developed.</p>
+      <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.70);line-height:1.8;">LumeRI is a practice in Reflective Intelligence.<br/>Writing is how RQ is developed.</p>
     </div>
   </div>
 </section>
@@ -2141,19 +2141,19 @@ function showEntry(idx, btn) {
       <div>
         <div class="section-label" style="color:rgba(45,212,191,0.6);">The Reflective Intelligence Map</div>
         <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;">Where does writing<br/><em style="color:#2dd4bf;">take you?</em></h2>
-        <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.7);line-height:1.9;font-weight:300;margin-bottom:24px;">LumeRI is a tool for moving through the Map — from the automatic reactions that fill most inner life, toward something more clear and more true.</p>
-        <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.7);line-height:1.9;font-weight:300;">Each session is a step on this ladder. Writing honestly is how you move upward.</p>
+        <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.86);line-height:1.9;font-weight:300;margin-bottom:24px;">LumeRI is a tool for moving through the Map — from the automatic reactions that fill most inner life, toward something more clear and more true.</p>
+        <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.86);line-height:1.9;font-weight:300;">Each session is a step on this ladder. Writing honestly is how you move upward.</p>
       </div>
       <div>
         <div style="display:flex;flex-direction:column;gap:0;">
-          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(45,212,191,0.22),rgba(45,212,191,0.10));border:1px solid rgba(45,212,191,0.5);border-radius:10px 10px 0 0;border-bottom:none;box-shadow:inset 0 1px 0 rgba(94,234,212,0.2);"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#5eead4;min-width:34px;text-align:center;text-shadow:0 0 20px rgba(45,212,191,0.6);">6</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Wisdom</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.75);font-weight:300;">Insight integrated into how you live.</div></div></div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(45,212,191,0.22),rgba(45,212,191,0.10));border:1px solid rgba(45,212,191,0.5);border-radius:10px 10px 0 0;border-bottom:none;box-shadow:inset 0 1px 0 rgba(94,234,212,0.2);"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#5eead4;min-width:34px;text-align:center;text-shadow:0 0 20px rgba(45,212,191,0.6);">6</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Wisdom</div><div style="font-family:var(--sans);font-size:13px;color:rgba(220,245,242,0.88);font-weight:300;">Insight integrated into how you live.</div></div></div>
           <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(45,212,191,0.15),rgba(45,212,191,0.06));border:1px solid rgba(45,212,191,0.38);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#5eead4;min-width:34px;text-align:center;">5</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Clarity</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.72);font-weight:300;">Perception becomes conscious and deliberate.</div></div></div>
           <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(56,189,168,0.12),rgba(56,189,168,0.04));border:1px solid rgba(56,189,168,0.30);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#4dd9c0;min-width:34px;text-align:center;">4</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#dff5f0;margin-bottom:4px;">Insight</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.68);font-weight:300;">Direct perception — not analysis.</div></div></div>
-          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(100,180,190,0.10),rgba(100,180,190,0.03));border:1px solid rgba(100,180,190,0.28);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#7ecfcc;min-width:34px;text-align:center;">3</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#ceeae6;margin-bottom:4px;">Reflection</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.65);font-weight:300;">Examining assumptions, beliefs, patterns.</div></div></div>
+          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(100,180,190,0.10),rgba(100,180,190,0.03));border:1px solid rgba(100,180,190,0.28);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#7ecfcc;min-width:34px;text-align:center;">3</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#ceeae6;margin-bottom:4px;">Reflection</div><div style="font-family:var(--sans);font-size:13px;color:rgba(220,245,242,0.84);font-weight:300;">Examining assumptions, beliefs, patterns.</div></div></div>
           <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(160,190,200,0.08),rgba(160,190,200,0.02));border:1px solid rgba(160,200,210,0.22);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#a8cdd4;min-width:34px;text-align:center;">2</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#b8d8dc;margin-bottom:4px;">Observation</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,230,235,0.62);font-weight:300;">Noticing the thinking process itself.</div></div></div>
           <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(180,160,140,0.10),rgba(180,160,140,0.03));border:1px solid rgba(180,160,140,0.20);border-radius:0 0 10px 10px;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#c4a882;min-width:34px;text-align:center;">1</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#d4c0a8;margin-bottom:4px;">Reaction</div><div style="font-family:var(--sans);font-size:13px;color:rgba(210,195,175,0.65);font-weight:300;">Automatic. Unconscious. Conditioned.</div></div></div>
         </div>
-        <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:right;margin-top:10px;">↑ writing moves you upward</p>
+        <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.65);text-align:right;margin-top:10px;">↑ writing moves you upward</p>
       </div>
     </div>
   </div>
@@ -2177,7 +2177,7 @@ function showEntry(idx, btn) {
     <p class="mf-sub">It was never missing. Only covered.</p>
 
     <!-- Summary for new users -->
-    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.55);line-height:1.95;font-weight:300;max-width:500px;margin:0 auto 40px;text-align:center;">
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.80);line-height:1.95;font-weight:300;max-width:500px;margin:0 auto 40px;text-align:center;">
       Every person lives in two layers. Below the mirror: the conditioned self — automatic reactions, old patterns, the noise of daily life. Above it: the awareness that was always already there, clear and still. LumeRI is the mirror between them. Honest writing is how you cross.
     </p>
 
@@ -2401,7 +2401,7 @@ function showEntry(idx, btn) {
     <div style="text-align:center;max-width:700px;margin:0 auto 72px;">
       <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The Reflective Intelligence Inquiry</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">Twelve questions worth<br/><em style="color:#2dd4bf;">writing into.</em></h2>
-      <p style="font-family:var(--sans);font-size:17px;color:rgba(200,240,238,0.65);line-height:1.9;font-weight:300;text-align:center;">Not questions to answer quickly. Questions to write into — honestly, slowly. That is how Reflective Intelligence is developed.</p>
+      <p style="font-family:var(--sans);font-size:17px;color:rgba(220,245,242,0.84);line-height:1.9;font-weight:300;text-align:center;">Not questions to answer quickly. Questions to write into — honestly, slowly. That is how Reflective Intelligence is developed.</p>
     </div>
     <div class="inquiry-grid">
       <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.12);line-height:1;margin-bottom:12px;">01</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Assumption</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">What assumptions am I making right now that I have not examined?</p></div>
@@ -2418,7 +2418,7 @@ function showEntry(idx, btn) {
       <div class="inquiry-card" style="border:2px solid rgba(45,212,191,0.4);background:rgba(45,212,191,0.06);"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.25);line-height:1;margin-bottom:12px;">12</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.85);margin-bottom:10px;">The Observer</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">Who is the one noticing these thoughts?</p></div>
     </div>
     <div style="text-align:center;margin-top:56px;">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(200,240,238,0.55);margin-bottom:28px;">Write any one of these in LumeRI tonight.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(220,245,242,0.80);margin-bottom:28px;">Write any one of these in LumeRI tonight.</p>
       <a href="#cta-bottom" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.9);padding:16px 40px;text-decoration:none;border-radius:3px;font-weight:500;">Begin Writing →</a>
     </div>
   </div>
@@ -2430,16 +2430,16 @@ function showEntry(idx, btn) {
     <div style="text-align:center;max-width:680px;margin:0 auto 64px;">
       <div class="section-label" style="color:rgba(45,212,191,0.6);justify-content:center;">Begin The Practice</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">A 7-day writing journey<br/><em style="color:#2dd4bf;">into your own mind.</em></h2>
-      <p style="font-family:var(--sans);font-size:18px;color:rgba(200,240,238,0.65);line-height:1.9;font-weight:300;">One session. One theme. Seven days. This is how Reflective Intelligence begins — not with a course, but with seven small honest acts of writing.</p>
+      <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.84);line-height:1.9;font-weight:300;">One session. One theme. Seven days. This is how Reflective Intelligence begins — not with a course, but with seven small honest acts of writing.</p>
     </div>
     <div class="journey-grid" style="margin-bottom:56px;">
-      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 1</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Pause</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about what is actually in your mind right now.</div></div>
-      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 2</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Observe</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write what you notice about your own thoughts.</div></div>
-      <div style="background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.20);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 3</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Notice</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about a reaction that surprised you.</div></div>
-      <div style="background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.24);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Question</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about a belief you have never examined.</div></div>
-      <div style="background:rgba(45,212,191,0.09);border:1px solid rgba(45,212,191,0.26);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 5</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">See</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about a pattern you keep repeating.</div></div>
-      <div style="background:rgba(45,212,191,0.10);border:1px solid rgba(45,212,191,0.30);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 6</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Listen</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.4);line-height:1.5;">Write about a conversation you were not fully present for.</div></div>
-      <div style="background:rgba(45,212,191,0.13);border:2px solid rgba(45,212,191,0.5);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#5eead4;margin-bottom:10px;">Day 7</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#5eead4;margin-bottom:8px;">The Observer</div><div style="font-family:var(--sans);font-size:12px;color:rgba(200,240,238,0.55);line-height:1.5;">Write: who has been watching all of this?</div></div>
+      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 1</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Pause</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.70);line-height:1.5;">Write about what is actually in your mind right now.</div></div>
+      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 2</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Observe</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.70);line-height:1.5;">Write what you notice about your own thoughts.</div></div>
+      <div style="background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.20);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 3</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Notice</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.70);line-height:1.5;">Write about a reaction that surprised you.</div></div>
+      <div style="background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.24);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Question</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.70);line-height:1.5;">Write about a belief you have never examined.</div></div>
+      <div style="background:rgba(45,212,191,0.09);border:1px solid rgba(45,212,191,0.26);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 5</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">See</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.70);line-height:1.5;">Write about a pattern you keep repeating.</div></div>
+      <div style="background:rgba(45,212,191,0.10);border:1px solid rgba(45,212,191,0.30);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 6</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Listen</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.70);line-height:1.5;">Write about a conversation you were not fully present for.</div></div>
+      <div style="background:rgba(45,212,191,0.13);border:2px solid rgba(45,212,191,0.5);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#5eead4;margin-bottom:10px;">Day 7</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#5eead4;margin-bottom:8px;">The Observer</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.80);line-height:1.5;">Write: who has been watching all of this?</div></div>
     </div>
     <div style="text-align:center;">
       <a href="#cta-bottom" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.9);padding:18px 44px;text-decoration:none;border-radius:3px;font-weight:500;">Start Day 1 →</a>
@@ -2533,17 +2533,17 @@ function showEntry(idx, btn) {
       <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.5),transparent);"></div>
 
       <!-- label -->
-      <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.45);margin-bottom:32px;">A note from the person who built this</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.72);margin-bottom:32px;">A note from the person who built this</div>
 
       <!-- opening -->
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.2vw,25px);font-style:italic;color:rgba(200,240,238,0.88);line-height:1.8;margin-bottom:32px;">At some point, life stopped being something that happened to me — and became something I could finally see.</p>
 
       <!-- journey -->
-      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.62);line-height:1.95;font-weight:300;margin-bottom:24px;">That shift did not come from a book, or a method, or a moment of sudden clarity. It came slowly — through honest looking. Through the questions that would not leave me alone. Ramana Maharshi asked <em style="color:rgba(200,240,238,0.82);">Who am I?</em> — not to find an answer, but to dissolve the one asking. Krishnamurti pointed at the same thing from a different angle: can you observe without the observer? Rumi sang it. Alan Watts laughed at the whole beautiful absurdity of it. Different voices. One direction. Inward.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(220,245,242,0.84);line-height:1.95;font-weight:300;margin-bottom:24px;">That shift did not come from a book, or a method, or a moment of sudden clarity. It came slowly — through honest looking. Through the questions that would not leave me alone. Ramana Maharshi asked <em style="color:rgba(220,245,242,0.92);">Who am I?</em> — not to find an answer, but to dissolve the one asking. Krishnamurti pointed at the same thing from a different angle: can you observe without the observer? Rumi sang it. Alan Watts laughed at the whole beautiful absurdity of it. Different voices. One direction. Inward.</p>
 
-      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.62);line-height:1.95;font-weight:300;margin-bottom:24px;">What I began to see — inwardly, not as an idea — is that we are each, at our deepest, a mirror. Not metaphorically. Something clear, undivided, luminous by nature. But over time — through every experience, every conclusion, every wound absorbed and belief inherited — a kind of dust accumulates. Slowly, without our noticing, we stop seeing the mirror. We see only its surface. We begin to live from that accumulation. We call it personality. We call it who we are. And we suffer its weight without knowing there is anything beneath it.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(220,245,242,0.84);line-height:1.95;font-weight:300;margin-bottom:24px;">What I began to see — inwardly, not as an idea — is that we are each, at our deepest, a mirror. Not metaphorically. Something clear, undivided, luminous by nature. But over time — through every experience, every conclusion, every wound absorbed and belief inherited — a kind of dust accumulates. Slowly, without our noticing, we stop seeing the mirror. We see only its surface. We begin to live from that accumulation. We call it personality. We call it who we are. And we suffer its weight without knowing there is anything beneath it.</p>
 
-      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.62);line-height:1.95;font-weight:300;margin-bottom:36px;">There is another way of seeing this. Think of the sky. Clouds move through it — some heavy, some bright, some that seem to stay for days. But the sky does not become the clouds. It does not struggle with them or try to push them away. It simply holds them, spaciously, while remaining exactly what it is. That is the nature of awareness. Thoughts come. Emotions arise. Old patterns surface. They are real — but they are not you. You are the openness in which they appear. Recognising this — even for a moment — changes everything.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(220,245,242,0.84);line-height:1.95;font-weight:300;margin-bottom:36px;">There is another way of seeing this. Think of the sky. Clouds move through it — some heavy, some bright, some that seem to stay for days. But the sky does not become the clouds. It does not struggle with them or try to push them away. It simply holds them, spaciously, while remaining exactly what it is. That is the nature of awareness. Thoughts come. Emotions arise. Old patterns surface. They are real — but they are not you. You are the openness in which they appear. Recognising this — even for a moment — changes everything.</p>
 
       <!-- the mirror -->
       <div style="padding:36px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.15);border-radius:10px;margin-bottom:40px;position:relative;">
@@ -2560,7 +2560,7 @@ function showEntry(idx, btn) {
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(45,212,191,0.08);padding-top:24px;">
         <div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Nupur</div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.45);">Founder · Reflective Intelligence &amp; LumeRI</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.72);">Founder · Reflective Intelligence &amp; LumeRI</div>
         </div>
         <a href="https://www.reflectiveintelligence.life" target="_blank" rel="noopener"
            style="display:inline-flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.6);text-decoration:none;"
@@ -2576,11 +2576,30 @@ function showEntry(idx, btn) {
       </div>
     </div>
 
+    <!-- AI + RI statement -->
+    <div style="max-width:820px;margin:48px auto 0;padding:48px 52px;background:linear-gradient(135deg,rgba(12,46,52,0.9) 0%,rgba(4,12,15,0.95) 100%);border:1px solid rgba(45,212,191,0.18);border-radius:12px;position:relative;overflow:hidden;">
+
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.6),transparent);"></div>
+      <div style="position:absolute;bottom:0;right:0;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,0.04) 0%,transparent 70%);pointer-events:none;"></div>
+
+      <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:24px;">The moment we are in</div>
+
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.8vw,32px);font-style:italic;color:#e8fdfb;line-height:1.6;margin-bottom:28px;">AI is doing more. Faster. Better.<br/>The question is not whether machines can think —<br/>the question is <em style="color:#2dd4bf;">whether we still do.</em></p>
+
+      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(220,245,242,0.80);line-height:1.95;font-weight:300;margin-bottom:20px;">Every analytical task is being automated. Every pattern, optimised. Every decision, assisted. What remains — what cannot be outsourced, compressed, or computed — is the one thing AI will never have access to: the quality of your inner life. How clearly you see yourself. How honestly you move through the world. How awake you are to what is actually happening inside you.</p>
+
+      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(220,245,242,0.80);line-height:1.95;font-weight:300;margin-bottom:32px;">This is not a philosophical position. It is the most practical reality of our time. In an age of artificial intelligence, Reflective Intelligence is not a luxury or a spiritual pursuit — it is the one distinctly human capacity that grows more essential with every passing year. The mind that knows itself cannot be replaced. The awareness that sees its own conditioning is already free of it.</p>
+
+      <div style="border-top:1px solid rgba(45,212,191,0.12);padding-top:28px;">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2vw,23px);font-style:italic;color:rgba(45,212,191,0.88);line-height:1.7;margin:0;">Human evolution, at this juncture, is not outward.<br/>It is inward. It always was.<br/>We are only now being asked — urgently — to realise it.</p>
+      </div>
+    </div>
+
         <!-- RI movement block -->
     <div style="max-width:820px;margin:48px auto 0;padding:44px 52px;background:rgba(15,184,164,0.04);border:1px solid rgba(45,212,191,0.10);border-radius:12px;text-align:center;">
-      <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.45);margin-bottom:16px;">The Movement Behind the Tool</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.72);margin-bottom:16px;">The Movement Behind the Tool</div>
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-style:italic;color:rgba(200,240,238,0.8);line-height:1.7;margin-bottom:8px;">Reflective Intelligence is a philosophy, a framework, and a movement.</p>
-      <p style="font-family:'DM Sans',sans-serif;font-size:16px;color:rgba(200,240,238,0.45);line-height:1.8;font-weight:300;max-width:560px;margin:0 auto 24px;">The intellectual and ethical root from which LumeRI grew. Explore the full philosophy — the science, the wisdom traditions, the manifesto, and what RI means in an age of artificial intelligence.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:16px;color:rgba(220,245,242,0.72);line-height:1.8;font-weight:300;max-width:560px;margin:0 auto 24px;">The intellectual and ethical root from which LumeRI grew. Explore the full philosophy — the science, the wisdom traditions, the manifesto, and what RI means in an age of artificial intelligence.</p>
       <a href="https://www.reflectiveintelligence.life" target="_blank" rel="noopener"
          style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.85);padding:14px 36px;text-decoration:none;border-radius:3px;font-weight:500;">Explore Reflective Intelligence →</a>
     </div>
@@ -2597,30 +2616,30 @@ function showEntry(idx, btn) {
           <img src="lumeri-logo.png" alt="LumeRI" style="width:40px;height:40px;object-fit:contain;"/>
           <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8fdfb;">LumeRI</span>
         </div>
-        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);line-height:1.8;font-weight:300;max-width:300px;">Write what is actually true.<br/>And watch something quietly begin to shift.</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.35);margin-top:16px;">By Reflective Intelligence</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);line-height:1.8;font-weight:300;max-width:300px;">Write what is actually true.<br/>And watch something quietly begin to shift.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-top:16px;">By Reflective Intelligence</p>
       </div>
       <div>
-        <h4 style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:18px;">Explore</h4>
+        <h4 style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.78);margin-bottom:18px;">Explore</h4>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
-          <li><a href="#ri-intelligence" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">The Intelligence</a></li>
-          <li><a href="#how" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">How It Works</a></li>
-          <li><a href="#constructs" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">The Lens</a></li>
-          <li><a href="#faq" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">FAQ</a></li>
-          <li><a href="#about" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">About</a></li>
+          <li><a href="#ri-intelligence" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">The Intelligence</a></li>
+          <li><a href="#how" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">How It Works</a></li>
+          <li><a href="#constructs" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">The Lens</a></li>
+          <li><a href="#faq" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">FAQ</a></li>
+          <li><a href="#about" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">About</a></li>
         </ul>
       </div>
       <div>
-        <h4 style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:18px;">Connect</h4>
+        <h4 style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.78);margin-bottom:18px;">Connect</h4>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
-          <li><a href="https://www.reflectiveintelligence.life" target="_blank" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">Reflective Intelligence</a></li>
+          <li><a href="https://www.reflectiveintelligence.life" target="_blank" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">Reflective Intelligence</a></li>
           <li><a href="#cta-bottom" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(45,212,191,0.7);text-decoration:none;font-weight:400;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(45,212,191,0.7)'">Begin Writing →</a></li>
         </ul>
       </div>
     </div>
     <div style="border-top:1px solid rgba(45,212,191,0.07);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-      <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(200,240,238,0.25);font-weight:300;">© 2025 LumeRI · Reflective Intelligence. All rights reserved.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(45,212,191,0.35);">The mirror has always been inside you.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(200,240,238,0.55);font-weight:300;">© 2025 LumeRI · Reflective Intelligence. All rights reserved.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(45,212,191,0.65);">The mirror has always been inside you.</p>
     </div>
   </div>
 </footer>
