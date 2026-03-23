@@ -1497,7 +1497,7 @@ function riToggle(id){
   const dpr = window.devicePixelRatio || 1;
 
   function buildLayout(w, h) {
-    sc = w/520; cx = w/2; cy = h/2; R = 170*sc;
+    sc = w/680; cx = w/2; cy = h/2; R = 175*sc;
     nodes = [
       {key:'K', label:'Knowledge',  sub:'What I already believe',   angle:210, col:'rgba(45,212,191,0.85)', lOff:68, align:'right'},
       {key:'E', label:'Experience', sub:'What happens to me',       angle:270, col:'rgba(126,234,227,0.95)', lOff:60, align:'center'},
@@ -1534,7 +1534,7 @@ function riToggle(id){
 
   function resize(){
     W = wrap.offsetWidth;            // full width — no cap
-    H = W * 1.15;                    // taller so labels have room
+    H = W * 1.28;                    // taller so labels have room
     canvas.width  = W * dpr;
     canvas.height = H * dpr;
     canvas.style.width  = W + 'px';
