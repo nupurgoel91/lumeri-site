@@ -1176,7 +1176,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 
 <!-- ══════════════════════════════════════════
    THE INTELLIGENCE SECTION — Inserted after trust strip
-   Integrates v4 diagram: The Cycle + The Resonance
+   Integrates v4 diagram: The Cycle + The Thinkers
    Styled to match LumeRI dark teal aesthetic
 ══════════════════════════════════════════ -->
 <section id="ri-intelligence" style="background:#040c0f;padding:100px 24px 0;border-top:1px solid rgba(45,212,191,0.06);">
@@ -1206,7 +1206,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
                padding:14px 28px;background:transparent;border:none;cursor:pointer;
                color:rgba(45,212,191,0.3);border-bottom:2px solid transparent;transition:all .25s;
                -webkit-tap-highlight-color:transparent;">
-        The Resonance
+        The Thinkers
       </button>
     </div>
 
@@ -1237,16 +1237,16 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
         </div>
         <div style="border:1px solid rgba(45,212,191,0.22);border-radius:10px;background:rgba(15,184,164,0.04);padding:22px 20px;margin-bottom:16px;position:relative;overflow:hidden;">
           <div style="position:absolute;top:0;left:15%;right:15%;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.4),transparent);"></div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,196,80,0.7);margin-bottom:10px;">The Gap · Between Memory and Thought</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,196,80,0.85);margin-bottom:12px;">The Gap · Between Memory and Thought</div>
           <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(15px,3.8vw,20px);font-weight:300;color:#e8fdfb;line-height:1.55;margin-bottom:10px;">
             Most of us move from Memory straight into Thought — automatically, without noticing. <em style="color:#5eead4;">That is the conditioned life.</em>
           </div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(220,245,242,0.84);line-height:1.85;font-weight:300;">
+          <div style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(220,245,242,0.86);line-height:1.85;font-weight:300;">
             Reflective Intelligence is the capacity to <strong style="color:#e8fdfb;font-weight:400;">pause in that gap</strong> — to see your own mind moving before it pulls you somewhere you didn't choose. It is not a skill to acquire. It is the awareness that was always there, at the centre of the cycle.
           </div>
         </div>
         <div style="border:1px solid rgba(255,196,80,0.2);border-radius:10px;background:rgba(255,196,80,0.03);padding:20px 20px;margin-bottom:28px;">
-          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,196,80,0.6);margin-bottom:12px;">How LumeRI works in this cycle</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,196,80,0.80);margin-bottom:14px;">How LumeRI works in this cycle</div>
           <div style="display:flex;flex-direction:column;gap:12px;">
             <div style="display:flex;gap:12px;align-items:flex-start;">
               <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(126,234,227,0.8);min-width:24px;margin-top:2px;font-weight:600;">E</div>
@@ -1272,7 +1272,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 
     </div><!-- /panel1 -->
 
-    <!-- ── TAB 2: THE RESONANCE ── -->
+    <!-- ── TAB 2: THE THINKERS ── -->
     <div id="ri-panel2" style="display:none;">
 
       <!-- Core claim -->
@@ -1324,10 +1324,10 @@ function riTab(n){
   const t2 = document.getElementById('ri-tab2');
   if(n===1){
     t1.style.color='var(--brand)';t1.style.borderBottomColor='var(--brand)';
-    t2.style.color='rgba(45,212,191,0.3)';t2.style.borderBottomColor='transparent';
+    t2.style.color='rgba(220,245,242,0.55)';t2.style.borderBottomColor='transparent';
   } else {
     t2.style.color='var(--brand)';t2.style.borderBottomColor='var(--brand)';
-    t1.style.color='rgba(45,212,191,0.3)';t1.style.borderBottomColor='transparent';
+    t1.style.color='rgba(220,245,242,0.55)';t1.style.borderBottomColor='transparent';
     renderPaths(); renderThinkers();
   }
 }
@@ -1485,7 +1485,7 @@ function riToggle(id){
   const dpr = window.devicePixelRatio || 1;
 
   function buildLayout(w, h) {
-    sc = w/400; cx = w/2; cy = h/2; R = 138*sc;
+    sc = w/520; cx = w/2; cy = h/2; R = 170*sc;
     nodes = [
       {key:'K', label:'Knowledge',  sub:'What I already believe',  angle:210, col:'rgba(45,212,191,0.85)'},
       {key:'E', label:'Experience', sub:'What happens to me',      angle:270, col:'rgba(126,234,227,0.95)'},
@@ -1509,14 +1509,14 @@ function riToggle(id){
     const order=['K','E','M','T','A'];
     for(let s=0;s<5;s++){
       for(let p=0;p<4;p++){
-        particles.push({ seg:s, t: p/4, speed: 0.004+Math.random()*0.003 });
+        particles.push({ seg:s, t: p/4, speed: 0.0018+Math.random()*0.0012 });
       }
     }
   }
 
   function resize(){
-    W = Math.min(wrap.offsetWidth, 600);
-    H = W * 1.05;
+    W = wrap.offsetWidth;            // full width — no cap
+    H = W * 1.15;                    // taller so labels have room
     canvas.width  = W * dpr;
     canvas.height = H * dpr;
     canvas.style.width  = W + 'px';
@@ -1565,7 +1565,7 @@ function riToggle(id){
     // ── GAP ARC M→T — glowing, pulsing ──
     const M=nodes[2], T=nodes[3];
     const gapStart=M.angle*Math.PI/180, gapEnd=T.angle*Math.PI/180;
-    const pulse = 0.5 + 0.5*Math.sin(tick * Math.PI*2 / 80);
+    const pulse = 0.5 + 0.5*Math.sin(tick * Math.PI*2 / 180);
     // Wide soft glow
     ctx.beginPath(); ctx.arc(cx,cy,R,gapStart,gapEnd);
     ctx.strokeStyle=`rgba(45,212,191,${0.08+pulse*0.1})`; ctx.lineWidth=22*sc; ctx.stroke();
@@ -1623,22 +1623,22 @@ function riToggle(id){
       ctx.fillStyle='#040c0f'; ctx.fill();
       ctx.strokeStyle=n.col; ctx.lineWidth=1.8; ctx.globalAlpha=.9; ctx.stroke(); ctx.globalAlpha=1;
       // Key letter
-      ctx.font=`600 ${Math.max(8,9*sc)}px 'DM Sans',sans-serif`;
+      ctx.font=`600 ${Math.max(12,13*sc)}px 'DM Sans',sans-serif`;
       ctx.fillStyle=n.col; ctx.textAlign='center'; ctx.textBaseline='middle';
       ctx.fillText(n.key,n.x,n.y);
-      // Label outside ring
-      const lx=cx+(R+46*sc)*Math.cos(n.angle*Math.PI/180);
-      const ly=cy+(R+46*sc)*Math.sin(n.angle*Math.PI/180);
-      ctx.font=`600 ${Math.max(9,10*sc)}px 'DM Sans',sans-serif`;
-      ctx.fillStyle=n.col; ctx.globalAlpha=.9; ctx.fillText(n.label,lx,ly-6*sc);
-      ctx.font=`italic ${Math.max(10,11*sc)}px 'Cormorant Garamond',Georgia,serif`;
-      ctx.fillStyle='#e8fdfb'; ctx.globalAlpha=.75; ctx.fillText(n.sub,lx,ly+11*sc);
+      // Label outside ring — pushed further, larger, with sub-label well below
+      const lx=cx+(R+58*sc)*Math.cos(n.angle*Math.PI/180);
+      const ly=cy+(R+58*sc)*Math.sin(n.angle*Math.PI/180);
+      ctx.font=`600 ${Math.max(11,12*sc)}px 'DM Sans',sans-serif`;
+      ctx.fillStyle=n.col; ctx.globalAlpha=1; ctx.fillText(n.label,lx,ly-8*sc);
+      ctx.font=`italic ${Math.max(11,12*sc)}px 'Cormorant Garamond',Georgia,serif`;
+      ctx.fillStyle='#e8fdfb'; ctx.globalAlpha=0.82; ctx.fillText(n.sub,lx,ly+10*sc);
       ctx.globalAlpha=1;
     });
 
     // ── RI NODE — CENTRE — GOLD — the still field inside all movement ──
     const rir=26*sc;
-    const ripulse = 0.5 + 0.5*Math.sin(tick * Math.PI*2 / 80);
+    const ripulse = 0.5 + 0.5*Math.sin(tick * Math.PI*2 / 180);
 
     // Outer soft glow halo
     const rig=ctx.createRadialGradient(ri.x,ri.y,0,ri.x,ri.y,rir+40*sc);
