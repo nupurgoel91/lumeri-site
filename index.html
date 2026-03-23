@@ -994,12 +994,20 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 
   <ul class="nav-links">
 
-    <!-- THE DROP: water droplet — simple, clear -->
-    <li><a href="#drop">
+    <!-- INTELLIGENCE WITHIN: inner spark / RI symbol -->
+    <li><a href="#ri-intelligence">
       <svg class="nav-icon" viewBox="0 0 18 18" stroke-width="1.2">
-        <path d="M9,2 C9,2 4,8 4,12 A5,5 0 0,0 14,12 C14,8 9,2 9,2 Z"/>
+        <circle cx="9" cy="9" r="3"/>
+        <line x1="9" y1="1" x2="9" y2="4"/>
+        <line x1="9" y1="14" x2="9" y2="17"/>
+        <line x1="1" y1="9" x2="4" y2="9"/>
+        <line x1="14" y1="9" x2="17" y2="9"/>
+        <line x1="3" y1="3" x2="5.5" y2="5.5"/>
+        <line x1="12.5" y1="12.5" x2="15" y2="15"/>
+        <line x1="15" y1="3" x2="12.5" y2="5.5"/>
+        <line x1="5.5" y1="12.5" x2="3" y2="15"/>
       </svg>
-      <span class="nav-label">The Drop</span>
+      <span class="nav-label">Intelligence</span>
     </a></li>
 
     <!-- HOW IT WORKS: play button / steps — clear process icon -->
@@ -2432,8 +2440,206 @@ function showEntry(idx, btn) {
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" style="background:#040c0f;padding:0 0 0;">
+<!-- FAQ ══════════════════════════════════════════ -->
+<section id="faq" style="background:var(--bg-warm);padding:110px 24px;">
+  <div class="container">
+    <div style="max-width:760px;">
+      <div class="section-label">Questions</div>
+      <h2 class="section-h2">What people <em>ask first.</em></h2>
+      <p class="section-body" style="max-width:600px;">Before you write your first entry. Before you see a reflection. These are the questions that come up.</p>
 
-  <!-- Full-width image — embedded so it always loads -->
-  <div style="width:100%;position:relative;overflow:hidden;">
+      <div class="faq-list" style="margin-top:48px;">
+
+        <div class="faq-item">
+          <div class="faq-q">Is this the same as a diary or journal app?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Not at all. A diary records events. A mood tracker measures feelings on a scale. LumeRI does something different — it reads what you write and reflects back what it notices about how your mind was moving. Not what you said. How you were thinking. The constructs it tracks — emotional intensity, self-relational tone, reflective depth — are dimensions of your inner life, not your outer events.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What is the Deep Lens? Where does it come from?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">The Deep Lens is a philosophical layer drawn from nine wisdom traditions spanning 2,500 years — Krishnamurti, Rumi, Ramana Maharshi, Nisargadatta, Lao Tzu, the Upanishads, Neff, Siegel, and McAdams. It is matched to the specific psychological pattern in your entry. Not advice. Not a prescription. A different quality of light on the same moment. Think of it as the mirror's second surface — where the ancient meets the personal.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Is my writing private? Who reads it?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">No human being ever reads what you write. Your entries are end-to-end encrypted, processed by AI to generate your reflection, and never stored in a way that any person — including our team — can access. You can delete everything, permanently, at any time. Privacy is not a feature. It is the foundation without which honest writing is not possible.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What language should I write in?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Write the way you actually think and speak. LumeRI understands Indian English, UK English, and US English — including the idioms, sentence patterns, and emotional registers of each. You never need to adjust your voice to make the tool understand you. The tool adjusts to you.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How much should I write? How often?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Five minutes or fifty. A few lines or many. The only requirement is honesty. There is no right length and no ideal frequency. Some people write daily. Some write when something is weighing on them. The practice meets you where you are. Over time, patterns become visible regardless of how often you write — because the signal is in the quality, not the quantity.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What is Reflective Intelligence — and how is it different from mindfulness or therapy?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">Reflective Intelligence is the capacity to observe your own thinking — to see a pattern before it becomes action, to question an assumption before it shapes a decision. Mindfulness focuses on present-moment awareness. Therapy works through relationship with a trained professional. LumeRI is neither. It is a private, daily writing practice with an intelligent mirror. No appointments. No vulnerability with another person. Just you, the page, and what becomes visible when you write honestly.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What are the nine constructs LumeRI tracks?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">LumeRI reads nine dimensions of how your mind was moving when you wrote: Emotional Intensity, Reflective Depth, Self-Relational Tone, Cognitive Flexibility, Attributional Clarity, Narrative Integration, Openness to Uncertainty, Compassionate Presence, and Stillness. These are grounded in peer-reviewed research — Kristin Neff's self-compassion framework, Daniel Siegel's interpersonal neurobiology, and Dan McAdams's narrative identity theory, among others.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How does LumeRI relate to Reflective Intelligence?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-a">LumeRI is the practice tool of the Reflective Intelligence movement. RI is the philosophy and framework — the understanding of what self-knowledge actually is, where it lives in the brain, and why it matters in an age of AI. LumeRI is what you do every day to develop it. The theory and the tool were built together, from the same root.</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT ══════════════════════════════════════════ -->
+<section id="about" style="background:#040c0f;padding:110px 24px;">
+  <div class="container">
+
+    <div style="max-width:760px;margin:0 auto;text-align:center;margin-bottom:72px;">
+      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The People Behind It</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,54px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.22;margin-bottom:20px;">Built from <em style="color:#2dd4bf;">conviction,</em><br/>not a brief.</h2>
+      <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(200,240,238,0.65);line-height:1.9;font-weight:300;max-width:580px;margin:0 auto;">LumeRI was not designed in a workshop. It grew out of a decade of asking why the most intelligent people keep repeating the same patterns — and what it would take to actually change that.</p>
+    </div>
+
+    <!-- Founder card -->
+    <div style="max-width:820px;margin:0 auto;background:rgba(255,255,255,0.03);border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:56px 52px;position:relative;overflow:hidden;">
+
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.5),transparent);"></div>
+
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;">
+
+        <!-- Avatar placeholder -->
+        <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,rgba(15,184,164,0.25) 0%,rgba(45,212,191,0.08) 100%);border:1px solid rgba(45,212,191,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="14" r="7" stroke="rgba(45,212,191,0.6)" stroke-width="1.4"/>
+            <path d="M6,36 C6,28 11,23 20,23 C29,23 34,28 34,36" stroke="rgba(45,212,191,0.6)" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Nupur Goel</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.6);margin-bottom:24px;">Founder · Reflective Intelligence &amp; LumeRI</div>
+
+          <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.72);line-height:1.9;font-weight:300;margin-bottom:18px;">Nupur works at the intersection of enterprise technology and the inner life. By day, she leads Cloud FinOps strategy at HCLTech in Delhi. By vocation, she has spent years asking a different question: why does intelligent, self-aware effort so rarely produce genuine inner change?</p>
+
+          <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.72);line-height:1.9;font-weight:300;margin-bottom:24px;">LumeRI grew from that question. It is not a pivot from her professional work — it is the other side of the same coin. The conviction that the gap between human potential and human experience is a design problem, and that intelligent tools, built with philosophical rigour, can quietly close it.</p>
+
+          <div style="border-top:1px solid rgba(45,212,191,0.10);padding-top:24px;">
+            <a href="https://www.reflectiveintelligence.life" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(45,212,191,0.7)'">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+                <circle cx="7" cy="7" r="5.5"/>
+                <path d="M7,1.5 C7,1.5 9.5,4 9.5,7 C9.5,10 7,12.5 7,12.5"/>
+                <path d="M7,1.5 C7,1.5 4.5,4 4.5,7 C4.5,10 7,12.5 7,12.5"/>
+                <line x1="1.5" y1="7" x2="12.5" y2="7"/>
+              </svg>
+              reflectiveintelligence.life
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RI description block -->
+    <div style="max-width:820px;margin:48px auto 0;padding:40px 52px;background:rgba(15,184,164,0.04);border:1px solid rgba(45,212,191,0.10);border-radius:12px;text-align:center;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.45);margin-bottom:16px;">The Movement Behind the Tool</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-style:italic;color:rgba(200,240,238,0.8);line-height:1.7;margin-bottom:20px;">Reflective Intelligence is a philosophy, a framework, and a movement — the intellectual and ethical foundation from which LumeRI was built.</p>
+      <a href="https://www.reflectiveintelligence.life" target="_blank" rel="noopener" style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.85);padding:14px 36px;text-decoration:none;border-radius:3px;font-weight:500;">Explore Reflective Intelligence →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER ══════════════════════════════════════════ -->
+<footer style="background:#020608;border-top:1px solid rgba(45,212,191,0.08);padding:72px 24px 40px;">
+  <div style="max-width:1080px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:56px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+          <img src="lumeri-logo.png" alt="LumeRI" style="width:40px;height:40px;object-fit:contain;"/>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8fdfb;">LumeRI</span>
+        </div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);line-height:1.8;font-weight:300;max-width:300px;">Write what is actually true.<br/>And watch something quietly begin to shift.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.35);margin-top:16px;">By Reflective Intelligence</p>
+      </div>
+      <div>
+        <h4 style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:18px;">Explore</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+          <li><a href="#ri-intelligence" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">The Intelligence</a></li>
+          <li><a href="#how" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">How It Works</a></li>
+          <li><a href="#constructs" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">The Lens</a></li>
+          <li><a href="#faq" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">FAQ</a></li>
+          <li><a href="#about" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:18px;">Connect</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
+          <li><a href="https://www.reflectiveintelligence.life" target="_blank" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(200,240,238,0.45);text-decoration:none;font-weight:300;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(200,240,238,0.45)'">Reflective Intelligence</a></li>
+          <li><a href="#cta-bottom" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(45,212,191,0.7);text-decoration:none;font-weight:400;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(45,212,191,0.7)'">Begin Writing →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(45,212,191,0.07);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(200,240,238,0.25);font-weight:300;">© 2025 LumeRI · Reflective Intelligence. All rights reserved.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(45,212,191,0.35);">The mirror has always been inside you.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* FAQ accordion */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* Active nav on scroll */
+const navLinks = document.querySelectorAll('.nav-links a');
+const secs = document.querySelectorAll('section[id], div[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 130) current = s.id; });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+}, { passive: true });
+
+/* Reveal on scroll */
+const revEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); ro.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  revEls.forEach(el => ro.observe(el));
+} else {
+  revEls.forEach(el => el.classList.add('revealed'));
+}
+</script>
+</body>
+</html>
