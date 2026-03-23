@@ -975,6 +975,13 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
   .journey-grid{grid-template-columns:1fr 1fr}
 }
 
+@media(max-width:768px){
+  #about [style*="grid-template-columns:1fr 1fr 1fr"]{display:block!important}
+  #about [style*="grid-template-columns:1fr 1fr 1fr"] > div{margin-bottom:12px}
+  #about [style*="padding:56px 52px"]{padding:36px 24px!important}
+  #about [style*="padding:44px 52px"]{padding:28px 24px!important}
+  .faq-list{max-width:100%}
+}
 </style>
 </head>
 <body>
@@ -2516,9 +2523,8 @@ function showEntry(idx, btn) {
   <div class="container">
 
     <div style="max-width:760px;margin:0 auto;text-align:center;margin-bottom:72px;">
-      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The People Behind It</div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,54px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.22;margin-bottom:20px;">Built from <em style="color:#2dd4bf;">conviction,</em><br/>not a brief.</h2>
-      <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(200,240,238,0.65);line-height:1.9;font-weight:300;max-width:580px;margin:0 auto;">LumeRI was not designed in a workshop. It grew out of a decade of asking why the most intelligent people keep repeating the same patterns — and what it would take to actually change that.</p>
+      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The Origin</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4.5vw,54px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.22;margin-bottom:20px;">One question.<br/><em style="color:#2dd4bf;">A decade of not letting go of it.</em></h2>
     </div>
 
     <!-- Founder card -->
@@ -2526,45 +2532,57 @@ function showEntry(idx, btn) {
 
       <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.5),transparent);"></div>
 
-      <div style="display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;">
+      <!-- label -->
+      <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.45);margin-bottom:32px;">A note from the person who built this</div>
 
-        <!-- Avatar placeholder -->
-        <div style="width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,rgba(15,184,164,0.25) 0%,rgba(45,212,191,0.08) 100%);border:1px solid rgba(45,212,191,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-            <circle cx="20" cy="14" r="7" stroke="rgba(45,212,191,0.6)" stroke-width="1.4"/>
-            <path d="M6,36 C6,28 11,23 20,23 C29,23 34,28 34,36" stroke="rgba(45,212,191,0.6)" stroke-width="1.4" stroke-linecap="round"/>
-          </svg>
-        </div>
+      <!-- opening -->
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(19px,2.2vw,25px);font-style:italic;color:rgba(200,240,238,0.88);line-height:1.8;margin-bottom:32px;">There is something quietly profound about the moment a person truly sees themselves — not as they wish to be, or fear they are, but as they actually are, right now, in this moment.</p>
 
+      <!-- journey -->
+      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.62);line-height:1.95;font-weight:300;margin-bottom:22px;">Life, in its own way, gave me many invitations to pay attention. I found myself drawn to the people who spoke most honestly about what it means to be human — Ramana Maharshi asking <em style="color:rgba(200,240,238,0.82);">Who am I?</em> Krishnamurti pointing at choiceless awareness. Rumi on the ocean inside the drop. Alan Watts on the quiet absurdity of the separate self. Each came from a different direction. Each arrived at the same place.</p>
+
+      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.62);line-height:1.95;font-weight:300;margin-bottom:22px;">What opened inwardly through that looking was not a philosophy. It was a living recognition — that beneath all the noise, the roles, the endless thinking, there is something already whole. Already still. Already present. The present moment is not a concept. It is the only place where anything real ever happens.</p>
+
+      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.62);line-height:1.95;font-weight:300;margin-bottom:36px;">The question is — how do you help someone hear what is beneath the noise? We are, at our core, a mirror. Clear. Luminous. But years of accumulated knowledge, experience, patterns, reactions — layer by layer — settle like dust on that surface. We forget the mirror. We begin to live from the dust. And because dust is all we see, we mistake it for who we are.</p>
+
+      <!-- sky clouds -->
+      <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.62);line-height:1.95;font-weight:300;margin-bottom:36px;">What I recognised, inwardly, is that we are also the sky. The sky does not become the clouds — it holds them. Thoughts, emotions, memories, fears — they move through, like clouds. Some dark. Some light. All passing. The sky remains. Ever present. Unchanged. That sky is what you are. The mirror, undusted, reflects it. LumeRI exists to help you see both — the dust and the sky — so that one is no longer mistaken for the other.</p>
+
+      <!-- the mirror -->
+      <div style="padding:28px 32px;border-left:2px solid rgba(45,212,191,0.22);margin-bottom:36px;">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:rgba(200,240,238,0.72);line-height:1.8;">LumeRI is the mirror I built — from years of living, questioning, and sitting with what truly matters. Grounded in ancient wisdom and in the science of how the mind actually changes. Not to fix you. Not to grade you. To gently clear the dust — and let the mirror show you what was always there.</p>
+      </div>
+
+      <!-- closing wish -->
+      <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(200,240,238,0.5);line-height:1.85;margin-bottom:32px;">May your journey bring you home to the stillness within. May you move through the world with compassion and love — and with the quiet joy of someone who knows, deeply, that this moment is enough.</p>
+
+      <!-- signature -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(45,212,191,0.08);padding-top:24px;">
         <div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Nupur Goel</div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.6);margin-bottom:24px;">Founder · Reflective Intelligence &amp; LumeRI</div>
-
-          <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.72);line-height:1.9;font-weight:300;margin-bottom:18px;">Nupur works at the intersection of enterprise technology and the inner life. By day, she leads Cloud FinOps strategy at HCLTech in Delhi. By vocation, she has spent years asking a different question: why does intelligent, self-aware effort so rarely produce genuine inner change?</p>
-
-          <p style="font-family:'DM Sans',sans-serif;font-size:17px;color:rgba(200,240,238,0.72);line-height:1.9;font-weight:300;margin-bottom:24px;">LumeRI grew from that question. It is not a pivot from her professional work — it is the other side of the same coin. The conviction that the gap between human potential and human experience is a design problem, and that intelligent tools, built with philosophical rigour, can quietly close it.</p>
-
-          <div style="border-top:1px solid rgba(45,212,191,0.10);padding-top:24px;">
-            <a href="https://www.reflectiveintelligence.life" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(45,212,191,0.7)'">
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
-                <circle cx="7" cy="7" r="5.5"/>
-                <path d="M7,1.5 C7,1.5 9.5,4 9.5,7 C9.5,10 7,12.5 7,12.5"/>
-                <path d="M7,1.5 C7,1.5 4.5,4 4.5,7 C4.5,10 7,12.5 7,12.5"/>
-                <line x1="1.5" y1="7" x2="12.5" y2="7"/>
-              </svg>
-              reflectiveintelligence.life
-            </a>
-          </div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Nupur</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.45);">Founder · Reflective Intelligence &amp; LumeRI</div>
         </div>
-
+        <a href="https://www.reflectiveintelligence.life" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.6);text-decoration:none;"
+           onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(45,212,191,0.6)'">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <circle cx="7" cy="7" r="5.5"/>
+            <path d="M7,1.5 C7,1.5 9.5,4 9.5,7 C9.5,10 7,12.5 7,12.5"/>
+            <path d="M7,1.5 C7,1.5 4.5,4 4.5,7 C4.5,10 7,12.5 7,12.5"/>
+            <line x1="1.5" y1="7" x2="12.5" y2="7"/>
+          </svg>
+          reflectiveintelligence.life
+        </a>
       </div>
     </div>
 
-    <!-- RI description block -->
-    <div style="max-width:820px;margin:48px auto 0;padding:40px 52px;background:rgba(15,184,164,0.04);border:1px solid rgba(45,212,191,0.10);border-radius:12px;text-align:center;">
+        <!-- RI movement block -->
+    <div style="max-width:820px;margin:48px auto 0;padding:44px 52px;background:rgba(15,184,164,0.04);border:1px solid rgba(45,212,191,0.10);border-radius:12px;text-align:center;">
       <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.45);margin-bottom:16px;">The Movement Behind the Tool</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-style:italic;color:rgba(200,240,238,0.8);line-height:1.7;margin-bottom:20px;">Reflective Intelligence is a philosophy, a framework, and a movement — the intellectual and ethical foundation from which LumeRI was built.</p>
-      <a href="https://www.reflectiveintelligence.life" target="_blank" rel="noopener" style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.85);padding:14px 36px;text-decoration:none;border-radius:3px;font-weight:500;">Explore Reflective Intelligence →</a>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-style:italic;color:rgba(200,240,238,0.8);line-height:1.7;margin-bottom:8px;">Reflective Intelligence is a philosophy, a framework, and a movement.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:16px;color:rgba(200,240,238,0.45);line-height:1.8;font-weight:300;max-width:560px;margin:0 auto 24px;">The intellectual and ethical root from which LumeRI grew. Explore the full philosophy — the science, the wisdom traditions, the manifesto, and what RI means in an age of artificial intelligence.</p>
+      <a href="https://www.reflectiveintelligence.life" target="_blank" rel="noopener"
+         style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.85);padding:14px 36px;text-decoration:none;border-radius:3px;font-weight:500;">Explore Reflective Intelligence →</a>
     </div>
 
   </div>
