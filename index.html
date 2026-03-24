@@ -788,11 +788,11 @@ body { font-size: 20px; line-height: 1.9; }
 
 /* ── Section headings — much larger ── */
 .section-h2 {
-  font-size: clamp(40px, 5.5vw, 70px) !important;
+  font-size: clamp(32px, 4.5vw, 56px) !important;
   font-weight: 400 !important;
-  line-height: 1.15 !important;
+  line-height: 1.2 !important;
   color: var(--heading) !important;
-  margin-bottom: 28px !important;
+  margin-bottom: 24px !important;
 }
 .section-h2 em { color: var(--brand-dark) !important; }
 
@@ -959,32 +959,80 @@ body { font-size: 20px; line-height: 1.9; }
    → lifted to minimum 0.92
 ══════════════════════════════ */
 
-/* Dark section body paragraphs */
-#ri-intelligence p, #ri-intelligence li,
-#patterns p, #patterns li,
-#arc p, #arc li,
-#rq p, #rq li,
-#map p, #map li,
-#inquiry p, #inquiry li,
-#journey p, #journey li,
-#about p, #about li,
-#deeplens p, #deeplens li {
+/* ══ DARK SECTION TEXT — SURGICAL TARGETING ══
+   Only target direct children of dark-bg sections,
+   NOT paragraphs inside teal/coloured card children.
+   Rule: dark sections have their own inline text that needs lifting,
+   but teal-bg child divs must use their own colour hierarchy.
+═══════════════════════════════════════════════ */
+
+/* #ri-intelligence: truly dark bg throughout */
+#ri-intelligence > div > p, #ri-intelligence > div > div > p,
+#ri-intelligence li {
   color: #c8ede9 !important;
   opacity: 1 !important;
 }
 
-/* Dark section headings */
+/* #patterns: dark bg, pattern cards on it have their own classes */
+#patterns > div > div > p {
+  color: #c8ede9 !important;
+  opacity: 1 !important;
+}
+
+/* #arc: dark bg (#030e12) BUT the three arc panels include teal middle card.
+   Target only the container-level paragraphs, not card internals. */
+#arc > div > div > p,
+#arc > div > p {
+  color: #c8ede9 !important;
+  opacity: 1 !important;
+}
+
+/* #rq: dark bg (#040c0f) BUT it has a teal RQ card and a teal summary box.
+   Target only paragraphs directly in the section container, not inside teal boxes */
+#rq > div > div > p,
+#rq > div > p {
+  color: #c8ede9 !important;
+  opacity: 1 !important;
+}
+
+/* #map: dark bg, map-stage divs have their own inline colours — don't override */
+#map > div > div > p,
+#map > div > p {
+  color: #c8ede9 !important;
+  opacity: 1 !important;
+}
+
+/* #inquiry: warm bg (light), inquiry cards have dark bg — DON'T force light text here
+   The inquiry section is on var(--bg-warm) = light. Keep body colour. */
+/* #journey: dark bg, journey cards are teal — don't override card text */
+#journey > div > div > p,
+#journey > div > p {
+  color: #c8ede9 !important;
+  opacity: 1 !important;
+}
+
+/* #about: dark bg (#040c0f) */
+#about > div > p, #about > div > div > p,
+#about li {
+  color: #c8ede9 !important;
+  opacity: 1 !important;
+}
+
+/* #deeplens: WHITE bg (var(--bg-white)) — DO NOT force light text. Remove override. */
+/* deeplens text stays as var(--body) = #1a3a42 for readability on white */
+
+/* Dark section headings — only truly dark sections */
 #ri-intelligence h2, #ri-intelligence h3,
 #patterns h2, #patterns h3,
 #arc h2, #arc h3,
 #rq h2, #rq h3,
 #map h2, #map h3,
-#inquiry h2, #inquiry h3,
-#journey h2, #journey h3,
-#about h2, #about h3,
-#deeplens h2, #deeplens h3 {
+#about h2, #about h3 {
   color: #e8fdfb !important;
 }
+
+/* inquiry headings on light bg — keep dark */
+/* journey headings already specified inline */
 
 /* Light section text boost */
 #constructs .section-body,
@@ -2032,21 +2080,21 @@ footer p, footer a, footer li {
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8fdfb;line-height:1.3;margin-bottom:18px;">Something you couldn't say out loud finally lands on a page.</h3>
         <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(220,245,242,0.92);line-height:1.85;font-weight:300;margin-bottom:18px;">Most people write circling something. They write around it. The reflection names what they were circling. It's uncomfortable. It's also a relief.</p>
         <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(220,245,242,0.92);line-height:1.85;font-weight:300;">The scores feel strange. Abstracted. You are not sure what Reflective Depth: 62 means for you yet. That's fine. The pattern is beginning to form.</p>
-        <div style="margin-top:24px;padding:14px 18px;border:1px solid rgba(45,212,191,0.82);border-radius:6px;background:rgba(45,212,191,0.82);">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(128,237,224,0.75);line-height:1.7;">"I didn't expect it to say that. It saw something I hadn't said directly."</div>
+        <div style="margin-top:24px;padding:14px 18px;border:1px solid rgba(12,46,52,0.3);border-radius:6px;background:rgba(12,46,52,0.08);">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:#c8ede9;line-height:1.7;">"I didn't expect it to say that. It saw something I hadn't said directly."</div>
         </div>
       </div>
 
       <!-- SESSION 7 -->
-      <div style="padding:44px 36px;border-right:1px solid rgba(45,212,191,0.82);position:relative;background:rgba(45,212,191,0.82);">
+      <div style="padding:44px 36px;border-right:1px solid rgba(45,212,191,0.9);position:relative;background:rgba(45,212,191,0.85);">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:rgba(45,212,191,0.82);"></div>
-        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.90);margin-bottom:20px;">Session 7 · The pattern surfaces</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-style:italic;color:rgba(45,212,191,0.82);line-height:1;margin-bottom:20px;">7</div>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8fdfb;line-height:1.3;margin-bottom:18px;">You notice you've written about the same thing three different times.</h3>
-        <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(220,245,242,0.92);line-height:1.85;font-weight:300;margin-bottom:18px;">Different situations. Same emotional structure underneath. The theme doesn't announce itself — you notice it. That noticing is Reflective Intelligence beginning to operate.</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(220,245,242,0.92);line-height:1.85;font-weight:300;">Your pattern is named. For one person it is The Carrier. For another, The Reactor. The name is not a verdict. It's the beginning of seeing from the outside.</p>
-        <div style="margin-top:24px;padding:14px 18px;border:1px solid rgba(45,212,191,0.82);border-radius:6px;background:rgba(45,212,191,0.82);">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(128,237,224,0.85);line-height:1.7;">"I kept writing about work. But the mirror kept reflecting something about how I treat myself. I hadn't made that connection."</div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#0c2e34;margin-bottom:20px;font-weight:600;opacity:0.75;">Session 7 · The pattern surfaces</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-style:italic;color:#0c3040;line-height:1;margin-bottom:20px;opacity:0.5;">7</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#071c22;line-height:1.3;margin-bottom:18px;">You notice you've written about the same thing three different times.</h3>
+        <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:#0c2e34;line-height:1.85;font-weight:400;margin-bottom:18px;">Different situations. Same emotional structure underneath. The theme doesn't announce itself — you notice it. That noticing is Reflective Intelligence beginning to operate.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:#0c2e34;line-height:1.85;font-weight:400;">Your pattern is named. For one person it is The Carrier. For another, The Reactor. The name is not a verdict. It's the beginning of seeing from the outside.</p>
+        <div style="margin-top:24px;padding:14px 18px;border:1px solid rgba(12,46,52,0.3);border-radius:6px;background:rgba(12,46,52,0.08);">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:#0c2e34;line-height:1.7;">"I kept writing about work. But the mirror kept reflecting something about how I treat myself. I hadn't made that connection."</div>
         </div>
       </div>
 
@@ -2089,12 +2137,12 @@ footer p, footer a, footer li {
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:16px;">Analytical Intelligence</div>
         <p style="font-family:var(--sans);font-size:19px;color:rgba(200,240,238,0.88);line-height:1.8;font-weight:300;">The ability to analyse, calculate, and solve problems. Powers science, technology, and rational thinking.</p>
       </div>
-      <div style="background:rgba(45,212,191,0.82);padding:44px 32px;border:2px solid rgba(45,212,191,0.82);text-align:center;position:relative;border-radius:10px;margin:-4px -2px;z-index:2;box-shadow:0 0 40px rgba(45,212,191,0.82);">
-        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:rgba(45,212,191,0.9);color:#040c0f;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 6px 6px;font-weight:500;white-space:nowrap;">An Emerging Capacity</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.8);line-height:1;margin-bottom:12px;">RQ</div>
-        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.85);margin-bottom:16px;">Reflective Intelligence</div>
-        <p style="font-family:var(--sans);font-size:19px;color:rgba(220,245,242,0.88);line-height:1.8;font-weight:300;">The ability to observe one's own thinking, question assumptions, and act from clarity. Enables insight, wisdom, and conscious action.</p>
-        <p style="font-family:var(--sans);font-size:12px;color:rgba(45,212,191,0.82);line-height:1.7;font-weight:300;margin-top:14px;font-style:italic;">Not yet a standardised measure. A practice, a philosophy, and a direction — grounded in contemplative traditions and psychological research.</p>
+      <div style="background:rgba(45,212,191,0.85);padding:44px 32px;border:2px solid rgba(45,212,191,0.9);text-align:center;position:relative;border-radius:10px;margin:-4px -2px;z-index:2;box-shadow:0 0 40px rgba(45,212,191,0.3);">
+        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#0a8a7a;color:#e8fdfb;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 6px 6px;font-weight:500;white-space:nowrap;">An Emerging Capacity</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:#0c2e34;line-height:1;margin-bottom:12px;">RQ</div>
+        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#0c2e34;margin-bottom:16px;font-weight:600;opacity:0.75;">Reflective Intelligence</div>
+        <p style="font-family:var(--sans);font-size:19px;color:#071c22;line-height:1.8;font-weight:400;">The ability to observe one's own thinking, question assumptions, and act from clarity. Enables insight, wisdom, and conscious action.</p>
+        <p style="font-family:var(--sans);font-size:13px;color:#0c3040;line-height:1.7;font-weight:400;margin-top:14px;font-style:italic;opacity:0.85;">Not yet a standardised measure. A practice, a philosophy, and a direction — grounded in contemplative traditions and psychological research.</p>
       </div>
       <div style="background:rgba(255,255,255,0.03);padding:44px 32px;border-radius:0 10px 10px 0;border:1px solid rgba(45,212,191,0.82);border-left:none;text-align:center;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.82);line-height:1;margin-bottom:12px;">EQ</div>
@@ -2102,9 +2150,9 @@ footer p, footer a, footer li {
         <p style="font-family:var(--sans);font-size:19px;color:rgba(200,240,238,0.88);line-height:1.8;font-weight:300;">The ability to understand emotions, relationships, and social dynamics. Shapes leadership, empathy, and collaboration.</p>
       </div>
     </div>
-    <div style="text-align:center;padding:44px 40px;background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:12px;max-width:820px;margin:0 auto;">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.8vw,32px);font-style:italic;color:#e8fdfb;line-height:1.6;margin-bottom:16px;">IQ solves problems.<br/>EQ understands people.<br/><em style="color:#5eead4;">RQ understands thinking itself.</em></p>
-      <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.70);line-height:1.8;">LumeRI is a practice in Reflective Intelligence.<br/>Writing is how it is developed.</p>
+    <div style="text-align:center;padding:44px 40px;background:rgba(45,212,191,0.85);border:1px solid rgba(45,212,191,0.9);border-radius:12px;max-width:820px;margin:0 auto;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.8vw,32px);font-style:italic;color:#0c2e34;line-height:1.6;margin-bottom:16px;">IQ solves problems.<br/>EQ understands people.<br/><em style="color:#071c22;font-style:italic;">RQ understands thinking itself.</em></p>
+      <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#0c3040;line-height:1.8;font-weight:500;opacity:0.8;">LumeRI is a practice in Reflective Intelligence.<br/>Writing is how it is developed.</p>
     </div>
   </div>
 </section>
@@ -2176,13 +2224,13 @@ footer p, footer a, footer li {
       <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.92);line-height:1.9;font-weight:300;">One session. One theme. Seven days. This is how Reflective Intelligence begins — not with a course, but with seven small honest acts of writing.</p>
     </div>
     <div class="journey-grid" style="margin-bottom:56px;">
-      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 1</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Pause</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about what is actually in your mind right now.</div></div>
-      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 2</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Observe</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write what you notice about your own thoughts.</div></div>
-      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 3</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Notice</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about a reaction that surprised you.</div></div>
-      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Question</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about a belief you have never examined.</div></div>
-      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 5</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">See</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about a pattern you keep repeating.</div></div>
-      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 6</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Listen</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about a conversation you were not fully present for.</div></div>
-      <div style="background:rgba(45,212,191,0.82);border:2px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#5eead4;margin-bottom:10px;">Day 7</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#5eead4;margin-bottom:8px;">The Observer</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write: who has been watching all of this?</div></div>
+      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#071c22;margin-bottom:10px;font-weight:600;opacity:0.6;">Day 1</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Pause</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about what is actually in your mind right now.</div></div>
+      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#071c22;margin-bottom:10px;font-weight:600;opacity:0.6;">Day 2</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Observe</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write what you notice about your own thoughts.</div></div>
+      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#071c22;margin-bottom:10px;font-weight:600;opacity:0.6;">Day 3</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Notice</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about a reaction that surprised you.</div></div>
+      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#071c22;margin-bottom:10px;font-weight:600;opacity:0.6;">Day 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Question</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about a belief you have never examined.</div></div>
+      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#071c22;margin-bottom:10px;font-weight:600;opacity:0.6;">Day 5</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">See</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about a pattern you keep repeating.</div></div>
+      <div style="background:rgba(45,212,191,0.82);border:1px solid rgba(45,212,191,0.82);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#071c22;margin-bottom:10px;font-weight:600;opacity:0.6;">Day 6</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Listen</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write about a conversation you were not fully present for.</div></div>
+      <div style="background:rgba(45,212,191,0.82);border:2px solid rgba(45,212,191,0.9);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#071c22;margin-bottom:10px;font-weight:600;opacity:0.6;">Day 7</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#071c22;margin-bottom:8px;">The Observer</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.92);line-height:1.5;">Write: who has been watching all of this?</div></div>
     </div>
     <div style="text-align:center;">
       <a href="#cta-bottom" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.9);padding:18px 44px;text-decoration:none;border-radius:3px;font-weight:500;">Start Day 1 →</a>
