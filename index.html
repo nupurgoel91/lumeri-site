@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-151148 -->
+<!-- LumeRI v20260329-151800 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -2522,7 +2522,7 @@ body::before{
 .hint{
   position:fixed;bottom:62px;left:50%;transform:translateX(-50%);
   font-size:9px;letter-spacing:5px;text-transform:uppercase;
-  color:rgba(24,196,174,0.20);z-index:400;white-space:nowrap;pointer-events:none;
+  color:rgba(24,196,174,0.70);animation:hint-pulse 2.5s ease-in-out infinite;z-index:400;white-space:nowrap;pointer-events:none;
   transition:opacity 0.5s;
 }
 
@@ -2615,6 +2615,14 @@ body::before{
     <p class="qnum" style="color:rgba(24,196,174,0.30)">LumeRI</p>
     <p class="qtext"><em>Something keeps<br/><span class="hl">repeating.</span></em></p>
     <p class="qsub">Eight questions. Tap to move through each one.</p>
+    <div style="margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:12px;animation:hint-pulse 2s ease-in-out infinite;">
+      <div style="width:56px;height:56px;border:2px solid rgba(24,196,174,0.60);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="rgba(24,196,174,0.90)" stroke-width="2">
+          <path d="M5 9 L13 9 M10 6 L13 9 L10 12"/>
+        </svg>
+      </div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(24,196,174,0.65);">Tap anywhere to begin</p>
+    </div>
   </div>
 
   <!-- SCREEN 1 -->
@@ -2693,7 +2701,7 @@ body::before{
 </div>
 
 <div class="pips" id="pips"></div>
-<p class="hint" id="hint">tap to continue</p>
+<p class="hint" id="hint">TAP ANYWHERE TO CONTINUE →tap to continue</p>
 
 <script>
 (function(){
@@ -3872,7 +3880,9 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
 
         <div class="faq-item">
           <div class="faq-q">Is this the same as a diary or journal app?<span class="faq-toggle">+</span></div>
-          <div class="faq-a">Not at all. A diary records events. A mood tracker measures feelings on a scale. LumeRI does something different — it reads what you write and reflects back what it notices about how your mind was moving. Not what you said. How you were thinking. The constructs it tracks — emotional intensity, self-relational tone, reflective depth — are dimensions of your inner life, not your outer events.</div>
+          <div class="faq-a">Not at all. A diary records events. A mood tracker measures feelings on a scale. LumeRI does something different — it reads what you write and reflects back what it notices about how your mind was moving. Not what you said. How you were thinking. The constructs it tracks — emotional intensity, self-relational tone, reflective depth — are dimensions of your inner life, not your outer events.
+
+As for how often: there is no right frequency. Some people write daily. Some write when something is weighing on them. Five minutes or fifty. The only requirement is honesty. Patterns become visible regardless of frequency — because the signal is in the quality of attention, not the quantity of entries.</div>
         </div>
 
         <div class="faq-item">
@@ -3885,14 +3895,10 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
           <div class="faq-a">No human being ever reads what you write. Your entries are end-to-end encrypted, processed by AI to generate your reflection, and never stored in a way that any person — including our team — can access. You can delete everything, permanently, at any time. Privacy is not a feature. It is the foundation without which honest writing is not possible.</div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-q">What language should I write in?<span class="faq-toggle">+</span></div>
-          <div class="faq-a">Write the way you actually think and speak. LumeRI understands Indian English, UK English, and US English — including the idioms, sentence patterns, and emotional registers of each. You never need to adjust your voice to make the tool understand you. The tool adjusts to you.</div>
+        
         </div>
 
-        <div class="faq-item">
-          <div class="faq-q">How much should I write? How often?<span class="faq-toggle">+</span></div>
-          <div class="faq-a">Five minutes or fifty. A few lines or many. The only requirement is honesty. There is no right length and no ideal frequency. Some people write daily. Some write when something is weighing on them. The practice meets you where you are. Over time, patterns become visible regardless of how often you write — because the signal is in the quality, not the quantity.</div>
+        
         </div>
 
         <div class="faq-item">
@@ -3900,14 +3906,10 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
           <div class="faq-a">Reflective Intelligence is the capacity to observe your own thinking — to see a pattern before it becomes action, to question an assumption before it shapes a decision. Mindfulness focuses on present-moment awareness. Therapy works through relationship with a trained professional. LumeRI is neither. It is a private, daily writing practice with an intelligent mirror. No appointments. No vulnerability with another person. Just you, the page, and what becomes visible when you write honestly.</div>
         </div>
 
-        <div class="faq-item">
-          <div class="faq-q">What are the nine constructs LumeRI tracks?<span class="faq-toggle">+</span></div>
-          <div class="faq-a">LumeRI reads nine dimensions of how your mind was moving when you wrote: Emotional Intensity, Reflective Depth, Self-Relational Tone, Cognitive Flexibility, Attribution Balance, Narrative Coherence, Attentional Stability, Compassion Orientation, and Perspective Breadth. These are grounded in peer-reviewed research across self-compassion (Neff), interpersonal neurobiology (Siegel), and narrative identity (McAdams). The scores are relative signals meaningful across your own sessions over time — not absolute psychometric grades.</div>
+        
         </div>
 
-        <div class="faq-item">
-          <div class="faq-q">How does LumeRI relate to Reflective Intelligence?<span class="faq-toggle">+</span></div>
-          <div class="faq-a">LumeRI is the practice tool of the Reflective Intelligence movement. RI is the philosophy and framework — the understanding of what self-knowledge actually is, where it lives in the brain, and why it matters in an age of AI. LumeRI is what you do every day to develop it. The theory and the tool were built together, from the same root.</div>
+        
         </div>
 
         <div class="faq-item">
