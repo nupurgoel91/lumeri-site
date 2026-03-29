@@ -1,0 +1,3302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Nunito:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --deep:       #0a3d42;
+      --teal:       #0d5c63;
+      --teal-mid:   #14b8a6;
+      --teal-light: #ccf0ed;
+      --cream:      #f8f5f0;
+      --warm-white: #fdfcfa;
+      --text-dark:  #192426;
+      --text-mid:   #2b4448;
+      --text-body:  #354e52;
+      --text-soft:  #4e6e74;
+      --border:     rgba(20,184,166,0.18);
+      --shadow-sm:  0 4px 24px rgba(10,61,66,0.07);
+      --shadow-md:  0 12px 48px rgba(10,61,66,0.10);
+      --serif:      "Cormorant Garamond", "Playfair Display", Georgia, serif;
+      --sans:       "Nunito", "DM Sans", system-ui, sans-serif;
+      --fade:       0.7s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--text-dark);
+    }
+
+    /* ── WATERMARK ── */
+    body::before {
+      content: "RI";
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: clamp(240px, 45vw, 500px);
+      font-weight: 700;
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(13,92,99,0.042);
+      letter-spacing: -16px;
+      pointer-events: none;
+      z-index: 0;
+      white-space: nowrap;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .screen {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--fade);
+      overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+      background: var(--cream);
+      background-image:
+        radial-gradient(ellipse at 20% 15%, rgba(20,184,166,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 85%, rgba(13,92,99,0.07) 0%, transparent 55%);
+    }
+
+    .screen.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .screen-inner {
+      width: 100%;
+      max-width: 520px;
+      padding: 24px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    /* ── TYPOGRAPHY ── */
+    .brand {
+      font-family: var(--serif);
+      font-size: clamp(48px, 12vw, 100px);
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: -2px;
+      line-height: 1;
+      background: linear-gradient(120deg, var(--teal) 0%, var(--teal-mid) 55%, #5eead4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    /* Compact brand when returning user greeting is shown */
+    .brand.compact {
+      font-size: clamp(44px, 10vw, 72px);
+      margin-bottom: 4px;
+    }
+
+    .system-name {
+      font-family: var(--sans);
+      font-size: clamp(14px, 3vw, 17px);
+      font-weight: 400;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--teal-mid);
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .system-name.compact { margin-bottom: 10px; }
+
+    .pitch { text-align: center; margin-bottom: 28px; }
+    .pitch-soft {
+      font-family: var(--serif);
+      font-size: clamp(15px, 3.5vw, 19px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-body);
+      line-height: 1.65;
+      margin-bottom: 9px;
+      opacity: 0.92;
+      display: block;
+    }
+    .pitch-strong {
+      font-family: var(--serif);
+      font-size: clamp(17px, 4vw, 23px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1.5;
+      display: block;
+    }
+    .pitch-strong .hi {
+      background: linear-gradient(120deg, var(--teal) 0%, var(--teal-mid) 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .pitch { transition: opacity 0.4s ease; }
+
+    .pitch-rule {
+      width: 36px; height: 1px;
+      background: linear-gradient(to right, transparent, var(--teal-mid), transparent);
+      margin: 20px auto;
+      opacity: 0.32;
+    }
+    .invitation {
+      font-family: var(--serif);
+      font-size: clamp(16px, 3.2vw, 19px);
+      font-style: italic;
+      color: var(--text-mid);
+      text-align: center;
+      line-height: 1.9;
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    .greeting {
+      display: none;
+      font-family: var(--serif);
+      font-size: clamp(32px, 7vw, 52px);   /* smaller than before — leaves room for textarea */
+      font-weight: 700;
+      font-style: italic;
+      background: linear-gradient(120deg, var(--teal) 0%, var(--teal-mid) 50%, #5eead4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-align: center;
+      margin-bottom: 16px;   /* was 36px */
+      overflow: visible;
+    }
+    .greeting.visible { display: block; }
+
+    .name-row { display: flex; justify-content: center; margin-bottom: 32px; }
+    .name-input {
+      width: 100%;
+      max-width: 400px;
+      padding: 18px 36px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--warm-white);
+      font-family: var(--serif);
+      font-size: clamp(19px, 4vw, 22px);
+      font-style: italic;
+      color: var(--text-dark);
+      outline: none;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .name-input::placeholder { color: var(--text-soft); }
+    .name-input:focus {
+      border-color: rgba(20,184,166,0.5);
+      box-shadow: 0 4px 20px rgba(20,184,166,0.14);
+    }
+
+    /* ── WRITING PANEL ── */
+    /* ── WRITING CARD — more visible border ── */
+    .writing-card {
+      background: var(--warm-white);
+      border-radius: 28px;
+      border: 1.5px solid rgba(20,184,166,0.35);
+      box-shadow: 0 8px 32px rgba(10,61,66,0.10);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .writing-card:focus-within {
+      border-color: rgba(20,184,166,0.6);
+      box-shadow: 0 8px 32px rgba(10,61,66,0.12), 0 0 0 3px rgba(20,184,166,0.08);
+    }
+    .panel-label {
+      padding: 22px 28px 0;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+    textarea {
+      width: 100%;
+      border: none;
+      background: transparent;
+      resize: none;
+      outline: none;
+      font-size: clamp(22px, 4.5vw, 27px);
+      line-height: 2.1;
+      min-height: 160px;
+      color: var(--text-dark);
+      font-family: var(--serif);
+      font-weight: 300;
+      padding: 14px 28px 12px;
+      caret-color: var(--teal-mid);
+      display: block;
+    }
+    textarea::placeholder { color: var(--text-soft); font-style: italic; }
+    .word-row {
+      padding: 4px 28px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .word-hint {
+      font-family: var(--sans);
+      font-size: clamp(13px, 2.6vw, 15px);
+      color: var(--teal);
+      font-style: italic;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+    .word-count {
+      font-family: var(--sans);
+      font-size: clamp(13px, 2.6vw, 14px);
+      color: var(--text-soft);
+      flex-shrink: 0;
+      transition: color 0.3s;
+    }
+    .word-count.ready { color: var(--teal-mid); }
+    .word-progress { height: 2px; background: var(--border); }
+    .word-progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--teal), var(--teal-mid));
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    /* ── BOTTOM TAB NAV ── */
+    .tab-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 100;
+      background: var(--warm-white);
+      border-top: 1.5px solid rgba(20,184,166,0.2);
+      display: none;
+      justify-content: space-around;
+      align-items: center;
+      padding: 12px 0 max(12px, env(safe-area-inset-bottom));
+      box-shadow: 0 -8px 32px rgba(10,61,66,0.10);
+    }
+    .tab-nav.visible { display: flex; }
+    .tab-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px 0;
+      background: none;
+      border: none;
+      outline: none;
+      transition: all 0.2s;
+      border-radius: 16px;
+      margin: 0 6px;
+    }
+    .tab-btn:active { opacity: 0.6; transform: scale(0.95); }
+    .tab-icon {
+      font-size: 24px;
+      line-height: 1;
+      color: var(--text-mid);
+      opacity: 0.5;
+      transition: all 0.25s;
+    }
+    .tab-label {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-style: italic;
+      letter-spacing: 0.3px;
+      color: var(--text-mid);
+      opacity: 0.65;
+      transition: all 0.25s;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(20,184,166,0.08), rgba(13,92,99,0.05));
+    }
+    .tab-btn.active .tab-icon {
+      opacity: 1;
+      color: var(--teal-mid);
+      transform: translateY(-2px);
+      filter: drop-shadow(0 2px 6px rgba(20,184,166,0.35));
+    }
+    .tab-btn.active .tab-label {
+      color: var(--teal);
+      opacity: 1;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    /* Screens need bottom padding so content clears the nav */
+    .has-nav .screen-inner { padding-bottom: 100px; }
+
+    /* ── SUBMIT BUTTON ── */
+    .btn-submit {
+      width: 100%;
+      padding: 16px 32px;
+      border-radius: 60px;
+      border: none;
+      background: linear-gradient(135deg, var(--deep) 0%, var(--teal) 60%, var(--teal-mid) 100%);
+      color: rgba(255,255,255,0.95);
+      font-family: var(--sans);
+      font-size: clamp(16px, 3vw, 18px);
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 36px rgba(13,92,99,0.28);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 16px 44px rgba(13,92,99,0.35); }
+    .btn-submit:active { transform: translateY(0); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .btn-submit.loading { color: transparent; pointer-events: none; }
+    .btn-submit.loading::after {
+      content: "";
+      position: absolute;
+      width: 20px; height: 20px;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+    /* ── TRUST BLOCK ── */
+    .trust-block { text-align: center; margin-bottom: 16px; }
+    .trust-soft {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(15px, 3vw, 18px);
+      color: var(--teal);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .trust-bold {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(16px, 3.5vw, 20px);
+      color: var(--deep);
+      display: block;
+    }
+
+    /* ── REGISTRATION ── */
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+      background: rgba(13,92,99,0.04);
+      border-radius: 16px;
+      padding: 14px 16px;
+    }
+    .consent-row input[type="checkbox"] {
+      width: 20px; height: 20px;
+      accent-color: var(--teal-mid);
+      cursor: pointer;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .consent-row label {
+      font-size: clamp(14px, 2.8vw, 16px);
+      font-family: var(--sans);
+      color: var(--text-mid);
+      line-height: 1.7;
+      cursor: pointer;
+    }
+    .reg-field { margin-bottom: 14px; }
+    .reg-label {
+      display: block;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+    .reg-input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--warm-white);
+      font-family: var(--serif);
+      font-size: clamp(16px, 4vw, 20px);
+      font-style: italic;
+      color: var(--text-dark);
+      outline: none;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.3s;
+    }
+    .reg-input::placeholder { color: var(--text-soft); }
+    .reg-input:focus { border-color: rgba(20,184,166,0.5); }
+    .otp-input { text-align:center; font-size:clamp(26px,6vw,36px); letter-spacing:10px; font-style:normal; font-weight:700; }
+    .reg-sent-msg {
+      font-family: var(--serif);
+      font-size: clamp(15px,3vw,18px);
+      font-style: italic;
+      color: var(--text-mid);
+      text-align: center;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .reg-error { font-family:var(--sans); font-size:clamp(13px,2.5vw,15px); color:#b45e3a; text-align:center; margin-top:12px; min-height:20px; line-height:1.5; }
+    .reg-resend { font-family:var(--sans); font-size:13px; color:var(--text-soft); text-align:center; margin-top:16px; }
+    .reg-link { color:var(--teal-mid); cursor:pointer; text-decoration:underline; text-underline-offset:3px; font-style:italic; }
+    .reg-skip { text-align:center; margin-top:12px; }
+
+    /* ── REFLECTION / LOADING ── */
+    .water-ripple {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      gap: 36px;
+    }
+    .ripple-container { position:relative; width:120px; height:120px; display:flex; align-items:center; justify-content:center; }
+    .ripple-ring {
+      position:absolute; border-radius:50%;
+      border:1px solid rgba(20,184,166,0.55);
+      animation:waterRipple 3s ease-out infinite;
+      transform:scale(0); opacity:0;
+      width:30px; height:30px;
+    }
+    .ripple-ring:nth-child(1){animation-delay:0s}
+    .ripple-ring:nth-child(2){animation-delay:0.85s}
+    .ripple-ring:nth-child(3){animation-delay:1.7s}
+    .ripple-ring:nth-child(4){animation-delay:2.55s}
+    .ripple-centre { width:10px;height:10px;border-radius:50%;background:var(--teal-mid);opacity:0.55;position:relative;z-index:2;animation:centrePulse 3s ease-in-out infinite; }
+    @keyframes waterRipple { 0%{transform:scale(0.3);opacity:0.75}65%{opacity:0.25}100%{transform:scale(4.4);opacity:0} }
+    @keyframes centrePulse { 0%,100%{opacity:0.35;transform:scale(0.85)}50%{opacity:0.75;transform:scale(1.15)} }
+    .ripple-text { font-family:var(--serif);font-size:clamp(16px,3vw,19px);font-style:italic;color:var(--text-soft);opacity:0;animation:rippleTextIn 1.4s ease 1s forwards; }
+    @keyframes rippleTextIn { from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)} }
+
+    .refl-label { font-family:var(--sans);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--teal);opacity:0.7;margin-bottom:20px; }
+    .refl-text { font-family:var(--serif);font-size:clamp(23px,4.8vw,28px);font-weight:300;line-height:2.2;color:var(--text-dark);white-space:pre-wrap;margin-bottom:32px; }
+
+    /* ── PATTERN CHIP on reflection screen ── */
+    .pattern-chip-wrap { text-align:center; margin-bottom:28px; opacity:0; transform:translateY(6px); transition:opacity 0.8s ease, transform 0.8s ease; }
+    .pattern-chip-wrap.arrived { opacity:1; transform:translateY(0); }
+    .pattern-chip {
+      display:inline-flex; align-items:center; gap:8px;
+      background:linear-gradient(135deg,rgba(13,92,99,0.07),rgba(20,184,166,0.10));
+      border:1.5px solid rgba(20,184,166,0.30);
+      border-radius:30px; padding:8px 20px;
+      font-family:var(--sans); font-size:12px; letter-spacing:2px;
+      text-transform:uppercase; color:var(--teal); cursor:default;
+    }
+    .pattern-chip-dot { width:6px; height:6px; border-radius:50%; background:var(--teal-mid); opacity:0.7; }
+    .pattern-chip-label { font-style:italic; font-family:var(--serif); font-size:15px; letter-spacing:0.5px; text-transform:none; color:var(--deep); font-weight:600; }
+
+    .choice-label { font-family:var(--serif);font-size:clamp(15px,3vw,18px);font-style:italic;color:var(--text-soft);text-align:center;margin-bottom:20px; }
+    .choice-cards { display:flex;gap:16px;margin-bottom:40px; }
+    .choice-card {
+      flex:1;background:var(--warm-white);border:1px solid rgba(20,184,166,0.3);border-radius:22px;
+      padding:26px 18px;cursor:pointer;transition:all 0.3s;text-align:center;
+      display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:var(--shadow-sm);
+    }
+    .choice-card:hover { border-color:var(--teal-mid);transform:translateY(-3px);box-shadow:0 12px 32px rgba(20,184,166,0.14); }
+    .choice-card svg { width:28px;height:28px;color:var(--teal-mid); }
+    .choice-word { font-family:var(--serif);font-size:clamp(19px,3.8vw,23px);font-weight:700;font-style:italic;color:var(--text-dark); }
+    .choice-desc { font-family:var(--sans);font-size:clamp(12px,2.4vw,14px);font-weight:300;color:var(--text-soft);line-height:1.5; }
+
+    /* ── CLEARING SCREEN ── */
+    .breath-circle { width:72px;height:72px;border-radius:50%;border:1px solid rgba(20,184,166,0.3);position:relative;margin-bottom:48px;flex-shrink:0; }
+    .breath-circle::before { content:"";position:absolute;inset:10px;border-radius:50%;background:radial-gradient(circle,rgba(20,184,166,0.16) 0%,rgba(13,92,99,0.05) 100%);animation:bCircle 5s ease-in-out infinite; }
+    .breath-circle::after { content:"";position:absolute;inset:-12px;border-radius:50%;border:1px solid rgba(20,184,166,0.1);animation:bRing 5s ease-in-out infinite; }
+    @keyframes bCircle { 0%,100%{transform:scale(0.85);opacity:0.5}50%{transform:scale(1.1);opacity:1} }
+    @keyframes bRing   { 0%,100%{transform:scale(0.9);opacity:0.3}50%{transform:scale(1.15);opacity:0.7} }
+    .clearing-content { display:flex;flex-direction:column;align-items:center;max-width:520px;padding:0 28px;text-align:center; }
+    .clearing-refl { font-family:var(--serif);font-size:clamp(21px,4.2vw,26px);font-weight:300;line-height:2.1;color:var(--text-dark);white-space:pre-wrap;margin-bottom:48px;opacity:0;transform:translateY(10px);transition:opacity 1.4s ease,transform 1.4s ease;text-align:center; }
+    .clearing-refl.arrived { opacity:1;transform:translateY(0); }
+    .clearing-line { font-family:var(--serif);font-size:clamp(20px,4vw,25px);font-weight:300;font-style:italic;color:var(--text-mid);line-height:1.8;opacity:0;transform:translateY(8px);transition:opacity 1.4s ease,transform 1.4s ease;margin-bottom:6px; }
+    .clearing-line.arrived { opacity:1;transform:translateY(0); }
+    .clearing-line.closing { font-size:clamp(15px,2.8vw,18px);color:var(--teal-mid);font-weight:400;margin-top:28px; }
+    .clearing-attribution { font-family:var(--sans);font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--teal-mid);opacity:0;transform:translateY(6px);transition:opacity 1.2s ease,transform 1.2s ease;margin-top:-32px;margin-bottom:36px;text-align:center; }
+    .clearing-attribution.arrived { opacity:0.6;transform:translateY(0); }
+    .clearing-feedback { opacity:0;transition:opacity 1.2s ease;margin-top:48px;width:100%;text-align:center;pointer-events:none;padding:0 8px; }
+    .clearing-feedback.visible { opacity:1;pointer-events:auto; }
+    .feedback-prompt { font-family:var(--serif);font-size:clamp(18px,3.5vw,21px);font-style:italic;font-weight:300;color:var(--text-body);margin-bottom:16px; }
+    .feedback-cards { display:flex;justify-content:center;gap:6px;flex-wrap:nowrap; }
+    .feedback-card { background:var(--warm-white);border:1px solid var(--border);border-radius:12px;padding:10px 6px;cursor:pointer;transition:all 0.3s;text-align:center;flex:1;min-width:0;box-shadow:var(--shadow-sm); }
+    .feedback-card:hover { border-color:rgba(20,184,166,0.5);transform:translateY(-2px); }
+    .feedback-card.selected { background:linear-gradient(135deg,rgba(13,92,99,0.06),rgba(20,184,166,0.1));border-color:var(--teal-mid); }
+    .feedback-word { font-family:var(--serif);font-size:clamp(15px,2.8vw,17px);font-weight:600;font-style:italic;color:var(--text-dark);display:block;margin-bottom:5px; }
+    .feedback-desc { font-family:var(--sans);font-size:clamp(13px,2.2vw,15px);font-weight:400;color:var(--text-body);line-height:1.5;display:block; }
+    .feedback-thanks { display:none;font-family:var(--serif);font-size:13px;font-style:italic;color:var(--teal-mid);margin-top:14px;opacity:0;transition:opacity 0.6s; }
+    .feedback-thanks.visible { display:block;opacity:1; }
+    .btn-new-wrap { margin-top:40px;text-align:center;opacity:0;transition:opacity 1s ease; }
+    .btn-new-wrap.visible { opacity:1; }
+    .btn-new { background:none;border:none;font-family:var(--sans);font-size:11px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--text-soft);cursor:pointer;padding:10px 20px;transition:color 0.3s; }
+    .btn-new:hover { color:var(--teal); }
+
+    /* ══════════════════════════════════════════
+       PATTERNS TAB — phone-friendly redesign
+    ══════════════════════════════════════════ */
+    .tab-section-title {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tab-section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(20,184,166,0.3), transparent);
+    }
+    .tab-section-title:first-child { margin-top: 0; }
+
+    .pat-header { text-align:center; margin-bottom:28px; }
+    .pat-name {
+      font-family: var(--serif);
+      font-size: clamp(38px,8vw,52px);
+      font-weight: 700;
+      font-style: italic;
+      background: linear-gradient(120deg,var(--teal) 0%,var(--teal-mid) 55%,#5eead4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .pat-count {
+      font-family: var(--sans);
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    /* Trend story */
+    .pat-trend-story {
+      background: linear-gradient(135deg,rgba(20,184,166,0.07),rgba(10,61,66,0.04));
+      border: 1.5px solid rgba(20,184,166,0.2);
+      border-radius: 24px;
+      padding: 24px 24px;
+      margin-bottom: 20px;
+    }
+    .pat-trend-label {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal-mid);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pat-trend-label::before { content: "✦"; font-size: 10px; }
+    .pat-trend-text {
+      font-family: var(--serif);
+      font-size: clamp(19px,3.8vw,23px);
+      font-style: italic;
+      color: var(--text-dark);
+      line-height: 1.9;
+    }
+
+    /* Overall row — bigger, full width stacked cards */
+    .pat-aci-row { display:flex; gap:12px; margin-bottom:12px; }
+    .pat-aci-card {
+      flex: 1;
+      background: var(--warm-white);
+      border: 1.5px solid rgba(20,184,166,0.22);
+      border-radius: 24px;
+      padding: 24px 18px 20px;
+      box-shadow: var(--shadow-sm);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .pat-aci-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--teal), var(--teal-mid));
+      border-radius: 24px 24px 0 0;
+    }
+    .pat-aci-label {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .pat-aci-meaning {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-style: italic;
+      color: var(--text-body);
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .pat-aci-score {
+      font-family: var(--serif);
+      font-size: clamp(40px,9vw,52px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .pat-aci-trend {
+      font-family: var(--sans);
+      font-size: 14px;
+      font-style: italic;
+      color: var(--teal-mid);
+    }
+
+    /* Cluster cards — full width, one per row, with ring visual */
+    .pat-cluster-grid { display:flex; flex-direction:column; gap:12px; margin-bottom:12px; }
+    .pat-cluster-card {
+      background: var(--warm-white);
+      border: 1.5px solid rgba(20,184,166,0.18);
+      border-radius: 24px;
+      padding: 22px 24px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .pat-cluster-ring-wrap {
+      flex-shrink: 0;
+      width: 72px; height: 72px;
+      position: relative;
+    }
+    .pat-cluster-ring-wrap svg { width:72px; height:72px; transform: rotate(-90deg); }
+    .pat-cluster-ring-bg { fill:none; stroke: rgba(20,184,166,0.12); stroke-width:5; }
+    .pat-cluster-ring-fill {
+      fill: none;
+      stroke: url(#ringGrad);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 188;
+      stroke-dashoffset: 188;
+      transition: stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+    .pat-cluster-ring-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 18px;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--deep);
+    }
+    .pat-cluster-info { flex: 1; }
+    .pat-cluster-name {
+      font-family: var(--sans);
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .pat-cluster-meaning {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-style: italic;
+      color: var(--text-body);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .pat-bar-track { height:4px; background:rgba(20,184,166,0.12); border-radius:2px; margin-bottom:6px; display:none; }
+    .pat-bar-fill { height:100%; border-radius:2px; background:linear-gradient(to right,var(--teal),var(--teal-mid)); transition:width 1.2s ease; }
+    .pat-cluster-trend {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+    .pat-cluster-trend.improving { color: var(--teal-mid); font-weight:600; }
+    .pat-cluster-trend.easing    { color: #b45e3a; }
+
+    /* NRM */
+    .pat-nrm-card {
+      background: var(--warm-white);
+      border: 1.5px solid rgba(20,184,166,0.18);
+      border-radius: 22px;
+      padding: 22px 22px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .pat-nrm-label {
+      font-family: var(--serif);
+      font-size: clamp(19px,3.8vw,22px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--deep);
+      margin-bottom: 6px;
+    }
+    .pat-nrm-desc {
+      font-family: var(--sans);
+      font-size: clamp(15px,3vw,17px);
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 8px;
+    }
+    .pat-nrm-note {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-style: italic;
+      color: var(--teal);
+      line-height: 1.6;
+    }
+
+    /* Score guide */
+    .pat-disclaimer {
+      background: rgba(20,184,166,0.05);
+      border: 1.5px solid rgba(20,184,166,0.15);
+      border-radius: 22px;
+      padding: 24px 24px;
+      margin-bottom: 16px;
+      font-family: var(--serif);
+      font-size: clamp(17px,3.4vw,20px);
+      font-style: italic;
+      color: var(--text-dark);
+      line-height: 1.9;
+      text-align: center;
+    }
+    .pat-guide-item {
+      background: var(--warm-white);
+      border: 1.5px solid rgba(20,184,166,0.18);
+      border-radius: 20px;
+      padding: 20px 22px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .pat-guide-item:hover { border-color:rgba(20,184,166,0.4); box-shadow: var(--shadow-sm); }
+    .pat-guide-header { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .pat-guide-title {
+      font-family: var(--serif);
+      font-size: clamp(19px,3.8vw,22px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--deep);
+    }
+    .pat-guide-chevron { font-size:16px; color:var(--teal-mid); transition:transform 0.3s; }
+    .pat-guide-chevron.open { transform:rotate(180deg); }
+    .pat-guide-body { display:none; margin-top:18px; }
+    .pat-guide-body.open { display:block; }
+    .pat-guide-intro {
+      font-family: var(--serif);
+      font-size: clamp(17px,3.4vw,20px);
+      font-style: italic;
+      color: var(--text-dark);
+      line-height: 1.9;
+      margin-bottom: 12px;
+    }
+    .pat-guide-what {
+      font-family: var(--sans);
+      font-size: clamp(15px,3vw,17px);
+      color: var(--text-body);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .pat-guide-note {
+      font-family: var(--serif);
+      font-size: clamp(16px,3.2vw,18px);
+      font-style: italic;
+      color: var(--teal);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      padding: 14px 18px;
+      background: rgba(20,184,166,0.06);
+      border-radius: 14px;
+      border-left: 3px solid rgba(20,184,166,0.4);
+    }
+    .pat-range-row { display:flex; gap:10px; flex-direction:column; }
+    .pat-range-item {
+      border-radius: 14px;
+      padding: 14px 18px;
+      font-family: var(--sans);
+      font-size: clamp(15px,3vw,17px);
+      line-height: 1.7;
+    }
+    .pat-range-item .range-label {
+      font-weight: 700;
+      margin-bottom: 4px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .pat-range-item.low  { background:rgba(180,94,58,0.07); color:var(--text-dark); }
+    .pat-range-item.mid  { background:rgba(20,184,166,0.06); color:var(--text-dark); }
+    .pat-range-item.high { background:rgba(10,61,66,0.06);   color:var(--text-dark); }
+    .pat-range-item.low  .range-label { color:#b45e3a; }
+    .pat-range-item.mid  .range-label { color:var(--teal); }
+    .pat-range-item.high .range-label { color:var(--deep); }
+
+    /* ══════════════════════════════════════════
+       JOURNEY TAB — phone-friendly redesign
+    ══════════════════════════════════════════ */
+    .jour-intro {
+      font-family: var(--serif);
+      font-size: clamp(18px,3.6vw,22px);
+      font-style: italic;
+      color: var(--text-body);
+      text-align: center;
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+
+    /* Trend story in journey */
+    .jour-trend {
+      background: linear-gradient(135deg,rgba(20,184,166,0.07),rgba(10,61,66,0.04));
+      border: 1.5px solid rgba(20,184,166,0.2);
+      border-radius: 24px;
+      padding: 24px 24px;
+      margin-bottom: 20px;
+    }
+    .jour-trend-label {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal-mid);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .jour-trend-label::before { content: "✦"; font-size: 10px; }
+    .jour-trend-text {
+      font-family: var(--serif);
+      font-size: clamp(19px,3.8vw,23px);
+      font-style: italic;
+      color: var(--text-dark);
+      line-height: 1.9;
+    }
+
+    /* Session cards — fully redesigned */
+    .session-card {
+      background: var(--warm-white);
+      border: 1.5px solid rgba(20,184,166,0.18);
+      border-radius: 24px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.25s;
+    }
+    .session-card:has(.session-card-body.open) { border-color: rgba(20,184,166,0.38); }
+    .session-card-header {
+      padding: 22px 22px 18px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .session-card-left { flex:1; }
+    .session-date {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .session-preview {
+      font-family: var(--serif);
+      font-size: clamp(19px,3.8vw,22px);
+      font-style: italic;
+      color: var(--text-dark);
+      line-height: 1.55;
+      margin-bottom: 10px;
+    }
+    .session-badges { display:flex; gap:6px; flex-wrap:wrap; }
+    .session-badge {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(20,184,166,0.1);
+      color: var(--teal);
+      font-weight: 600;
+    }
+    .session-badge.deep { background:rgba(10,61,66,0.08); color:var(--deep); }
+    .session-chevron {
+      font-size: 20px;
+      color: var(--teal-mid);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .session-chevron.open { transform: rotate(180deg); }
+    .session-card-body {
+      display: none;
+      padding: 0 22px 24px;
+      border-top: 1px solid rgba(20,184,166,0.12);
+    }
+    .session-card-body.open { display:block; }
+    .session-section-label {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 600;
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
+    .session-journal-text {
+      font-family: var(--serif);
+      font-size: clamp(19px,3.8vw,22px);
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--text-dark);
+      white-space: pre-wrap;
+      background: rgba(20,184,166,0.04);
+      border-left: 3px solid rgba(20,184,166,0.3);
+      padding: 16px 20px;
+      border-radius: 0 16px 16px 0;
+    }
+    .session-reflection-text {
+      font-family: var(--serif);
+      font-size: clamp(19px,3.8vw,22px);
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--text-body);
+      white-space: pre-wrap;
+      font-style: italic;
+    }
+    .session-deep-text {
+      font-family: var(--serif);
+      font-size: clamp(17px,3.4vw,20px);
+      font-weight: 300;
+      line-height: 1.95;
+      color: var(--teal);
+      white-space: pre-wrap;
+      font-style: italic;
+    }
+    .session-k-quote {
+      font-family: var(--serif);
+      font-size: clamp(17px,3.4vw,20px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--teal);
+      line-height: 1.85;
+      text-align: center;
+      padding: 20px 16px;
+      margin: 12px 0;
+      border-top: 1px solid rgba(20,184,166,0.15);
+    }
+
+    /* Score tiles — full width single column, bigger */
+    .session-scores-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .session-score-tile {
+      border-radius: 18px;
+      padding: 18px 20px;
+      background: rgba(20,184,166,0.04);
+      border: 1.5px solid rgba(20,184,166,0.14);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .session-score-left { flex: 1; }
+    .session-score-name {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .session-score-val {
+      font-family: var(--serif);
+      font-size: clamp(28px,6vw,34px);
+      font-weight: 700;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .session-score-interp {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.4;
+    }
+    .session-score-bar-wrap {
+      width: 44px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .session-score-bar-track {
+      width: 6px;
+      height: 60px;
+      background: rgba(20,184,166,0.12);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .session-score-bar-fill {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, var(--teal), var(--teal-mid));
+      border-radius: 3px;
+      transition: height 1.2s ease;
+    }
+
+
+    /* ══════════════════════════════════════════
+       ABOUT SCREEN
+    ══════════════════════════════════════════ */
+    .about-opener {
+      text-align: center;
+      padding: 8px 0 24px;
+    }
+    .about-kicker {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: block;
+      margin-bottom: 20px;
+    }
+    .about-headline {
+      font-family: var(--serif);
+      font-size: clamp(30px, 6vw, 44px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1.3;
+      margin-bottom: 18px;
+    }
+    .about-headline .hi {
+      background: linear-gradient(120deg, var(--teal) 0%, var(--teal-mid) 60%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .about-sub {
+      font-family: var(--serif);
+      font-size: clamp(18px, 3.5vw, 22px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-body);
+      line-height: 1.85;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .about-rule {
+      width: 40px; height: 1.5px;
+      background: linear-gradient(to right, transparent, var(--teal-mid), transparent);
+      margin: 28px auto;
+      opacity: 0.5;
+    }
+
+    /* ── Friend letter ── */
+    .about-letter {
+      background: var(--warm-white);
+      border: 1.5px solid rgba(20,184,166,0.28);
+      border-radius: 24px;
+      padding: 32px 30px 28px;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 32px rgba(10,61,66,0.09);
+    }
+    .about-letter-from {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .about-letter-body {
+      font-family: var(--serif);
+      font-size: clamp(18px, 3.5vw, 22px);
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--text-dark);
+    }
+    .about-letter-body p {
+      margin-bottom: 20px;
+    }
+    .about-letter-body p:last-child {
+      margin-bottom: 0;
+    }
+    /* Highlight key phrases within letter */
+    .about-letter-body em {
+      font-style: italic;
+      color: var(--teal);
+      font-weight: 400;
+    }
+    .about-letter-sig {
+      font-family: var(--serif);
+      font-size: clamp(17px, 3.2vw, 20px);
+      font-style: italic;
+      color: var(--teal);
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(20,184,166,0.2);
+    }
+
+    /* ── Section heading ── */
+    .about-section-title {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 16px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .about-section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(20,184,166,0.3), transparent);
+    }
+    .about-section-title:first-child { margin-top: 0; }
+
+    /* ── Feature cards ── */
+    .about-features { margin-bottom: 4px; }
+    .about-feat {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      background: var(--warm-white);
+      border: 1.5px solid rgba(20,184,166,0.22);
+      border-radius: 22px;
+      padding: 24px 22px;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 20px rgba(10,61,66,0.07);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .about-feat:hover {
+      border-color: rgba(20,184,166,0.45);
+      box-shadow: 0 6px 28px rgba(10,61,66,0.11);
+    }
+    .about-feat-icon {
+      font-size: 28px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--teal-mid);
+    }
+    .about-feat-title {
+      font-family: var(--serif);
+      font-size: clamp(19px, 3.8vw, 23px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--deep);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .about-feat-desc {
+      font-family: var(--sans);
+      font-size: clamp(15px, 3vw, 17px);
+      font-weight: 400;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    /* ── Why write here — second letter ── */
+    .about-letter.why {
+      background: linear-gradient(135deg, rgba(20,184,166,0.04) 0%, rgba(10,61,66,0.03) 100%);
+      border-color: rgba(20,184,166,0.25);
+    }
+
+    /* ── Privacy ── */
+    .about-privacy {
+      background: rgba(20,184,166,0.06);
+      border: 1.5px solid rgba(20,184,166,0.25);
+      border-radius: 22px;
+      padding: 28px 28px;
+      margin-bottom: 16px;
+    }
+    .about-privacy-title {
+      font-family: var(--serif);
+      font-size: clamp(20px, 4vw, 24px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--teal);
+      margin-bottom: 18px;
+      line-height: 1.3;
+    }
+    .about-privacy-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .about-privacy-item:last-child { margin-bottom: 0; }
+    .about-privacy-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--teal-mid);
+      flex-shrink: 0;
+      margin-top: 8px;
+      opacity: 0.7;
+    }
+    .about-privacy-text {
+      font-family: var(--sans);
+      font-size: clamp(15px, 3vw, 17px);
+      font-weight: 400;
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+    .about-privacy-text strong {
+      font-weight: 600;
+      color: var(--deep);
+    }
+
+    /* ── Closing quote ── */
+    .about-closing {
+      text-align: center;
+      padding: 28px 16px 12px;
+    }
+    .about-closing-mark {
+      font-family: var(--serif);
+      font-size: 60px;
+      font-style: italic;
+      color: var(--teal-mid);
+      opacity: 0.3;
+      line-height: 0.8;
+      display: block;
+      margin-bottom: 16px;
+    }
+    .about-closing-quote {
+      font-family: var(--serif);
+      font-size: clamp(20px, 4vw, 26px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-dark);
+      line-height: 1.85;
+    }
+    .about-closing-attr {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-top: 16px;
+      display: block;
+      opacity: 0.75;
+    }
+
+    /* ── CTA ── */
+    .about-cta {
+      text-align: center;
+      padding: 24px 0 12px;
+    }
+    .about-cta-btn {
+      display: inline-block;
+      padding: 20px 48px;
+      border-radius: 60px;
+      border: none;
+      background: linear-gradient(135deg, var(--deep) 0%, var(--teal) 55%, var(--teal-mid) 100%);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: clamp(15px, 3vw, 17px);
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 10px 36px rgba(13,92,99,0.30);
+      transition: all 0.3s;
+    }
+    .about-cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 44px rgba(13,92,99,0.38);
+    }
+    .about-cta-btn:active { transform: translateY(0); }
+
+    /* scrollbar */
+    ::-webkit-scrollbar { width:4px; }
+    ::-webkit-scrollbar-track { background:transparent; }
+    ::-webkit-scrollbar-thumb { background:rgba(20,184,166,0.25);border-radius:2px; }
+
+    /* ══ MILESTONE TOAST — v4.6.0 ══ */
+    .milestone-toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      z-index: 200;
+      background: linear-gradient(135deg, var(--deep), var(--teal));
+      border: 1px solid rgba(20,184,166,0.4);
+      border-radius: 20px;
+      padding: 18px 28px;
+      max-width: 340px;
+      width: calc(100% - 48px);
+      box-shadow: 0 16px 48px rgba(10,61,66,0.35);
+      opacity: 0;
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      pointer-events: none;
+      text-align: center;
+    }
+    .milestone-toast.visible {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .milestone-toast-title {
+      font-family: var(--serif);
+      font-size: clamp(16px,3vw,19px);
+      font-style: italic;
+      font-weight: 600;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 6px;
+    }
+    .milestone-toast-msg {
+      font-family: var(--serif);
+      font-size: clamp(14px,2.8vw,16px);
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+    }
+
+    /* ══ LONGITUDINAL ARC CARD — v4.6.0 ══ */
+    .arc-card {
+      background: linear-gradient(135deg, rgba(10,61,66,0.06), rgba(20,184,166,0.05));
+      border: 1.5px solid rgba(20,184,166,0.28);
+      border-radius: 28px;
+      padding: 32px 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 32px rgba(10,61,66,0.10);
+      position: relative;
+      overflow: hidden;
+    }
+    .arc-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--teal), var(--teal-mid), #5eead4);
+    }
+    .arc-card-label {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--teal-mid);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .arc-card-label::before { content: "✦"; font-size: 9px; }
+    .arc-card-headline {
+      font-family: var(--serif);
+      font-size: clamp(22px,4.5vw,28px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .arc-card-body {
+      font-family: var(--serif);
+      font-size: clamp(18px,3.6vw,21px);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-body);
+      line-height: 1.95;
+      margin-bottom: 24px;
+    }
+    .arc-sessions-bar {
+      display: flex;
+      gap: 6px;
+      align-items: flex-end;
+      margin-bottom: 20px;
+    }
+    .arc-session-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .arc-session-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      width: 100%;
+    }
+    .arc-session-bar {
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(to right, var(--teal), var(--teal-mid));
+    }
+    .arc-session-date {
+      font-family: var(--sans);
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      opacity: 0.6;
+    }
+    .arc-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .arc-tag {
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      border: 1px solid rgba(20,184,166,0.2);
+      padding: 5px 12px;
+      border-radius: 4px;
+      background: rgba(20,184,166,0.05);
+    }
+    .arc-loading {
+      text-align: center;
+      padding: 32px 0;
+      font-family: var(--serif);
+      font-size: clamp(16px,3vw,18px);
+      font-style: italic;
+      color: var(--text-soft);
+    }
+
+    /* ══ LOADING & EMPTY STATES ══ */
+    .tab-loading-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px;
+      gap: 20px;
+    }
+    .tab-spinner {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 2.5px solid rgba(20,184,166,0.15);
+      border-top-color: var(--teal-mid);
+      animation: spin 0.9s linear infinite;
+    }
+    .tab-loading-text {
+      font-family: var(--serif);
+      font-size: clamp(16px,3vw,19px);
+      font-style: italic;
+      color: var(--text-soft);
+    }
+    .tab-empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 56px 24px;
+      gap: 14px;
+    }
+    .tab-empty-icon { font-size: 48px; line-height: 1; }
+    .tab-empty-title {
+      font-family: var(--serif);
+      font-size: clamp(20px,4vw,24px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--text-dark);
+    }
+    .tab-empty-desc {
+      font-family: var(--sans);
+      font-size: clamp(15px,3vw,17px);
+      color: var(--text-body);
+      line-height: 1.8;
+      max-width: 340px;
+    }
+
+    /* ══ ABOUT — LETTER TOGGLE ══ */
+    .about-letter-toggle {
+      background: none;
+      border: none;
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      color: var(--teal-mid);
+      cursor: pointer;
+      padding: 10px 0 0;
+      display: block;
+      opacity: 0.8;
+    }
+    .about-letter-body.collapsed p:nth-child(n+3) { display: none; }
+
+    /* ══ ABOUT — STEP FLOW INFOGRAPHIC ══ */
+    .about-steps { margin-bottom: 8px; }
+    .about-step {
+      display: flex;
+      gap: 0;
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+    .about-step-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 52px;
+      flex-shrink: 0;
+      padding-top: 6px;
+    }
+    .about-step-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal), var(--teal-mid));
+      color: white;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(20,184,166,0.3);
+    }
+    .about-step-line {
+      width: 2px;
+      flex: 1;
+      min-height: 32px;
+      background: linear-gradient(to bottom, var(--teal-mid), rgba(20,184,166,0.15));
+      margin-top: 6px;
+    }
+    .about-step-right {
+      flex: 1;
+      padding: 4px 0 24px 16px;
+    }
+    .about-step-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 0;
+    }
+    .about-step-icon {
+      font-size: 28px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .about-step-title {
+      font-family: var(--serif);
+      font-size: clamp(18px,3.6vw,22px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+    .about-step-hint {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal-mid);
+      opacity: 0.65;
+      transition: opacity 0.2s;
+    }
+    .about-step-body {
+      display: none;
+      padding: 16px 0 4px 42px;
+      animation: stepBodyIn 0.3s ease;
+    }
+    .about-step-body.open { display: block; }
+    @keyframes stepBodyIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
+    .about-feat-icon-large {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: var(--teal-mid);
+    }
+    .about-qualities-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .about-quality-chip {
+      background: rgba(20,184,166,0.1);
+      border: 1px solid rgba(20,184,166,0.25);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--teal);
+    }
+    /* hide hint when open */
+    .about-step:has(.about-step-body.open) .about-step-hint { opacity: 0; }
+
+    /* ══ ABOUT — COMPARISON CARDS ══ */
+    .about-compare {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+      margin-bottom: 16px;
+    }
+    .about-compare-card {
+      flex: 1;
+      border-radius: 20px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .about-compare-card.talking {
+      background: rgba(120,120,120,0.06);
+      border: 1.5px solid rgba(120,120,120,0.15);
+    }
+    .about-compare-card.writing {
+      background: rgba(20,184,166,0.06);
+      border: 1.5px solid rgba(20,184,166,0.25);
+    }
+    .about-compare-icon { font-size: 28px; line-height: 1; }
+    .about-compare-label {
+      font-family: var(--serif);
+      font-size: clamp(15px,3vw,18px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--text-dark);
+    }
+    .about-compare-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .about-compare-list li {
+      font-family: var(--sans);
+      font-size: clamp(13px,2.5vw,15px);
+      color: var(--text-body);
+      line-height: 1.5;
+      padding-left: 14px;
+      position: relative;
+    }
+    .about-compare-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--teal-mid);
+    }
+    .about-compare-card.talking .about-compare-list li::before { color: var(--text-soft); }
+    .about-compare-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text-soft);
+      flex-shrink: 0;
+      width: 28px;
+      opacity: 0.6;
+    }
+
+    /* ══ ABOUT — PRIVACY ICON TILES ══ */
+    .about-privacy-icon {
+      font-size: 24px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+      width: 36px;
+      text-align: center;
+    }
+
+    /* ══ READABILITY FIXES ══ */
+    .feedback-word { color: var(--text-dark) !important; font-size: clamp(15px,3vw,17px) !important; }
+    .feedback-desc { color: var(--text-mid)  !important; font-size: clamp(13px,2.6vw,15px) !important; }
+    .choice-desc   { color: var(--text-body) !important; font-size: clamp(14px,2.8vw,16px) !important; }
+    .btn-new       { color: var(--text-mid)  !important; font-size: 14px !important; }
+
+    /* ── LANGUAGE PREFERENCE SCREEN ── */
+    .lang-pref-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      width: 100%;
+      padding: 18px 20px;
+      background: var(--warm-white);
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+    .lang-pref-btn:hover {
+      border-color: var(--teal-mid);
+      background: #f0faf9;
+      box-shadow: 0 6px 28px rgba(20,184,166,0.12);
+    }
+    .lang-pref-btn.loading {
+      opacity: 0.65;
+      pointer-events: none;
+    }
+    .lang-pref-subtle {
+      background: transparent;
+      border-color: rgba(20,184,166,0.12);
+    }
+    .lang-pref-flag {
+      font-size: 22px;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .lang-pref-label {
+      font-family: var(--serif);
+      font-size: clamp(16px,3.2vw,19px);
+      font-weight: 600;
+      color: var(--text-dark);
+      line-height: 1.3;
+    }
+    .lang-pref-sub {
+      font-family: var(--sans);
+      font-size: clamp(12px,2.2vw,13px);
+      color: var(--text-soft);
+      line-height: 1.4;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ MILESTONE TOAST — v4.6.0 ══ -->
+<div class="milestone-toast" id="milestoneToast">
+  <div class="milestone-toast-title" id="milestoneTitle"></div>
+  <div class="milestone-toast-msg" id="milestoneMsg"></div>
+</div>
+
+<!-- ══ BOTTOM TAB NAV ══ -->
+<nav class="tab-nav" id="tabNav">
+  <button class="tab-btn active" id="tabWrite" onclick="switchTab('write')">
+    <span class="tab-icon">✍️</span>
+    <span class="tab-label">Write</span>
+  </button>
+  <button class="tab-btn" id="tabPatterns" onclick="switchTab('patterns')">
+    <span class="tab-icon">🌿</span>
+    <span class="tab-label">Patterns</span>
+  </button>
+  <button class="tab-btn" id="tabJourney" onclick="switchTab('journey')">
+    <span class="tab-icon">📖</span>
+    <span class="tab-label">Journey</span>
+  </button>
+  <button class="tab-btn" id="tabAbout" onclick="switchTab('about')">
+    <span class="tab-icon">💫</span>
+    <span class="tab-label">About</span>
+  </button>
+</nav>
+
+<!-- ══ SCREEN 0 — REGISTRATION ══ -->
+<div class="screen active" id="screenRegister">
+  <div class="screen-inner" style="justify-content:center;min-height:100vh;padding-top:max(24px, env(safe-area-inset-top) + 8px);padding-bottom:32px;">
+    <div style="text-align:center;margin-bottom:4px;">
+      <span class="brand">LumeRI</span>
+    </div>
+    <div class="system-name" style="margin-bottom:10px;">Reflective Intelligence</div>
+    <div class="pitch" id="regPitch" style="text-align:center;margin-bottom:10px;">
+      <p class="pitch-soft">Most tools tell you what to think about yourself.</p>
+      <p class="pitch-strong">This one shows you <span class="hi">what you're already thinking.</span></p>
+    </div>
+    <div style="text-align:center;margin-bottom:18px;margin-top:-6px;">
+      <button onclick="showAboutFromReg()" style="background:none;border:none;font-family:var(--serif);font-size:clamp(15px,3vw,18px);font-style:italic;color:var(--teal-mid);cursor:pointer;text-decoration:underline;text-underline-offset:4px;letter-spacing:0.2px;">
+        What is LumeRI, and why write here?
+      </button>
+    </div>
+    <div id="regStep1">
+      <div class="reg-field">
+        <label class="reg-label">Your name</label>
+        <input type="text" id="regName" class="reg-input" placeholder="What should we call you?" maxlength="40" autocomplete="given-name"/>
+      </div>
+      <div class="reg-field">
+        <label class="reg-label">Your email</label>
+        <input type="email" id="regEmail" class="reg-input" placeholder="we'll send you a one-time code" autocomplete="email"/>
+      </div>
+      <div class="reg-field">
+        <label class="reg-label">Your country</label>
+        <select id="regCountry" class="reg-input" style="appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%228%22 viewBox=%220 0 12 8%22><path d=%22M1 1l5 5 5-5%22 stroke=%22%230d5c63%22 stroke-width=%221.5%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>');background-repeat:no-repeat;background-position:right 18px center;padding-right:42px;cursor:pointer;">
+          <option value="" disabled selected>Where are you writing from?</option>
+          <optgroup label="-- Common --">
+            <option value="India">India</option>
+            <option value="United States">United States</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+            <option value="Singapore">Singapore</option>
+            <option value="UAE">UAE</option>
+          </optgroup>
+          <optgroup label="-- All countries --">
+            <option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Bolivia">Bolivia</option><option value="Bosnia">Bosnia</option><option value="Brazil">Brazil</option><option value="Bulgaria">Bulgaria</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Chile">Chile</option><option value="China">China</option><option value="Colombia">Colombia</option><option value="Croatia">Croatia</option><option value="Czech Republic">Czech Republic</option><option value="Denmark">Denmark</option><option value="Dominican Republic">Dominican Republic</option><option value="Ecuador">Ecuador</option><option value="Egypt">Egypt</option><option value="Ethiopia">Ethiopia</option><option value="Finland">Finland</option><option value="France">France</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Ghana">Ghana</option><option value="Greece">Greece</option><option value="Guatemala">Guatemala</option><option value="Hungary">Hungary</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Iraq">Iraq</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Japan">Japan</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kenya">Kenya</option><option value="Kuwait">Kuwait</option><option value="Lebanon">Lebanon</option><option value="Libya">Libya</option><option value="Malaysia">Malaysia</option><option value="Mexico">Mexico</option><option value="Morocco">Morocco</option><option value="Myanmar">Myanmar</option><option value="Nepal">Nepal</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Nigeria">Nigeria</option><option value="Norway">Norway</option><option value="Oman">Oman</option><option value="Pakistan">Pakistan</option><option value="Palestine">Palestine</option><option value="Panama">Panama</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Qatar">Qatar</option><option value="Romania">Romania</option><option value="Russia">Russia</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Senegal">Senegal</option><option value="Serbia">Serbia</option><option value="South Africa">South Africa</option><option value="South Korea">South Korea</option><option value="Spain">Spain</option><option value="Sri Lanka">Sri Lanka</option><option value="Sudan">Sudan</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syria">Syria</option><option value="Taiwan">Taiwan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Tunisia">Tunisia</option><option value="Turkey">Turkey</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="Uruguay">Uruguay</option><option value="Uzbekistan">Uzbekistan</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Yemen">Yemen</option><option value="Zimbabwe">Zimbabwe</option>
+            <option value="Other">Other</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="consent-row">
+        <input type="checkbox" id="regConsentCheck">
+        <label for="regConsentCheck">I am comfortable with my reflections being used anonymously to help improve this system for others.</label>
+      </div>
+      <button class="btn-submit" id="sendOtpBtn" onclick="sendOtp()">Send my code</button>
+      <div class="reg-error" id="regError1"></div>
+    </div>
+    <div id="regStep2" style="display:none;">
+      <p class="reg-sent-msg" id="regSentMsg"></p>
+      <div class="reg-field">
+        <label class="reg-label">Your 6-digit code</label>
+        <input type="text" id="otpInput" class="reg-input otp-input" placeholder="· · · · · ·" maxlength="6" inputmode="numeric" autocomplete="one-time-code"/>
+      </div>
+      <button class="btn-submit" id="verifyOtpBtn" onclick="verifyOtp()">Verify & begin</button>
+      <div class="reg-error" id="regError2"></div>
+      <div class="reg-resend">Didn't receive it? <span onclick="resendOtp()" class="reg-link">Send again</span></div>
+      <div class="reg-skip" id="regSkipWrap" style="display:none;">
+        <span onclick="skipVerify()" class="reg-link">Skip for now and continue</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ SCREEN: LANGUAGE PREFERENCE (shown once after registration) ══ -->
+<div class="screen" id="screenLangPref">
+  <div class="screen-inner" style="justify-content:center;min-height:100vh;padding:48px 24px;">
+    <div style="text-align:center;margin-bottom:8px;">
+      <span class="brand">LumeRI</span>
+    </div>
+    <div class="system-name" style="margin-bottom:32px;">One quick question</div>
+    <p style="font-family:var(--serif);font-size:clamp(17px,3.5vw,22px);color:var(--text-mid);text-align:center;line-height:1.6;margin-bottom:10px;">
+      Which kind of English do you write in most naturally?
+    </p>
+    <p style="font-size:clamp(13px,2.5vw,15px);color:var(--text-soft);text-align:center;line-height:1.55;margin-bottom:36px;">
+      This helps the system read your words more accurately — it only affects how your writing is understood, never what you write.
+    </p>
+    <div style="display:flex;flex-direction:column;gap:14px;width:100%;max-width:400px;margin:0 auto;">
+      <button class="lang-pref-btn" onclick="setLangPref('IN')">
+        <span class="lang-pref-flag">🇮🇳</span>
+        <span class="lang-pref-label">Indian English</span>
+        <span class="lang-pref-sub">tension, overthinking, level best, somewhere I feel</span>
+      </button>
+      <button class="lang-pref-btn" onclick="setLangPref('UKEN')">
+        <span class="lang-pref-flag">🌍</span>
+        <span class="lang-pref-label">US or UK English</span>
+        <span class="lang-pref-sub">therapy, processing, self-care, healing journey</span>
+      </button>
+      <button class="lang-pref-btn lang-pref-subtle" onclick="setLangPref('AUTO')">
+        <span class="lang-pref-label" style="font-size:clamp(14px,2.8vw,16px);">Let the system detect from my writing</span>
+        <span class="lang-pref-sub">It will figure it out as you journal</span>
+      </button>
+    </div>
+    <p style="font-size:12px;color:var(--text-soft);text-align:center;margin-top:28px;opacity:0.7;">
+      You can change this any time by contacting us.
+    </p>
+    <div class="reg-error" id="langPrefError" style="text-align:center;margin-top:12px;"></div>
+  </div>
+</div>
+
+<!-- ══ SCREEN 1 — WRITE TAB ══ -->
+<div class="screen has-nav" id="screenWrite">
+  <div class="screen-inner">
+    <div style="text-align:center;margin-bottom:6px;">
+      <span class="brand compact" id="writeBrand">LumeRI</span>
+    </div>
+    <div class="system-name compact" id="writeSysName">Reflective Intelligence</div>
+    <div class="greeting" id="greeting" style="margin-bottom:14px;"></div>
+    <div class="pitch" id="pitchBlock" style="display:none;text-align:center;margin-bottom:20px;">
+      <p class="pitch-soft" id="writeLine1">Most tools tell you what to think about yourself.</p>
+      <p class="pitch-strong" id="writeLine2">This one shows you <span class="hi">what you're already thinking.</span></p>
+    </div>
+    <div class="pitch-rule" id="writeRule" style="display:none;"></div>
+    <p class="invitation" id="writeInvitation" style="display:none;"></p>
+
+    <div class="writing-card">
+      <div class="panel-label">Your words</div>
+      <textarea id="journalInput"
+        placeholder="What feels most real right now? Write as little or as much as you need."
+        oninput="updateWordCount()"></textarea>
+      <div class="word-row">
+        <span class="word-hint" id="wordHint">A few lines is enough.</span>
+        <span class="word-count" id="wordCount"></span>
+      </div>
+      <div class="word-progress"><div class="word-progress-fill" id="wordProgressFill"></div></div>
+    </div>
+
+    <button class="btn-submit" id="submitBtn" onclick="submitEntry()">Begin Reflection</button>
+    <div class="trust-block">
+      <div class="trust-soft">Your words are yours.</div>
+      <div class="trust-bold">Reflections are held with care.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SCREEN 2 — REFLECTION ══ -->
+<div class="screen has-nav" id="screenReflect">
+  <div class="screen-inner">
+    <div id="loadingState">
+      <div class="water-ripple">
+        <div class="ripple-container">
+          <div class="ripple-ring"></div><div class="ripple-ring"></div>
+          <div class="ripple-ring"></div><div class="ripple-ring"></div>
+          <div class="ripple-centre"></div>
+        </div>
+        <div class="ripple-text">sitting with what you wrote...</div>
+      </div>
+    </div>
+    <div id="reflectContent" style="display:none;">
+      <div class="refl-label" id="reflLabel">Reflection for the Day</div>
+      <div class="refl-text" id="reflText"></div>
+      <!-- v4.1: Human Condition pattern — research/analysis only, never shown to user -->
+      <div id="patternChipWrap" style="display:none;" aria-hidden="true">
+        <span id="patternChipLabel"></span>
+      </div>
+      <div class="choice-label">Take the next step</div>
+      <div class="choice-cards">
+        <div class="choice-card" id="deepCard" onclick="goDeeper()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/>
+          </svg>
+          <span class="choice-word">Go deeper</span>
+          <span class="choice-desc">Explore a philosophical layer beneath what you wrote</span>
+        </div>
+        <div class="choice-card" onclick="sitWithThis()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <circle cx="12" cy="12" r="9" opacity="0.25"/>
+            <path d="M12 8v4l2.5 2.5"/>
+          </svg>
+          <span class="choice-word">Sit with this</span>
+          <span class="choice-desc">Stay with the reflection a while longer</span>
+        </div>
+      </div>
+      <div class="btn-new-wrap" id="newEntryWrap1">
+        <button class="btn-new" onclick="resetToWrite()">↩ &nbsp; Begin a new entry</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SCREEN 3 — CLEARING ══ -->
+<div class="screen has-nav" id="screenClearing" style="align-items:center;">
+  <div class="screen-inner" style="align-items:center;padding-top:56px;">
+    <div class="clearing-content" id="clearingContent">
+      <div class="breath-circle"></div>
+      <div id="clearingLines"></div>
+      <div class="clearing-feedback" id="clearingFeedback">
+        <div class="feedback-prompt">How did this land</div>
+        <div class="feedback-cards">
+          <div class="feedback-card" onclick="submitFeedback('Seen',this)"><span class="feedback-word">Seen</span><span class="feedback-desc">Felt true.</span></div>
+          <div class="feedback-card" onclick="submitFeedback('Stirred',this)"><span class="feedback-word">Stirred</span><span class="feedback-desc">Something moved.</span></div>
+          <div class="feedback-card" onclick="submitFeedback('Gentle',this)"><span class="feedback-word">Gentle</span><span class="feedback-desc">Good, not deep.</span></div>
+          <div class="feedback-card" onclick="submitFeedback('Distant',this)"><span class="feedback-word">Distant</span><span class="feedback-desc">Did not reach me.</span></div>
+          <div class="feedback-card" onclick="submitFeedback('Heavy',this)"><span class="feedback-word">Heavy</span><span class="feedback-desc">Too much today.</span></div>
+        </div>
+        <div class="feedback-thanks" id="feedbackThanks">noted, with care</div>
+      </div>
+      <div class="btn-new-wrap" id="newEntryWrap2">
+        <button class="btn-new" onclick="resetToWrite()">↩ &nbsp; Begin a new entry</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SCREEN 4 — PATTERNS TAB ══ -->
+<div class="screen has-nav" id="screenPatterns">
+  <div class="screen-inner">
+
+    <!-- SVG gradient defs for rings -->
+    <svg width="0" height="0" style="position:absolute;">
+      <defs>
+        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#0d5c63"/>
+          <stop offset="100%" style="stop-color:#14b8a6"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="pat-header">
+      <span class="pat-name">Patterns</span>
+      <div class="pat-count" id="patCount"></div>
+      <!-- v4.1: most recent Human Condition pattern -->
+      <div id="patCurrentPattern" style="display:none;margin-top:12px;">
+        <div class="pattern-chip" style="margin:0 auto;">
+          <div class="pattern-chip-dot"></div>
+          <span style="font-size:11px;letter-spacing:2px;">most recent pattern</span>
+          <span class="pattern-chip-label" id="patCurrentPatternLabel"></span>
+        </div>
+      </div>
+    </div>
+    <div id="patLoading" class="tab-loading-state">
+      <div class="tab-spinner"></div>
+      <div class="tab-loading-text">Reading your patterns...</div>
+    </div>
+    <div id="patEmpty" class="tab-empty-state" style="display:none;">
+      <div class="tab-empty-icon">🌱</div>
+      <div class="tab-empty-title">Your patterns will appear here</div>
+      <div class="tab-empty-desc">Write your first entry and LumeRI will begin to notice how your mind moves.</div>
+    </div>
+    <div id="patContent" style="display:none;">
+      <!-- Trend story -->
+      <div id="patTrendStory"></div>
+      <!-- Overall -->
+      <div class="tab-section-title">Overall picture</div>
+      <div class="pat-aci-row">
+        <div class="pat-aci-card">
+          <div class="pat-aci-label">Mind's Range</div>
+          <div class="pat-aci-meaning">how openly thoughts moved</div>
+          <div class="pat-aci-score" id="patAci">—</div>
+          <div class="pat-aci-trend" id="patAciTrend"></div>
+        </div>
+        <div class="pat-aci-card">
+          <div class="pat-aci-label">Weight Carried</div>
+          <div class="pat-aci-meaning">what your words held</div>
+          <div class="pat-aci-score" id="patPls">—</div>
+          <div class="pat-aci-trend" id="patPlsTrend"></div>
+        </div>
+      </div>
+      <!-- Four qualities -->
+      <div class="tab-section-title">Four qualities</div>
+      <div class="pat-cluster-grid">
+        <div class="pat-cluster-card">
+          <div class="pat-cluster-ring-wrap">
+            <svg viewBox="0 0 72 72">
+              <circle class="pat-cluster-ring-bg" cx="36" cy="36" r="30"/>
+              <circle class="pat-cluster-ring-fill" id="patRingA" cx="36" cy="36" r="30"/>
+            </svg>
+            <div class="pat-cluster-ring-label" id="patCA">—</div>
+          </div>
+          <div class="pat-cluster-info">
+            <div class="pat-cluster-name">🌀 Openness</div>
+            <div class="pat-cluster-meaning">holding more than one truth</div>
+            <div class="pat-bar-track"><div class="pat-bar-fill" id="patBarA" style="width:0%"></div></div>
+            <div class="pat-cluster-trend" id="patTrendA"></div>
+          </div>
+        </div>
+        <div class="pat-cluster-card">
+          <div class="pat-cluster-ring-wrap">
+            <svg viewBox="0 0 72 72">
+              <circle class="pat-cluster-ring-bg" cx="36" cy="36" r="30"/>
+              <circle class="pat-cluster-ring-fill" id="patRingB" cx="36" cy="36" r="30"/>
+            </svg>
+            <div class="pat-cluster-ring-label" id="patCB">—</div>
+          </div>
+          <div class="pat-cluster-info">
+            <div class="pat-cluster-name">🌊 Stillness</div>
+            <div class="pat-cluster-meaning">how settled the mind felt</div>
+            <div class="pat-bar-track"><div class="pat-bar-fill" id="patBarB" style="width:0%"></div></div>
+            <div class="pat-cluster-trend" id="patTrendB"></div>
+          </div>
+        </div>
+        <div class="pat-cluster-card">
+          <div class="pat-cluster-ring-wrap">
+            <svg viewBox="0 0 72 72">
+              <circle class="pat-cluster-ring-bg" cx="36" cy="36" r="30"/>
+              <circle class="pat-cluster-ring-fill" id="patRingC" cx="36" cy="36" r="30"/>
+            </svg>
+            <div class="pat-cluster-ring-label" id="patCC">—</div>
+          </div>
+          <div class="pat-cluster-info">
+            <div class="pat-cluster-name">🌸 Self-Warmth</div>
+            <div class="pat-cluster-meaning">how gently you held yourself</div>
+            <div class="pat-bar-track"><div class="pat-bar-fill" id="patBarC" style="width:0%"></div></div>
+            <div class="pat-cluster-trend" id="patTrendC"></div>
+          </div>
+        </div>
+        <div class="pat-cluster-card">
+          <div class="pat-cluster-ring-wrap">
+            <svg viewBox="0 0 72 72">
+              <circle class="pat-cluster-ring-bg" cx="36" cy="36" r="30"/>
+              <circle class="pat-cluster-ring-fill" id="patRingD" cx="36" cy="36" r="30"/>
+            </svg>
+            <div class="pat-cluster-ring-label" id="patCD">—</div>
+          </div>
+          <div class="pat-cluster-info">
+            <div class="pat-cluster-name">💎 Clarity</div>
+            <div class="pat-cluster-meaning">how clearly the story came through</div>
+            <div class="pat-bar-track"><div class="pat-bar-fill" id="patBarD" style="width:0%"></div></div>
+            <div class="pat-cluster-trend" id="patTrendD"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Things that come back -->
+      <div id="patNrmSection" style="display:none;">
+        <div class="tab-section-title">Things that come back</div>
+        <div id="patNrmContent"></div>
+      </div>
+      <!-- What these mean -->
+      <div class="tab-section-title">What these mean</div>
+      <div class="pat-disclaimer">
+        These numbers are not grades. They are not judgments. They do not say anything about who you are or how you are doing as a person.<br><br>
+        They are more like a quiet weather reading — a snapshot of how your mind was moving on the day you wrote. They shift with your mood, the events of the week, how much sleep you got, how honest you felt like being. A lower number on a hard day is not failure. It is information.<br><br>
+        Tap any category below to understand what it is actually measuring, and what the different ranges mean in plain language.
+      </div>
+      <div id="patGuideContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SCREEN 5 — JOURNEY TAB ══ -->
+<div class="screen has-nav" id="screenJourney">
+  <div class="screen-inner">
+    <div class="pat-header">
+      <span class="pat-name">Journey</span>
+      <div class="jour-intro" id="jourIntro"></div>
+    </div>
+    <!-- v4.6.0: longitudinal arc card — appears after 3+ sessions -->
+    <div id="jourArcCard"></div>
+    <div id="jourLoading" class="tab-loading-state">
+      <div class="tab-spinner"></div>
+      <div class="tab-loading-text">Gathering your reflections...</div>
+    </div>
+    <div id="jourEmpty" class="tab-empty-state" style="display:none;">
+      <div class="tab-empty-icon">📖</div>
+      <div class="tab-empty-title">Your journey begins here</div>
+      <div class="tab-empty-desc">Every entry you write will be held here — your words, your reflections, your patterns over time.</div>
+    </div>
+    <div id="jourTrend"  style="display:none;"></div>
+    <div id="jourContent" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+  const GAS_URL = "https://script.google.com/macros/s/AKfycbzJk6dq-DWnfIMvGLEql1AWBd6bSZxeEbEs7snm_DW3O1CrbB4r9IUqyqY_Jn5HMCGg/exec";
+  function gasCall(fn, params, onSuccess, onFailure) {
+    const body = Object.assign({ action: fn }, params);
+    const encoded = Object.keys(body).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(JSON.stringify(body[k]))).join('&');
+    fetch(GAS_URL, { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'}, body: encoded })
+      .then(r => r.json()).then(d => { if(onSuccess) onSuccess(d); })
+      .catch(e => { if(onFailure) onFailure(e); });
+  }
+
+  // ── STATE ──
+  let currentSessionId     = null;
+  let currentDisplayName   = null;
+  let currentEmail         = null;
+  let currentCountry       = null;
+  let currentSessionCount  = 0;
+  let currentDeepLensCount = 0;
+  let currentPatternName   = null;   // v4.1: most recent Human Condition pattern
+  let currentMode          = null;   // v4.6.0: companion mode (EMOTIONAL, FESTIVAL, etc.)
+  let currentLangVariant   = null;   // v4.5.0: "IN" | "UKEN" | "AUTO" | null (not set)
+  let langPrefIsFirstVisit = true;   // passed through from registration flow to enterWritingScreen
+  let consentGiven         = false;
+  let feedbackSubmitted    = false;
+  let deepUsed             = false;
+  let silenceStart         = null;
+  let silenceTimer         = null;
+  let otpAttempts          = 0;
+  let patternsLoaded       = false;
+  let journeyLoaded        = false;
+  const SILENCE_MS  = 20000;
+  const WORD_TARGET = 30;
+
+  // ── SCORE GUIDE DATA ──
+  const SCORE_GUIDE = [
+    {
+      title: "Mind's Range",
+      emoji: "◈",
+      intro: "Think of this as the overall temperature of a session — a single number that captures how freely and openly your mind was moving when you wrote. It brings together all four qualities below into one picture.",
+      what: "It looks at how flexible your thinking was, how settled you felt underneath, how gently you were holding yourself, and how clearly things connected. None of those have to be perfect for this to feel like a good session — it just gives you a sense of where things were.",
+      note: "This number shifts every single time you write. A lower score on one day says nothing about you as a person — it says something about that day. A difficult day, honestly written, is often a more valuable entry than a easy one.",
+      ranges:[
+        {cls:"high", label:"70% and above",  text:"Your mind had real room to move. You could hold uncertainty, consider more than one angle, and write without needing to land somewhere immediately. That kind of spaciousness is genuinely rare — and worth noticing when it shows up."},
+        {cls:"mid",  label:"40% – 69%",      text:"A grounded, human place to write from. Some ease, some tension, some weight — which is exactly what most days feel like when you sit down and write them down honestly. This is the range most people spend most of their time in."},
+        {cls:"low",  label:"Below 40%",      text:"Something was heavier or tighter when you wrote this. The mind may have been working hard, or things felt close and contracted. Sometimes the most honest and important writing comes from exactly here — don't mistake a lower number for a wasted session."}
+      ]
+    },
+    {
+      title: "Weight Carried",
+      emoji: "◉",
+      intro: "This one captures the emotional texture of what you brought to the page — how much your words were holding. It is not a measure of whether you are doing well or not well. It is simply a reading of intensity.",
+      what: "It looks at how much emotionally charged language appeared in your writing — words that carry feeling, whether heavy or light. A high score just means there was a lot moving through you when you wrote. A low score means the writing was quieter, maybe more reflective, maybe just a steadier day.",
+      note: "Higher is not worse. Lower is not better. This number has no judgment attached to it. It is simply one of the most honest things writing reveals — what kind of day it actually was underneath.",
+      ranges:[
+        {cls:"low",  label:"Below 35%",      text:"A quieter day — less emotional charge in the writing, more space. This might mean something has settled, or it was simply a steadier moment in your life. Writing from a calm place is just as valuable as writing from a full one."},
+        {cls:"mid",  label:"35% – 64%",      text:"Some weight present, held with some ease. The kind of day most people carry without necessarily naming it — not crisis, not numbness, just the ordinary texture of being alive and paying attention."},
+        {cls:"high", label:"65% and above",  text:"Your writing held a lot today. There was real emotional intensity in what you put on the page. That is worth acknowledging — not as something to fix, just as a recognition that something significant was moving through you when you wrote."}
+      ]
+    },
+    {
+      title: "Openness",
+      emoji: "○",
+      intro: "This looks at how flexibly your mind was moving — whether you could hold more than one perspective, sit with uncertainty, or see more than one way something could be understood.",
+      what: "It picks up on language that shows either flexibility (words like 'maybe', 'perhaps', 'on the other hand', 'I wonder') or rigidity (words like 'always', 'never', 'completely', 'nothing ever'). Neither extreme is wrong — sometimes a situation genuinely feels absolute. But over time, more range here tends to mean more ease.",
+      note: "A lower Openness score on a hard day is completely expected. When something feels very urgent or painful, the mind naturally narrows. It is a protective instinct, not a flaw. This score tends to rise naturally as things settle.",
+      ranges:[
+        {cls:"high", label:"70% and above",  text:"There was real flexibility in how you were thinking — you could consider more than one truth at once, hold things without needing to resolve them, and move between possibilities without getting stuck. That is a genuinely open quality of mind, and it tends to make life feel more manageable."},
+        {cls:"mid",  label:"40% – 69%",      text:"Some openness, some firmness. You were seeing things from your own angle clearly, but there was still some room to consider other possibilities. A natural and honest mix — not every moment calls for full flexibility."},
+        {cls:"low",  label:"Below 40%",      text:"The mind was looking for solid ground — seeing things in clearer, firmer terms. This often happens when something underneath feels unsettled or urgent. It is not rigidity; it is the mind trying to find footing. That is understandable, and worth being gentle with."}
+      ]
+    },
+    {
+      title: "Stillness",
+      emoji: "◌",
+      intro: "This reflects how settled and present the mind was — whether your thoughts had some quiet to work from, or whether they were returning to the same territory again and again.",
+      what: "It picks up on patterns of rumination — the circular, looping quality that happens when the mind keeps coming back to something unresolved. A lower score here doesn't mean something is wrong with you. It means the mind was working on something. A higher score means there was more presence and less circling.",
+      note: "Minds circle around things that matter. If your Stillness score is lower, it usually means something important is sitting with you — not that you are broken or stuck. Over time, the act of writing about something tends to shift this naturally.",
+      ranges:[
+        {cls:"high", label:"70% and above",  text:"A quality of steadiness came through in your writing — less circling, more presence, more ability to observe what is here without needing to fix it or escape it. That kind of groundedness is worth recognising when it appears."},
+        {cls:"mid",  label:"40% – 69%",      text:"Reasonably settled, with some movement. Neither fully at rest nor in turmoil — somewhere in the middle, which is honestly where most of us spend most of our time. There was enough quiet to write, even if not perfect stillness."},
+        {cls:"low",  label:"Below 40%",      text:"The mind was returning to familiar ground — circling back to the same thoughts, the same concerns. That is not a problem. That returning is the mind's way of trying to process something it has not finished with yet. Writing is one of the best things you can do with it."}
+      ]
+    },
+    {
+      title: "Self-Warmth",
+      emoji: "◍",
+      intro: "This one looks at the quality of the voice you turned on yourself in your writing — whether you were holding your own experience with some gentleness, or whether that voice was carrying some harshness or blame.",
+      what: "It reads the balance between self-compassionate language (curiosity, understanding, forgiveness toward yourself) and self-critical language (blame, harsh judgment, contempt directed inward). It is one of the most important things this system tracks, because how we speak to ourselves matters enormously — even in a private journal.",
+      note: "A lower Self-Warmth score is not a judgment. It simply means the inner voice was harder on you that day — which often happens on the days when you most need the opposite. Noticing it is already something. You do not have to fix it.",
+      ranges:[
+        {cls:"high", label:"70% and above",  text:"Something genuinely warm toward yourself came through in how you wrote. You were witnessing your own experience without immediately turning it against yourself — and that is rarer than it sounds. It takes a certain kind of courage to be kind to yourself in writing."},
+        {cls:"mid",  label:"40% – 69%",      text:"Some gentleness, some harder edges — still finding the balance between understanding yourself and judging yourself. That tension is deeply human. Most of us live right here, most of the time."},
+        {cls:"low",  label:"Below 40%",      text:"The voice you turned on yourself today was harder than it needed to be. That is worth noticing — not to add another layer of self-criticism on top, but simply to see it. You were going through something, and you deserved more kindness from yourself than you gave."}
+      ]
+    },
+    {
+      title: "Clarity",
+      emoji: "◇",
+      intro: "This reflects how coherently the pieces came together in your writing — whether events, feelings, and their causes were woven into something that made sense, or whether things were more fragmented.",
+      what: "It looks at whether your writing had a thread running through it — causes connected to effects, feelings connected to events, a story that held together. It also looks at how much you were drawing conclusions versus describing what actually happened. Neither is better — both are useful. But when the narrative holds together, it tends to signal that the mind has found some footing.",
+      note: "A lower Clarity score does not mean you write badly. It often means the experience you were writing about is still raw — still too fresh or too complex to have a clean shape yet. That is completely normal. Some of the most important things we go through resist clarity for a long time.",
+      ranges:[
+        {cls:"high", label:"70% and above",  text:"A clear through-line in what you wrote — events connected to feelings, causes visible, a story that held together as you told it. That kind of coherence usually means the mind has found some way to make sense of what happened, at least for now."},
+        {cls:"mid",  label:"40% – 69%",      text:"Some clarity, some fragments. You found parts of the story — the thread was there some of the time, even if it wandered. Other parts are still arriving, still taking shape. That is completely normal for most entries."},
+        {cls:"low",  label:"Below 40%",      text:"The writing had a more scattered quality — pieces present, but the thread between them not yet clear. This often means the experience itself is still too alive, too raw to have a shape yet. That is fine. Writing is how the shape eventually comes."}
+      ]
+    },
+    {
+      title: "Things That Come Back",
+      emoji: "↺",
+      intro: "This section is different from the others. Instead of reading a single session, it looks across all your entries and notices which themes your mind keeps returning to — the territory that keeps showing up, session after session.",
+      what: "These are not problems to solve. They are simply the things that matter enough to your mind that it keeps bringing them back. Seeing them named can itself be useful — not because you need to do anything about them, but because awareness of a pattern is often the first thing that begins to shift it.",
+      note: "These themes only appear after several entries — the system needs enough writing to see what is genuinely recurring versus what was just present on one particular day. The more you write, the more accurately this section reflects what is actually alive for you.",
+      ranges:[
+        {cls:"high", label:"Showing up more",  text:"This theme has been appearing more frequently in your recent entries. That intensification is worth a quiet glance — not urgently, just with some curiosity. What is it that keeps pulling your attention here?"},
+        {cls:"mid",  label:"Holding steady",   text:"This has been present at a steady level across your entries — part of the ongoing landscape of what you think and feel. It is simply part of where you are right now, and that is fine."},
+        {cls:"low",  label:"Easing back",      text:"This theme is appearing less than it used to. Something may be shifting, settling, or resolving — even if you have not consciously noticed it yet. That quiet movement is worth acknowledging."}
+      ]
+    }
+  ];
+
+  const WISE_QUOTES = [
+    "To observe without naming is to see clearly for the first time.",
+    "The mind that is always seeking to become something is never quiet enough to understand what it is.",
+    "What you are in your private moments is your whole life.",
+    "Freedom is not a destination. It is the quality of attention you bring right now.",
+    "The observer and the observed are not two things. They are one movement.",
+    "Every comparison diminishes. To just see — without measuring — is already rare.",
+    "You do not need to change what you see. You only need to see it completely.",
+    "A mind that is always arriving somewhere has never been anywhere.",
+    "Understanding does not come through accumulation. It comes through silence.",
+    "The ending of a thought — not its suppression, but its natural quieting — is the beginning of something else.",
+    "You are the world. And the world is you. That is not a metaphor.",
+    "When the mind stops comparing itself to what it was or what it could be, something extraordinary becomes possible.",
+    "It is not the experience that matters. It is whether the mind is free of the experience afterwards.",
+    "Thought is old. What is happening right now is always new.",
+    "To be aware of one's own movement — without correction, without judgment — is enough."
+  ];
+  function pickQuote(i) { return WISE_QUOTES[i % WISE_QUOTES.length]; }
+
+  // ── TAGLINES ──
+  const TAGLINES = [
+    { line1:"Most tools tell you what to think about yourself.", line2:"This one shows you <span class=\"hi\">what you're already thinking.</span>" },
+    { line1:"You already know the thought before it finishes.",  line2:"That knowing — <span class=\"hi\">is where this begins.</span>" },
+    { line1:"You have understood yourself for years.",           line2:"Something keeps not changing — <span class=\"hi\">until it is truly seen.</span>" },
+    { line1:"Not to improve what you are.",                     line2:"To see it — <span class=\"hi\">without the one who keeps explaining it away.</span>" }
+  ];
+  function applyTagline(n) {
+    const t   = TAGLINES[Math.min(n <= 1 ? 0 : n === 2 ? 1 : n === 3 ? 2 : 3, 3)];
+    const el1 = document.getElementById("writeLine1");
+    const el2 = document.getElementById("writeLine2");
+    if (el1) el1.textContent = t.line1;
+    if (el2) el2.innerHTML   = t.line2;
+  }
+
+  // ── TAB SWITCHING ──
+  function switchTab(tab) {
+    ["write","patterns","journey","about"].forEach(t => {
+      const el = document.getElementById("tab" + t.charAt(0).toUpperCase() + t.slice(1));
+      if (el) el.classList.toggle("active", t === tab);
+    });
+    if (tab === "write") {
+      showScreen("screenWrite");
+    } else if (tab === "patterns") {
+      showScreen("screenPatterns");
+      if (!patternsLoaded) loadPatterns();
+    } else if (tab === "journey") {
+      showScreen("screenJourney");
+      if (!journeyLoaded) loadJourney();
+    } else if (tab === "about") {
+      showScreen("screenAbout");
+    }
+  }
+
+  // ── SHOW SCREEN ──
+  function showScreen(id) {
+    document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
+    const next = document.getElementById(id);
+    if (next) next.classList.add("active");
+  }
+
+  // ── INIT ──
+  document.addEventListener("DOMContentLoaded", function() {
+    const savedEmail = localStorage.getItem("lumeri_email");
+    const savedName  = localStorage.getItem("lumeri_display_name");
+    const emailValid = savedEmail && savedEmail.includes("@") && savedEmail.includes(".") && savedEmail.length > 5;
+    const nameValid  = savedName && savedName.trim().length > 0;
+
+    if (emailValid && nameValid) {
+      gasCall("checkRegisteredUser", { email: savedEmail }, function(result) {
+          if (result && result.registered) {
+            currentEmail         = savedEmail;
+            currentDisplayName   = result.displayName || savedName;
+            currentSessionCount  = result.totalSessions || 0;
+            currentDeepLensCount = result.deepLensCount || 0;
+            consentGiven         = true;
+            const savedLang = localStorage.getItem("lumeri_lang_variant");
+            if (savedLang || result.language_variant) {
+              currentLangVariant = savedLang || result.language_variant;
+              enterWritingScreen(false);
+            } else {
+              langPrefIsFirstVisit = false;
+              showScreen("screenLangPref");
+            }
+          } else {
+            clearLocal(); showScreen("screenRegister");
+          }
+        }, function() { clearLocal(); showScreen("screenRegister"); });
+    } else {
+      clearLocal(); showScreen("screenRegister");
+    }
+  });
+
+  function clearLocal() {
+    localStorage.removeItem("lumeri_email");
+    localStorage.removeItem("lumeri_display_name");
+    localStorage.removeItem("lumeri_lang_variant");
+  }
+
+  // ── ENTER WRITING SCREEN ──
+  function enterWritingScreen(isFirstVisit) {
+    const greeting = document.getElementById("greeting");
+    const pitch    = document.getElementById("pitchBlock");
+    const rule     = document.getElementById("writeRule");
+    const inv      = document.getElementById("writeInvitation");
+
+    // Show tab nav
+    document.getElementById("tabNav").classList.add("visible");
+
+    if (isFirstVisit) {
+      if (greeting) { greeting.textContent = ""; greeting.classList.remove("visible"); }
+      if (pitch) pitch.style.display = "";
+      if (rule)  rule.style.display  = "";
+      if (inv)   inv.style.display   = "";
+      applyTagline(1);
+    } else {
+      if (greeting) { greeting.textContent = (currentDisplayName || "") + ","; greeting.classList.add("visible"); }
+      if (pitch) pitch.style.display = "none";
+      if (rule)  rule.style.display  = "none";
+      if (inv)   inv.style.display   = "none";
+    }
+    showScreen("screenWrite");
+    setTimeout(() => { const ta = document.getElementById("journalInput"); if (ta) ta.focus(); }, 500);
+  }
+
+  // ── WORD COUNT ──
+  function updateWordCount() {
+    const text  = document.getElementById("journalInput").value.trim();
+    const words = text ? text.split(/\s+/).length : 0;
+    const el    = document.getElementById("wordCount");
+    const hint  = document.getElementById("wordHint");
+    const fill  = document.getElementById("wordProgressFill");
+    const pct   = Math.min(100, (words / WORD_TARGET) * 100);
+    if (fill) fill.style.width = pct + "%";
+    if (words === 0)           { el.textContent = ""; el.classList.remove("ready"); if (hint) hint.style.opacity = "1"; }
+    else if (words < WORD_TARGET) { el.textContent = words + " words"; el.classList.remove("ready"); if (hint) hint.style.opacity = "0.5"; }
+    else                       { el.textContent = words + " words"; el.classList.add("ready"); if (hint) hint.style.opacity = "0"; }
+  }
+
+  // ── OTP ──
+  function sendOtp() {
+    const name    = document.getElementById("regName").value.trim();
+    const email   = document.getElementById("regEmail").value.trim().toLowerCase();
+    const country = document.getElementById("regCountry").value;
+    const consent = document.getElementById("regConsentCheck").checked;
+    const errEl   = document.getElementById("regError1");
+    errEl.textContent = "";
+    if (!name)   { errEl.textContent = "Please tell us your name."; return; }
+    if (!email || !email.includes("@") || !email.includes(".")) { errEl.textContent = "Please enter a valid email address."; return; }
+    if (!country) { errEl.textContent = "Please select your country."; return; }
+    if (!consent){ errEl.textContent = "Please check the consent box to continue."; return; }
+    currentCountry = country;
+    const btn = document.getElementById("sendOtpBtn");
+    btn.classList.add("loading"); btn.disabled = true;
+    gasCall("sendOTP", { email: email, name: name }, function(result) {
+        btn.classList.remove("loading"); btn.disabled = false;
+        if (result.success) {
+          currentDisplayName = name; currentEmail = email; consentGiven = consent;
+          document.getElementById("regSentMsg").textContent = "A code has been sent to " + email + ". Check your inbox.";
+          document.getElementById("regStep1").style.display = "none";
+          document.getElementById("regStep2").style.display = "";
+          setTimeout(() => document.getElementById("otpInput").focus(), 200);
+        } else {
+          errEl.textContent = "Could not send the code. Please check the address and try again.";
+        }
+      }, function() { btn.classList.remove("loading"); btn.disabled = false; document.getElementById("regError1").textContent = "Could not connect. Please try again."; });
+  }
+
+  function verifyOtp() {
+    const code  = document.getElementById("otpInput").value.trim();
+    const errEl = document.getElementById("regError2");
+    errEl.textContent = "";
+    if (!code || code.length < 6) { errEl.textContent = "Please enter the 6-digit code."; return; }
+    const btn = document.getElementById("verifyOtpBtn");
+    btn.classList.add("loading"); btn.disabled = true;
+    gasCall("verifyOTP", { email: currentEmail, code: code }, function(result) {
+        btn.classList.remove("loading"); btn.disabled = false;
+        if (result.success) {
+          localStorage.setItem("lumeri_email", currentEmail);
+          localStorage.setItem("lumeri_display_name", currentDisplayName);
+          if (currentCountry) gasCall("setUserCountry", { email: currentEmail, country: currentCountry }, null, null);
+          langPrefIsFirstVisit = true;
+          showScreen("screenLangPref");
+        } else {
+          otpAttempts++;
+          errEl.textContent = result.error === "expired" ? "That code has expired. Please request a new one."
+                            : result.error === "wrong_code" ? "That code does not match. Please try again." : "Something went wrong.";
+          if (otpAttempts >= 2) document.getElementById("regSkipWrap").style.display = "";
+        }
+      }, function() { btn.classList.remove("loading"); btn.disabled = false; document.getElementById("regError2").textContent = "Could not connect."; });
+  }
+
+  function resendOtp() {
+    document.getElementById("otpInput").value = "";
+    document.getElementById("regError2").textContent = "Sending a new code...";
+    otpAttempts = 0;
+    document.getElementById("regSkipWrap").style.display = "none";
+    gasCall("sendOTP", { email: currentEmail, name: currentDisplayName }, function(r) {
+      document.getElementById("regError2").textContent = r.success ? "A new code has been sent." : "Could not send. Please try again.";
+    }, null);
+  }
+
+  function skipVerify() {
+    localStorage.setItem("lumeri_email", currentEmail);
+    localStorage.setItem("lumeri_display_name", currentDisplayName);
+    // v4.5.0: route via lang pref screen
+    langPrefIsFirstVisit = true;
+    showScreen("screenLangPref");
+  }
+
+  // ── LANGUAGE PREFERENCE (v4.5.0) ──
+  // Called once after registration or on first return without a stored preference.
+  // Stores variant in localStorage and in the Users sheet via setUserLanguagePreference().
+  function setLangPref(variant) {
+    const btns = document.querySelectorAll(".lang-pref-btn");
+    btns.forEach(b => b.classList.add("loading"));
+    const errEl = document.getElementById("langPrefError");
+    if (errEl) errEl.textContent = "";
+    // Store locally immediately — used on all future sessions
+    localStorage.setItem("lumeri_lang_variant", variant);
+    currentLangVariant = variant;
+    // Persist to Users sheet via backend (fire-and-forget — non-blocking)
+    if (currentEmail) {
+      gasCall("setUserLanguagePreference", { email: currentEmail, variant: variant }, function(r) {
+        if (!r || !r.ok) console.warn("setUserLanguagePreference failed:", r && r.error);
+      }, function() { console.warn("setUserLanguagePreference connection failed"); });
+    }
+    // Enter writing screen — language pref is set, no need to ask again
+    enterWritingScreen(langPrefIsFirstVisit);
+  }
+
+  // ── SUBMIT ──
+  function submitEntry() {
+    const text = document.getElementById("journalInput").value.trim();
+    if (!text) return;
+    const btn = document.getElementById("submitBtn");
+    btn.classList.add("loading"); btn.disabled = true;
+    showScreen("screenReflect");
+    document.getElementById("loadingState").style.display   = "";
+    document.getElementById("reflectContent").style.display = "none";
+    gasCall("submitJournal", { text: text, consent: consentGiven, displayName: currentDisplayName||"", email: currentEmail||"" }, function(response) {
+        currentSessionId     = response.session_id;
+        currentSessionCount  = (currentSessionCount || 0) + 1;
+        if (response.pattern_name) currentPatternName = response.pattern_name;
+        if (response.mode) currentMode = response.mode;
+        if (response.milestone) showMilestoneToast(response.milestone);
+        patternsLoaded       = false;
+        journeyLoaded        = false;
+        btn.classList.remove("loading"); btn.disabled = false;
+        showReflection(response);
+      }, function(err) {
+        btn.classList.remove("loading"); btn.disabled = false;
+        showScreen("screenWrite");
+        console.error(err);
+      });
+  }
+
+  function showReflection(response) {
+    document.getElementById("loadingState").style.display = "none";
+    document.getElementById("reflText").textContent       = response.reflection;
+    // v4.1: show Human Condition pattern chip
+    const chipWrap  = document.getElementById("patternChipWrap");
+    const chipLabel = document.getElementById("patternChipLabel");
+    // v4.1: pattern stored silently — never shown to user
+    if (response.pattern_name && chipLabel) {
+      chipLabel.textContent = response.pattern_name; // kept for internal reference only
+    }
+    if (chipWrap) chipWrap.style.display = "none";
+    const deepCard = document.getElementById("deepCard");
+    if (response.distress) {
+      document.getElementById("reflLabel").textContent = "A gentle note";
+      document.querySelector(".choice-label").style.display = "none";
+      document.querySelector(".choice-cards").style.display = "none";
+    } else {
+      // v4.6.0: mode-aware reflection labels
+      const modeLabels = {
+        "PHILOSOPHICAL":  "A reflection on what you wrote",
+        "FESTIVAL":       "A reflection on this moment",
+        "PERSONAL_LOSS":  "Held with care",
+        "GRIEF_WORLD":    "A reflection on what you're carrying",
+        "CONCERN":        "Something noticed",
+        "EMOTIONAL":      "Reflection for the Day",
+        "OBSERVATIONAL":  "Reflection for the Day"
+      };
+      const label = response.mode ? (modeLabels[response.mode] || "Reflection for the Day") : "Reflection for the Day";
+      document.getElementById("reflLabel").textContent = label;
+      document.querySelector(".choice-label").style.display = "";
+      document.querySelector(".choice-cards").style.display = "";
+      if (deepCard) deepCard.style.display = response.suggestDeep === false ? "none" : "";
+    }
+    document.getElementById("reflectContent").style.display = "";
+    setTimeout(() => document.getElementById("newEntryWrap1").classList.add("visible"), 2000);
+    if (!response.distress) startSilenceTimer();
+  }
+
+  // ── SILENCE ──
+  function startSilenceTimer() { silenceStart = Date.now(); silenceTimer = setTimeout(() => { if (currentSessionId) gasCall("recordSilence", { sessionId: currentSessionId, duration: Math.round((Date.now()-silenceStart)/1000), manual: false }, null, null); }, SILENCE_MS); }
+  function cancelSilenceTimer() { if (silenceTimer) { clearTimeout(silenceTimer); silenceTimer = null; } }
+
+  // ── SIT WITH THIS ──
+  function sitWithThis() {
+    cancelSilenceTimer();
+    const dur = silenceStart ? Math.round((Date.now()-silenceStart)/1000) : 0;
+    if (currentSessionId) gasCall("recordSilence", { sessionId: currentSessionId, duration: dur, manual: true }, null, null);
+    openClearingScreen([{text:"You chose to stay.",delay:0},{text:"That is already something.",delay:2200},{text:"Let this breathe, my friend.",delay:4600,closing:true}], null);
+  }
+
+  // ── GO DEEPER ──
+  function goDeeper() {
+    if (!currentSessionId || deepUsed) return;
+    deepUsed = true;
+    cancelSilenceTimer();
+    const deepCard = document.getElementById("deepCard");
+    if (deepCard) { deepCard.style.opacity="0.5"; deepCard.style.pointerEvents="none"; }
+    showScreen("screenClearing");
+    document.getElementById("clearingLines").innerHTML = "";
+    document.getElementById("clearingFeedback").classList.remove("visible");
+    document.getElementById("newEntryWrap2").classList.remove("visible");
+    gasCall("generateDeep", { sessionId: currentSessionId }, function(deepResponse) {
+        const deepText      = deepResponse && deepResponse.text      ? deepResponse.text      : (deepResponse || "");
+        const deepThinker   = deepResponse && deepResponse.thinker   ? deepResponse.thinker   : null;
+        const deepTradition = deepResponse && deepResponse.tradition ? deepResponse.tradition : null;
+        currentDeepLensCount = (currentDeepLensCount || 0) + 1;
+        if (currentSessionId) gasCall("recordDeepLensRequested", { sessionId: currentSessionId, requested: false, silence: silenceStart ? Math.round((Date.now()-silenceStart)/1000) : 0 }, null, null);
+        openClearingScreen([
+          {text:"Something in you already knows.",delay:0},
+          {text:"There is nothing to figure out right now.",delay:2400},
+          {text:"Let this breathe, my friend.",delay:4800,closing:true}
+        ], deepText, deepThinker, deepTradition);
+      }, function() {
+        deepUsed = false;
+        showScreen("screenReflect");
+        if (deepCard) { deepCard.style.opacity="1"; deepCard.style.pointerEvents="auto"; }
+      });
+  }
+
+  // ── CLEARING SCREEN ──
+  function openClearingScreen(lines, deepText, deepThinker, deepTradition) {
+    showScreen("screenClearing");
+    const linesEl    = document.getElementById("clearingLines");
+    const feedbackEl = document.getElementById("clearingFeedback");
+    const newEntry   = document.getElementById("newEntryWrap2");
+    linesEl.innerHTML = "";
+    feedbackEl.classList.remove("visible");
+    newEntry.classList.remove("visible");
+    feedbackSubmitted = false;
+
+    if (deepText) {
+      const rb = document.createElement("div"); rb.className = "clearing-refl"; rb.textContent = deepText; linesEl.appendChild(rb);
+      setTimeout(() => rb.classList.add("arrived"), 800);
+      if (deepThinker || deepTradition) {
+        const at = document.createElement("div"); at.className = "clearing-attribution"; at.textContent = [deepThinker, deepTradition].filter(Boolean).join(" · "); linesEl.appendChild(at);
+        setTimeout(() => at.classList.add("arrived"), 1400);
+      }
+    }
+    const baseDelay = deepText ? 2000 : 0;
+    lines.forEach(l => {
+      const el = document.createElement("div"); el.className = "clearing-line" + (l.closing ? " closing" : ""); el.textContent = l.text; linesEl.appendChild(el);
+      setTimeout(() => el.classList.add("arrived"), baseDelay + l.delay + 600);
+    });
+    const lastDelay = lines[lines.length-1].delay + baseDelay;
+    setTimeout(() => feedbackEl.classList.add("visible"), lastDelay + 2000);
+    setTimeout(() => newEntry.classList.add("visible"),   lastDelay + 3600);
+  }
+
+  // ── FEEDBACK ──
+  function submitFeedback(word, cardEl) {
+    if (feedbackSubmitted) return;
+    feedbackSubmitted = true;
+    document.querySelectorAll(".feedback-card").forEach(c => c.classList.remove("selected"));
+    cardEl.classList.add("selected");
+    const thanks = document.getElementById("feedbackThanks");
+    if (thanks) { thanks.style.display="block"; setTimeout(() => thanks.classList.add("visible"), 50); }
+    if (currentSessionId) gasCall("saveFeedback", { sessionId: currentSessionId, word: word }, null, null);
+  }
+
+  // ── MILESTONE TOAST (v4.6.0) ──
+  // Called when submitJournal() returns a milestone object from checkMilestones()
+  function showMilestoneToast(milestone) {
+    if (!milestone) return;
+    const toast = document.getElementById("milestoneToast");
+    const title = document.getElementById("milestoneTitle");
+    const msg   = document.getElementById("milestoneMsg");
+    if (!toast) return;
+    title.textContent = milestone.title || "";
+    msg.textContent   = milestone.message || "";
+    // Show after a short delay so reflection has settled
+    setTimeout(function() {
+      toast.classList.add("visible");
+      setTimeout(function() { toast.classList.remove("visible"); }, 5000);
+    }, 2200);
+  }
+
+  // ── ARC CARD RENDERER (v4.6.0) ──
+  // Renders the longitudinal arc card in the Journey tab header
+  // Called from renderJourney() when data.arcNarrative or summary_available is present
+  function renderArcCard(container, arcData, sessionCount) {
+    if (!container) return;
+    if (!arcData || !arcData.ready) {
+      // Show teaser if sessions >= 3 but < 5
+      if (sessionCount >= 3) {
+        container.innerHTML =
+          '<div class="arc-card">' +
+            '<div class="arc-card-label">Your arc · forming</div>' +
+            '<div class="arc-card-headline">The pattern is beginning to emerge.</div>' +
+            '<div class="arc-card-body">' +
+              'After ' + (5 - sessionCount) + ' more ' + ((5 - sessionCount) === 1 ? 'entry' : 'entries') +
+              ', the mirror will be able to show you the arc of how you have been moving — not a single moment, but the direction across all of them.' +
+            '</div>' +
+            '<div class="arc-loading">✦ &nbsp; ' + sessionCount + ' sessions so far</div>' +
+          '</div>';
+      }
+      return;
+    }
+    // Full arc narrative available
+    const n = arcData.meta || {};
+    const narrative = arcData.narrative || {};
+    const movements = arcData.movements || {};
+    const pos = (movements.positive || []).slice(0, 2);
+    const neg = (movements.negative || []).slice(0, 1);
+    // Simulated bar widths matching website visual (Days 1→4→8→14→21→latest)
+    const barSets = [
+      [55, 72, 38],
+      [60, 68, 44],
+      [66, 74, 52],
+      [70, 76, 61],
+      [74, 80, 69],
+      [80, 83, 76]
+    ];
+    const barDays = ["Day 1","Day 4","Day 8","Day 14","Day 21","Now"];
+    const barsHTML = barSets.map(function(bars, i) {
+      return '<div class="arc-session-col">' +
+        '<div class="arc-session-bars">' +
+          bars.map(function(w) {
+            return '<div class="arc-session-bar" style="width:' + w + '%;opacity:' + (0.4 + i * 0.08) + '"></div>';
+          }).join("") +
+        '</div>' +
+        '<div class="arc-session-date">' + barDays[i] + '</div>' +
+      '</div>';
+    }).join("");
+    // Build tags from movements
+    const tags = [];
+    if (n.currentPattern) tags.push("Current pattern · " + n.currentPattern);
+    pos.forEach(function(m) {
+      if (m.delta > 0) tags.push(m.name + " ↑ " + m.delta + " pts");
+    });
+    neg.forEach(function(m) {
+      if (m.delta < 0) tags.push(m.name.replace("Attentional Stability","Rumination") + " ↓ " + Math.abs(m.delta) + " pts");
+    });
+    container.innerHTML =
+      '<div class="arc-card">' +
+        '<div class="arc-card-label">Your arc · ' + (n.totalSessions || sessionCount) + ' sessions</div>' +
+        '<div class="arc-card-headline">' +
+          (narrative.opening
+            ? narrative.opening.substring(0, 120) + (narrative.opening.length > 120 ? "…" : "")
+            : "Your pattern moves. That movement is the practice.") +
+        '</div>' +
+        '<div class="arc-card-body">' +
+          (narrative.pattern || narrative.movement || "Each time you write, LumeRI tracks how your inner life moves. The picture is becoming clearer.") +
+        '</div>' +
+        (n.totalSessions >= 6 ?
+          '<div class="arc-sessions-bar">' + barsHTML + '</div>' : "") +
+        (tags.length > 0 ?
+          '<div class="arc-tags">' +
+            tags.map(function(t) { return '<div class="arc-tag">' + t + '</div>'; }).join("") +
+          '</div>' : "") +
+      '</div>';
+  }
+
+  // ── RESET ──
+  function resetToWrite() {
+    currentSessionId = null; feedbackSubmitted = false; deepUsed = false; silenceStart = null;
+    cancelSilenceTimer();
+    document.getElementById("reflText").textContent         = "";
+    document.getElementById("loadingState").style.display   = "";
+    document.getElementById("reflectContent").style.display = "none";
+    document.getElementById("newEntryWrap1").classList.remove("visible");
+    // v4.1: reset pattern chip
+    const chipWrap = document.getElementById("patternChipWrap");
+    if (chipWrap) chipWrap.classList.remove("arrived");
+    const deepCard = document.getElementById("deepCard");
+    if (deepCard) { deepCard.style.opacity="1"; deepCard.style.pointerEvents="auto"; deepCard.style.display=""; }
+    document.getElementById("clearingLines").innerHTML = "";
+    document.getElementById("clearingFeedback").classList.remove("visible");
+    document.getElementById("newEntryWrap2").classList.remove("visible");
+    document.querySelectorAll(".feedback-card").forEach(c => c.classList.remove("selected"));
+    const thanks = document.getElementById("feedbackThanks");
+    if (thanks) { thanks.classList.remove("visible"); thanks.style.display="none"; }
+    document.getElementById("journalInput").value = "";
+    updateWordCount();
+    switchTab("write");
+  }
+
+  // ══════════════════════════════════════════════
+  // PATTERNS TAB
+  // ══════════════════════════════════════════════
+  function loadPatterns() {
+    if (!currentEmail) { document.getElementById("patLoading").style.display="none"; document.getElementById("patEmpty").style.display=""; return; }
+    patternsLoaded = true;
+    document.getElementById("patLoading").style.display = "";
+    document.getElementById("patContent").style.display = "none";
+    document.getElementById("patEmpty").style.display   = "none";
+
+    gasCall("getUserAnalytics", { email: currentEmail }, function(data) {
+        document.getElementById("patLoading").style.display = "none";
+        if (!data || data.error || !data.sessionCount) { document.getElementById("patEmpty").style.display=""; return; }
+        renderPatterns(data);
+        document.getElementById("patContent").style.display = "";
+      }, function() {
+        document.getElementById("patLoading").style.display = "none";
+        document.getElementById("patEmpty").style.display   = "";
+      });
+  }
+
+  function renderPatterns(data) {
+    const fmt = v => Math.round((v||0)*100) + "%";
+    const n   = data.sessionCount;
+
+    document.getElementById("patCount").textContent = n + " " + (n===1?"entry":"entries") + " reflected on";
+
+    // v4.1: show most recent pattern if available
+    const latestPattern = data.latestPattern || (currentPatternName || null);
+    if (latestPattern) {
+      const pw = document.getElementById("patCurrentPattern");
+      const pl = document.getElementById("patCurrentPatternLabel");
+      if (pw && pl) { pl.textContent = latestPattern; pw.style.display = ""; }
+    }
+
+    // Trend story
+    const tsEl = document.getElementById("patTrendStory");
+    if (n >= 3 && data.history && data.history.length >= 3) {
+      const recent = data.history.slice(-3);
+      const avgAci = recent.reduce((s,x) => s+(x.aci||0),0)/3;
+      const avgPls = recent.reduce((s,x) => s+(x.pls||0),0)/3;
+      const lines  = [];
+      if      (avgAci >= 0.60) lines.push("Your recent entries have had a certain spaciousness — a mind moving a little more freely.");
+      else if (avgAci >= 0.40) lines.push("Lately your writing has felt grounded — steady underfoot, even if not always easy.");
+      else                     lines.push("The last few entries have carried some weight. Something has been working itself through.");
+      if      (avgPls >= 0.60) lines.push("There has been a lot moving through you lately.");
+      else if (avgPls <= 0.30) lines.push("Things have felt a little quieter recently.");
+      tsEl.innerHTML = '<div class="pat-trend-story"><div class="pat-trend-label">What your friend notices</div><div class="pat-trend-text">' + lines.join(" ") + "</div></div>";
+    } else { tsEl.innerHTML = ""; }
+
+    // ACI + PLS
+    document.getElementById("patAci").textContent = fmt(data.aci.current);
+    document.getElementById("patPls").textContent = fmt(data.pls.current);
+    const tl = t => t==="improving" ? "↑ opening up" : t==="declining" ? "→ settling" : "→ steady";
+    document.getElementById("patAciTrend").textContent = n>=3 ? tl(data.aci.trend) : n+" "+(n===1?"entry":"entries")+" so far";
+    document.getElementById("patPlsTrend").textContent = n>=3 ? tl(data.pls.trend) : "";
+
+    // Clusters
+    const CIRCUMFERENCE = 188; // 2 * pi * 30
+    [
+      {key:"A",score:"patCA",bar:"patBarA",trend:"patTrendA",ring:"patRingA"},
+      {key:"B",score:"patCB",bar:"patBarB",trend:"patTrendB",ring:"patRingB"},
+      {key:"C",score:"patCC",bar:"patBarC",trend:"patTrendC",ring:"patRingC"},
+      {key:"D",score:"patCD",bar:"patBarD",trend:"patTrendD",ring:"patRingD"}
+    ].forEach(c => {
+      const cd = data.clusters[c.key];
+      document.getElementById(c.score).textContent = fmt(cd.current);
+      // Animate ring
+      const ring = document.getElementById(c.ring);
+      if (ring) {
+        const offset = CIRCUMFERENCE - (cd.current || 0) * CIRCUMFERENCE;
+        setTimeout(() => { ring.style.strokeDashoffset = offset; }, 300);
+      }
+      const tEl = document.getElementById(c.trend);
+      if (n>=3) {
+        tEl.textContent = cd.trend==="improving" ? "↑ more of this lately" : cd.trend==="declining" ? "→ shifting a little" : "→ holding steady";
+        tEl.className   = "pat-cluster-trend"+(cd.trend==="improving"?" improving":cd.trend==="declining"?" easing":"");
+      } else { tEl.textContent=""; tEl.className="pat-cluster-trend"; }
+    });
+
+    // NRM
+    const nrmSec = document.getElementById("patNrmSection");
+    const nrmEl  = document.getElementById("patNrmContent");
+    if (data.narrativeRecurrence && data.narrativeRecurrence.length > 0) {
+      nrmSec.style.display = "";
+      nrmEl.innerHTML = data.narrativeRecurrence.map(nr => {
+        const note = nr.trend==="increasing" ? "Showing up a little more lately — worth a quiet glance."
+                   : nr.trend==="decreasing" ? "This seems to be easing. Something may be shifting."
+                   : "Steady in the background for a while now.";
+        return '<div class="pat-nrm-card"><div class="pat-nrm-label">'+nr.label+'</div><div class="pat-nrm-desc">'+nr.description+'</div><div class="pat-nrm-note">'+note+' · noticed in '+nr.count+' entries</div></div>';
+      }).join("");
+    } else { nrmSec.style.display="none"; }
+
+    // Score guide
+    const guideEl = document.getElementById("patGuideContent");
+    guideEl.innerHTML = SCORE_GUIDE.map((item,i) =>
+      '<div class="pat-guide-item" onclick="toggleGuide('+i+')">' +
+        '<div class="pat-guide-header">' +
+          '<div style="display:flex;align-items:center;gap:10px;">' +
+            '<span style="font-size:18px;opacity:0.6;">'+item.emoji+'</span>' +
+            '<div class="pat-guide-title">'+item.title+'</div>' +
+          '</div>' +
+          '<div class="pat-guide-chevron" id="gc'+i+'">▾</div>' +
+        '</div>' +
+        '<div class="pat-guide-body" id="gb'+i+'">' +
+          '<div class="pat-guide-intro">'+item.intro+'</div>' +
+          '<div class="pat-guide-what">'+item.what+'</div>' +
+          '<div class="pat-guide-note">'+item.note+'</div>' +
+          '<div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal-mid);opacity:0.6;margin-bottom:10px;">The ranges</div>' +
+          '<div class="pat-range-row">' +
+            item.ranges.map(r => '<div class="pat-range-item '+r.cls+'"><div class="range-label">'+r.label+'</div>'+r.text+'</div>').join("") +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    ).join("");
+  }
+
+  function toggleGuide(i) {
+    const b = document.getElementById("gb"+i); const c = document.getElementById("gc"+i);
+    if (!b) return;
+    b.classList.toggle("open"); c.classList.toggle("open");
+  }
+
+  // ══════════════════════════════════════════════
+  // JOURNEY TAB
+  // ══════════════════════════════════════════════
+  function loadJourney() {
+    if (!currentEmail) { document.getElementById("jourLoading").style.display="none"; document.getElementById("jourEmpty").style.display=""; return; }
+    journeyLoaded = true;
+    document.getElementById("jourLoading").style.display  = "";
+    document.getElementById("jourContent").style.display  = "none";
+    document.getElementById("jourTrend").style.display    = "none";
+    document.getElementById("jourEmpty").style.display    = "none";
+    document.getElementById("jourArcCard").innerHTML      = "";
+
+    const intro = document.getElementById("jourIntro");
+    if (intro) intro.textContent = currentDisplayName ? currentDisplayName + " — everything you have brought here, held quietly." : "Everything you have brought here, held quietly.";
+
+    gasCall("getUserHistory", { email: currentEmail }, function(data) {
+        document.getElementById("jourLoading").style.display = "none";
+        if (!data || !data.sessions || data.sessions.length === 0) { document.getElementById("jourEmpty").style.display=""; return; }
+        if (data.sessions.length >= 3) {
+          gasCall("generateArcNarrative", { email: currentEmail }, function(arcData) {
+            renderArcCard(document.getElementById("jourArcCard"), arcData, data.sessions.length);
+          }, function() {
+            renderArcCard(document.getElementById("jourArcCard"), null, data.sessions.length);
+          });
+        }
+        renderJourney(data);
+        document.getElementById("jourContent").style.display = "";
+      })
+      .withFailureHandler(function() {
+        document.getElementById("jourLoading").style.display = "none";
+        document.getElementById("jourEmpty").style.display   = "";
+      })
+      .getUserHistory(currentEmail);
+  }
+
+  function renderJourney(data) {
+    const sessions = data.sessions;
+
+    // Trend story
+    if (sessions.length >= 3) {
+      const recent = sessions.slice(-3);
+      const avgAci = recent.reduce((s,x)=>s+(x.aci||0),0)/3;
+      const avgPls = recent.reduce((s,x)=>s+(x.pls||0),0)/3;
+      const lines  = [];
+      if      (avgAci>=0.60) lines.push("Your recent entries have had a certain spaciousness — a mind moving more freely.");
+      else if (avgAci>=0.40) lines.push("Lately your writing has felt grounded — steady underfoot, even if not always easy.");
+      else                   lines.push("The last few entries have carried some weight. Something has been working itself through.");
+      if      (avgPls>=0.60) lines.push("There has been a lot moving through you lately.");
+      else if (avgPls<=0.30) lines.push("Things have felt a little quieter recently.");
+      const td = document.getElementById("jourTrend");
+      td.style.display = "";
+      td.innerHTML = '<div class="jour-trend"><div class="jour-trend-label">What your friend notices</div><div class="jour-trend-text">'+lines.join(" ")+"</div></div>";
+    }
+
+    function interp(key, val) {
+      const p = Math.round((val||0)*100);
+      if (key==="aci") return p>=70?"open & spacious":p>=40?"grounded":"holding some weight";
+      if (key==="pls") return p>=65?"a full day":p>=35?"some weight":"quietly";
+      if (key==="A")   return p>=70?"spacious":p>=40?"some room":"looking for ground";
+      if (key==="B")   return p>=70?"settled":p>=40?"some movement":"working through";
+      if (key==="C")   return p>=70?"warm toward self":p>=40?"finding balance":"some hardness";
+      if (key==="D")   return p>=70?"clear through-line":p>=40?"mostly together":"still arriving";
+      return "";
+    }
+    const fmt = v => Math.round((v||0)*100)+"%";
+
+    document.getElementById("jourContent").innerHTML = sessions.map((s,i) => {
+      const d       = new Date(s.date);
+      const dateStr = d.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+      const preview = s.journal_text
+        ? s.journal_text.substring(0, 90).replace(/\n/g, " ") + "…"
+        : s.reflection
+          ? s.reflection.substring(0, 90).replace(/\n/g, " ") + "…"
+          : "A reflection was held for you.";
+      const fbCls   = s.feedback ? "feedback-"+s.feedback.toLowerCase() : "";
+      return '<div class="session-card">'+
+        '<div class="session-card-header" onclick="toggleSession('+i+')">'+
+          '<div class="session-card-left">'+
+            '<div class="session-date">'+dateStr+'</div>'+
+            '<div class="session-preview">'+preview+'</div>'+
+            '<div class="session-badges">'+
+              (s.feedback?"<span class=\"session-badge "+fbCls+'">'+s.feedback+"</span>":"")+
+              (s.deep_lens_text?'<span class="session-badge deep">went deeper</span>':"")+
+            '</div>'+
+          '</div>'+
+          '<div class="session-chevron" id="sc'+i+'">▾</div>'+
+        '</div>'+
+        '<div class="session-card-body" id="sb'+i+'">'+
+          '<div class="session-section-label">What you wrote</div>'+
+          (s.journal_text ? '<div class="session-journal-text">'+ s.journal_text.replace(/</g,"&lt;") +'</div>' : '<div class="session-journal-text" style="opacity:0.4;font-style:italic;">Your words from this session are not available.</div>')+
+          '<div class="session-section-label">Reflection</div>'+
+          '<div class="session-reflection-text">'+(s.reflection||"").replace(/</g,"&lt;")+'</div>'+
+          (s.deep_lens_text?'<div class="session-section-label">A deeper layer</div><div class="session-deep-text">'+s.deep_lens_text.replace(/</g,"&lt;")+'</div>':"")+
+          '<div class="session-k-quote">'+pickQuote(i)+'</div>'+
+          '<div class="session-section-label">How your mind moved that day</div>'+
+          '<div class="session-scores-grid">'+
+            ['aci','pls','A','B','C','D'].map((k,j) => {
+              const labels  = ["Mind's Range","Weight Carried","Openness","Stillness","Self-Warmth","Clarity"];
+              const emojis  = ["◈","◉","🌀","🌊","🌸","💎"];
+              const vals    = [s.aci,s.pls,s.cluster_A,s.cluster_B,s.cluster_C,s.cluster_D];
+              const pct     = Math.round((vals[j]||0)*100);
+              return '<div class="session-score-tile">'+
+                '<div class="session-score-left">'+
+                  '<div class="session-score-name">'+emojis[j]+' '+labels[j]+'</div>'+
+                  '<div class="session-score-val">'+fmt(vals[j])+'</div>'+
+                  '<div class="session-score-interp">'+interp(k,vals[j])+'</div>'+
+                '</div>'+
+                '<div class="session-score-bar-wrap">'+
+                  '<div class="session-score-bar-track">'+
+                    '<div class="session-score-bar-fill" style="height:'+pct+'%"></div>'+
+                  '</div>'+
+                '</div>'+
+              '</div>';
+            }).join("")+
+          '</div>'+
+        '</div>'+
+      '</div>';
+    }).join("");
+  }
+
+  function showAboutFromReg() {
+    const si = document.getElementById("screenAbout");
+    if (!si) return;
+    if (!document.getElementById("aboutBackBtn")) {
+      const b = document.createElement("button");
+      b.id = "aboutBackBtn";
+      b.textContent = "← Back to sign in";
+      b.style.cssText = "background:none;border:none;font-family:var(--sans);font-size:14px;letter-spacing:2px;text-transform:uppercase;color:var(--text-soft);cursor:pointer;padding:0 0 24px;display:block;";
+      b.onclick = function() { showScreen("screenRegister"); b.style.display="none"; };
+      si.querySelector(".screen-inner").insertBefore(b, si.querySelector(".screen-inner").firstChild);
+    } else {
+      document.getElementById("aboutBackBtn").style.display = "block";
+    }
+    showScreen("screenAbout");
+  }
+
+  function toggleSession(i) {
+    const b = document.getElementById("sb"+i); const c = document.getElementById("sc"+i);
+    if (!b) return;
+    b.classList.toggle("open"); c.classList.toggle("open");
+  }
+
+  // ── ABOUT STEP TOGGLE ──
+  function toggleStep(i) {
+    const body = document.getElementById("step"+i);
+    if (!body) return;
+    const isOpen = body.classList.contains("open");
+    // Close all
+    [0,1,2,3].forEach(j => {
+      const b = document.getElementById("step"+j);
+      if (b) b.classList.remove("open");
+    });
+    // Open this one if it was closed
+    if (!isOpen) body.classList.add("open");
+  }
+
+  // ── ABOUT LETTER TOGGLE ──
+  let letterExpanded = true;
+  function toggleLetter() {
+    const body = document.getElementById("aboutLetterBody");
+    const btn  = document.getElementById("letterToggleBtn");
+    if (!body) return;
+    letterExpanded = !letterExpanded;
+    body.classList.toggle("collapsed", !letterExpanded);
+    btn.textContent = letterExpanded ? "Read less ▲" : "Read more ▼";
+  }
+
+</script>
+
+<!-- ══ SCREEN 6 — ABOUT ══ -->
+<div class="screen has-nav" id="screenAbout">
+  <div class="screen-inner">
+
+    <!-- Opening -->
+    <div class="about-opener">
+      <span class="about-kicker">What is this place</span>
+      <div class="about-headline">
+        You already know more<br>about yourself than you think.<br>
+        <span class="hi">You just haven't seen it yet.</span>
+      </div>
+      <p class="about-sub">
+        LumeRI is a private space to write — and a quiet intelligence that reads what you write,
+        and gently shows you what is moving through your mind.
+      </p>
+    </div>
+
+    <div class="about-rule"></div>
+
+    <!-- The friend letter — collapsible -->
+    <div class="about-letter" id="aboutLetter">
+      <span class="about-letter-from">A note from LumeRI</span>
+      <div class="about-letter-body" id="aboutLetterBody">
+        <p>Most of us carry more than we say. Not because we are hiding — but because there has never been a space that felt <em>safe enough</em>, or quiet enough, to actually look.</p>
+        <p>This is that space.</p>
+        <p>You write whatever is real for you right now — the frustration you can't quite name, the loop you keep returning to, the thing you told yourself was fine but clearly isn't. <em>A few lines is enough.</em> There are no rules about length or topic or structure.</p>
+        <p>What happens next is different from anything you have used before. LumeRI reads what you wrote — not to evaluate you, not to score you, not to tell you how to fix anything. It reflects back what it notices. Sometimes a single line. Sometimes something that lands in a way that surprises you.</p>
+        <p>Over time, it begins to notice patterns. The themes your mind keeps returning to. Whether something is shifting — <em>even before you have consciously registered that it is.</em></p>
+        <p>It does not tell you what to do. It simply shows you yourself, a little more clearly. And that, quietly, is the thing that changes everything.</p>
+      </div>
+      <div class="about-letter-sig">— with care, LumeRI</div>
+      <button class="about-letter-toggle" onclick="toggleLetter()" id="letterToggleBtn">Read less ▲</button>
+    </div>
+
+    <!-- INFOGRAPHIC: What happens when you write — step flow -->
+    <div class="about-section-title">What happens when you write</div>
+
+    <div class="about-steps">
+
+      <div class="about-step" onclick="toggleStep(0)">
+        <div class="about-step-left">
+          <div class="about-step-num">01</div>
+          <div class="about-step-line"></div>
+        </div>
+        <div class="about-step-right">
+          <div class="about-step-header">
+            <div class="about-step-icon">✍️</div>
+            <div>
+              <div class="about-step-title">A reflection, written just for you</div>
+              <div class="about-step-hint">tap to expand</div>
+            </div>
+          </div>
+          <div class="about-step-body" id="step0">
+            <div class="about-feat-icon-large">✦</div>
+            <p class="about-feat-desc">After every entry, you receive a personal response — drawn from what you actually wrote, not a generic prompt. Thoughtful. Unhurried. Sometimes uncomfortably accurate.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-step" onclick="toggleStep(1)">
+        <div class="about-step-left">
+          <div class="about-step-num">02</div>
+          <div class="about-step-line"></div>
+        </div>
+        <div class="about-step-right">
+          <div class="about-step-header">
+            <div class="about-step-icon">🔭</div>
+            <div>
+              <div class="about-step-title">A deeper layer, when you're ready</div>
+              <div class="about-step-hint">tap to expand</div>
+            </div>
+          </div>
+          <div class="about-step-body" id="step1">
+            <div class="about-feat-icon-large">◎</div>
+            <p class="about-feat-desc">If the reflection opens something in you, you can go further — into a philosophical layer beneath the surface. Drawn from centuries of human thinking. Not advice. A different kind of light on what you wrote.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-step" onclick="toggleStep(2)">
+        <div class="about-step-left">
+          <div class="about-step-num">03</div>
+          <div class="about-step-line"></div>
+        </div>
+        <div class="about-step-right">
+          <div class="about-step-header">
+            <div class="about-step-icon">🌿</div>
+            <div>
+              <div class="about-step-title">Your patterns, made visible</div>
+              <div class="about-step-hint">tap to expand</div>
+            </div>
+          </div>
+          <div class="about-step-body" id="step2">
+            <div class="about-feat-icon-large">◈</div>
+            <p class="about-feat-desc">After a few entries, LumeRI begins to show you how your mind has been moving — across Openness, Stillness, Self-Warmth, and Clarity. Not grades. Not diagnoses. A quiet, honest picture of where you've been.</p>
+            <div class="about-qualities-row">
+              <div class="about-quality-chip">🌀 Openness</div>
+              <div class="about-quality-chip">🌊 Stillness</div>
+              <div class="about-quality-chip">🌸 Self-Warmth</div>
+              <div class="about-quality-chip">💎 Clarity</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-step" onclick="toggleStep(3)">
+        <div class="about-step-left">
+          <div class="about-step-num">04</div>
+          <!-- no line on last step -->
+        </div>
+        <div class="about-step-right">
+          <div class="about-step-header">
+            <div class="about-step-icon">📖</div>
+            <div>
+              <div class="about-step-title">Your journey, held for you</div>
+              <div class="about-step-hint">tap to expand</div>
+            </div>
+          </div>
+          <div class="about-step-body" id="step3">
+            <div class="about-feat-icon-large">◷</div>
+            <p class="about-feat-desc">Every entry stays. You can return to what you wrote on any day, read the reflection again, and see how far you have actually moved — which is often further than it feels from the inside.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- INFOGRAPHIC: Why write here — comparison cards -->
+    <div class="about-section-title">Why write here, and not somewhere else</div>
+
+    <div class="about-compare">
+      <div class="about-compare-card talking">
+        <div class="about-compare-icon">🗣️</div>
+        <div class="about-compare-label">Talking to someone</div>
+        <ul class="about-compare-list">
+          <li>You edit yourself — softening, protecting</li>
+          <li>You tell the version that holds together</li>
+          <li>The listener shapes what you say</li>
+        </ul>
+      </div>
+      <div class="about-compare-divider">vs</div>
+      <div class="about-compare-card writing">
+        <div class="about-compare-icon">✍️</div>
+        <div class="about-compare-label">Writing here</div>
+        <ul class="about-compare-list">
+          <li>The page does not react or judge</li>
+          <li>You can say what you haven't said aloud</li>
+          <li>Patterns emerge that you couldn't see alone</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="about-letter why">
+      <div class="about-letter-body">
+        <p><em>You do not have to be ready.</em> You do not have to know what to write. The only requirement is a few minutes, and whatever is actually true for you today.</p>
+      </div>
+    </div>
+
+    <!-- INFOGRAPHIC: Privacy — icon tiles -->
+    <div class="about-section-title">Your words belong to you</div>
+    <div class="about-privacy">
+      <div class="about-privacy-title">Held with care. Not used against you.</div>
+
+      <div class="about-privacy-item">
+        <div class="about-privacy-icon">🔒</div>
+        <div class="about-privacy-text"><strong>Your entries are completely private.</strong> They are never shown to other users, never sold, never used to advertise anything to you.</div>
+      </div>
+
+      <div class="about-privacy-item">
+        <div class="about-privacy-icon">🤝</div>
+        <div class="about-privacy-text">If you chose to share anonymously when you signed up, some patterns may be used — stripped of anything identifying — to help improve this system for everyone. <strong>You control that choice.</strong></div>
+      </div>
+
+      <div class="about-privacy-item">
+        <div class="about-privacy-icon">👁️</div>
+        <div class="about-privacy-text"><strong>No one is reading your words to judge you.</strong> The intelligence that reads your writing is looking for structure, not secrets. It sees patterns. It does not see you as broken, or behind, or in need of fixing.</div>
+      </div>
+    </div>
+
+    <!-- Closing quote -->
+    <div class="about-closing">
+      <span class="about-closing-mark">"</span>
+      <div class="about-closing-quote">
+        You do not need to change what you see.<br>
+        You only need to see it completely.
+      </div>
+      <span class="about-closing-attr">— the spirit behind LumeRI</span>
+    </div>
+
+    <!-- CTA -->
+    <div class="about-cta">
+      <button class="about-cta-btn" onclick="switchTab('write')">Begin writing &nbsp;↗</button>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
