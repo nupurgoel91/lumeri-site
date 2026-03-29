@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-130812 -->
+<!-- LumeRI v20260329-134945 -->
+<!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>LumeRI — Write what is actually true.</title>
@@ -918,7 +919,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
      THEN introduce the cycle
      Honest about the Krishnamurti tension
 ══════════════════════════════════════════════ -->
-<section id="ri-intelligence" style="background:var(--bg-light);padding:100px 24px 0;border-top:1px solid rgba(45,212,191,0.06);">
+<section id="ri-intelligence" style="background:var(--hero-bg);padding:100px 24px 0;border-top:1px solid rgba(45,212,191,0.06);">
 <div class="container">
 
   <!-- ── ENTRY HOOK: the universal human experience FIRST ── -->
@@ -2489,7 +2490,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 </section>
 
 <!-- ═══ ZOOM-OUT INTERACTIVE ═══ -->
-<section id="zoom-out-live" style="background:var(--hero-bg);padding:0;position:relative;overflow:hidden;min-height:100vh;border-top:1px solid rgba(45,212,191,0.06);">
+<section id="zoom-out-live" style="background:var(--hero-bg);padding:0;position:relative;overflow:visible;height:100vh;border-top:1px solid rgba(45,212,191,0.06);">
   <div style="max-width:860px;margin:0 auto;padding:0 24px 40px;">
     <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:16px;">The Practice · Interactive</p>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:rgba(234,247,245,0.95);line-height:1.3;margin-bottom:16px;">Experience the Zoom-Out <em>in motion.</em></h2>
@@ -2510,7 +2511,7 @@ body::before{
 }
 
 /* CANVAS BACKGROUND */
-#bgCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%}
+#bgCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none}
 
 /* LOGO */
 .logo{
@@ -2546,6 +2547,7 @@ body::before{
   position:absolute;inset:0;z-index:10;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   cursor:pointer;-webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
 }
 
 /* SCREEN */
@@ -3434,7 +3436,7 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
     <div style="max-width:680px;margin:0 auto 64px;text-align:center;">
       <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">The Pattern Beneath Your Writing</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;">16 Human Condition<br/><em style="color:#2dd4bf;">patterns LumeRI recognises.</em></h2>
-      <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.84);line-height:1.9;font-weight:300;max-width:580px;margin:0 auto;">Every combination of your nine construct scores maps to one of 16 patterns — universal shapes of how the human mind meets the world. Not diagnoses. Not labels. A name for something you may have been living inside without knowing.</p>
+      <p style="font-family:var(--sans);font-size:18px;color:rgba(12,46,52,0.75);line-height:1.9;font-weight:300;max-width:580px;margin:0 auto;">Every combination of your nine construct scores maps to one of 16 patterns — universal shapes of how the human mind meets the world. Not diagnoses. Not labels. A name for something you may have been living inside without knowing.</p>
     </div>
 
     <div class="patterns-grid">
@@ -3524,7 +3526,7 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
     <div class="longitudinal-card reveal">
       <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:16px;">What you see over time</div>
       <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.8vw,34px);font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:14px;">Your pattern moves.<br/><em style="color:#2dd4bf;font-style:italic;">That movement is the practice.</em></h3>
-      <p style="font-family:var(--sans);font-size:16px;color:rgba(220,245,242,0.75);line-height:1.85;font-weight:300;max-width:560px;margin-bottom:32px;">Each time you write, LumeRI tracks your nine construct scores across sessions. What emerges — slowly, honestly — is not a grade. It is a living picture of how your inner life moves. Patterns shift. Themes surface. The quality of your attention deepens. You do not need to do anything. You only need to keep seeing.</p>
+      <p style="font-family:var(--sans);font-size:16px;color:rgba(12,46,52,0.75);line-height:1.85;font-weight:300;max-width:560px;margin-bottom:32px;">Each time you write, LumeRI tracks your nine construct scores across sessions. What emerges — slowly, honestly — is not a grade. It is a living picture of how your inner life moves. Patterns shift. Themes surface. The quality of your attention deepens. You do not need to do anything. You only need to keep seeing.</p>
 
       <!-- Simulated session bars -->
       <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.4);margin-bottom:14px;">Sample · 6 sessions · Construct movement over time</div>
@@ -3756,25 +3758,25 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
     <div style="text-align:center;max-width:760px;margin:0 auto 64px;">
       <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">Why This Matters Now</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">The missing intelligence<br/><em style="color:#2dd4bf;">in the age of AI.</em></h2>
-      <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.86);line-height:1.9;font-weight:300;text-align:center;max-width:640px;margin:0 auto;">AI is accelerating analytical intelligence. Emotional intelligence is essential. But the dimension that determines the quality of both is rarely developed — and rarely even named.</p>
+      <p style="font-family:var(--sans);font-size:18px;color:rgba(12,46,52,0.75);line-height:1.9;font-weight:300;text-align:center;max-width:640px;margin:0 auto;">AI is accelerating analytical intelligence. Emotional intelligence is essential. But the dimension that determines the quality of both is rarely developed — and rarely even named.</p>
     </div>
     <div class="iq-grid" style="margin-bottom:56px;">
       <div style="background:rgba(255,255,255,0.03);padding:44px 32px;border-radius:10px 0 0 10px;border:1px solid rgba(45,212,191,0.10);border-right:none;text-align:center;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.48);line-height:1;margin-bottom:12px;">IQ</div>
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:16px;">Analytical Intelligence</div>
-        <p style="font-family:var(--sans);font-size:16px;color:rgba(200,240,238,0.6);line-height:1.8;font-weight:300;">The ability to analyse, calculate, and solve problems. Powers science, technology, and rational thinking.</p>
+        <p style="font-family:var(--sans);font-size:16px;color:rgba(12,46,52,0.65);line-height:1.8;font-weight:300;">The ability to analyse, calculate, and solve problems. Powers science, technology, and rational thinking.</p>
       </div>
       <div style="background:rgba(45,212,191,0.06);padding:44px 32px;border:2px solid rgba(45,212,191,0.5);text-align:center;position:relative;border-radius:10px;margin:-4px -2px;z-index:2;box-shadow:0 0 40px rgba(45,212,191,0.08);">
         <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:rgba(45,212,191,0.9);color:#040c0f;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 6px 6px;font-weight:500;white-space:nowrap;">An Emerging Capacity</div>
         <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.8);line-height:1;margin-bottom:12px;">RQ</div>
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.85);margin-bottom:16px;">Reflective Intelligence</div>
-        <p style="font-family:var(--sans);font-size:16px;color:rgba(220,245,242,0.88);line-height:1.8;font-weight:300;">The ability to observe one's own thinking, question assumptions, and act from clarity. Enables insight, wisdom, and conscious action.</p>
+        <p style="font-family:var(--sans);font-size:16px;color:rgba(12,46,52,0.75);line-height:1.8;font-weight:300;">The ability to observe one's own thinking, question assumptions, and act from clarity. Enables insight, wisdom, and conscious action.</p>
         <p style="font-family:var(--sans);font-size:12px;color:#0a8a7a;line-height:1.7;font-weight:300;margin-top:14px;font-style:italic;">Not yet a standardised measure. A practice, a philosophy, and a direction — grounded in contemplative traditions and psychological research.</p>
       </div>
       <div style="background:rgba(255,255,255,0.03);padding:44px 32px;border-radius:0 10px 10px 0;border:1px solid rgba(45,212,191,0.10);border-left:none;text-align:center;">
         <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.48);line-height:1;margin-bottom:12px;">EQ</div>
         <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:16px;">Emotional Intelligence</div>
-        <p style="font-family:var(--sans);font-size:16px;color:rgba(200,240,238,0.6);line-height:1.8;font-weight:300;">The ability to understand emotions, relationships, and social dynamics. Shapes leadership, empathy, and collaboration.</p>
+        <p style="font-family:var(--sans);font-size:16px;color:rgba(12,46,52,0.65);line-height:1.8;font-weight:300;">The ability to understand emotions, relationships, and social dynamics. Shapes leadership, empathy, and collaboration.</p>
       </div>
     </div>
     <div style="text-align:center;padding:44px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.15);border-radius:12px;max-width:820px;margin:0 auto;">
@@ -3818,7 +3820,7 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
     <div style="text-align:center;max-width:700px;margin:0 auto 72px;">
       <div class="section-label" style="color:rgba(45,212,191,0.6);justify-content:center;">The Reflective Intelligence Inquiry</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">Twelve questions worth<br/><em style="color:#2dd4bf;">writing into.</em></h2>
-      <p style="font-family:var(--sans);font-size:17px;color:rgba(220,245,242,0.84);line-height:1.9;font-weight:300;text-align:center;">Not questions to answer quickly. Questions to write into — honestly, slowly. That is how Reflective Intelligence is developed.</p>
+      <p style="font-family:var(--sans);font-size:17px;color:rgba(12,46,52,0.75);line-height:1.9;font-weight:300;text-align:center;">Not questions to answer quickly. Questions to write into — honestly, slowly. That is how Reflective Intelligence is developed.</p>
     </div>
     <div class="inquiry-grid">
       <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(45,212,191,0.48);line-height:1;margin-bottom:12px;">01</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Assumption</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;line-height:1.55;">What assumptions am I making right now that I have not examined?</p></div>
