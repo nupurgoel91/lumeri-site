@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-185346 -->
+<!-- LumeRI v20260329-185623 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>LumeRI — Write what is actually true.</title>
@@ -245,16 +245,18 @@ section{padding:110px 24px;position:relative}
   transform: translate(-50%, -50%);
   width: 320px; height: 320px;
   border-radius: 50%;
-  border: 1px solid rgba(45,212,191,0.06);
+  border: 1.5px solid rgba(45,212,191,0.18);
   pointer-events: none;
-  animation: ring-breathe 9s ease-in-out infinite;
-  border-color: rgba(45,212,191,0.12);
+  animation: ring-breathe 8s ease-in-out infinite;
 }
-.awareness-ring:nth-child(2){width:210px;height:210px;animation-delay:3s;border-color:rgba(45,212,191,0.20)}
-.awareness-ring:nth-child(3){width:110px;height:110px;animation-delay:6s;border-color:rgba(45,212,191,0.35)}
+.awareness-ring:nth-child(2){width:210px;height:210px;animation-delay:2.5s;border:1.5px solid rgba(45,212,191,0.28);}
+.awareness-ring:nth-child(3){width:110px;height:110px;animation-delay:5s;border:1.5px solid rgba(45,212,191,0.45);}
+.awareness-ring:nth-child(4){width:430px;height:430px;animation-delay:1s;border:1px solid rgba(45,212,191,0.08);}
 @keyframes fadeSlideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes ring-breathe{
-  0%,100%{opacity:0.4;transform:translate(-50%,-50%) scale(1)}
+  0%,100%{opacity:0.25;transform:translate(-50%,-50%) scale(1.0);}
+  50%{opacity:0.65;transform:translate(-50%,-50%) scale(1.08);}
+}
   50%{opacity:1;transform:translate(-50%,-50%) scale(1.04)}
 }
 .awareness-inner {
@@ -273,11 +275,11 @@ section{padding:110px 24px;position:relative}
   margin-bottom: 56px;
 }
 .awareness-dot {
-  width: 6px; height: 6px;
+  width: 8px; height: 8px;
   border-radius: 50%;
-  background: var(--brand);
-  margin: 0 auto 64px;
-  box-shadow: 0 0 20px rgba(15,184,164,0.6);
+  background: #2dd4bf;
+  margin: 0 auto 56px;
+  box-shadow: 0 0 12px rgba(45,212,191,0.8), 0 0 40px rgba(45,212,191,0.3);
   animation: dot-pulse 4s ease-in-out infinite;
 }
 @keyframes dot-pulse{
@@ -295,11 +297,10 @@ section{padding:110px 24px;position:relative}
   font-size: clamp(22px, 3.2vw, 38px);
   font-weight: 300;
   font-style: italic;
-  color: rgba(232,253,251,0.82);
-  line-height: 1.45;
-  padding: 28px 0;
+  color: rgba(232,253,251,0.88);
+  line-height: 1.5;
+  padding: 32px 0 24px;
   opacity: 0;
-  animation: fadeSlideIn 1.4s ease forwards;
   border-bottom: 1px solid rgba(45,212,191,0.07);
   transition: opacity 1.6s ease, transform 1.6s ease;
 }
@@ -2458,6 +2459,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 
 <!-- ══ AWARENESS ══ -->
 <section id="awareness">
+  <div class="awareness-ring"></div>
   <div class="awareness-ring"></div>
   <div class="awareness-ring"></div>
   <div class="awareness-ring"></div>
