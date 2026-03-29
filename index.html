@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-154145 -->
+<!-- LumeRI v20260329-155534 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -4229,13 +4229,29 @@ function showEntry(idx, btn) {
   function showTapThrough() {
     if(active) return;
     active = true;
+    // Always reset to screen 0 when section comes into view
+    if(cur !== 0) {
+      const oldEl = document.getElementById('s'+cur);
+      if(oldEl) { oldEl.classList.remove('active','exit-up','enter-down'); }
+      cur = 0;
+      going = false;
+      const s0 = document.getElementById('s0');
+      if(s0) { s0.classList.add('active'); }
+      updatePips();
+    }
     if(typeof window.resizeBg === 'function') window.resizeBg();
   }
 
   function hideTapThrough() {
     if(!active) return;
     active = false;
-    
+    // Reset all screens, go back to s0 for next visit
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active','exit-up','enter-down'));
+    const s0 = document.getElementById('s0');
+    if(s0) s0.classList.add('active');
+    cur = 0;
+    going = false;
+    updatePips();
   }
 
   // Use scroll-based detection — more reliable than IntersectionObserver threshold
