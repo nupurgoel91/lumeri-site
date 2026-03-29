@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-160402 -->
+<!-- LumeRI v20260329-160625 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -4206,7 +4206,8 @@ function showEntry(idx, btn) {
   let active = false;
 
   function showTapThrough() {
-    // ALWAYS reset to screen 0 — regardless of active state
+    if(active) return; // already running — don't interrupt user mid-flow
+    // Fresh entry: reset to screen 0
     document.querySelectorAll('.screen').forEach(s => {
       s.classList.remove('active','exit-up','enter-down');
     });
@@ -4214,9 +4215,8 @@ function showEntry(idx, btn) {
     if(s0) s0.classList.add('active');
     cur = 0;
     going = false;
-    if(typeof updatePips === 'function') updatePips();
-    if(active) return;
     active = true;
+    if(typeof updatePips === 'function') updatePips();
     if(typeof window.resizeBg === 'function') window.resizeBg();
   }
 
