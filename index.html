@@ -2489,7 +2489,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 </section>
 
 <!-- ═══ ZOOM-OUT INTERACTIVE ═══ -->
-<section id="zoom-out-live" style="background:var(--bg-warm);padding:60px 0 0;border-top:1px solid rgba(45,212,191,0.06);">
+<section id="zoom-out-live" style="background:var(--hero-bg);padding:0;position:relative;overflow:hidden;min-height:100vh;border-top:1px solid rgba(45,212,191,0.06);">
   <div style="max-width:860px;margin:0 auto;padding:0 24px 40px;">
     <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:16px;">The Practice · Interactive</p>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:rgba(234,247,245,0.95);line-height:1.3;margin-bottom:16px;">Experience the Zoom-Out <em>in motion.</em></h2>
@@ -2504,13 +2504,13 @@ html,body{height:100%;overflow:hidden;background:#050a0c;font-family:'DM Sans',s
 
 /* GRAIN OVERLAY */
 body::before{
-  content:'';position:fixed;inset:0;z-index:500;pointer-events:none;
+  content:'';position:absolute;inset:0;z-index:5;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   opacity:0.5;mix-blend-mode:overlay;
 }
 
 /* CANVAS BACKGROUND */
-#bgCanvas{position:fixed;inset:0;z-index:0;width:100%;height:100%}
+#bgCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%}
 
 /* LOGO */
 .logo{
@@ -2521,8 +2521,8 @@ body::before{
 
 /* PROGRESS PIPS */
 .pips{
-  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
-  display:flex;gap:8px;align-items:center;z-index:400;
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  display:flex;gap:8px;align-items:center;z-index:20;
 }
 .pip{
   width:5px;height:5px;border-radius:50%;
@@ -2535,15 +2535,15 @@ body::before{
 
 /* HINT */
 .hint{
-  position:fixed;bottom:62px;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:62px;left:50%;transform:translateX(-50%);
   font-size:9px;letter-spacing:5px;text-transform:uppercase;
-  color:rgba(24,196,174,0.20);z-index:400;white-space:nowrap;pointer-events:none;
+  color:rgba(24,196,174,0.20);z-index:20;white-space:nowrap;pointer-events:none;
   transition:opacity 0.5s;
 }
 
 /* STAGE */
 .stage{
-  position:fixed;inset:0;z-index:200;
+  position:absolute;inset:0;z-index:10;
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   cursor:pointer;-webkit-tap-highlight-color:transparent;
 }
