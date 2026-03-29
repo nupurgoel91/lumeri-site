@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-151800 -->
+<!-- LumeRI v20260329-152213 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -859,6 +859,17 @@ body:not(.zol-active) #hint { display:none !important; }
 .awareness-q.aq-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+
+/* Hide intro text once stage is covering it */
+#zoom-out-live .zol-intro {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+#zoom-out-live .stage {
+  z-index: 10;
 }
 
 </style>
@@ -2495,7 +2506,7 @@ body::before{
 }
 
 /* CANVAS BACKGROUND */
-#bgCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;}
+#bgCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;background:#050a0c;}
 
 /* LOGO */
 .logo{
@@ -2527,7 +2538,7 @@ body::before{
 }
 
 /* STAGE */
-.stage{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.stage{position:absolute;inset:0;z-index:10;background:var(--hero-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 
 /* SCREEN */
 .screen{
@@ -2615,13 +2626,14 @@ body::before{
     <p class="qnum" style="color:rgba(24,196,174,0.30)">LumeRI</p>
     <p class="qtext"><em>Something keeps<br/><span class="hl">repeating.</span></em></p>
     <p class="qsub">Eight questions. Tap to move through each one.</p>
-    <div style="margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:12px;animation:hint-pulse 2s ease-in-out infinite;">
-      <div style="width:56px;height:56px;border:2px solid rgba(24,196,174,0.60);border-radius:50%;display:flex;align-items:center;justify-content:center;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="rgba(24,196,174,0.90)" stroke-width="2">
-          <path d="M5 9 L13 9 M10 6 L13 9 L10 12"/>
+    <div style="margin-top:56px;display:flex;flex-direction:column;align-items:center;gap:16px;">
+      <div style="width:72px;height:72px;border:1.5px solid rgba(24,196,174,0.50);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:hint-pulse 2s ease-in-out infinite;background:rgba(24,196,174,0.06);">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="rgba(24,196,174,0.95)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 14 L20 14 M16 10 L20 14 L16 18"/>
         </svg>
       </div>
-      <p style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(24,196,174,0.65);">Tap anywhere to begin</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(24,196,174,0.70);margin:0;">Tap anywhere to begin</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(220,245,242,0.35);margin:0;">1 of 8 questions</p>
     </div>
   </div>
 
