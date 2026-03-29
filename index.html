@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-155534 -->
+<!-- LumeRI v20260329-160201 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -3149,18 +3149,8 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
 </script>
 
       </div>
-</section>vcache[idx]=vc;
-  animTicks[idx]=0;
-  (function loop(){
-    animTicks[idx]++;
-    animFns[idx](vc,animTicks[idx]);
-    // only keep running if screen is active or recently was
-    if(Math.abs(cur-idx)<=1){
-      requestAnimationFrame(loop);
-    } else {
-      delete vcache[idx]; // allow restart if revisited
-    }
-  })();
+</section>
+
 }
 
 // Start first visual
@@ -4227,18 +4217,17 @@ function showEntry(idx, btn) {
   let active = false;
 
   function showTapThrough() {
+    // ALWAYS reset to screen 0 — regardless of active state
+    document.querySelectorAll('.screen').forEach(s => {
+      s.classList.remove('active','exit-up','enter-down');
+    });
+    const s0 = document.getElementById('s0');
+    if(s0) s0.classList.add('active');
+    cur = 0;
+    going = false;
+    if(typeof updatePips === 'function') updatePips();
     if(active) return;
     active = true;
-    // Always reset to screen 0 when section comes into view
-    if(cur !== 0) {
-      const oldEl = document.getElementById('s'+cur);
-      if(oldEl) { oldEl.classList.remove('active','exit-up','enter-down'); }
-      cur = 0;
-      going = false;
-      const s0 = document.getElementById('s0');
-      if(s0) { s0.classList.add('active'); }
-      updatePips();
-    }
     if(typeof window.resizeBg === 'function') window.resizeBg();
   }
 
