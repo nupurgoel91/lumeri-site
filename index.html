@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-150129 -->
+<!-- LumeRI v20260329-150621 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -249,9 +249,10 @@ section{padding:110px 24px;position:relative}
   border: 1px solid rgba(45,212,191,0.06);
   pointer-events: none;
   animation: ring-breathe 9s ease-in-out infinite;
+  border-color: rgba(45,212,191,0.12);
 }
-.awareness-ring:nth-child(2){width:210px;height:210px;animation-delay:3s;border-color:rgba(45,212,191,0.05)}
-.awareness-ring:nth-child(3){width:110px;height:110px;animation-delay:6s;border-color:rgba(45,212,191,0.08)}
+.awareness-ring:nth-child(2){width:210px;height:210px;animation-delay:3s;border-color:rgba(45,212,191,0.20)}
+.awareness-ring:nth-child(3){width:110px;height:110px;animation-delay:6s;border-color:rgba(45,212,191,0.35)}
 @keyframes fadeSlideIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes ring-breathe{
   0%,100%{opacity:0.4;transform:translate(-50%,-50%) scale(1)}
@@ -765,12 +766,7 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 }
 
 /* ── Tap-through visibility control ── */
-body:not(.zol-active) .stage { display:none !important; }
-body:not(.zol-active) #bgCanvas { display:none !important; }
-body:not(.zol-active) #pips { display:none !important; }
-body:not(.zol-active) #hint { display:none !important; }
-/* Hide intro text when tap-through is active */
-body.zol-active #zoom-out-live .zol-intro { opacity: 0; pointer-events: none; }
+/* tap-through uses absolute positioning */
 body:not(.zol-active) #bgCanvas { display:none !important; }
 body:not(.zol-active) #pips { display:none !important; }
 body:not(.zol-active) #hint { display:none !important; }
@@ -2487,7 +2483,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 
 
 <!-- ═══ ZOOM-OUT INTERACTIVE ═══ -->
-<section id="zoom-out-live" style="background:var(--hero-bg);padding:0;height:100vh;border-top:1px solid rgba(45,212,191,0.06);">
+<section id="zoom-out-live" style="background:var(--hero-bg);padding:0;height:100vh;position:relative;overflow:hidden;border-top:1px solid rgba(45,212,191,0.06);">
 <div class="zol-intro" style="max-width:860px;margin:0 auto;padding:0 24px 40px;">
     <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:16px;">The Practice · Interactive</p>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:rgba(234,247,245,0.95);line-height:1.3;margin-bottom:16px;">Experience the Zoom-Out <em>in motion.</em></h2>
@@ -2508,7 +2504,7 @@ body::before{
 }
 
 /* CANVAS BACKGROUND */
-#bgCanvas{position:fixed;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;}
+#bgCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;}
 
 /* LOGO */
 .logo{
@@ -2540,7 +2536,7 @@ body::before{
 }
 
 /* STAGE */
-.stage{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.stage{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 
 /* SCREEN */
 .screen{
@@ -2725,7 +2721,7 @@ const BG_COLS = [
 ];
 let bgCur = [...BG_COLS[0]], bgTgt = [...BG_COLS[0]];
 
-function resizeBg(){BW=bgC.width=window.innerWidth;BH=bgC.height=window.innerHeight}
+function resizeBg(){var p=bgC.parentElement;BW=bgC.width=p?p.offsetWidth:window.innerWidth;BH=bgC.height=p?p.offsetHeight:window.innerHeight}
 window.resizeBg=resizeBg;
 resizeBg(); window.addEventListener('resize',resizeBg);
 
@@ -4217,17 +4213,13 @@ function showEntry(idx, btn) {
   function showTapThrough() {
     if(active) return;
     active = true;
-    document.body.classList.add('zol-active');
     if(typeof window.resizeBg === 'function') window.resizeBg();
   }
 
   function hideTapThrough() {
     if(!active) return;
     active = false;
-    document.body.classList.remove('zol-active');
-    document.body.style.overflow = '';
-    document.body.style.overflowY = '';
-    document.documentElement.style.overflow = '';
+    
   }
 
   // Use scroll-based detection — more reliable than IntersectionObserver threshold
