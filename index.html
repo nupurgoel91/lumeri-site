@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-182303 -->
+<!-- LumeRI v20260329-184238 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -2485,7 +2485,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 
 
 <!-- ═══ ZOOM-OUT INTERACTIVE ═══ -->
-<section id="zoom-out-live" style="background:var(--hero-bg);padding:0;height:100vh;border-top:1px solid rgba(45,212,191,0.06);">
+<section id="zoom-out-live" style="background:var(--hero-bg);padding:0;height:100vh;position:relative;overflow:hidden;border-top:1px solid rgba(45,212,191,0.06);">
 <div class="zol-intro" style="max-width:860px;margin:0 auto;padding:0 24px 40px;">
     <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:16px;">The Practice · Interactive</p>
     <h2 style="font-family:var(--serif);font-size:clamp(28px,4vw,42px);font-weight:300;color:rgba(234,247,245,0.95);line-height:1.3;margin-bottom:16px;">Experience the Zoom-Out <em>in motion.</em></h2>
@@ -2506,7 +2506,7 @@ body::before{
 }
 
 /* CANVAS BACKGROUND */
-#bgCanvas{position:fixed;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;background:#050a0c;}
+#bgCanvas{position:absolute;inset:0;z-index:0;width:100%;height:100%;pointer-events:none;background:#050a0c;}
 
 /* LOGO */
 .logo{
@@ -2517,7 +2517,7 @@ body::before{
 
 /* PROGRESS PIPS */
 .pips{
-  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
   display:flex;gap:8px;align-items:center;z-index:400;
 }
 .pip{
@@ -2531,14 +2531,14 @@ body::before{
 
 /* HINT */
 .hint{
-  position:fixed;bottom:62px;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:62px;left:50%;transform:translateX(-50%);
   font-size:9px;letter-spacing:5px;text-transform:uppercase;
   color:rgba(24,196,174,0.70);animation:hint-pulse 2.5s ease-in-out infinite;z-index:400;white-space:nowrap;pointer-events:none;
   transition:opacity 0.5s;
 }
 
 /* STAGE */
-.stage{position:fixed;inset:0;z-index:200;background:var(--hero-bg);display:none;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+.stage{position:absolute;inset:0;z-index:50;background:var(--hero-bg);display:none;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
 
 /* SCREEN */
 .screen{
@@ -2730,7 +2730,7 @@ const BG_COLS = [
 ];
 let bgCur = [...BG_COLS[0]], bgTgt = [...BG_COLS[0]];
 
-function resizeBg(){BW=bgC.width=window.innerWidth;BH=bgC.height=window.innerHeight;}
+function resizeBg(){var p=bgC.closest("#zoom-out-live")||bgC.parentElement;BW=bgC.width=p?p.offsetWidth:window.innerWidth;BH=bgC.height=p?p.offsetHeight:window.innerHeight;}
 window.resizeBg=resizeBg;
 resizeBg(); window.addEventListener('resize',resizeBg);
 
@@ -4209,14 +4209,12 @@ function showEntry(idx, btn) {
 
   function showTapThrough() {
     if(active) return;
-    // Reset to screen 0
     document.querySelectorAll('.screen').forEach(s => {
       s.classList.remove('active','exit-up','enter-down');
     });
     const s0 = document.getElementById('s0');
     if(s0) s0.classList.add('active');
     cur = 0; going = false; active = true;
-    // Show the fixed overlay
     const stageEl = document.getElementById('stage');
     const bgCEl = document.getElementById('bgCanvas');
     const pipsEl2 = document.getElementById('pips');
@@ -4227,6 +4225,9 @@ function showEntry(idx, btn) {
     if(hintEl2) hintEl2.style.display = 'block';
     if(typeof updatePips === 'function') updatePips();
     if(typeof window.resizeBg === 'function') window.resizeBg();
+    // Scroll into section
+    const sec = document.getElementById('zoom-out-live');
+    if(sec) sec.scrollIntoView({behavior:'smooth'});
   }
 
   function hideTapThrough() {
