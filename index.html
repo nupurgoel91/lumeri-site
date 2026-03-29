@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-184854 -->
+<!-- LumeRI v20260329-185152 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>LumeRI — Write what is actually true.</title>
@@ -2570,17 +2570,19 @@ body::before{
   font-size:clamp(26px,5.8vw,60px);
   font-weight:300;line-height:1.2;text-align:center;
   letter-spacing:-0.2px;max-width:600px;
+  color:rgba(232,253,251,0.92);
+  text-shadow:0 2px 40px rgba(0,0,0,0.4);
 }
 .qtext em{font-style:italic}
-.qtext .hl{color:#18c4ae}
+.qtext .hl{color:#2dd4bf;text-shadow:0 0 20px rgba(45,212,191,0.4)}
 .qtext .gd{color:#d4a843}
-.qtext .sm{color:rgba(234,247,245,0.45);font-size:0.85em}
+.qtext .sm{color:rgba(45,212,191,0.75);font-size:0.82em}
 
 /* SUB */
 .qsub{
   margin-top:16px;font-size:clamp(13px,1.5vw,15px);
   font-weight:300;font-style:italic;
-  color:rgba(210,240,238,0.35);max-width:340px;text-align:center;line-height:1.7;
+  color:rgba(210,240,238,0.72);max-width:340px;text-align:center;line-height:1.7;letter-spacing:0.3px;
 }
 
 /* HINGE */
@@ -2637,35 +2639,35 @@ body::before{
   <!-- SCREEN 1 -->
   <div class="screen" id="s1">
     <div class="visual"><canvas id="v1"></canvas></div>
-    <p class="qnum" style="color:rgba(24,196,174,0.42)">One</p>
+    <p class="qnum" style="color:rgba(24,196,174,0.65)">One</p>
     <p class="qtext">How are you <em><span class="hl">feeling</span></em><br/><span class="sm">right now?</span></p>
   </div>
 
   <!-- SCREEN 2 -->
   <div class="screen" id="s2">
     <div class="visual"><canvas id="v2"></canvas></div>
-    <p class="qnum" style="color:rgba(24,196,174,0.42)">Two</p>
+    <p class="qnum" style="color:rgba(24,196,174,0.65)">Two</p>
     <p class="qtext">What is <em><span class="hl">causing</span></em><br/><span class="sm">this feeling?</span></p>
   </div>
 
   <!-- SCREEN 3 -->
   <div class="screen" id="s3">
     <div class="visual"><canvas id="v3"></canvas></div>
-    <p class="qnum" style="color:rgba(24,196,174,0.42)">Three</p>
+    <p class="qnum" style="color:rgba(24,196,174,0.65)">Three</p>
     <p class="qtext"><span class="sm">Did this happen in the</span> <em><span class="hl">past</span></em><br/><span class="sm">or are you worried about the</span> <em><span class="hl">future?</span></em></p>
   </div>
 
   <!-- SCREEN 4 -->
   <div class="screen" id="s4">
     <div class="visual"><canvas id="v4"></canvas></div>
-    <p class="qnum" style="color:rgba(24,196,174,0.42)">Four</p>
+    <p class="qnum" style="color:rgba(24,196,174,0.65)">Four</p>
     <p class="qtext"><span class="sm">Why does this feel like such a</span><br/><em><span class="hl">problem?</span></em></p>
   </div>
 
   <!-- SCREEN 5 -->
   <div class="screen" id="s5">
     <div class="visual"><canvas id="v5"></canvas></div>
-    <p class="qnum" style="color:rgba(24,196,174,0.42)">Five</p>
+    <p class="qnum" style="color:rgba(24,196,174,0.65)">Five</p>
     <p class="qtext"><span class="sm">Who, exactly, is</span><br/><em><span class="hl">carrying</span> this?</em></p>
   </div>
 
@@ -2680,7 +2682,7 @@ body::before{
   <!-- SCREEN 7 -->
   <div class="screen" id="s7">
     <div class="visual"><canvas id="v7"></canvas></div>
-    <p class="qnum" style="color:rgba(24,196,174,0.42)">Seven</p>
+    <p class="qnum" style="color:rgba(24,196,174,0.65)">Seven</p>
     <p class="qtext"><span class="sm">If your closest friend brought you this —</span><br/><em><span class="hl">what would you say?</span></em></p>
     <p class="qsub">You already know the answer.</p>
   </div>
@@ -2688,7 +2690,7 @@ body::before{
   <!-- SCREEN 8 -->
   <div class="screen" id="s8">
     <div class="visual"><canvas id="v8"></canvas></div>
-    <p class="qnum" style="color:rgba(24,196,174,0.42)">Eight</p>
+    <p class="qnum" style="color:rgba(24,196,174,0.65)">Eight</p>
     <p class="qtext"><span class="sm">Having seen all of this —</span><br/><em><span class="hl">what will you do?</span></em></p>
     <p class="qsub" style="color:rgba(212,168,67,0.38)">Not from habit. From here. From now.</p>
   </div>
