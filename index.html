@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-184406 -->
+<!-- LumeRI v20260329-184854 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>LumeRI — Write what is actually true.</title>
@@ -4252,19 +4252,22 @@ function showEntry(idx, btn) {
   // Only show when user explicitly clicks Practice nav link
   // Hide when they scroll away from the section
   function checkPosition() {
-    if(!active) return; // only hide, never auto-show
     const rect = section.getBoundingClientRect();
-    const stillHere = rect.top <= window.innerHeight && rect.bottom >= 0;
-    if(!stillHere) hideTapThrough();
+    // Show when section is mostly in view
+    const inView = rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5;
+    // Hide when section is completely out of view
+    const outOfView = rect.bottom < 0 || rect.top > window.innerHeight;
+    if(inView && !active) showTapThrough();
+    if(outOfView && active) hideTapThrough();
   }
 
   window.addEventListener('scroll', checkPosition, { passive: true });
 
-  // Trigger on Practice nav click
+  // Also trigger on Practice nav click immediately
   const practiceLink = document.querySelector('a[href="#zoom-out-live"]');
   if(practiceLink) {
     practiceLink.addEventListener('click', function() {
-      setTimeout(showTapThrough, 600); // wait for scroll to complete
+      setTimeout(showTapThrough, 500);
     });
   }
 })();
