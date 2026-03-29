@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-153604 -->
+<!-- LumeRI v20260329-154145 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -2517,7 +2517,7 @@ body::before{
 
 /* PROGRESS PIPS */
 .pips{
-  position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
   display:flex;gap:8px;align-items:center;z-index:400;
 }
 .pip{
@@ -2531,7 +2531,7 @@ body::before{
 
 /* HINT */
 .hint{
-  position:fixed;bottom:62px;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:62px;left:50%;transform:translateX(-50%);
   font-size:9px;letter-spacing:5px;text-transform:uppercase;
   color:rgba(24,196,174,0.70);animation:hint-pulse 2.5s ease-in-out infinite;z-index:400;white-space:nowrap;pointer-events:none;
   transition:opacity 0.5s;
@@ -2619,21 +2619,19 @@ body::before{
 <canvas id="bgCanvas"></canvas>
 <p class="logo">LumeRI</p>
 <div class="stage" id="stage">
+  <div id="zol-counter" style="position:absolute;top:24px;right:32px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.55);z-index:20;pointer-events:none;"></div>
 
   <!-- SCREEN 0: INTRO -->
-  <div class="screen active" id="s0">
-    <div class="visual"><canvas id="v0"></canvas></div>
-    <p class="qnum" style="color:rgba(24,196,174,0.30)">LumeRI</p>
-    <p class="qtext"><em>Something keeps<br/><span class="hl">repeating.</span></em></p>
-    <p class="qsub">Eight questions. Tap to move through each one.</p>
-    <div style="margin-top:56px;display:flex;flex-direction:column;align-items:center;gap:16px;">
-      <div style="width:72px;height:72px;border:1.5px solid rgba(24,196,174,0.50);border-radius:50%;display:flex;align-items:center;justify-content:center;animation:hint-pulse 2s ease-in-out infinite;background:rgba(24,196,174,0.06);">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="rgba(24,196,174,0.95)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 14 L20 14 M16 10 L20 14 L16 18"/>
-        </svg>
+  <div class="screen active" id="s0" style="padding:48px 36px 72px;background:var(--hero-bg);">
+    <p style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.60);margin-bottom:20px;text-align:center;">The Practice · Interactive</p>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:300;color:rgba(234,247,245,0.95);line-height:1.3;margin-bottom:14px;text-align:center;">Experience the Zoom-Out<br/><em style="color:#2dd4bf;">in motion.</em></h2>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(210,245,242,0.55);font-weight:300;margin-bottom:0;text-align:center;">Eight questions. One path inward.</p>
+    <div style="margin-top:48px;display:flex;flex-direction:column;align-items:center;gap:14px;">
+      <div style="width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;animation:hint-pulse 1.8s ease-in-out infinite;background:rgba(45,212,191,0.14);border:2px solid rgba(45,212,191,0.60);">
+        <svg width="30" height="30" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><polygon points="11,7 25,15 11,23" fill="rgba(45,212,191,0.95)"/></svg>
       </div>
-      <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(24,196,174,0.70);margin:0;">Tap anywhere to begin</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(220,245,242,0.35);margin:0;">1 of 8 questions</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.80);margin:0;">Tap anywhere to begin</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(220,245,242,0.35);margin:0;">1 of 8 questions</p>
     </div>
   </div>
 
@@ -2774,7 +2772,7 @@ function updatePips(){
     p.classList.toggle('cur',qi===cur);
     p.classList.toggle('done',qi<cur);
   });
-  pipsEl.style.opacity=(cur===0||cur===9)?'0':'1';
+  pipsEl.style.opacity=cur===9?'0':'1';
   hintEl.style.opacity=cur===9?'0':'0.8';
 }
 
@@ -3131,6 +3129,27 @@ function startVisual(idx){
   const vc=getVC(idx);
   if(!vc||!animFns[idx])return;
   vcache[idx]=vc;
+  animTicks[idx]=0;
+  (function loop(){
+    animTicks[idx]++;
+    animFns[idx](vc,animTicks[idx]);
+    // only keep running if screen is active or recently was
+    if(Math.abs(cur-idx)<=1){
+      requestAnimationFrame(loop);
+    } else {
+      delete vcache[idx]; // allow restart if revisited
+    }
+  })();
+}
+
+// Start first visual
+setTimeout(()=>{startVisual(0);updatePips();},100);
+
+})();
+</script>
+
+      </div>
+</section>vcache[idx]=vc;
   animTicks[idx]=0;
   (function loop(){
     animTicks[idx]++;
