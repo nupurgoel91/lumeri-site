@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-181423 -->
-
+<!-- LumeRI v20260329-182303 -->
+<!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>LumeRI — Write what is actually true.</title>
@@ -2780,6 +2780,8 @@ function updatePips(){
 function goTo(idx){
   if(going||idx===cur||idx<0||idx>=TOTAL)return;
   going=true;
+  // Ensure ALL screens except fromEl are inactive
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active','exit-up','enter-down'));
   const fromEl=document.getElementById('s'+cur);
   const toEl=document.getElementById('s'+idx);
   bgTgt = [...BG_COLS[Math.min(idx,BG_COLS.length-1)]];
@@ -4247,17 +4249,24 @@ function showEntry(idx, btn) {
   }
 
   // Use scroll-based detection — more reliable than IntersectionObserver threshold
+  // Only show when user explicitly clicks Practice nav link
+  // Hide when they scroll away from the section
   function checkPosition() {
+    if(!active) return; // only hide, never auto-show
     const rect = section.getBoundingClientRect();
-    // Only activate when section is substantially centered in viewport
-    // Section top must be near or above viewport top, bottom must still be visible
-    const fullyEngaged = rect.top <= window.innerHeight * 0.15 && rect.bottom >= window.innerHeight * 0.85;
-    if(fullyEngaged) showTapThrough();
-    else hideTapThrough();
+    const stillHere = rect.top <= window.innerHeight && rect.bottom >= 0;
+    if(!stillHere) hideTapThrough();
   }
 
   window.addEventListener('scroll', checkPosition, { passive: true });
-  setTimeout(checkPosition, 500);
+
+  // Trigger on Practice nav click
+  const practiceLink = document.querySelector('a[href="#zoom-out-live"]');
+  if(practiceLink) {
+    practiceLink.addEventListener('click', function() {
+      setTimeout(showTapThrough, 600); // wait for scroll to complete
+    });
+  }
 })();
 
 
