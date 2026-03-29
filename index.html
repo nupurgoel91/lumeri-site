@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-143110 -->
+<!-- LumeRI v20260329-143809 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -301,17 +301,8 @@ section{padding:110px 24px;position:relative}
   opacity: 0;
   animation: fadeSlideIn 1.4s ease forwards;
   border-bottom: 1px solid rgba(45,212,191,0.07);
-  opacity: 0;
-  animation: aq-fade 1.2s ease forwards;
-}
+  }
 .awareness-q:last-child{border-bottom:none}
-.awareness-q:nth-child(1){ animation-delay: 0.8s; }
-.awareness-q:nth-child(2){ animation-delay: 2.8s; }
-.awareness-q:nth-child(3){ animation-delay: 4.8s; }
-.awareness-q:nth-child(1){ animation-delay: 0.5s; }
-.awareness-q:nth-child(2){ animation-delay: 2.0s; }
-.awareness-q:nth-child(3){ animation-delay: 3.5s; }
-.awareness-q:nth-child(4){ animation-delay: 5.0s; }
 .awareness-q em{color:var(--lite);font-style:italic}
 @keyframes aq-fade{
   from{ opacity:0; transform:translateY(14px); }
@@ -854,6 +845,18 @@ body:not(.zol-active) #hint { display:none !important; }
 #about .section-label,
 #about p {
   color: rgba(220,245,242,0.85);
+}
+
+
+/* ── Awareness questions fly-in ── */
+.awareness-q {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.0s ease, transform 1.0s ease;
+}
+.awareness-q.aq-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 </style>
@@ -1572,82 +1575,7 @@ canvas { width: 100%; display: block; border-radius: 10px; margin-bottom: 0; }
   </div><!-- end third diagram -->
 
   <!-- ══ ZOOM-OUT QUESTIONS ══ -->
-  <div class="zo-section">
-    <div class="zo-header">
-      <p class="eyeline" style="margin-bottom:12px;">The Practice</p>
-      <h2 class="zo-title">Eight questions that<br/>walk you through the <em>cycle.</em></h2>
-    </div>
-
-    <p class="zo-intro">
-      The liberation diagram above shows the path visually. These eight questions are how you actually walk it — in writing, in your own life, about whatever is alive for you right now. Each question moves one step closer to the root. By question eight, you are no longer inside the problem. You are seeing it.
-    </p>
-
-    <div class="zo-cols" id="zoGrid">
-
-      <!-- ZOOM IN column -->
-      <div>
-        <p class="zo-col-head zoom-in">Zoom In — Trace Toward the Root</p>
-        <div class="zo-q" id="zoq1">
-          <span class="zo-num">1</span>
-          <div><div class="zo-text">How are you <em>feeling</em> today?</div></div>
-        </div>
-        <div class="zo-q" id="zoq2">
-          <span class="zo-num">2</span>
-          <div><div class="zo-text">What is the <em>cause</em> of this feeling?</div></div>
-        </div>
-        <div class="zo-q" id="zoq3">
-          <span class="zo-num">3</span>
-          <div><div class="zo-text">When did it happen — <em>past</em> event or <em>future</em> planning?</div></div>
-        </div>
-        <div class="zo-q" id="zoq4">
-          <span class="zo-num">4</span>
-          <div><div class="zo-text">Why is it an <em>issue</em> exactly?</div></div>
-        </div>
-        <div class="zo-q" id="zoq5">
-          <span class="zo-num">5</span>
-          <div><div class="zo-text">Who is <em>facing</em> this issue?</div></div>
-        </div>
-      </div>
-
-      <!-- HINGE + ZOOM OUT column -->
-      <div>
-        <p class="zo-col-head zoom-out">The Hinge &amp; Zoom Out</p>
-        <div class="zo-q hinge" id="zoq6">
-          <span class="zo-num">6</span>
-          <div>
-            <div class="zo-text">Who are you — <em>conditioned self</em> or <em>choicelessly aware?</em></div>
-            <div class="zo-sub">The hinge. Step outside the one who is suffering.</div>
-          </div>
-        </div>
-        <div class="zo-q" id="zoq7">
-          <span class="zo-num">7</span>
-          <div>
-            <div class="zo-text">What would you <em>advise a friend</em> who brought you this question?</div>
-            <div class="zo-sub">You already know the answer. You always did.</div>
-          </div>
-        </div>
-        <div class="zo-q" id="zoq8">
-          <span class="zo-num">8</span>
-          <div>
-            <div class="zo-text">What will you <em>do</em> after seeing this?</div>
-            <div class="zo-sub">Not from habit. From here. From now.</div>
-          </div>
-        </div>
-        <div style="margin-top:20px;padding:16px 18px;border:1px solid rgba(45,212,191,0.10);border-radius:7px;background:rgba(15,184,164,0.06);">
-          <p style="font-family:var(--serif);font-size:14px;font-style:italic;color:rgba(200,240,238,0.58);line-height:1.7;">
-            "The dust is seen. What is seen clearly — loses its grip. Layer by layer, the mirror clears."
-          </p>
-          <p style="font-family:var(--sans);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.35);margin-top:8px;">— Reflective Intelligence</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="zo-final" id="zoFinal">
-      <p class="zo-final-q">From <em>"How are you?"</em><br/>to <em>"Who are you?"</em></p>
-      <p style="font-family:var(--serif);font-size:clamp(16px,2vw,22px);font-weight:300;font-style:italic;letter-spacing:0.5px;color:var(--lite);margin-top:16px;margin-bottom:0;">That is the entire path.</p>
-      <p class="zo-final-s">Reflective Intelligence · The practice of seeing clearly</p>
-    </div>
-  </div>
+  
 
 </div><!-- end page -->
 
@@ -2855,7 +2783,20 @@ function goTo(idx){
     going=false;
   },480);
 }
-function next(){goTo(cur+1)}
+function next(){
+  if(cur >= TOTAL - 1) {
+    // Last screen reached — release scroll and let user continue
+    hideTapThrough();
+    // Scroll past the section smoothly
+    const zolSection = document.getElementById('zoom-out-live');
+    if(zolSection) {
+      const nextSection = zolSection.nextElementSibling;
+      if(nextSection) nextSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    return;
+  }
+  goTo(cur+1);
+}
 document.addEventListener('click',next);
 document.addEventListener('keydown',e=>{
   if(['ArrowRight',' ','Enter'].includes(e.key))next();
@@ -4280,6 +4221,8 @@ function showEntry(idx, btn) {
     active = false;
     document.body.classList.remove('zol-active');
     document.body.style.overflow = '';
+    document.body.style.overflowY = '';
+    document.documentElement.style.overflow = '';
   }
 
   // Use scroll-based detection — more reliable than IntersectionObserver threshold
@@ -4295,6 +4238,30 @@ function showEntry(idx, btn) {
   setTimeout(checkPosition, 300);
 })();
 </script>
+
+
+// ── Awareness questions sequential reveal ──
+(function(){
+  const section = document.getElementById('awareness');
+  if(!section) return;
+  const questions = section.querySelectorAll('.awareness-q');
+  if(!questions.length) return;
+  
+  let triggered = false;
+  const obs = new IntersectionObserver(entries => {
+    if(triggered) return;
+    if(entries[0].isIntersecting) {
+      triggered = true;
+      questions.forEach((q, i) => {
+        setTimeout(() => {
+          q.classList.add('aq-visible');
+        }, i * 1800); // 1.8 seconds between each question
+      });
+      obs.disconnect();
+    }
+  }, { threshold: 0.2 });
+  obs.observe(section);
+})();
 
 </body>
 </html>
