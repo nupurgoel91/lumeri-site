@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- LumeRI v20260329-143809 -->
+<!-- LumeRI v20260329-144555 -->
 <!-- OLD: 20260329-130812 -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -848,11 +848,11 @@ body:not(.zol-active) #hint { display:none !important; }
 }
 
 
-/* ── Awareness questions fly-in ── */
+/* ── Awareness questions — breathing reveal ── */
 .awareness-q {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.0s ease, transform 1.0s ease;
+  transform: translateY(24px);
+  transition: opacity 1.6s ease, transform 1.6s ease;
 }
 .awareness-q.aq-visible {
   opacity: 1;
@@ -4212,7 +4212,6 @@ function showEntry(idx, btn) {
     if(active) return;
     active = true;
     document.body.classList.add('zol-active');
-    document.body.style.overflow = 'hidden';
     if(typeof window.resizeBg === 'function') window.resizeBg();
   }
 
@@ -4237,14 +4236,13 @@ function showEntry(idx, btn) {
   // Also check on load in case already in view
   setTimeout(checkPosition, 300);
 })();
-</script>
 
 
-// ── Awareness questions sequential reveal ──
+// ── Awareness questions — breathing reveal, one at a time ──
 (function(){
   const section = document.getElementById('awareness');
   if(!section) return;
-  const questions = section.querySelectorAll('.awareness-q');
+  const questions = Array.from(section.querySelectorAll('.awareness-q'));
   if(!questions.length) return;
   
   let triggered = false;
@@ -4255,13 +4253,15 @@ function showEntry(idx, btn) {
       questions.forEach((q, i) => {
         setTimeout(() => {
           q.classList.add('aq-visible');
-        }, i * 1800); // 1.8 seconds between each question
+        }, i * 2200);
       });
       obs.disconnect();
     }
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
   obs.observe(section);
 })();
+</script>
+
 
 </body>
 </html>
