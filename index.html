@@ -872,6 +872,10 @@ body:not(.zol-active) #hint { display:none !important; }
   z-index: 100;
 }
 
+
+/* ── About section canvas ── */
+#scene { background: transparent; }
+
 </style>
 </head>
 <body>
@@ -3930,23 +3934,166 @@ As for how often: there is no right frequency. Some people write daily. Some wri
 
 
 <!-- ══ ABOUT ══ -->
-<section id="about" style="background:var(--hero-bg);padding:110px 24px;">
-  <div class="container">
-    <div style="max-width:680px;margin:0 auto;text-align:center;margin-bottom:64px;">
-      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.65);">The Understanding</div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.8vw,46px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.25;margin-bottom:0;">There is a mirror in you.<br/><em style="color:#2dd4bf;">It was never not there.</em></h2>
+<section id="about" style="background:var(--hero-bg);padding:80px 24px 100px;">
+  <div style="max-width:760px;margin:0 auto;">
+
+    <!-- Sky & Clouds diagram -->
+    <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:28px;">The Sky and the Clouds</div>
+    <div style="width:100%;border-radius:6px;overflow:hidden;margin-bottom:14px;border:1px solid rgba(45,212,191,0.07);">
+      <canvas id="scene" style="width:100%;display:block;"></canvas>
     </div>
-    <div style="max-width:820px;margin:0 auto;background:rgba(255,255,255,0.03);border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:56px 52px;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.5),transparent);"></div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:28px;">The Philosophy</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:rgba(232,253,251,0.92);line-height:1.75;margin-bottom:28px;">There is a mirror in you. Not the mirror of reputation or self-image. The mirror of awareness itself &mdash; pristine, luminous, already whole.</p>
-      <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(220,245,242,0.88);line-height:1.9;font-weight:300;margin-bottom:22px;">And there is dust. Layer upon layer of conditioning &mdash; inherited belief, thought mistaken for truth, identity mistaken for self. It settles slowly, without drama, until the mirror is opaque and you have forgotten it was ever clear.</p>
-      <p style="font-family:'DM Sans',sans-serif;font-size:18px;color:rgba(220,245,242,0.88);line-height:1.9;font-weight:300;margin-bottom:22px;"><em style="color:#e8fdfb;">Seeing</em> is what restores it. Not discipline. Not belief. Direct, choiceless awareness &mdash; the kind that does not add to the dust but simply lets it fall. What is seen clearly loses its grip.</p>
-      <div style="padding:32px 36px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.15);border-radius:10px;margin-bottom:32px;">
-        <p style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:rgba(232,253,251,0.92);line-height:1.75;margin:0;">The purpose of life, as understood here, is not to arrive somewhere. It is to let the mirror clear &mdash; and let the world flow through you. LumeRI was built from this understanding.</p>
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:rgba(210,235,232,0.22);text-align:center;margin-bottom:48px;letter-spacing:0.5px;">now is the sky · patterns are the clouds · you are not the clouds</div>
+
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 48px;"></div>
+
+    <!-- Founder note -->
+    <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:32px;">Nupur · Founder</div>
+    <div style="margin-bottom:52px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);font-style:italic;line-height:1.85;color:rgba(210,235,232,0.68);margin-bottom:20px;">The traditions I have lived with — J. Krishnamurti, Ramana Maharshi, Alan Watts, and others — are not ancient curiosities. They are the most precise maps of the human mind ever drawn, and what they point at is available to anyone willing to look.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);font-style:italic;line-height:1.85;color:rgba(210,235,232,0.68);margin-bottom:20px;">I looked. Not theoretically — inwardly, at my own patterns, my own conditioning, the machinery running silently beneath every reaction and choice. I saw it. And once seen, it could not be unseen.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);font-style:italic;line-height:1.85;color:rgba(210,235,232,0.82);margin-bottom:0;border-left:2px solid rgba(45,212,191,0.28);padding-left:18px;">LumeRI was built from that seeing — and for that seeing. For anyone ready to look at their own patterns clearly, without flinching, and discover what remains when the noise settles.</p>
+    </div>
+
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 48px;"></div>
+
+    <!-- Reflective Intelligence -->
+    <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:32px;">Reflective Intelligence</div>
+    <div style="margin-bottom:40px;">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,4vw,30px);font-weight:300;color:rgba(210,235,232,0.88);margin-bottom:16px;line-height:1.25;">The intelligence we keep ignoring<br/><em style="color:#2dd4bf;">while building every other kind.</em></h3>
+      <p style="font-size:14px;line-height:1.82;color:rgba(210,235,232,0.45);margin-bottom:14px;">Every intelligence humanity has ever built looks outward. The one that lives within — we never looked.<br/><br/><strong style="font-weight:400;color:rgba(210,235,232,0.82);">Reflective Intelligence</strong> is the capacity to witness yourself without analysing, judging, or fixing — simply to see. To observe the pattern without becoming it, to stand fully present while conditioning moves through like weather. Every action from unseen conditioning repeats; every action from awareness — even once — is already different.</p>
+      <p style="font-size:14px;line-height:1.82;color:rgba(210,235,232,0.45);">J. Krishnamurti called it <strong style="font-weight:400;color:rgba(210,235,232,0.82);">choiceless awareness.</strong> Ramana Maharshi pointed at it with <strong style="font-weight:400;color:rgba(210,235,232,0.82);">Who am I?</strong> Alan Watts and Nisargadatta Maharaj said you are not your story — you are the awareness in which the story appears. Three traditions, twenty-five centuries apart, pointing at the same thing from three directions.</p>
+    </div>
+
+    <!-- LumeRI instrument -->
+    <div style="background:rgba(45,212,191,0.03);border:1px solid rgba(45,212,191,0.09);border-radius:4px;padding:28px 32px;margin-bottom:48px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,22px);font-style:italic;color:rgba(45,212,191,0.85);margin-bottom:12px;">LumeRI — the instrument</div>
+      <p style="font-size:14px;line-height:1.82;color:rgba(210,235,232,0.45);">Reflective Intelligence already lives in you — the noise of conditioning is simply so continuous that there is no gap in which to see it.<br/><br/><strong style="font-weight:400;color:rgba(210,235,232,0.82);">LumeRI creates that gap.</strong> It holds a mirror across time, surfacing patterns invisible from inside a single moment — when the same word, feeling, or person recurs across weeks, <em style="color:#2dd4bf;">LumeRI puts light on it</em>, not to label or fix, but to make it visible. What is seen clearly begins to lose its grip.<br/><br/>Then eight questions guide you from wherever you are — through the pattern, through self-inquiry — into the present moment. From clouds to open sky.</p>
+    </div>
+
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 48px;"></div>
+
+    <!-- 8 Questions -->
+    <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:32px;">The Eight Questions · The Zoom Out</div>
+    <div id="aboutQList" style="display:flex;flex-direction:column;margin-bottom:52px;">
+
+      <div class="aq-row" data-q="1" style="display:grid;grid-template-columns:52px 1fr;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
+          <div class="aq-bubble" data-q="1" style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(155,75,18,0.18);border:1.5px solid rgba(185,95,25,0.6);color:rgba(220,145,65,1);">1</div>
+          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(185,95,25,0.28),rgba(185,95,25,0.14));"></div>
+        </div>
+        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
+          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,125,50,0.5);margin-bottom:3px;">The surface · where you are</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(225,190,145,0.82);margin-bottom:5px;">How are you feeling today?</div>
+          <div style="font-size:12px;line-height:1.65;color:rgba(195,155,105,0.5);">No agenda, no performance — just what is actually here. The cloud you are currently inside.</div>
+        </div>
       </div>
-      <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(45,212,191,0.60);letter-spacing:2px;text-transform:uppercase;text-align:center;">Reflective Intelligence &nbsp;&middot;&nbsp; <a href="https://www.reflectiveintelligence.life" style="color:rgba(45,212,191,0.75);text-decoration:none;">reflectiveintelligence.life</a></p>
-    </div></section>
+
+      <div class="aq-row" data-q="2" style="display:grid;grid-template-columns:52px 1fr;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
+          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(165,90,20,0.15);border:1.5px solid rgba(195,115,35,0.55);color:rgba(225,155,72,1);">2</div>
+          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(195,115,35,0.22),rgba(100,165,80,0.1));"></div>
+        </div>
+        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
+          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(210,135,55,0.48);margin-bottom:3px;">The story begins</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(225,195,152,0.78);margin-bottom:5px;">What is the cause?</div>
+          <div style="font-size:12px;line-height:1.65;color:rgba(200,165,112,0.46);">The mind names a cause — LumeRI listens not to confirm the story, but to see what the mind reaches for.</div>
+        </div>
+      </div>
+
+      <div class="aq-row" data-q="3" style="display:grid;grid-template-columns:52px 1fr;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
+          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(90,140,75,0.12);border:1.5px solid rgba(110,178,105,0.45);color:rgba(145,215,140,1);">3</div>
+          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(110,178,105,0.18),rgba(45,195,155,0.1));"></div>
+        </div>
+        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
+          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(130,195,130,0.45);margin-bottom:3px;">Time awareness</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(205,228,205,0.75);margin-bottom:5px;">When — past or future?</div>
+          <div style="font-size:12px;line-height:1.65;color:rgba(170,208,170,0.44);">Almost all suffering lives in the past or future — this question names which one, and by naming it, creates the first distance.</div>
+        </div>
+      </div>
+
+      <div class="aq-row" data-q="4" style="display:grid;grid-template-columns:52px 1fr;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
+          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(28,148,118,0.12);border:1.5px solid rgba(38,178,148,0.45);color:rgba(55,208,175,1);">4</div>
+          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(38,178,148,0.2),rgba(45,205,180,0.14));"></div>
+        </div>
+        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
+          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(50,200,168,0.44);margin-bottom:3px;">The pattern examined</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(200,232,228,0.75);margin-bottom:5px;">Why is it an issue exactly?</div>
+          <div style="font-size:12px;line-height:1.65;color:rgba(162,212,205,0.42);">Not whether — but why. The conditioning begins to show its shape; the cloud has a name, and named, it can be seen rather than inhabited.</div>
+        </div>
+      </div>
+
+      <!-- Mirror crossing -->
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 0 10px 52px;background:rgba(45,212,191,0.03);border-top:1px solid rgba(45,212,191,0.12);border-bottom:1px solid rgba(45,212,191,0.12);margin:2px 0;">
+        <div style="flex:1;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.45),rgba(45,212,191,0.1));"></div>
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.48);white-space:nowrap;">· crossing the mirror · self-inquiry begins ·</div>
+        <div style="flex:1;height:1px;background:linear-gradient(to left,rgba(45,212,191,0.45),rgba(45,212,191,0.1));"></div>
+      </div>
+
+      <div class="aq-row" data-q="5" style="display:grid;grid-template-columns:52px 1fr;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
+          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(45,212,191,0.10);border:2px solid rgba(45,212,191,0.65);color:rgba(45,212,191,1);box-shadow:0 0 14px rgba(45,212,191,0.2);">5</div>
+          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.25),rgba(45,212,191,0.18));"></div>
+        </div>
+        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.1);">
+          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.52);margin-bottom:3px;">The mirror · who is here</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(210,240,236,0.92);margin-bottom:5px;">Who is facing this issue?</div>
+          <div style="font-size:12px;line-height:1.65;color:rgba(45,212,191,0.48);">Not what is the problem — but who is facing it. The conditioned self who inherited this pattern, or the one already watching it? This is the threshold between cloud and sky.</div>
+        </div>
+      </div>
+
+      <div class="aq-row" data-q="6" style="display:grid;grid-template-columns:52px 1fr;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
+          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(45,212,191,0.09);border:1.5px solid rgba(45,212,191,0.55);color:rgba(45,212,191,0.95);">6</div>
+          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.22),rgba(45,212,191,0.18));"></div>
+        </div>
+        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
+          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:3px;">Identity · inwardly</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(210,240,236,0.88);margin-bottom:5px;">Who are you — conditioned self or choicelessly aware?</div>
+          <div style="font-size:12px;line-height:1.65;color:rgba(45,212,191,0.45);">Krishnamurti's question — not to be answered in words, but seen inwardly: in this moment, is it the cloud or the sky that is here?</div>
+        </div>
+      </div>
+
+      <div class="aq-row" data-q="7" style="display:grid;grid-template-columns:52px 1fr;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
+          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(45,212,191,0.09);border:1.5px solid rgba(45,212,191,0.52);color:rgba(45,212,191,0.95);">7</div>
+          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.20),rgba(45,212,191,0.22));"></div>
+        </div>
+        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
+          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.48);margin-bottom:3px;">Compassion · the witness</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(210,240,236,0.86);margin-bottom:5px;">What would you advise a friend?</div>
+          <div style="font-size:12px;line-height:1.65;color:rgba(45,212,191,0.44);">Addressing a friend, you naturally step outside your own cloud — the witness speaks, not the pattern, and compassion arrives without effort.</div>
+        </div>
+      </div>
+
+      <div class="aq-row" data-q="8" style="display:grid;grid-template-columns:52px 1fr;">
+        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
+          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(212,168,67,0.13);border:2px solid rgba(212,168,67,0.68);color:rgba(212,168,67,1);box-shadow:0 0 20px rgba(212,168,67,0.25);">8</div>
+        </div>
+        <div style="padding:12px 0 20px 6px;">
+          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.58);margin-bottom:3px;">Arrival · action from awareness</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,3vw,20px);line-height:1.3;color:rgba(255,240,200,0.96);margin-bottom:5px;">What will you do after seeing this?</div>
+          <div style="font-size:12px;line-height:1.65;color:rgba(212,168,67,0.55);">Action chosen from awareness, not compulsion — from the sky, not the cloud. This is why the journey exists.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Arrival -->
+    <div style="text-align:center;padding:44px 24px;background:radial-gradient(ellipse at center,rgba(45,212,191,0.05) 0%,transparent 68%);border:1px solid rgba(45,212,191,0.07);border-radius:6px;margin-bottom:40px;">
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(52px,12vw,80px);font-weight:300;letter-spacing:20px;color:rgba(45,212,191,0.14);line-height:1;margin-bottom:10px;">NOW</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3.5vw,24px);font-style:italic;color:rgba(45,212,191,0.68);margin-bottom:10px;">Choiceless Awareness · Whole and Empty</div>
+      <div style="font-size:13px;color:rgba(210,235,232,0.28);line-height:1.78;max-width:400px;margin:0 auto;">Not a destination reached once — a ground you return to, each time more naturally.<br/><br/><em>Dust seen, not accumulated, slowly fades.</em></div>
+    </div>
+
+    <!-- RI link -->
+    <div style="text-align:center;">
+      <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(45,212,191,0.55);letter-spacing:2px;text-transform:uppercase;">Reflective Intelligence &nbsp;·&nbsp; <a href="https://www.reflectiveintelligence.life" style="color:rgba(45,212,191,0.78);text-decoration:none;" target="_blank">reflectiveintelligence.life</a></p>
+    </div>
+
+  </div>
+</section>
 
 
 <!-- ══ CTA BOTTOM ══ -->
@@ -4306,33 +4453,311 @@ function showEntry(idx, btn) {
 
 
 
+<!-- showEntry defined above -->
+
+
 <script>
-/* ── Global UI functions ── */
-function showEntry(idx, btn) {
-  document.querySelectorAll('.mirror-card').forEach(c => c.style.display = 'none');
-  var target = document.getElementById('entry-' + idx);
-  if(target) target.style.display = '';
-  document.querySelectorAll('.sample-tab').forEach(function(b) { b.classList.remove('active'); });
-  if(btn) btn.classList.add('active');
+// ── CANVAS ──
+const canvas = document.getElementById('scene');
+const ctx = canvas.getContext('2d');
+const W = 700, H = 460, HORIZON = 242;
+canvas.width = W; canvas.height = H;
+let tick = 0;
+
+// Stars
+const stars = Array.from({length:65}, () => ({
+  x: Math.random()*W, y: Math.random()*HORIZON*0.88,
+  r: Math.random()*0.85+0.15, base: Math.random()*0.42+0.08,
+  sp: Math.random()*0.003+0.001, ph: Math.random()*Math.PI*2
+}));
+
+// Clouds — bounce within screen, never vanish
+// Each cloud is self-contained: shape + label drawn together
+const CMARGIN = 68;
+const cloudDefs = [
+  { laneY: HORIZON+46,  x: 200, sp: 0.52, sc: 1.04, al: 0.70, label:'Restlessness',          dir:+1 },
+  { laneY: HORIZON+108, x: 420, sp: 0.36, sc: 0.90, al: 0.60, label:'Past or Future',        dir:-1 },
+  { laneY: HORIZON+62,  x: 530, sp: 0.68, sc: 0.83, al: 0.56, label:'The never-ending race', dir:-1 },
+  { laneY: HORIZON+150, x: 130, sp: 0.44, sc: 0.94, al: 0.50, label:'Conditioned Self',      dir:+1 },
+  { laneY: HORIZON+172, x: 490, sp: 0.28, sc: 0.76, al: 0.44, label:'Patterns',              dir:-1 },
+];
+const clouds = cloudDefs.map(d => ({...d}));
+
+function cloudHalfW(sc) { return 60*sc; }
+
+function drawCloud(cx, cy, sc, al, label) {
+  // Proper cloud: wide base ellipse + 4 bumps on top
+  const bumps = [
+    {dx:0,   dy:0,   rx:46, ry:19},
+    {dx:-27, dy:-16, rx:24, ry:20},
+    {dx:0,   dy:-23, rx:29, ry:22},
+    {dx:27,  dy:-14, rx:23, ry:18},
+    {dx:-48, dy:-4,  rx:17, ry:13},
+    {dx:48,  dy:-2,  rx:17, ry:12},
+  ];
+  ctx.save(); ctx.globalAlpha = al;
+  bumps.forEach(b => {
+    const bx=cx+b.dx*sc, by=cy+b.dy*sc, rx=b.rx*sc, ry=b.ry*sc;
+    const g = ctx.createRadialGradient(bx, by-ry*0.22, 0, bx, by, Math.max(rx,ry));
+    g.addColorStop(0,   'rgba(212,162,84,0.62)');
+    g.addColorStop(0.38,'rgba(188,132,56,0.40)');
+    g.addColorStop(0.72,'rgba(162,104,38,0.17)');
+    g.addColorStop(1,   'rgba(130,82,26,0.0)');
+    ctx.save(); ctx.scale(1, ry/rx);
+    ctx.beginPath(); ctx.arc(bx, by*(rx/ry), rx, 0, Math.PI*2);
+    ctx.fillStyle = g; ctx.fill(); ctx.restore();
+  });
+  ctx.restore();
+  // Label centred inside cloud
+  ctx.save();
+  ctx.font = 'italic 300 12px "Cormorant Garamond"';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillStyle=`rgba(228,188,125,${Math.min(al*1.08,0.76)})`;
+  ctx.fillText(label, cx, cy+8);
+  ctx.restore();
 }
-window.riTab = function(n) {
-  var p1 = document.getElementById('ri-panel1');
-  var p2 = document.getElementById('ri-panel2');
-  var t1 = document.getElementById('ri-tab1');
-  var t2 = document.getElementById('ri-tab2');
-  if(p1) p1.style.display = n===1 ? '' : 'none';
-  if(p2) p2.style.display = n===2 ? '' : 'none';
-  if(t1) t1.style.color = n===1 ? 'var(--brand)' : 'rgba(45,212,191,0.3)';
-  if(t2) t2.style.color = n===2 ? 'var(--brand)' : 'rgba(45,212,191,0.3)';
-};
-// Ensure entry-0 shows by default
-document.addEventListener('DOMContentLoaded', function() {
-  var e0 = document.getElementById('entry-0');
-  var e1 = document.getElementById('entry-1');
-  if(e0) e0.style.display = '';
-  if(e1) e1.style.display = 'none';
+
+function bezPt(x0,y0,cx1,cy1,cx2,cy2,x1,y1,t) {
+  const u=1-t;
+  return { x:u*u*u*x0+3*u*u*t*cx1+3*u*t*t*cx2+t*t*t*x1,
+           y:u*u*u*y0+3*u*u*t*cy1+3*u*t*t*cy2+t*t*t*y1 };
+}
+
+function frame() {
+  ctx.clearRect(0,0,W,H);
+
+  // Sky bg
+  const sg = ctx.createLinearGradient(0,0,0,HORIZON);
+  sg.addColorStop(0,'#040d11'); sg.addColorStop(0.45,'#071c1a'); sg.addColorStop(1,'#0a2320');
+  ctx.fillStyle=sg; ctx.fillRect(0,0,W,HORIZON);
+  const hg=ctx.createRadialGradient(W/2,HORIZON,0,W/2,HORIZON,W*0.55);
+  hg.addColorStop(0,'rgba(45,212,191,0.07)'); hg.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=hg; ctx.fillRect(0,0,W,HORIZON);
+
+  // Stars
+  stars.forEach(s=>{
+    const a=s.base+0.14*Math.sin(tick*s.sp+s.ph);
+    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(45,212,191,${a})`; ctx.fill();
+  });
+
+  // Ghost NOW
+  ctx.save(); ctx.font='300 122px "Cormorant Garamond"';
+  ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+  ctx.fillStyle=`rgba(45,212,191,${0.055+0.018*Math.sin(tick*0.007)})`;
+  ctx.fillText('NOW',W/2,HORIZON-10); ctx.restore();
+
+  // Sky labels — all drawn once, no repeats
+  // "the only moment that is real"
+  ctx.save(); ctx.font='italic 300 10.5px "Cormorant Garamond"';
+  ctx.textAlign='center'; ctx.fillStyle='rgba(45,212,191,0.50)';
+  ctx.fillText('the only moment that is real',W/2,16); ctx.restore();
+
+  // Choiceless Awareness — 22px
+  ctx.save(); ctx.shadowColor='rgba(45,212,191,0.32)'; ctx.shadowBlur=10;
+  ctx.font='italic 300 22px "Cormorant Garamond"'; ctx.textAlign='center';
+  ctx.fillStyle='rgba(45,212,191,0.88)'; ctx.fillText('Choiceless Awareness',W/2,58);
+  ctx.shadowBlur=0; ctx.restore();
+
+  // whole · empty · fully present — 10.5px
+  ctx.save(); ctx.font='italic 300 10.5px "Cormorant Garamond"';
+  ctx.textAlign='center'; ctx.fillStyle='rgba(45,212,191,0.38)';
+  ctx.fillText('whole · empty · fully present',W/2,75); ctx.restore();
+
+  // Stillness — left side, y=148
+  ctx.save(); ctx.font='italic 300 18px "Cormorant Garamond"';
+  ctx.textAlign='center'; ctx.fillStyle='rgba(210,235,232,0.58)';
+  ctx.fillText('Stillness', 124, 148); ctx.restore();
+
+  // Being Present — moved left and down, away from gold endpoint node
+  ctx.save(); ctx.font='italic 300 18px "Cormorant Garamond"';
+  ctx.textAlign='center'; ctx.fillStyle='rgba(210,235,232,0.58)';
+  ctx.fillText('Being Present', 442, 172); ctx.restore();
+
+  // dots — single row connecting Stillness to centre, then centre toward Being Present
+  [[190,144],[212,144],[350,144]].forEach(([x,y])=>{
+    ctx.beginPath(); ctx.arc(x,y,1.2,0,Math.PI*2);
+    ctx.fillStyle='rgba(45,212,191,0.16)'; ctx.fill();
+  });
+
+  // Knowing you are enough — 12px, positioned right, clear of LumeRI node
+  ctx.save(); ctx.font='italic 300 12px "Cormorant Garamond"';
+  ctx.textAlign='center'; ctx.fillStyle='rgba(210,235,232,0.34)';
+  ctx.fillText('Knowing you are enough', 350, 208); ctx.restore();
+
+  // Horizon
+  const band=ctx.createLinearGradient(0,HORIZON-16,0,HORIZON+16);
+  band.addColorStop(0,'rgba(45,212,191,0)'); band.addColorStop(0.45,'rgba(45,212,191,0.09)');
+  band.addColorStop(0.55,'rgba(45,212,191,0.09)'); band.addColorStop(1,'rgba(45,212,191,0)');
+  ctx.fillStyle=band; ctx.fillRect(0,HORIZON-16,W,32);
+  const hl=ctx.createLinearGradient(0,0,W,0);
+  hl.addColorStop(0,'rgba(45,212,191,0)'); hl.addColorStop(0.12,'rgba(45,212,191,0.5)');
+  hl.addColorStop(0.5,'rgba(45,212,191,0.82)'); hl.addColorStop(0.88,'rgba(45,212,191,0.5)');
+  hl.addColorStop(1,'rgba(45,212,191,0)');
+  ctx.strokeStyle=hl; ctx.lineWidth=1.2;
+  ctx.beginPath(); ctx.moveTo(0,HORIZON); ctx.lineTo(W,HORIZON); ctx.stroke();
+
+  // SILENCE / ATTENTION
+  ctx.save(); ctx.font='italic 300 9px "Cormorant Garamond"';
+  ctx.fillStyle='rgba(45,212,191,0.50)';
+  ctx.textAlign='left'; ctx.fillText('SILENCE',14,HORIZON-4);
+  ctx.textAlign='right'; ctx.fillText('ATTENTION',W-14,HORIZON-4); ctx.restore();
+
+  // Self-inquiry pill
+  ctx.save(); ctx.beginPath(); ctx.roundRect(W/2-54,HORIZON+3,108,22,11);
+  ctx.fillStyle='rgba(45,212,191,0.05)'; ctx.strokeStyle='rgba(45,212,191,0.26)';
+  ctx.lineWidth=1; ctx.fill(); ctx.stroke();
+  ctx.font='italic 300 9px "Cormorant Garamond"'; ctx.textAlign='center';
+  ctx.fillStyle='rgba(45,212,191,0.68)';
+  ctx.fillText('Self-Inquiry · WHO AM I',W/2,HORIZON+17); ctx.restore();
+
+  // Cloud world bg
+  const dg=ctx.createLinearGradient(0,HORIZON,0,H);
+  dg.addColorStop(0,'#100a05'); dg.addColorStop(0.5,'#170e06'); dg.addColorStop(1,'#1c1005');
+  ctx.fillStyle=dg; ctx.fillRect(0,HORIZON,W,H-HORIZON);
+  const wg=ctx.createRadialGradient(W*0.6,H,0,W*0.6,H,W*0.65);
+  wg.addColorStop(0,'rgba(178,88,18,0.12)'); wg.addColorStop(0.6,'rgba(158,78,14,0.04)'); wg.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=wg; ctx.fillRect(0,HORIZON,W,H-HORIZON);
+
+  // Ghost PATTERNS — 22px matching Choiceless Awareness, right-centre so clear of LumeRI node
+  ctx.save(); ctx.font=`italic 300 22px "Cormorant Garamond"`;
+  ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+  ctx.fillStyle=`rgba(195,115,45,${0.30+0.05*Math.sin(tick*0.006+1.8)})`;
+  ctx.fillText('Patterns', W/2+55, HORIZON+116); ctx.restore();
+
+  // "we all begin here · and this is human" — 10.5px directly under Patterns
+  ctx.save(); ctx.font='italic 300 10.5px "Cormorant Garamond"';
+  ctx.textAlign='center'; ctx.fillStyle='rgba(210,165,95,0.48)';
+  ctx.fillText('we all begin here · and this is human', W/2+55, HORIZON+134); ctx.restore();
+
+  // CLOUDS — bounce within screen, draw shape+label together
+  clouds.forEach(c=>{
+    const hw=cloudHalfW(c.sc);
+    const bob=Math.sin(tick*0.008+c.laneY*0.02)*3;
+    drawCloud(c.x, c.laneY+bob, c.sc, c.al, c.label);
+    c.x += c.sp * c.dir;
+    if (c.x+hw >= W-6) { c.x=W-6-hw; c.dir=-1; }
+    if (c.x-hw <= 6)   { c.x=6+hw;   c.dir=+1; }
+  });
+
+  // LumeRI DUST NODE — breathing teal
+  const lx=44, ly=HORIZON+80, pb=0.5+0.5*Math.sin(tick*0.04);
+  const ldg=ctx.createRadialGradient(lx,ly,0,lx,ly,38);
+  ldg.addColorStop(0,`rgba(45,212,191,${0.06+0.04*pb})`); ldg.addColorStop(1,'rgba(45,212,191,0)');
+  ctx.beginPath(); ctx.arc(lx,ly,38,0,Math.PI*2); ctx.fillStyle=ldg; ctx.fill();
+  [28,20].forEach((r,i)=>{ ctx.beginPath(); ctx.arc(lx,ly,r,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(45,212,191,${0.18+0.12*pb+i*0.08})`; ctx.lineWidth=1+i*0.2; ctx.stroke(); });
+  ctx.beginPath(); ctx.arc(lx,ly,12,0,Math.PI*2);
+  ctx.fillStyle=`rgba(45,212,191,${0.06+0.04*pb})`; ctx.strokeStyle=`rgba(45,212,191,${0.52+0.2*pb})`;
+  ctx.lineWidth=1.5; ctx.fill(); ctx.stroke();
+  ctx.save(); ctx.font='italic 300 9.5px "Cormorant Garamond"'; ctx.textAlign='center';
+  ctx.fillStyle=`rgba(45,212,191,${0.82+0.15*pb})`; ctx.fillText('LumeRI',lx,ly+4); ctx.restore();
+  ctx.save(); ctx.font='300 7px "DM Sans"'; ctx.textAlign='center';
+  ctx.fillStyle=`rgba(45,212,191,${0.58+0.15*pb})`; ctx.fillText('START HERE',lx,ly+26);
+  ctx.font='italic 300 8.5px "Cormorant Garamond"'; ctx.fillStyle='rgba(45,212,191,0.36)';
+  ctx.fillText('in your patterns',lx,ly+37); ctx.restore();
+
+  // LumeRI SKY NODE — gold endpoint, top-right, clear of Being Present
+  const gx=W-68, gy=100, pg=0.5+0.5*Math.sin(tick*0.03+1.3);
+  const gg=ctx.createRadialGradient(gx,gy,0,gx,gy,40);
+  gg.addColorStop(0,`rgba(212,168,67,${0.07+0.04*pg})`); gg.addColorStop(1,'rgba(212,168,67,0)');
+  ctx.beginPath(); ctx.arc(gx,gy,40,0,Math.PI*2); ctx.fillStyle=gg; ctx.fill();
+  [28,20].forEach((r,i)=>{ ctx.beginPath(); ctx.arc(gx,gy,r,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(212,168,67,${0.18+0.10*pg+i*0.10})`; ctx.lineWidth=1+i*0.2; ctx.stroke(); });
+  ctx.beginPath(); ctx.arc(gx,gy,12,0,Math.PI*2);
+  ctx.fillStyle=`rgba(212,168,67,${0.08+0.04*pg})`; ctx.strokeStyle=`rgba(212,168,67,${0.52+0.22*pg})`;
+  ctx.lineWidth=1.5; ctx.fill(); ctx.stroke();
+  ctx.save(); ctx.font='italic 300 9.5px "Cormorant Garamond"'; ctx.textAlign='center';
+  ctx.fillStyle=`rgba(212,168,67,${0.88+0.10*pg})`; ctx.fillText('LumeRI',gx,gy+4); ctx.restore();
+  ctx.save(); ctx.font='300 7px "DM Sans"'; ctx.textAlign='center';
+  ctx.fillStyle=`rgba(212,168,67,${0.62+0.15*pg})`; ctx.fillText('ENDPOINT',gx,gy+26);
+  ctx.font='italic 300 8.5px "Cormorant Garamond"'; ctx.fillStyle='rgba(212,168,67,0.40)';
+  ctx.fillText('awareness reached',gx,gy+37); ctx.restore();
+
+  // THE ARC — dust node → sky node
+  const sx=44, sy=HORIZON+64, ex=gx, ey=gy+13;
+  const c1x=44, c1y=HORIZON-28, c2x=240, c2y=HORIZON-52;
+
+  // Glow behind arc
+  ctx.save(); ctx.beginPath(); ctx.moveTo(sx,sy); ctx.bezierCurveTo(c1x,c1y,c2x,c2y,ex,ey);
+  ctx.strokeStyle='rgba(45,212,191,0.055)'; ctx.lineWidth=12; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
+
+  // Arc in 60 colour segments
+  for(let i=0;i<60;i++){
+    const t0=i/60, t1=(i+1)/60;
+    const p0=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,t0);
+    const p1=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,t1);
+    let r,g,b;
+    if(t0<0.48){ r=Math.round(185+(45-185)*(t0/0.48)); g=Math.round(95+(212-95)*(t0/0.48)); b=Math.round(25+(191-25)*(t0/0.48)); }
+    else { r=45; g=212; b=191; }
+    if(t0>0.84){ r=212; g=168; b=67; }
+    const a=0.46+0.44*t0;
+    ctx.save(); ctx.beginPath(); ctx.moveTo(p0.x,p0.y); ctx.lineTo(p1.x,p1.y);
+    ctx.strokeStyle=`rgba(${r},${g},${b},${a})`; ctx.lineWidth=2;
+    ctx.setLineDash([6,4]); ctx.lineDashOffset=-(tick*1.1); ctx.lineCap='round'; ctx.stroke(); ctx.restore();
+  }
+
+  // 8 numbered nodes on arc
+  const nC=[[185,95,25],[178,110,28],[112,168,72],[42,188,152],[45,212,191],[45,212,191],[45,212,191],[212,168,67]];
+  const nT=[0.05,0.16,0.28,0.40,0.52,0.63,0.76,0.90];
+  nT.forEach((t,i)=>{
+    const p=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,t);
+    const [r,g,b]=nC[i]; const isMirror=i===4, isGold=i===7, rad=(isMirror||isGold)?10:8;
+    if(isMirror){ ctx.beginPath(); ctx.arc(p.x,p.y,18,0,Math.PI*2);
+      ctx.strokeStyle='rgba(45,212,191,0.20)'; ctx.lineWidth=1; ctx.stroke(); }
+    ctx.beginPath(); ctx.arc(p.x,p.y,rad,0,Math.PI*2);
+    ctx.fillStyle=`rgba(${r},${g},${b},0.15)`; ctx.strokeStyle=`rgba(${r},${g},${b},0.84)`;
+    ctx.lineWidth=(isMirror||isGold)?2:1.5; ctx.fill(); ctx.stroke();
+    ctx.save(); ctx.font='bold 9px "DM Sans"'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillStyle=`rgba(${r},${g},${b},1)`; ctx.fillText(i+1,p.x,p.y); ctx.restore();
+  });
+
+  // Arrow at end
+  const pA=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,0.97);
+  const pA2=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,0.995);
+  const ang=Math.atan2(pA2.y-pA.y,pA2.x-pA.x);
+  ctx.save(); ctx.translate(pA2.x,pA2.y); ctx.rotate(ang);
+  ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-11,-4); ctx.lineTo(-11,4);
+  ctx.closePath(); ctx.fillStyle='rgba(212,168,67,0.82)'; ctx.fill(); ctx.restore();
+
+  // "ZOOM OUT · 8 QUESTIONS" rotated along arc, offset above line
+  const lT=0.22;
+  const lp=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,lT);
+  const lp2=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,lT+0.018);
+  const lAng=Math.atan2(lp2.y-lp.y,lp2.x-lp.x);
+  ctx.save(); ctx.translate(lp.x,lp.y); ctx.rotate(lAng);
+  ctx.translate(0,-13); // perpendicular offset above arc
+  ctx.font='300 7px "DM Sans"'; ctx.textAlign='center';
+  ctx.fillStyle='rgba(45,212,191,0.55)';
+  ctx.fillText('ZOOM OUT · 8 QUESTIONS', 24, 0); ctx.restore();
+
+  tick++; requestAnimationFrame(frame);
+}
+frame();
+
+// Resize
+function resizeScene(){
+  const w=canvas.parentElement.offsetWidth;
+  canvas.style.width='100%'; canvas.style.height=(H*w/W)+'px';
+}
+resizeScene(); window.addEventListener('resize',resizeScene);
+
+// Scroll reveal for Q rows
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){
+    const delay=parseInt(e.target.dataset.d||0);
+    setTimeout(()=>{
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }, delay);
+    obs.unobserve(e.target); }});
+},{threshold:0.12});
+document.querySelectorAll('#aboutQList .aq-row').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(10px)';
+  el.style.transition='opacity 0.55s ease, transform 0.55s ease';
+  obs.observe(el);
 });
 </script>
-
 </body>
 </html>
