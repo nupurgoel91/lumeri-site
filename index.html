@@ -873,8 +873,12 @@ body:not(.zol-active) #hint { display:none !important; }
 }
 
 
-/* ── About section canvas ── */
-#scene { background: transparent; }
+/* ── About section ── */
+@keyframes nowPulse{0%,100%{opacity:.22;letter-spacing:22px}50%{opacity:.38;letter-spacing:25px}}
+.aq-row.vis{opacity:1!important;transform:translateY(0)!important}
+
+@keyframes nowPulseL{0%,100%{opacity:0.20;letter-spacing:14px}50%{opacity:0.32;letter-spacing:17px}}
+.kc-card{}
 
 </style>
 </head>
@@ -3924,8 +3928,6 @@ As for how often: there is no right frequency. Some people write daily. Some wri
           <div class="faq-a">Yes. After several sessions, LumeRI generates a longitudinal summary — a narrative of how your inner patterns have moved, not a graph of metrics. You will see which themes your mind has returned to most, how your self-relational tone has shifted, whether your reflective depth has deepened. It is not a progress report. It is a mirror held at a longer distance — showing you the arc rather than the moment.</div>
         </div>
         </div>
-          <div class="faq-a">Yes. After several sessions, LumeRI generates a longitudinal summary — a narrative of how your inner patterns have moved, not a graph of metrics. You will see which themes your mind has returned to most, how your self-relational tone has shifted, whether your reflective depth has deepened. It is not a progress report. It is a mirror held at a longer distance — showing you the arc rather than the moment.</div>
-        </div>
 
       </div>
     </div>
@@ -3933,163 +3935,267 @@ As for how often: there is no right frequency. Some people write daily. Some wri
 </section>
 
 
-<!-- ══ ABOUT ══ -->
-<section id="about" style="background:var(--hero-bg);padding:80px 24px 100px;">
-  <div style="max-width:760px;margin:0 auto;">
 
-    <!-- Sky & Clouds diagram -->
-    <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:28px;">The Sky and the Clouds</div>
-    <div style="width:100%;border-radius:6px;overflow:hidden;margin-bottom:14px;border:1px solid rgba(45,212,191,0.07);">
-      <canvas id="scene" style="width:100%;display:block;"></canvas>
+<!-- ══ FREEDOM FROM THE KNOWN ══ -->
+<section id="freedom" style="background:var(--hero-bg);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
+  <div style="max-width:720px;margin:0 auto;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:72px;">
+      <div style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:18px;">The Heart of This</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,52px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.18;margin-bottom:18px;">Freedom from the known.</h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2.4vw,18px);color:rgba(45,212,191,0.52);line-height:1.7;max-width:480px;margin:0 auto;">Not freedom from the situation.<br/>Freedom from the accumulated self that is interpreting it.</p>
+      <div style="width:40px;height:1px;background:rgba(45,212,191,0.22);margin:28px auto 0;"></div>
     </div>
-    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:rgba(210,235,232,0.22);text-align:center;margin-bottom:48px;letter-spacing:0.5px;">now is the sky · patterns are the clouds · you are not the clouds</div>
 
-    <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 48px;"></div>
+    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
+      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Known</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">Most of what we call living is the known in motion — the same reactions dressed in today's clothes, the same fear and the same reaching, arising not from what is actually here but from everything that already happened. Thought moves to action automatically, mechanically, without a gap. Without your awareness.</p>
+    </div>
+
+    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
+      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Gap</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-bottom:16px;">Between thought and action, there is a gap. Most people never inhabit it. <em style="color:#2dd4bf;">Reflective Intelligence</em> is the capacity to live in that gap — to see the movement of thought before it becomes action. Not to suppress it. Not to analyse it. Simply to see it clearly, without the interference of judgement.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">That seeing is not a technique. It is what you already are when you stop adding to the noise.</p>
+    </div>
+
+    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
+      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Seeing</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">When the pattern is seen clearly — not understood, not worked through, simply <em style="color:#2dd4bf;">seen</em> — it loses its authority. Not because you fought it. Because the known cannot survive being seen for what it is: accumulated reaction, not present reality.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-top:14px;">There is a difference between analysing a pattern and seeing it. Analysis keeps the observer separate from the observed — the known examining itself, producing more knowledge, not freedom. Seeing is different. When you see the pattern without division — without a separate self that stands apart and explains it — the observer and the observed become one movement. In that instant, there is no one left to be the pattern. The word is not the thing. What is seen clearly begins to lose its grip.</p>
+    </div>
+
+    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
+      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">What Remains</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-bottom:16px;">What remains when the known settles is not emptiness. It is the capacity to act from what is actually here — not from accumulated reaction. This is choiceless action: not because there is no choice, but because the action arises from clarity rather than conditioning.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">And as the self stops defending its conditioning, something else becomes possible. A natural compassion for the suffering of others, because you are no longer entirely inside your own. A love that is not sentiment, not effort — but the simple quality of a mind that is no longer at war with itself.</p>
+    </div>
+
+    <div class="reveal" style="margin-top:52px;padding:38px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.13);border-radius:6px;text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.38),transparent);"></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,24px);font-style:italic;color:#e8fdfb;line-height:1.8;margin-bottom:14px;">This is not improvement. Not healing. Not self-optimisation.<br/><em style="color:#2dd4bf;">Freedom — from the known, from the mechanical, from the duality of what I am and what I should be.</em></p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2.2vw,18px);color:rgba(45,212,191,0.48);margin-top:8px;">And in that freedom — choiceless action. Pure love. The present moment, undivided.</p>
+    </div>
+
+    <div class="reveal" style="margin-top:44px;text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,2.2vw,17px);color:rgba(45,212,191,0.38);line-height:1.72;">LumeRI is one instrument for this seeing.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ ABOUT ══ -->
+<section id="about" style="background:var(--hero-bg);padding:0 0 100px;">
+
+  <!-- Header -->
+  <div style="padding:72px 24px 48px;text-align:center;border-bottom:1px solid rgba(45,212,191,0.07);background:linear-gradient(to bottom,rgba(15,184,164,0.04),transparent);">
+    <div style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.52);margin-bottom:18px;">About · The Origin</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(26px,5vw,44px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.22;max-width:580px;margin:0 auto 14px;">The patterns are real.<br/><em style="color:#2dd4bf;">You are not the patterns.</em></h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(13px,2vw,16px);color:rgba(45,212,191,0.50);max-width:480px;margin:0 auto;">What is seen clearly begins to lose its grip.</p>
+  </div>
+
+<!-- K-Cycle Animated Diagram -->
+<div style="max-width:900px;margin:32px auto 0;padding:0 24px;">
+  <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.45);text-align:center;margin-bottom:14px;">The K-Cycle — Freedom from the Known</div>
+  <div id="kcWrap" style="position:relative;width:100%;height:52vw;min-height:220px;max-height:360px;background:#050d10;border-radius:8px;overflow:hidden;border:1px solid rgba(45,212,191,0.14);">
+    <canvas id="kcc"></canvas>
+    <div id="kclbl" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;transition:opacity 0.8s ease;white-space:nowrap;">
+      <div id="kclt" style="font-family:'Cormorant Garamond',serif;font-size:clamp(11px,2vw,14px);font-style:italic;color:rgba(45,212,191,0.75);margin-bottom:1px;"></div>
+      <div id="kcld" style="font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(200,235,232,0.28);letter-spacing:2px;text-transform:uppercase;"></div>
+    </div>
+    <div id="kcrh" style="position:absolute;bottom:3px;left:50%;transform:translateX(-50%);font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.18);cursor:pointer;opacity:0;transition:opacity 0.5s;" onclick="kcRestart()">watch again</div>
+  </div>
+  <div style="text-align:center;margin-top:8px;">
+    <button onclick="if(window.kcSetPhase)kcSetPhase(Math.min(4,kcPhase+1));" style="background:none;border:1px solid rgba(45,212,191,0.16);border-radius:20px;padding:6px 16px;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.42);cursor:pointer;">next phase &rarr;</button>
+  </div>
+</div>
+
+<!-- Phase narratives -->
+<div style="max-width:680px;margin:40px auto 0;padding:0 24px;">
+  <div style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(45,212,191,0.08);">
+    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.35);margin-bottom:8px;">The full arc</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);font-style:italic;color:#e8fdfb;line-height:1.55;opacity:0.75;">Five movements — from the conditioned loop to the present moment, undivided.</div>
+  </div>
+  <div class="kc-card" id="kcc0" style="margin-bottom:32px;opacity:0;transform:translateY(16px);transition:opacity 0.9s ease,transform 0.9s ease;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.38);margin-bottom:6px;">Phase 1 — The Known</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">This is how most of us live.</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:rgba(220,245,242,0.58);line-height:1.88;">Knowledge accumulated through years of experience. Memory that colours every new moment with the weight of everything that already happened. Thought arising automatically from that memory. Action following thought — without a pause, without awareness, without choice.<br/><br/>This loop runs silently beneath everything. Every reaction today. Every time you found yourself doing the same thing again and wondering why.</p>
+  </div>
+  <div style="width:28px;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.22),transparent);margin:0 auto 32px;"></div>
+  <div class="kc-card" id="kcc1" style="margin-bottom:32px;opacity:0;transform:translateY(16px);transition:opacity 0.9s ease,transform 0.9s ease;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.38);margin-bottom:6px;">Phase 2 — The Gap</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">Between thought and action — there is a space.</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:rgba(220,245,242,0.58);line-height:1.88;">Most people never notice it. The thought arises and the action follows so quickly that the gap between them seems not to exist.<br/><br/>But it is there. It has always been there.<br/><br/><em>Reflective Intelligence is the capacity to inhabit that gap.</em> Not to suppress thought. Simply to see it — clearly, without judgement. That seeing is not a technique. It is what you already are when you stop adding to the noise.</p>
+  </div>
+  <div style="width:28px;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.22),transparent);margin:0 auto 32px;"></div>
+  <div class="kc-card" id="kcc2" style="margin-bottom:32px;opacity:0;transform:translateY(16px);transition:opacity 0.9s ease,transform 0.9s ease;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.38);margin-bottom:6px;">Phase 3 — The Seeing</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">The pattern traces back to its root.</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:rgba(220,245,242,0.58);line-height:1.88;">The pattern is a recorded image of self. The brain recorded a hurt and built an image around it. That image now meets every new situation carrying everything that already happened.<br/><br/>When you see that image directly — not analysing it, seeing it without division — it begins to lose its authority. The known, seen for what it is, <em>begins to lose its grip.</em></p>
+  </div>
+  <div style="width:28px;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.22),transparent);margin:0 auto 32px;"></div>
+  <div class="kc-card" id="kcc3" style="margin-bottom:32px;opacity:0;transform:translateY(16px);transition:opacity 0.9s ease,transform 0.9s ease;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.38);margin-bottom:6px;">Phase 4 — Whole Action</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">Action that arises from seeing is different in kind.</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:rgba(220,245,242,0.58);line-height:1.88;">Not chosen. Not managed. Not the old movement repeated.<br/><br/>When the pattern has been seen clearly — not understood, not worked through, simply <em>seen</em> — what arises is the capacity to act from what is actually here. Not from accumulated reaction. Not from the known.<br/><br/>Choiceless action — arising from clarity, not conditioning. It does not create new conflict.</p>
+  </div>
+  <div style="width:28px;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.22),transparent);margin:0 auto 32px;"></div>
+  <div class="kc-card" id="kcc4" style="opacity:0;transform:translateY(16px);transition:opacity 0.9s ease,transform 0.9s ease;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.38);margin-bottom:6px;">The Arrival</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">This is where LumeRI points. Every time.</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:rgba(220,245,242,0.58);line-height:1.88;">Not improvement. Not healing.<br/><br/>Freedom — from the known, from the mechanical, from the duality of what I am and what I should be.<br/><br/>And as the self stops defending its conditioning, something else becomes possible. A natural compassion. A love that is not sentiment, not effort — but the simple quality of a mind no longer at war with itself.<br/><br/><em>The present moment, undivided.</em></p>
+  </div>
+</div>
+
+  <!-- NOW arrival -->
+  <div style="max-width:680px;margin:52px auto 0;padding:0 24px;">
+    <div style="padding:40px 28px;background:linear-gradient(135deg,rgba(12,46,52,0.92),rgba(5,13,16,0.96));border:1px solid rgba(45,212,191,0.14);border-radius:14px;text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.38),transparent);"></div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(52px,12vw,80px);font-weight:300;color:rgba(45,212,191,0.20);line-height:1;letter-spacing:14px;margin-bottom:8px;animation:nowPulseL 5s ease-in-out infinite;">NOW</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.5vw,18px);font-style:italic;color:rgba(45,212,191,0.65);margin-bottom:8px;">Choiceless Awareness &middot; Whole and Empty</div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(200,235,232,0.35);line-height:1.75;max-width:320px;margin:0 auto;font-weight:300;">Not a destination reached once. A ground you return to, each time more naturally.<br/><br/><em style="color:rgba(45,212,191,0.40);">Dust seen, not accumulated, slowly fades.</em></p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div style="max-width:680px;margin:0 auto;padding:64px 24px 0;">
 
     <!-- Founder note -->
-    <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:32px;">Nupur · Founder</div>
-    <div style="margin-bottom:52px;">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);font-style:italic;line-height:1.85;color:rgba(210,235,232,0.68);margin-bottom:20px;">The traditions I have lived with — J. Krishnamurti, Ramana Maharshi, Alan Watts, and others — are not ancient curiosities. They are the most precise maps of the human mind ever drawn, and what they point at is available to anyone willing to look.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);font-style:italic;line-height:1.85;color:rgba(210,235,232,0.68);margin-bottom:20px;">I looked. Not theoretically — inwardly, at my own patterns, my own conditioning, the machinery running silently beneath every reaction and choice. I saw it. And once seen, it could not be unseen.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);font-style:italic;line-height:1.85;color:rgba(210,235,232,0.82);margin-bottom:0;border-left:2px solid rgba(45,212,191,0.28);padding-left:18px;">LumeRI was built from that seeing — and for that seeing. For anyone ready to look at their own patterns clearly, without flinching, and discover what remains when the noise settles.</p>
+    <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.58);text-align:center;margin-bottom:30px;">Nupur · Founder</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,20px);font-style:italic;line-height:1.9;color:rgba(232,253,251,0.74);margin-bottom:18px;">The traditions I have lived with — J. Krishnamurti, Ramana Maharshi, Alan Watts, and others — are not ancient curiosities. They are the most precise maps of the human mind ever drawn, and what they point at is available to anyone willing to look.</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,20px);font-style:italic;line-height:1.9;color:rgba(232,253,251,0.74);margin-bottom:18px;">I looked. Not theoretically — inwardly, at my own patterns, my own conditioning, the machinery running silently beneath every reaction and choice. I saw it. And once seen, it could not be unseen.</p>
+    <div style="border-left:2px solid rgba(45,212,191,0.38);padding:18px 22px;background:rgba(45,212,191,0.04);border-radius:0 6px 6px 0;margin-bottom:52px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,20px);font-style:italic;line-height:1.9;color:#e8fdfb;margin:0;">LumeRI was built from that seeing — and for that seeing. For anyone ready to look at their own patterns clearly, without flinching, and discover what remains when the noise settles.</p>
     </div>
 
-    <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 48px;"></div>
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 52px;"></div>
 
     <!-- Reflective Intelligence -->
-    <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:32px;">Reflective Intelligence</div>
-    <div style="margin-bottom:40px;">
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,4vw,30px);font-weight:300;color:rgba(210,235,232,0.88);margin-bottom:16px;line-height:1.25;">The intelligence we keep ignoring<br/><em style="color:#2dd4bf;">while building every other kind.</em></h3>
-      <p style="font-size:14px;line-height:1.82;color:rgba(210,235,232,0.45);margin-bottom:14px;">Every intelligence humanity has ever built looks outward. The one that lives within — we never looked.<br/><br/><strong style="font-weight:400;color:rgba(210,235,232,0.82);">Reflective Intelligence</strong> is the capacity to witness yourself without analysing, judging, or fixing — simply to see. To observe the pattern without becoming it, to stand fully present while conditioning moves through like weather. Every action from unseen conditioning repeats; every action from awareness — even once — is already different.</p>
-      <p style="font-size:14px;line-height:1.82;color:rgba(210,235,232,0.45);">J. Krishnamurti called it <strong style="font-weight:400;color:rgba(210,235,232,0.82);">choiceless awareness.</strong> Ramana Maharshi pointed at it with <strong style="font-weight:400;color:rgba(210,235,232,0.82);">Who am I?</strong> Alan Watts and Nisargadatta Maharaj said you are not your story — you are the awareness in which the story appears. Three traditions, twenty-five centuries apart, pointing at the same thing from three directions.</p>
+    <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.58);text-align:center;margin-bottom:26px;">Reflective Intelligence</div>
+    <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(21px,4vw,30px);font-weight:300;color:#e8fdfb;margin-bottom:18px;line-height:1.3;">The intelligence we keep ignoring<br/><em style="color:#2dd4bf;">while building every other kind.</em></h3>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.88;color:rgba(220,245,242,0.70);margin-bottom:14px;font-weight:300;">Every intelligence humanity has ever built looks outward. The one that lives within — we never looked. <strong style="font-weight:400;color:#e8fdfb;">Reflective Intelligence</strong> is the capacity to stand in the gap between thought and action — to see the movement of the known before it becomes mechanical response. To observe the pattern without becoming it.</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.88;color:rgba(220,245,242,0.70);margin-bottom:38px;font-weight:300;">J. Krishnamurti called it <strong style="font-weight:400;color:#e8fdfb;">choiceless awareness.</strong> Ramana Maharshi pointed at it with <em>Who am I?</em> Alan Watts and Nisargadatta said you are not your story — you are the awareness in which the story appears. Twenty-five centuries. One pointer.</p>
+
+    <!-- Instrument block -->
+    <div style="background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.15);border-radius:6px;padding:28px 32px;margin-bottom:52px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.35),transparent);"></div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,22px);font-style:italic;color:#2dd4bf;margin-bottom:13px;">LumeRI — the instrument</div>
+      <p style="font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.88;color:rgba(220,245,242,0.70);font-weight:300;"><strong style="font-weight:400;color:#e8fdfb;">LumeRI creates the gap.</strong> It holds a mirror across time — surfacing patterns invisible from inside a single moment. When the same word, feeling, or person recurs across weeks, <em style="color:#2dd4bf;">LumeRI puts light on it.</em> Not to label or fix — to make it visible. What is seen clearly begins to lose its grip. Then eight questions guide you from wherever you are, through the pattern, through self-inquiry — into the present moment. From the known to the free.</p>
     </div>
 
-    <!-- LumeRI instrument -->
-    <div style="background:rgba(45,212,191,0.03);border:1px solid rgba(45,212,191,0.09);border-radius:4px;padding:28px 32px;margin-bottom:48px;">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,22px);font-style:italic;color:rgba(45,212,191,0.85);margin-bottom:12px;">LumeRI — the instrument</div>
-      <p style="font-size:14px;line-height:1.82;color:rgba(210,235,232,0.45);">Reflective Intelligence already lives in you — the noise of conditioning is simply so continuous that there is no gap in which to see it.<br/><br/><strong style="font-weight:400;color:rgba(210,235,232,0.82);">LumeRI creates that gap.</strong> It holds a mirror across time, surfacing patterns invisible from inside a single moment — when the same word, feeling, or person recurs across weeks, <em style="color:#2dd4bf;">LumeRI puts light on it</em>, not to label or fix, but to make it visible. What is seen clearly begins to lose its grip.<br/><br/>Then eight questions guide you from wherever you are — through the pattern, through self-inquiry — into the present moment. From clouds to open sky.</p>
-    </div>
-
-    <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 48px;"></div>
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 52px;"></div>
 
     <!-- 8 Questions -->
-    <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.35);text-align:center;margin-bottom:32px;">The Eight Questions · The Zoom Out</div>
-    <div id="aboutQList" style="display:flex;flex-direction:column;margin-bottom:52px;">
+    <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.58);text-align:center;margin-bottom:10px;">The Eight Questions · Zoom Out</div>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(45,212,191,0.38);text-align:center;margin-bottom:40px;line-height:1.6;">How are you? → Who are you? — The path.</p>
 
-      <div class="aq-row" data-q="1" style="display:grid;grid-template-columns:52px 1fr;">
+    <div id="aboutQList" style="display:flex;flex-direction:column;margin-bottom:60px;">
+      <div class="aq-row" data-d="0" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
         <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div class="aq-bubble" data-q="1" style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(155,75,18,0.18);border:1.5px solid rgba(185,95,25,0.6);color:rgba(220,145,65,1);">1</div>
-          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(185,95,25,0.28),rgba(185,95,25,0.14));"></div>
+          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(185,98,26,0.22);border:1.5px solid rgba(185,98,26,0.72);color:rgba(195,105,28,1);">1</div>
+          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(195,105,28,0.22),rgba(140,65,15,0.06));"></div>
         </div>
-        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(200,125,50,0.5);margin-bottom:3px;">The surface · where you are</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(225,190,145,0.82);margin-bottom:5px;">How are you feeling today?</div>
-          <div style="font-size:12px;line-height:1.65;color:rgba(195,155,105,0.5);">No agenda, no performance — just what is actually here. The cloud you are currently inside.</div>
+        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
+          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(195,105,28,1);opacity:0.7;margin-bottom:5px;">The surface</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">How are you feeling today?</div>
+          <div style="font-size:13px;line-height:1.72;color:rgba(195,105,28,1);opacity:0.72;">No agenda. Just what is actually here — the cloud you are currently inside.</div>
         </div>
       </div>
-
-      <div class="aq-row" data-q="2" style="display:grid;grid-template-columns:52px 1fr;">
+      <div class="aq-row" data-d="80" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
         <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(165,90,20,0.15);border:1.5px solid rgba(195,115,35,0.55);color:rgba(225,155,72,1);">2</div>
-          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(195,115,35,0.22),rgba(100,165,80,0.1));"></div>
+          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(208,122,40,0.18);border:1.5px solid rgba(208,122,40,0.68);color:rgba(220,135,60,1);">2</div>
+          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(220,135,60,0.20),rgba(160,85,20,0.05));"></div>
         </div>
-        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(210,135,55,0.48);margin-bottom:3px;">The story begins</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(225,195,152,0.78);margin-bottom:5px;">What is the cause?</div>
-          <div style="font-size:12px;line-height:1.65;color:rgba(200,165,112,0.46);">The mind names a cause — LumeRI listens not to confirm the story, but to see what the mind reaches for.</div>
+        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
+          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(220,135,60,1);opacity:0.7;margin-bottom:5px;">The story</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">What is the cause?</div>
+          <div style="font-size:13px;line-height:1.72;color:rgba(220,135,60,1);opacity:0.72;">The mind names a cause. LumeRI listens not to confirm the story but to see what the mind reaches for.</div>
         </div>
       </div>
-
-      <div class="aq-row" data-q="3" style="display:grid;grid-template-columns:52px 1fr;">
+      <div class="aq-row" data-d="160" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
         <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(90,140,75,0.12);border:1.5px solid rgba(110,178,105,0.45);color:rgba(145,215,140,1);">3</div>
-          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(110,178,105,0.18),rgba(45,195,155,0.1));"></div>
+          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(112,180,104,0.14);border:1.5px solid rgba(112,180,104,0.60);color:rgba(148,215,142,1);">3</div>
+          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(148,215,142,0.18),rgba(80,140,70,0.05));"></div>
         </div>
-        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(130,195,130,0.45);margin-bottom:3px;">Time awareness</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(205,228,205,0.75);margin-bottom:5px;">When — past or future?</div>
-          <div style="font-size:12px;line-height:1.65;color:rgba(170,208,170,0.44);">Almost all suffering lives in the past or future — this question names which one, and by naming it, creates the first distance.</div>
+        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
+          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(148,215,142,1);opacity:0.7;margin-bottom:5px;">Time</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">When — past or future?</div>
+          <div style="font-size:13px;line-height:1.72;color:rgba(148,215,142,1);opacity:0.72;">Almost all suffering lives in the past or future. Naming which one creates the first distance.</div>
         </div>
       </div>
-
-      <div class="aq-row" data-q="4" style="display:grid;grid-template-columns:52px 1fr;">
+      <div class="aq-row" data-d="240" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
         <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(28,148,118,0.12);border:1.5px solid rgba(38,178,148,0.45);color:rgba(55,208,175,1);">4</div>
-          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(38,178,148,0.2),rgba(45,205,180,0.14));"></div>
+          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(40,182,152,0.14);border:1.5px solid rgba(40,182,152,0.60);color:rgba(58,215,182,1);">4</div>
+          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(58,215,182,0.18),rgba(25,145,115,0.05));"></div>
         </div>
-        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(50,200,168,0.44);margin-bottom:3px;">The pattern examined</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(200,232,228,0.75);margin-bottom:5px;">Why is it an issue exactly?</div>
-          <div style="font-size:12px;line-height:1.65;color:rgba(162,212,205,0.42);">Not whether — but why. The conditioning begins to show its shape; the cloud has a name, and named, it can be seen rather than inhabited.</div>
+        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
+          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(58,215,182,1);opacity:0.7;margin-bottom:5px;">The pattern</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">Why is it an issue exactly?</div>
+          <div style="font-size:13px;line-height:1.72;color:rgba(58,215,182,1);opacity:0.72;">Not whether — but why. The conditioning shows its shape. Named, it can be seen rather than inhabited.</div>
         </div>
       </div>
-
-      <!-- Mirror crossing -->
-      <div style="display:flex;align-items:center;gap:10px;padding:10px 0 10px 52px;background:rgba(45,212,191,0.03);border-top:1px solid rgba(45,212,191,0.12);border-bottom:1px solid rgba(45,212,191,0.12);margin:2px 0;">
-        <div style="flex:1;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.45),rgba(45,212,191,0.1));"></div>
-        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.48);white-space:nowrap;">· crossing the mirror · self-inquiry begins ·</div>
-        <div style="flex:1;height:1px;background:linear-gradient(to left,rgba(45,212,191,0.45),rgba(45,212,191,0.1));"></div>
+      <div style="display:flex;align-items:center;gap:10px;padding:9px 0 9px 52px;border-top:1px solid rgba(45,212,191,0.14);border-bottom:1px solid rgba(45,212,191,0.14);margin:2px 0;background:rgba(45,212,191,0.04);">
+        <div style="flex:1;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.5),transparent);"></div>
+        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.55);white-space:nowrap;">· crossing the mirror · self-inquiry begins ·</div>
+        <div style="flex:1;height:1px;background:linear-gradient(to left,rgba(45,212,191,0.5),transparent);"></div>
       </div>
-
-      <div class="aq-row" data-q="5" style="display:grid;grid-template-columns:52px 1fr;">
+      <div class="aq-row" data-d="320" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
         <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(45,212,191,0.10);border:2px solid rgba(45,212,191,0.65);color:rgba(45,212,191,1);box-shadow:0 0 14px rgba(45,212,191,0.2);">5</div>
-          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.25),rgba(45,212,191,0.18));"></div>
+          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(45,212,191,0.12);border:2px solid rgba(45,212,191,0.72);color:rgba(45,212,191,1);box-shadow:0 0 16px rgba(45,212,191,0.20);">5</div>
+          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.26),rgba(45,212,191,0.05));"></div>
         </div>
-        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.1);">
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.52);margin-bottom:3px;">The mirror · who is here</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(210,240,236,0.92);margin-bottom:5px;">Who is facing this issue?</div>
-          <div style="font-size:12px;line-height:1.65;color:rgba(45,212,191,0.48);">Not what is the problem — but who is facing it. The conditioned self who inherited this pattern, or the one already watching it? This is the threshold between cloud and sky.</div>
+        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
+          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,1);opacity:0.7;margin-bottom:5px;">The mirror</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">Who is facing this issue?</div>
+          <div style="font-size:13px;line-height:1.72;color:rgba(45,212,191,1);opacity:0.72;">The conditioned self who inherited this pattern — or the one already watching it? This is the threshold between cloud and sky.</div>
         </div>
       </div>
-
-      <div class="aq-row" data-q="6" style="display:grid;grid-template-columns:52px 1fr;">
+      <div class="aq-row" data-d="400" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
         <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(45,212,191,0.09);border:1.5px solid rgba(45,212,191,0.55);color:rgba(45,212,191,0.95);">6</div>
-          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.22),rgba(45,212,191,0.18));"></div>
+          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(45,212,191,0.10);border:1.5px solid rgba(45,212,191,0.65);color:rgba(45,212,191,1);">6</div>
+          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.22),rgba(45,212,191,0.04));"></div>
         </div>
-        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:3px;">Identity · inwardly</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(210,240,236,0.88);margin-bottom:5px;">Who are you — conditioned self or choicelessly aware?</div>
-          <div style="font-size:12px;line-height:1.65;color:rgba(45,212,191,0.45);">Krishnamurti's question — not to be answered in words, but seen inwardly: in this moment, is it the cloud or the sky that is here?</div>
+        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
+          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,1);opacity:0.7;margin-bottom:5px;">Identity</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">Who are you — conditioned self or choicelessly aware?</div>
+          <div style="font-size:13px;line-height:1.72;color:rgba(45,212,191,1);opacity:0.72;">Krishnamurti's question — not answered in words, but seen inwardly: in this moment, cloud or sky?</div>
         </div>
       </div>
-
-      <div class="aq-row" data-q="7" style="display:grid;grid-template-columns:52px 1fr;">
+      <div class="aq-row" data-d="480" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
         <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(45,212,191,0.09);border:1.5px solid rgba(45,212,191,0.52);color:rgba(45,212,191,0.95);">7</div>
-          <div style="width:1px;flex:1;min-height:12px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.20),rgba(45,212,191,0.22));"></div>
+          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(45,212,191,0.10);border:1.5px solid rgba(45,212,191,0.62);color:rgba(45,212,191,1);">7</div>
+          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.20),rgba(45,212,191,0.04));"></div>
         </div>
-        <div style="padding:12px 0 20px 6px;border-bottom:1px solid rgba(45,212,191,0.04);">
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.48);margin-bottom:3px;">Compassion · the witness</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);line-height:1.3;color:rgba(210,240,236,0.86);margin-bottom:5px;">What would you advise a friend?</div>
-          <div style="font-size:12px;line-height:1.65;color:rgba(45,212,191,0.44);">Addressing a friend, you naturally step outside your own cloud — the witness speaks, not the pattern, and compassion arrives without effort.</div>
+        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
+          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,1);opacity:0.7;margin-bottom:5px;">Compassion</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">What would you advise a friend?</div>
+          <div style="font-size:13px;line-height:1.72;color:rgba(45,212,191,1);opacity:0.72;">Stepping outside your own cloud, the witness speaks — not the pattern. Compassion arrives without effort.</div>
         </div>
       </div>
-
-      <div class="aq-row" data-q="8" style="display:grid;grid-template-columns:52px 1fr;">
+      <div class="aq-row" data-d="560" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
         <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;background:rgba(212,168,67,0.13);border:2px solid rgba(212,168,67,0.68);color:rgba(212,168,67,1);box-shadow:0 0 20px rgba(212,168,67,0.25);">8</div>
+          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(212,168,67,0.15);border:2px solid rgba(212,168,67,0.75);color:rgba(212,168,67,1);box-shadow:0 0 20px rgba(212,168,67,0.25);">8</div>
+          
         </div>
-        <div style="padding:12px 0 20px 6px;">
-          <div style="font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.58);margin-bottom:3px;">Arrival · action from awareness</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,3vw,20px);line-height:1.3;color:rgba(255,240,200,0.96);margin-bottom:5px;">What will you do after seeing this?</div>
-          <div style="font-size:12px;line-height:1.65;color:rgba(212,168,67,0.55);">Action chosen from awareness, not compulsion — from the sky, not the cloud. This is why the journey exists.</div>
+        <div style="padding:12px 0 22px 8px;">
+          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,1);opacity:0.7;margin-bottom:5px;">Arrival</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">What will you do after seeing this?</div>
+          <div style="font-size:13px;line-height:1.72;color:rgba(212,168,67,1);opacity:0.72;">Not chosen. Not managed. Whole. Action that arises from seeing is different in kind from action driven by thought. Not the old movement repeated. This is what Krishnamurti called right action — complete, causing no new conflict.</div>
         </div>
       </div>
-
     </div>
 
     <!-- Arrival -->
-    <div style="text-align:center;padding:44px 24px;background:radial-gradient(ellipse at center,rgba(45,212,191,0.05) 0%,transparent 68%);border:1px solid rgba(45,212,191,0.07);border-radius:6px;margin-bottom:40px;">
-      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(52px,12vw,80px);font-weight:300;letter-spacing:20px;color:rgba(45,212,191,0.14);line-height:1;margin-bottom:10px;">NOW</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3.5vw,24px);font-style:italic;color:rgba(45,212,191,0.68);margin-bottom:10px;">Choiceless Awareness · Whole and Empty</div>
-      <div style="font-size:13px;color:rgba(210,235,232,0.28);line-height:1.78;max-width:400px;margin:0 auto;">Not a destination reached once — a ground you return to, each time more naturally.<br/><br/><em>Dust seen, not accumulated, slowly fades.</em></div>
+    <div style="text-align:center;padding:48px 24px;background:radial-gradient(ellipse at center,rgba(45,212,191,0.06) 0%,transparent 65%);border:1px solid rgba(45,212,191,0.12);border-radius:8px;margin-bottom:44px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.32),transparent);"></div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(56px,13vw,86px);font-weight:300;letter-spacing:22px;color:rgba(45,212,191,0.22);line-height:1;margin-bottom:12px;animation:nowPulse 5s ease-in-out infinite;">NOW</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3.5vw,24px);font-style:italic;color:rgba(45,212,191,0.70);margin-bottom:12px;">Choiceless Awareness · Whole and Empty</div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.82;color:rgba(220,245,242,0.45);max-width:400px;margin:0 auto;font-weight:300;">Not a destination reached once — a ground you return to, each time more naturally.<br/><br/><em style="font-style:italic;color:rgba(45,212,191,0.48);">Dust seen, not accumulated, slowly fades.</em></div>
     </div>
 
     <!-- RI link -->
     <div style="text-align:center;">
-      <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(45,212,191,0.55);letter-spacing:2px;text-transform:uppercase;">Reflective Intelligence &nbsp;·&nbsp; <a href="https://www.reflectiveintelligence.life" style="color:rgba(45,212,191,0.78);text-decoration:none;" target="_blank">reflectiveintelligence.life</a></p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(45,212,191,0.48);letter-spacing:3px;text-transform:uppercase;font-weight:300;">Reflective Intelligence &nbsp;·&nbsp; <a href="https://www.reflectiveintelligence.life" style="color:rgba(45,212,191,0.75);text-decoration:none;" target="_blank">reflectiveintelligence.life</a></p>
     </div>
 
   </div>
@@ -4453,311 +4559,411 @@ function showEntry(idx, btn) {
 
 
 
-<!-- showEntry defined above -->
+<script>
+/* ── Global UI functions ── */
+function showEntry(idx, btn) {
+  document.querySelectorAll('.mirror-card').forEach(c => c.style.display = 'none');
+  var target = document.getElementById('entry-' + idx);
+  if(target) target.style.display = '';
+  document.querySelectorAll('.sample-tab').forEach(function(b) { b.classList.remove('active'); });
+  if(btn) btn.classList.add('active');
+}
+window.riTab = function(n) {
+  var p1 = document.getElementById('ri-panel1');
+  var p2 = document.getElementById('ri-panel2');
+  var t1 = document.getElementById('ri-tab1');
+  var t2 = document.getElementById('ri-tab2');
+  if(p1) p1.style.display = n===1 ? '' : 'none';
+  if(p2) p2.style.display = n===2 ? '' : 'none';
+  if(t1) t1.style.color = n===1 ? 'var(--brand)' : 'rgba(45,212,191,0.3)';
+  if(t2) t2.style.color = n===2 ? 'var(--brand)' : 'rgba(45,212,191,0.3)';
+};
+// Ensure entry-0 shows by default
+document.addEventListener('DOMContentLoaded', function() {
+  var e0 = document.getElementById('entry-0');
+  var e1 = document.getElementById('entry-1');
+  if(e0) e0.style.display = '';
+  if(e1) e1.style.display = 'none';
+});
+</script>
 
 
 <script>
-// ── CANVAS ──
-const canvas = document.getElementById('scene');
-const ctx = canvas.getContext('2d');
-const W = 700, H = 460, HORIZON = 242;
-canvas.width = W; canvas.height = H;
-let tick = 0;
+/* ── About scroll reveal ── */
+(function(){
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var d = parseInt(e.target.dataset.d||0);
+        setTimeout(function(){e.target.style.opacity='1';e.target.style.transform='translateY(0)';},d);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('#aboutQList .aq-row').forEach(function(el){obs.observe(el);});
+})();
 
-// Stars
-const stars = Array.from({length:65}, () => ({
-  x: Math.random()*W, y: Math.random()*HORIZON*0.88,
-  r: Math.random()*0.85+0.15, base: Math.random()*0.42+0.08,
-  sp: Math.random()*0.003+0.001, ph: Math.random()*Math.PI*2
-}));
+/* ── About sky/clouds canvas ── */
+(function(){
+  var canvas=document.getElementById('scene');
+  if(!canvas)return;
+  var ctx=canvas.getContext('2d');
+  var W=700,H=460,HORIZON=242,tick=0;
 
-// Clouds — bounce within screen, never vanish
-// Each cloud is self-contained: shape + label drawn together
-const CMARGIN = 68;
-const cloudDefs = [
-  { laneY: HORIZON+46,  x: 200, sp: 0.52, sc: 1.04, al: 0.70, label:'Restlessness',          dir:+1 },
-  { laneY: HORIZON+108, x: 420, sp: 0.36, sc: 0.90, al: 0.60, label:'Past or Future',        dir:-1 },
-  { laneY: HORIZON+62,  x: 530, sp: 0.68, sc: 0.83, al: 0.56, label:'The never-ending race', dir:-1 },
-  { laneY: HORIZON+150, x: 130, sp: 0.44, sc: 0.94, al: 0.50, label:'Conditioned Self',      dir:+1 },
-  { laneY: HORIZON+172, x: 490, sp: 0.28, sc: 0.76, al: 0.44, label:'Patterns',              dir:-1 },
-];
-const clouds = cloudDefs.map(d => ({...d}));
-
-function cloudHalfW(sc) { return 60*sc; }
-
-function drawCloud(cx, cy, sc, al, label) {
-  // Proper cloud: wide base ellipse + 4 bumps on top
-  const bumps = [
-    {dx:0,   dy:0,   rx:46, ry:19},
-    {dx:-27, dy:-16, rx:24, ry:20},
-    {dx:0,   dy:-23, rx:29, ry:22},
-    {dx:27,  dy:-14, rx:23, ry:18},
-    {dx:-48, dy:-4,  rx:17, ry:13},
-    {dx:48,  dy:-2,  rx:17, ry:12},
+  var clouds=[
+    {x:200,laneY:HORIZON+46, sp:0.52,sc:1.04,al:0.85,label:'Restlessness',    dir:+1},
+    {x:420,laneY:HORIZON+108,sp:0.36,sc:0.90,al:0.78,label:'Past or Future',  dir:-1},
+    {x:530,laneY:HORIZON+62, sp:0.68,sc:0.83,al:0.74,label:'The never-ending race',dir:-1},
+    {x:130,laneY:HORIZON+150,sp:0.44,sc:0.94,al:0.72,label:'Conditioned Self',dir:+1},
+    {x:490,laneY:HORIZON+172,sp:0.28,sc:0.76,al:0.68,label:'Patterns',        dir:-1},
   ];
-  ctx.save(); ctx.globalAlpha = al;
-  bumps.forEach(b => {
-    const bx=cx+b.dx*sc, by=cy+b.dy*sc, rx=b.rx*sc, ry=b.ry*sc;
-    const g = ctx.createRadialGradient(bx, by-ry*0.22, 0, bx, by, Math.max(rx,ry));
-    g.addColorStop(0,   'rgba(212,162,84,0.62)');
-    g.addColorStop(0.38,'rgba(188,132,56,0.40)');
-    g.addColorStop(0.72,'rgba(162,104,38,0.17)');
-    g.addColorStop(1,   'rgba(130,82,26,0.0)');
-    ctx.save(); ctx.scale(1, ry/rx);
-    ctx.beginPath(); ctx.arc(bx, by*(rx/ry), rx, 0, Math.PI*2);
-    ctx.fillStyle = g; ctx.fill(); ctx.restore();
-  });
-  ctx.restore();
-  // Label centred inside cloud
-  ctx.save();
-  ctx.font = 'italic 300 12px "Cormorant Garamond"';
-  ctx.textAlign='center'; ctx.textBaseline='middle';
-  ctx.fillStyle=`rgba(228,188,125,${Math.min(al*1.08,0.76)})`;
-  ctx.fillText(label, cx, cy+8);
-  ctx.restore();
-}
 
-function bezPt(x0,y0,cx1,cy1,cx2,cy2,x1,y1,t) {
-  const u=1-t;
-  return { x:u*u*u*x0+3*u*u*t*cx1+3*u*t*t*cx2+t*t*t*x1,
-           y:u*u*u*y0+3*u*u*t*cy1+3*u*t*t*cy2+t*t*t*y1 };
-}
+  function resizeScene(){
+    var w=canvas.parentElement.offsetWidth;
+    canvas.style.width='100%';
+    canvas.style.height=(H*w/W)+'px';
+  }
+  resizeScene();
+  window.addEventListener('resize',resizeScene);
 
-function frame() {
-  ctx.clearRect(0,0,W,H);
-
-  // Sky bg
-  const sg = ctx.createLinearGradient(0,0,0,HORIZON);
-  sg.addColorStop(0,'#040d11'); sg.addColorStop(0.45,'#071c1a'); sg.addColorStop(1,'#0a2320');
-  ctx.fillStyle=sg; ctx.fillRect(0,0,W,HORIZON);
-  const hg=ctx.createRadialGradient(W/2,HORIZON,0,W/2,HORIZON,W*0.55);
-  hg.addColorStop(0,'rgba(45,212,191,0.07)'); hg.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.fillStyle=hg; ctx.fillRect(0,0,W,HORIZON);
-
-  // Stars
-  stars.forEach(s=>{
-    const a=s.base+0.14*Math.sin(tick*s.sp+s.ph);
-    ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-    ctx.fillStyle=`rgba(45,212,191,${a})`; ctx.fill();
-  });
-
-  // Ghost NOW
-  ctx.save(); ctx.font='300 122px "Cormorant Garamond"';
-  ctx.textAlign='center'; ctx.textBaseline='alphabetic';
-  ctx.fillStyle=`rgba(45,212,191,${0.055+0.018*Math.sin(tick*0.007)})`;
-  ctx.fillText('NOW',W/2,HORIZON-10); ctx.restore();
-
-  // Sky labels — all drawn once, no repeats
-  // "the only moment that is real"
-  ctx.save(); ctx.font='italic 300 10.5px "Cormorant Garamond"';
-  ctx.textAlign='center'; ctx.fillStyle='rgba(45,212,191,0.50)';
-  ctx.fillText('the only moment that is real',W/2,16); ctx.restore();
-
-  // Choiceless Awareness — 22px
-  ctx.save(); ctx.shadowColor='rgba(45,212,191,0.32)'; ctx.shadowBlur=10;
-  ctx.font='italic 300 22px "Cormorant Garamond"'; ctx.textAlign='center';
-  ctx.fillStyle='rgba(45,212,191,0.88)'; ctx.fillText('Choiceless Awareness',W/2,58);
-  ctx.shadowBlur=0; ctx.restore();
-
-  // whole · empty · fully present — 10.5px
-  ctx.save(); ctx.font='italic 300 10.5px "Cormorant Garamond"';
-  ctx.textAlign='center'; ctx.fillStyle='rgba(45,212,191,0.38)';
-  ctx.fillText('whole · empty · fully present',W/2,75); ctx.restore();
-
-  // Stillness — left side, y=148
-  ctx.save(); ctx.font='italic 300 18px "Cormorant Garamond"';
-  ctx.textAlign='center'; ctx.fillStyle='rgba(210,235,232,0.58)';
-  ctx.fillText('Stillness', 124, 148); ctx.restore();
-
-  // Being Present — moved left and down, away from gold endpoint node
-  ctx.save(); ctx.font='italic 300 18px "Cormorant Garamond"';
-  ctx.textAlign='center'; ctx.fillStyle='rgba(210,235,232,0.58)';
-  ctx.fillText('Being Present', 442, 172); ctx.restore();
-
-  // dots — single row connecting Stillness to centre, then centre toward Being Present
-  [[190,144],[212,144],[350,144]].forEach(([x,y])=>{
-    ctx.beginPath(); ctx.arc(x,y,1.2,0,Math.PI*2);
-    ctx.fillStyle='rgba(45,212,191,0.16)'; ctx.fill();
-  });
-
-  // Knowing you are enough — 12px, positioned right, clear of LumeRI node
-  ctx.save(); ctx.font='italic 300 12px "Cormorant Garamond"';
-  ctx.textAlign='center'; ctx.fillStyle='rgba(210,235,232,0.34)';
-  ctx.fillText('Knowing you are enough', 350, 208); ctx.restore();
-
-  // Horizon
-  const band=ctx.createLinearGradient(0,HORIZON-16,0,HORIZON+16);
-  band.addColorStop(0,'rgba(45,212,191,0)'); band.addColorStop(0.45,'rgba(45,212,191,0.09)');
-  band.addColorStop(0.55,'rgba(45,212,191,0.09)'); band.addColorStop(1,'rgba(45,212,191,0)');
-  ctx.fillStyle=band; ctx.fillRect(0,HORIZON-16,W,32);
-  const hl=ctx.createLinearGradient(0,0,W,0);
-  hl.addColorStop(0,'rgba(45,212,191,0)'); hl.addColorStop(0.12,'rgba(45,212,191,0.5)');
-  hl.addColorStop(0.5,'rgba(45,212,191,0.82)'); hl.addColorStop(0.88,'rgba(45,212,191,0.5)');
-  hl.addColorStop(1,'rgba(45,212,191,0)');
-  ctx.strokeStyle=hl; ctx.lineWidth=1.2;
-  ctx.beginPath(); ctx.moveTo(0,HORIZON); ctx.lineTo(W,HORIZON); ctx.stroke();
-
-  // SILENCE / ATTENTION
-  ctx.save(); ctx.font='italic 300 9px "Cormorant Garamond"';
-  ctx.fillStyle='rgba(45,212,191,0.50)';
-  ctx.textAlign='left'; ctx.fillText('SILENCE',14,HORIZON-4);
-  ctx.textAlign='right'; ctx.fillText('ATTENTION',W-14,HORIZON-4); ctx.restore();
-
-  // Self-inquiry pill
-  ctx.save(); ctx.beginPath(); ctx.roundRect(W/2-54,HORIZON+3,108,22,11);
-  ctx.fillStyle='rgba(45,212,191,0.05)'; ctx.strokeStyle='rgba(45,212,191,0.26)';
-  ctx.lineWidth=1; ctx.fill(); ctx.stroke();
-  ctx.font='italic 300 9px "Cormorant Garamond"'; ctx.textAlign='center';
-  ctx.fillStyle='rgba(45,212,191,0.68)';
-  ctx.fillText('Self-Inquiry · WHO AM I',W/2,HORIZON+17); ctx.restore();
-
-  // Cloud world bg
-  const dg=ctx.createLinearGradient(0,HORIZON,0,H);
-  dg.addColorStop(0,'#100a05'); dg.addColorStop(0.5,'#170e06'); dg.addColorStop(1,'#1c1005');
-  ctx.fillStyle=dg; ctx.fillRect(0,HORIZON,W,H-HORIZON);
-  const wg=ctx.createRadialGradient(W*0.6,H,0,W*0.6,H,W*0.65);
-  wg.addColorStop(0,'rgba(178,88,18,0.12)'); wg.addColorStop(0.6,'rgba(158,78,14,0.04)'); wg.addColorStop(1,'rgba(0,0,0,0)');
-  ctx.fillStyle=wg; ctx.fillRect(0,HORIZON,W,H-HORIZON);
-
-  // Ghost PATTERNS — 22px matching Choiceless Awareness, right-centre so clear of LumeRI node
-  ctx.save(); ctx.font=`italic 300 22px "Cormorant Garamond"`;
-  ctx.textAlign='center'; ctx.textBaseline='alphabetic';
-  ctx.fillStyle=`rgba(195,115,45,${0.30+0.05*Math.sin(tick*0.006+1.8)})`;
-  ctx.fillText('Patterns', W/2+55, HORIZON+116); ctx.restore();
-
-  // "we all begin here · and this is human" — 10.5px directly under Patterns
-  ctx.save(); ctx.font='italic 300 10.5px "Cormorant Garamond"';
-  ctx.textAlign='center'; ctx.fillStyle='rgba(210,165,95,0.48)';
-  ctx.fillText('we all begin here · and this is human', W/2+55, HORIZON+134); ctx.restore();
-
-  // CLOUDS — bounce within screen, draw shape+label together
-  clouds.forEach(c=>{
-    const hw=cloudHalfW(c.sc);
-    const bob=Math.sin(tick*0.008+c.laneY*0.02)*3;
-    drawCloud(c.x, c.laneY+bob, c.sc, c.al, c.label);
-    c.x += c.sp * c.dir;
-    if (c.x+hw >= W-6) { c.x=W-6-hw; c.dir=-1; }
-    if (c.x-hw <= 6)   { c.x=6+hw;   c.dir=+1; }
-  });
-
-  // LumeRI DUST NODE — breathing teal
-  const lx=44, ly=HORIZON+80, pb=0.5+0.5*Math.sin(tick*0.04);
-  const ldg=ctx.createRadialGradient(lx,ly,0,lx,ly,38);
-  ldg.addColorStop(0,`rgba(45,212,191,${0.06+0.04*pb})`); ldg.addColorStop(1,'rgba(45,212,191,0)');
-  ctx.beginPath(); ctx.arc(lx,ly,38,0,Math.PI*2); ctx.fillStyle=ldg; ctx.fill();
-  [28,20].forEach((r,i)=>{ ctx.beginPath(); ctx.arc(lx,ly,r,0,Math.PI*2);
-    ctx.strokeStyle=`rgba(45,212,191,${0.18+0.12*pb+i*0.08})`; ctx.lineWidth=1+i*0.2; ctx.stroke(); });
-  ctx.beginPath(); ctx.arc(lx,ly,12,0,Math.PI*2);
-  ctx.fillStyle=`rgba(45,212,191,${0.06+0.04*pb})`; ctx.strokeStyle=`rgba(45,212,191,${0.52+0.2*pb})`;
-  ctx.lineWidth=1.5; ctx.fill(); ctx.stroke();
-  ctx.save(); ctx.font='italic 300 9.5px "Cormorant Garamond"'; ctx.textAlign='center';
-  ctx.fillStyle=`rgba(45,212,191,${0.82+0.15*pb})`; ctx.fillText('LumeRI',lx,ly+4); ctx.restore();
-  ctx.save(); ctx.font='300 7px "DM Sans"'; ctx.textAlign='center';
-  ctx.fillStyle=`rgba(45,212,191,${0.58+0.15*pb})`; ctx.fillText('START HERE',lx,ly+26);
-  ctx.font='italic 300 8.5px "Cormorant Garamond"'; ctx.fillStyle='rgba(45,212,191,0.36)';
-  ctx.fillText('in your patterns',lx,ly+37); ctx.restore();
-
-  // LumeRI SKY NODE — gold endpoint, top-right, clear of Being Present
-  const gx=W-68, gy=100, pg=0.5+0.5*Math.sin(tick*0.03+1.3);
-  const gg=ctx.createRadialGradient(gx,gy,0,gx,gy,40);
-  gg.addColorStop(0,`rgba(212,168,67,${0.07+0.04*pg})`); gg.addColorStop(1,'rgba(212,168,67,0)');
-  ctx.beginPath(); ctx.arc(gx,gy,40,0,Math.PI*2); ctx.fillStyle=gg; ctx.fill();
-  [28,20].forEach((r,i)=>{ ctx.beginPath(); ctx.arc(gx,gy,r,0,Math.PI*2);
-    ctx.strokeStyle=`rgba(212,168,67,${0.18+0.10*pg+i*0.10})`; ctx.lineWidth=1+i*0.2; ctx.stroke(); });
-  ctx.beginPath(); ctx.arc(gx,gy,12,0,Math.PI*2);
-  ctx.fillStyle=`rgba(212,168,67,${0.08+0.04*pg})`; ctx.strokeStyle=`rgba(212,168,67,${0.52+0.22*pg})`;
-  ctx.lineWidth=1.5; ctx.fill(); ctx.stroke();
-  ctx.save(); ctx.font='italic 300 9.5px "Cormorant Garamond"'; ctx.textAlign='center';
-  ctx.fillStyle=`rgba(212,168,67,${0.88+0.10*pg})`; ctx.fillText('LumeRI',gx,gy+4); ctx.restore();
-  ctx.save(); ctx.font='300 7px "DM Sans"'; ctx.textAlign='center';
-  ctx.fillStyle=`rgba(212,168,67,${0.62+0.15*pg})`; ctx.fillText('ENDPOINT',gx,gy+26);
-  ctx.font='italic 300 8.5px "Cormorant Garamond"'; ctx.fillStyle='rgba(212,168,67,0.40)';
-  ctx.fillText('awareness reached',gx,gy+37); ctx.restore();
-
-  // THE ARC — dust node → sky node
-  const sx=44, sy=HORIZON+64, ex=gx, ey=gy+13;
-  const c1x=44, c1y=HORIZON-28, c2x=240, c2y=HORIZON-52;
-
-  // Glow behind arc
-  ctx.save(); ctx.beginPath(); ctx.moveTo(sx,sy); ctx.bezierCurveTo(c1x,c1y,c2x,c2y,ex,ey);
-  ctx.strokeStyle='rgba(45,212,191,0.055)'; ctx.lineWidth=12; ctx.lineCap='round'; ctx.stroke(); ctx.restore();
-
-  // Arc in 60 colour segments
-  for(let i=0;i<60;i++){
-    const t0=i/60, t1=(i+1)/60;
-    const p0=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,t0);
-    const p1=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,t1);
-    let r,g,b;
-    if(t0<0.48){ r=Math.round(185+(45-185)*(t0/0.48)); g=Math.round(95+(212-95)*(t0/0.48)); b=Math.round(25+(191-25)*(t0/0.48)); }
-    else { r=45; g=212; b=191; }
-    if(t0>0.84){ r=212; g=168; b=67; }
-    const a=0.46+0.44*t0;
-    ctx.save(); ctx.beginPath(); ctx.moveTo(p0.x,p0.y); ctx.lineTo(p1.x,p1.y);
-    ctx.strokeStyle=`rgba(${r},${g},${b},${a})`; ctx.lineWidth=2;
-    ctx.setLineDash([6,4]); ctx.lineDashOffset=-(tick*1.1); ctx.lineCap='round'; ctx.stroke(); ctx.restore();
+  function drawCloud(x,y,scale,alpha,label){
+    var r=42*scale;
+    ctx.save();
+    ctx.globalAlpha=alpha*0.72;
+    var g=ctx.createRadialGradient(x,y,r*0.2,x,y,r*1.4);
+    g.addColorStop(0,'rgba(195,115,45,0.55)');
+    g.addColorStop(0.5,'rgba(165,90,30,0.28)');
+    g.addColorStop(1,'rgba(140,70,20,0)');
+    ctx.beginPath();
+    ctx.arc(x,y,r*1.4,0,Math.PI*2);
+    ctx.fillStyle=g;
+    ctx.fill();
+    ctx.globalAlpha=alpha;
+    ctx.font='bold '+(11*scale)+'px "DM Sans",sans-serif';
+    ctx.fillStyle='rgba(228,175,110,0.92)';
+    ctx.textAlign='center';
+    ctx.textBaseline='middle';
+    ctx.fillText(label,x,y);
+    ctx.restore();
   }
 
-  // 8 numbered nodes on arc
-  const nC=[[185,95,25],[178,110,28],[112,168,72],[42,188,152],[45,212,191],[45,212,191],[45,212,191],[212,168,67]];
-  const nT=[0.05,0.16,0.28,0.40,0.52,0.63,0.76,0.90];
-  nT.forEach((t,i)=>{
-    const p=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,t);
-    const [r,g,b]=nC[i]; const isMirror=i===4, isGold=i===7, rad=(isMirror||isGold)?10:8;
-    if(isMirror){ ctx.beginPath(); ctx.arc(p.x,p.y,18,0,Math.PI*2);
-      ctx.strokeStyle='rgba(45,212,191,0.20)'; ctx.lineWidth=1; ctx.stroke(); }
-    ctx.beginPath(); ctx.arc(p.x,p.y,rad,0,Math.PI*2);
-    ctx.fillStyle=`rgba(${r},${g},${b},0.15)`; ctx.strokeStyle=`rgba(${r},${g},${b},0.84)`;
-    ctx.lineWidth=(isMirror||isGold)?2:1.5; ctx.fill(); ctx.stroke();
-    ctx.save(); ctx.font='bold 9px "DM Sans"'; ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.fillStyle=`rgba(${r},${g},${b},1)`; ctx.fillText(i+1,p.x,p.y); ctx.restore();
-  });
+  function drawFrame(){
+    canvas.width=W; canvas.height=H;
+    // Sky gradient
+    var sg=ctx.createLinearGradient(0,0,0,HORIZON);
+    sg.addColorStop(0,'#050f12');
+    sg.addColorStop(0.45,'#07201e');
+    sg.addColorStop(1,'#0a2a26');
+    ctx.fillStyle=sg;
+    ctx.fillRect(0,0,W,HORIZON);
+    // Cloud world gradient
+    var cg=ctx.createLinearGradient(0,HORIZON,0,H);
+    cg.addColorStop(0,'#1a0e08');
+    cg.addColorStop(1,'#120a05');
+    ctx.fillStyle=cg;
+    ctx.fillRect(0,HORIZON,W,H-HORIZON);
+    // Horizon glow
+    ctx.save();
+    ctx.globalAlpha=0.18+0.04*Math.sin(tick*0.012);
+    var hg=ctx.createLinearGradient(0,HORIZON-18,0,HORIZON+18);
+    hg.addColorStop(0,'transparent');
+    hg.addColorStop(0.5,'rgba(45,212,191,0.45)');
+    hg.addColorStop(1,'transparent');
+    ctx.fillStyle=hg; ctx.fillRect(0,HORIZON-18,W,36);
+    ctx.restore();
+    // Horizon line
+    ctx.save();
+    ctx.globalAlpha=0.35; ctx.strokeStyle='rgba(45,212,191,0.6)';
+    ctx.lineWidth=0.5; ctx.setLineDash([4,8]);
+    ctx.beginPath(); ctx.moveTo(0,HORIZON); ctx.lineTo(W,HORIZON); ctx.stroke();
+    ctx.restore();
+    // Sky labels
+    ctx.save();
+    ctx.font='italic 11px "Cormorant Garamond",serif';
+    ctx.fillStyle=('rgba(45,212,191,'+(0.10+0.03*Math.sin(tick*0.007))+')');
+    ctx.textAlign='center'; ctx.fillText('the only moment that is real',W/2,26);
+    ctx.font='italic '+(Math.floor(clamp(46+4*Math.sin(tick*0.008),44,52)))+'px "Cormorant Garamond",serif';
+    ctx.fillStyle='rgba(45,212,191,'+(0.12+0.04*Math.sin(tick*0.009))+')';
+    ctx.fillText('NOW',W/2,HORIZON-72);
+    ctx.font='italic 26px "Cormorant Garamond",serif';
+    ctx.fillStyle='rgba(45,212,191,0.96)';
+    ctx.fillText('Choiceless Awareness',W/2,58);
+    ctx.font='10px "DM Sans",sans-serif';
+    ctx.fillStyle='rgba(200,240,238,0.38)';
+    ctx.fillText('whole · empty · fully present',W/2,78);
+    ctx.font='italic 19px "Cormorant Garamond",serif';
+    ctx.fillStyle='rgba(210,235,232,0.82)';
+    ctx.textAlign='left'; ctx.fillText('Stillness',62,128);
+    ctx.textAlign='right'; ctx.fillText('Being Present',638,128);
+    ctx.textAlign='center'; ctx.fillStyle='rgba(210,235,232,0.65)';
+    ctx.fillText('Knowing you are enough',W/2,192);
+    // Navigation labels
+    ctx.font='9px "DM Sans",sans-serif';
+    ctx.fillStyle='rgba(45,212,191,0.28)';
+    ctx.textAlign='left'; ctx.fillText('SILENCE',18,HORIZON-8);
+    ctx.textAlign='right'; ctx.fillText('ATTENTION',W-18,HORIZON-8);
+    // PATTERNS ghost
+    ctx.font='italic '+(Math.floor(clamp(72+6*Math.sin(tick*0.006+1.8),68,80)))+'px "Cormorant Garamond",serif';
+    ctx.fillStyle=('rgba(210,130,50,'+(0.50+0.08*Math.sin(tick*0.006+1.8))+')');
+    ctx.textAlign='center'; ctx.fillText('Patterns',W/2,H-52);
+    ctx.font='10px "DM Sans",sans-serif';
+    ctx.fillStyle='rgba(220,178,110,0.72)';
+    ctx.fillText('we all begin here · and this is human',W/2,H-32);
+    ctx.restore();
+    // Bouncing clouds
+    clouds.forEach(function(c){
+      var bob=Math.sin(tick*0.008+c.laneY*0.02)*3;
+      drawCloud(c.x,c.laneY+bob,c.sc,c.al,c.label);
+      c.x+=c.sp*c.dir;
+      if(c.x>W+80){c.x=-80;} if(c.x<-80){c.x=W+80;}
+    });
+    // Zoom-out arc dots
+    var dots=8;
+    for(var i=0;i<dots;i++){
+      var t=i/(dots-1);
+      var sx=80+t*540, sy=HORIZON+160-t*230;
+      var bright=(tick%160)/160;
+      var alpha=(i===Math.floor(bright*dots))?0.85:0.22+(i/(dots-1))*0.25;
+      ctx.save(); ctx.globalAlpha=alpha;
+      ctx.beginPath(); ctx.arc(sx,sy,i===0?14:i===dots-1?14:7,0,Math.PI*2);
+      ctx.strokeStyle=i===0?'rgba(195,115,30,0.8)':i===dots-1?'rgba(212,168,67,0.85)':'rgba(45,212,191,0.5)';
+      ctx.lineWidth=i===0||i===dots-1?2:1.5; ctx.stroke();
+      if(i===0){ctx.font='8px "DM Sans",sans-serif';ctx.fillStyle='rgba(195,115,30,0.6)';ctx.textAlign='center';ctx.fillText('START',sx,sy+22);}
+      if(i===dots-1){ctx.font='8px "DM Sans",sans-serif';ctx.fillStyle='rgba(212,168,67,0.7)';ctx.textAlign='center';ctx.fillText('ENDPOINT',sx,sy-18);}
+      if(i>0&&i<dots){
+        var px=80+(i-1)/(dots-1)*540, py=HORIZON+160-(i-1)/(dots-1)*230;
+        ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(sx,sy);
+        ctx.strokeStyle='rgba(45,212,191,0.18)';
+        ctx.lineWidth=1; ctx.setLineDash([3,6]); ctx.stroke(); ctx.setLineDash([]);
+      }
+      ctx.restore();
+    }
+    tick++;
+    requestAnimationFrame(drawFrame);
+  }
+  function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v));}
+  drawFrame();
+})();
+</script>
 
-  // Arrow at end
-  const pA=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,0.97);
-  const pA2=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,0.995);
-  const ang=Math.atan2(pA2.y-pA.y,pA2.x-pA.x);
-  ctx.save(); ctx.translate(pA2.x,pA2.y); ctx.rotate(ang);
-  ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-11,-4); ctx.lineTo(-11,4);
-  ctx.closePath(); ctx.fillStyle='rgba(212,168,67,0.82)'; ctx.fill(); ctx.restore();
-
-  // "ZOOM OUT · 8 QUESTIONS" rotated along arc, offset above line
-  const lT=0.22;
-  const lp=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,lT);
-  const lp2=bezPt(sx,sy,c1x,c1y,c2x,c2y,ex,ey,lT+0.018);
-  const lAng=Math.atan2(lp2.y-lp.y,lp2.x-lp.x);
-  ctx.save(); ctx.translate(lp.x,lp.y); ctx.rotate(lAng);
-  ctx.translate(0,-13); // perpendicular offset above arc
-  ctx.font='300 7px "DM Sans"'; ctx.textAlign='center';
-  ctx.fillStyle='rgba(45,212,191,0.55)';
-  ctx.fillText('ZOOM OUT · 8 QUESTIONS', 24, 0); ctx.restore();
-
-  tick++; requestAnimationFrame(frame);
+<script>
+(function() {
+var cv2,ctx2,W2,H2,CX2,CY2,R2,tick2=0,kcPhase=0,kcPs=0,kcParts=[],kcNodes=[];
+var ND2=[
+  {lb:'K',sub:'Knowledge', a:-144,c:'rgba(45,212,191,1)', g:'rgba(45,212,191,0.5)'},
+  {lb:'E',sub:'Experience',a:-72, c:'rgba(45,212,191,1)', g:'rgba(45,212,191,0.5)'},
+  {lb:'M',sub:'Memory',    a:0,   c:'rgba(45,212,191,1)', g:'rgba(45,212,191,0.5)'},
+  {lb:'T',sub:'Thought',   a:72,  c:'rgba(212,168,67,1)', g:'rgba(212,168,67,0.5)'},
+  {lb:'A',sub:'Action',    a:144, c:'rgba(200,80,60,0.9)',g:'rgba(200,80,60,0.4)'},
+  {lb:'A\u2605',sub:'Choiceless\nAction',a:144,c:'rgba(45,212,191,1)',g:'rgba(45,212,191,0.8)'}
+];
+var PH2=[
+  {t:'The Conditioning Loop',       d:'K \u2192 E \u2192 M \u2192 T \u2192 A \u2192 repeat',dur:480},
+  {t:'The Pause \u2014 The Gap',    d:'Thought arises. Before action \u2014 a space opens.',dur:240},
+  {t:'Tracing Backward',            d:'T \u2192 M \u2192 E \u2192 K \u00b7 the root is seen',dur:420},
+  {t:'Choiceless Action \u2014 A\u2605',d:'Action from seeing. Not the old movement.',dur:320},
+  {t:'Freedom from the Known',      d:'The present moment, undivided.',dur:9999}
+];
+var kcFadeAlpha=1,kcFadingOut=false,kcPendingPhase=-1,kcRunning=false;
+function kcInit(){
+  cv2=document.getElementById('kcc');
+  if(!cv2)return;
+  ctx2=cv2.getContext('2d');
+  kcResize();
+  window.addEventListener('resize',kcResize);
+  kcSetPhase(0);
+  if(!kcRunning){kcRunning=true;kcDraw();}
 }
-frame();
-
-// Resize
-function resizeScene(){
-  const w=canvas.parentElement.offsetWidth;
-  canvas.style.width='100%'; canvas.style.height=(H*w/W)+'px';
+function kcResize(){
+  var wrap=document.getElementById('kcWrap');
+  if(!wrap||!cv2)return;
+  W2=cv2.width=wrap.offsetWidth;
+  H2=cv2.height=wrap.offsetHeight;
+  CX2=W2/2;CY2=H2/2;R2=Math.min(W2,H2)*0.28;
+  kcBuildNodes();
 }
-resizeScene(); window.addEventListener('resize',resizeScene);
+function kcBuildNodes(){
+  kcNodes=[];
+  for(var i=0;i<6;i++){
+    var d=ND2[i],a2=(d.a-90)*Math.PI/180;
+    kcNodes.push({lb:d.lb,sub:d.sub,c:d.c,g:d.g,x:CX2+R2*Math.cos(a2),y:CY2+R2*Math.sin(a2)});
+  }
+}
+function KcPar(f,t,c,sp){this.f=f;this.t=t;this.c=c;this.sp=sp||0.006;this.tt=0;this.sz=1.8+Math.random()*1.8;this.al=0.5+Math.random()*0.4;this.dead=false;}
+KcPar.prototype.step=function(){this.tt+=this.sp;if(this.tt>=1)this.dead=true;};
+KcPar.prototype.draw=function(){
+  var x=this.f.x+(this.t.x-this.f.x)*this.tt;
+  var y=this.f.y+(this.t.y-this.f.y)*this.tt;
+  var fd=1-Math.pow(this.tt-0.5,2)*4;if(fd<0)fd=0;
+  ctx2.save();ctx2.globalAlpha=this.al*fd;
+  ctx2.beginPath();ctx2.arc(x,y,this.sz,0,Math.PI*2);
+  ctx2.fillStyle=this.c;ctx2.shadowBlur=8;ctx2.shadowColor=this.c;ctx2.fill();ctx2.restore();
+};
+function kcStepParts(){var a=[],i;for(i=0;i<kcParts.length;i++){kcParts[i].step();if(!kcParts[i].dead)a.push(kcParts[i]);}kcParts=a;for(i=0;i<kcParts.length;i++)kcParts[i].draw();}
+function kcDN(n,pulse,al,sc,hi){
+  pulse=pulse||0;al=(al!==undefined)?al:1;sc=sc||1;hi=hi||false;
+  var r=(hi?22:17)*sc;
+  ctx2.save();ctx2.globalAlpha=al;
+  if(hi||pulse>0){
+    var gr=r+6+pulse*10,ga=(0.35+pulse*0.25).toFixed(2);
+    var gv=ctx2.createRadialGradient(n.x,n.y,r*0.5,n.x,n.y,gr);
+    gv.addColorStop(0,'rgba(45,212,191,'+ga+')');gv.addColorStop(1,'rgba(0,0,0,0)');
+    ctx2.beginPath();ctx2.arc(n.x,n.y,gr,0,Math.PI*2);ctx2.fillStyle=gv;ctx2.fill();
+  }
+  ctx2.beginPath();ctx2.arc(n.x,n.y,r,0,Math.PI*2);
+  ctx2.strokeStyle=n.c;ctx2.lineWidth=hi?2:1.2;ctx2.shadowBlur=hi?14:6;ctx2.shadowColor=n.g;ctx2.stroke();
+  ctx2.beginPath();ctx2.arc(n.x,n.y,r-1.5,0,Math.PI*2);
+  ctx2.fillStyle=hi?'rgba(45,212,191,0.09)':'rgba(5,13,16,0.8)';ctx2.fill();
+  ctx2.shadowBlur=0;
+  ctx2.fillStyle=n.c;ctx2.font=(hi?'bold ':'')+Math.floor(r*0.65)+"px 'Jost',sans-serif";
+  ctx2.textAlign='center';ctx2.textBaseline='middle';ctx2.fillText(n.lb,n.x,n.y);
+  if(hi){
+    var sl=n.sub.split('\n');ctx2.font=Math.floor(r*0.35)+"px 'Jost',sans-serif";
+    ctx2.fillStyle='rgba(45,212,191,0.52)';
+    for(var s=0;s<sl.length;s++)ctx2.fillText(sl[s],n.x,n.y+r+10+s*11);
+  }
+  ctx2.restore();
+}
+function kcDE(f,t,al,col,dash,arr){
+  al=al||0.18;col=col||'rgba(45,212,191,1)';dash=dash||false;arr=(arr!==undefined)?arr:true;
+  var dx=t.x-f.x,dy=t.y-f.y,len=Math.sqrt(dx*dx+dy*dy);
+  if(len<1)return;
+  var qc=len*0.10,mx=(f.x+t.x)/2,my=(f.y+t.y)/2;
+  var qx=mx-dy/len*qc,qy=my+dx/len*qc;
+  ctx2.save();ctx2.globalAlpha=al;ctx2.strokeStyle=col;ctx2.lineWidth=1;
+  ctx2.shadowBlur=4;ctx2.shadowColor=col;if(dash)ctx2.setLineDash([4,7]);
+  ctx2.beginPath();ctx2.moveTo(f.x,f.y);ctx2.quadraticCurveTo(qx,qy,t.x,t.y);ctx2.stroke();
+  ctx2.setLineDash([]);
+  if(arr){
+    var tt2=0.82;
+    var ax=(1-tt2)*(1-tt2)*f.x+2*(1-tt2)*tt2*qx+tt2*tt2*t.x;
+    var ay=(1-tt2)*(1-tt2)*f.y+2*(1-tt2)*tt2*qy+tt2*tt2*t.y;
+    var bx=2*(1-tt2)*(qx-f.x)+2*tt2*(t.x-qx);
+    var by=2*(1-tt2)*(qy-f.y)+2*tt2*(t.y-qy);
+    var ang=Math.atan2(by,bx),al3=7;
+    ctx2.beginPath();
+    ctx2.moveTo(ax+al3*Math.cos(ang),ay+al3*Math.sin(ang));
+    ctx2.lineTo(ax+al3*Math.cos(ang+2.4),ay+al3*Math.sin(ang+2.4));
+    ctx2.lineTo(ax+al3*Math.cos(ang-2.4),ay+al3*Math.sin(ang-2.4));
+    ctx2.closePath();ctx2.fillStyle=col;ctx2.fill();
+  }
+  ctx2.restore();
+}
+function kcBase(a){
+  kcDE(kcNodes[0],kcNodes[1],a*0.22);kcDE(kcNodes[1],kcNodes[2],a*0.22);
+  kcDE(kcNodes[2],kcNodes[3],a*0.22);kcDE(kcNodes[3],kcNodes[4],a*0.22);
+  kcDE(kcNodes[4],kcNodes[1],a*0.13);
+  for(var i=0;i<5;i++)kcDN(kcNodes[i],0,a*0.45);
+}
+function kcSetPhase(p){
+  kcFadingOut=true;kcPendingPhase=p;
+  var el=document.getElementById('kclbl');if(el)el.style.opacity=0;
+}
+function kcDoSwitch(p){
+  kcPhase=p;kcPs=tick2;kcParts=[];kcFadingOut=false;
+  var cp=p;
+  setTimeout(function(){
+    var et=document.getElementById('kclt'),ed=document.getElementById('kcld'),el=document.getElementById('kclbl');
+    if(et)et.textContent=PH2[cp].t;
+    if(ed)ed.textContent=PH2[cp].d;
+    if(el)el.style.opacity=1;
+    if(cp===4){var rh=document.getElementById('kcrh');if(rh)rh.style.opacity=1;}
+    for(var ci=0;ci<5;ci++){
+      var card=document.getElementById('kcc'+ci);
+      if(card){card.style.opacity=(ci===cp)?'1':'0.28';card.style.transform=(ci===cp)?'translateY(0)':'translateY(4px)';}
+    }
+  },300);
+}
+function kcUpdateFade(){
+  if(kcFadingOut){
+    kcFadeAlpha-=0.035;
+    if(kcFadeAlpha<=0){kcFadeAlpha=0;kcFadingOut=false;kcDoSwitch(kcPendingPhase);}
+  } else {
+    if(kcFadeAlpha<1)kcFadeAlpha=Math.min(1,kcFadeAlpha+0.025);
+  }
+}
+function kcRestart(){
+  var rh=document.getElementById('kcrh');if(rh)rh.style.opacity=0;
+  kcParts=[];tick2=0;kcFadeAlpha=1;kcFadingOut=false;
+  kcResize();kcSetPhase(0);
+  for(var ci=0;ci<5;ci++){var c=document.getElementById('kcc'+ci);if(c){c.style.opacity='0';c.style.transform='translateY(16px)';}}
+}
+function kcDraw(){
+  if(!cv2)return;
+  kcUpdateFade();
+  ctx2.fillStyle='#050d10';ctx2.fillRect(0,0,W2,H2);
+  var bg=ctx2.createRadialGradient(CX2,CY2,0,CX2,CY2,R2*1.8);
+  bg.addColorStop(0,'rgba(45,212,191,0.04)');bg.addColorStop(1,'rgba(0,0,0,0)');
+  ctx2.fillStyle=bg;ctx2.fillRect(0,0,W2,H2);
+  ctx2.save();ctx2.globalAlpha=kcFadeAlpha;
+  var e=tick2-kcPs;
+  if(kcPhase===0){
+    kcBase(1);
+    var lp=[[0,1],[1,2],[2,3],[3,4],[4,1]];
+    if(tick2%10===0){var ei=Math.floor(e/42)%5;kcParts.push(new KcPar(kcNodes[lp[ei][0]],kcNodes[lp[ei][1]],'rgba(45,212,191,0.8)',0.025+Math.random()*0.01));}
+    kcStepParts();
+    kcDN(kcNodes[Math.floor(e/90)%5],Math.sin(e*0.10)*0.5+0.5,1,1,true);
+    if(e>PH2[0].dur)kcSetPhase(1);
+  } else if(kcPhase===1){
+    kcBase(0.5);var pu=Math.sin(e*0.08)*0.5+0.5;kcDN(kcNodes[3],pu,1,1+pu*0.08,true);
+    ctx2.save();ctx2.globalAlpha=Math.min(1,e/40)*0.7;
+    ctx2.font="italic 11px 'Cormorant Garamond',serif";ctx2.fillStyle='rgba(212,168,67,0.85)';
+    ctx2.textAlign='center';ctx2.textBaseline='top';ctx2.fillText('\u2014 the gap \u2014',kcNodes[3].x,kcNodes[3].y+42);ctx2.restore();
+    if(e>PH2[1].dur)kcSetPhase(2);
+  } else if(kcPhase===2){
+    var tro=[3,2,1,0],trc=['rgba(212,168,67,0.9)','rgba(100,200,170,0.9)','rgba(65,185,160,0.9)','rgba(45,212,191,1)'];
+    var stp=PH2[2].dur/4;kcBase(0.35);
+    var si,ss2,sa,aa2;
+    for(si=0;si<3;si++){ss2=si*stp;if(e>=ss2){sa=Math.min(1,(e-ss2)/30);kcDE(kcNodes[tro[si]],kcNodes[tro[si+1]],sa*0.75,trc[si],true,true);}}
+    for(si=0;si<4;si++){ss2=si*stp;if(e>=ss2){aa2=Math.min(1,(e-ss2)/25);kcDN(kcNodes[tro[si]],aa2*(0.6+0.4*Math.sin(e*0.09)),0.5+aa2*0.5,1,true);}}
+    if(tick2%8===0&&e<PH2[2].dur-20){var pi=Math.min(2,Math.floor(e/stp));kcParts.push(new KcPar(kcNodes[tro[pi]],kcNodes[tro[pi+1]],trc[pi],0.018+Math.random()*0.008));}
+    kcStepParts();
+    if(e>PH2[2].dur-60){ctx2.save();ctx2.globalAlpha=Math.min(1,(e-(PH2[2].dur-60))/30)*0.8;ctx2.font="italic 12px 'Cormorant Garamond',serif";ctx2.fillStyle='rgba(45,212,191,0.85)';ctx2.textAlign='center';ctx2.textBaseline='top';ctx2.fillText('the root is seen',kcNodes[0].x,kcNodes[0].y-42);ctx2.restore();}
+    if(e>PH2[2].dur)kcSetPhase(3);
+  } else if(kcPhase===3){
+    kcBase(0.25);kcDN(kcNodes[3],0.5,1,1,true);kcDN(kcNodes[4],0,0.15,1,false);
+    var aa3=Math.min(1,e/100),asc=0.5+aa3*0.65;
+    if(aa3>0.1)kcDE(kcNodes[3],kcNodes[5],aa3*0.8,'rgba(45,212,191,1)',false,true);
+    kcDN(kcNodes[5],aa3*(0.5+0.5*Math.sin(e*0.12)),aa3,asc,true);
+    if(tick2%4===0&&aa3>0.6){var ang=Math.random()*Math.PI*2,dst=20+Math.random()*30;kcParts.push(new KcPar(kcNodes[5],{x:kcNodes[5].x+Math.cos(ang)*dst,y:kcNodes[5].y+Math.sin(ang)*dst},'rgba(45,212,191,0.8)',0.04+Math.random()*0.03));}
+    kcStepParts();
+    if(e>PH2[3].dur)kcSetPhase(4);
+  } else if(kcPhase===4){
+    kcBase(0.10);
+    var ri2,rr2,pr2,rra;
+    for(ri2=0;ri2<3;ri2++){
+      var rd2=ri2*40,re2=Math.max(0,e-rd2);pr2=Math.min(1,re2/180);
+      rr2=R2*0.15+R2*1.3*pr2;rra=(1-pr2)*0.25;
+      if(rra>0.01){ctx2.save();ctx2.globalAlpha=rra;ctx2.beginPath();ctx2.arc(CX2,CY2,rr2,0,Math.PI*2);ctx2.strokeStyle='rgba(45,212,191,1)';ctx2.lineWidth=0.8;ctx2.shadowBlur=8;ctx2.shadowColor='rgba(45,212,191,0.4)';ctx2.stroke();ctx2.restore();}
+    }
+    var nsz=Math.floor(Math.max(40,Math.min(80,36+W2*0.07)));
+    ctx2.save();ctx2.globalAlpha=Math.min(1,e/80)*(0.20+Math.sin(e*0.025)*0.04);
+    ctx2.font="300 "+nsz+"px 'Cormorant Garamond',serif";ctx2.fillStyle='rgba(45,212,191,1)';
+    ctx2.textAlign='center';ctx2.textBaseline='middle';ctx2.fillText('NOW',CX2,CY2);ctx2.restore();
+    var ca3=Math.min(1,Math.max(0,e-60)/50);
+    ctx2.save();ctx2.globalAlpha=ca3*0.7;ctx2.font="italic 13px 'Cormorant Garamond',serif";
+    ctx2.fillStyle='rgba(45,212,191,0.82)';ctx2.textAlign='center';ctx2.textBaseline='top';
+    ctx2.fillText('Choiceless Awareness',CX2,CY2+nsz*0.62+10);ctx2.restore();
+    if(tick2%12===0){var pang=Math.random()*Math.PI*2;kcParts.push(new KcPar({x:CX2+Math.cos(pang)*R2*0.1,y:CY2+Math.sin(pang)*R2*0.1},{x:CX2+Math.cos(pang)*(R2*0.35+Math.random()*R2*0.45),y:CY2+Math.sin(pang)*(R2*0.35+Math.random()*R2*0.45)},'rgba(45,212,191,0.35)',0.012+Math.random()*0.01));}
+    kcStepParts();
+  }
+  ctx2.restore();tick2++;requestAnimationFrame(kcDraw);
+}
+window.kcSetPhase=kcSetPhase;
+window.kcRestart=kcRestart;
+function kcCheckCards(){
+  var cards=document.querySelectorAll('.kc-card');
+  for(var i=0;i<cards.length;i++){
+    var rect=cards[i].getBoundingClientRect();
+    if(rect.top<window.innerHeight*0.90){cards[i].style.opacity='1';cards[i].style.transform='translateY(0)';}
+  }
+}
+window.addEventListener('scroll',kcCheckCards);
+setTimeout(kcCheckCards,600);
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(kcInit,200);});}
+else{setTimeout(kcInit,200);}
+})();
 
-// Scroll reveal for Q rows
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){
-    const delay=parseInt(e.target.dataset.d||0);
-    setTimeout(()=>{
-      e.target.style.opacity='1';
-      e.target.style.transform='translateY(0)';
-    }, delay);
-    obs.unobserve(e.target); }});
-},{threshold:0.12});
-document.querySelectorAll('#aboutQList .aq-row').forEach(el=>{
-  el.style.opacity='0';
-  el.style.transform='translateY(10px)';
-  el.style.transition='opacity 0.55s ease, transform 0.55s ease';
-  obs.observe(el);
-});
 </script>
 </body>
 </html>
