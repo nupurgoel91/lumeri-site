@@ -5135,7 +5135,7 @@ function kcGoPhase(n){
     if(dot)  {dot.classList.toggle('kc-dot-active',i===n);}
   }
 }
-// Remove old scroll-sync function if present — navigation is now manual
+window.kcGoPhase=kcGoPhase;
 
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(kcInit,200);});}else{setTimeout(kcInit,200);}
 })();
