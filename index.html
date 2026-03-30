@@ -959,78 +959,11 @@ body:not(.zol-active) #hint { display:none !important; }
 }
 
 
-/* ── Zoom Out Accordion ── */
-.zo-item{
-  background:rgba(5,20,24,0.85);
-  cursor:pointer;
-  transition:background 0.2s ease;
-}
-.zo-item:hover{background:rgba(12,36,42,0.90);}
-.zo-item.zo-open{background:rgba(10,28,34,0.95);}
-.zo-threshold{
-  border-top:1px solid rgba(45,212,191,0.18) !important;
-  border-bottom:1px solid rgba(45,212,191,0.18) !important;
-}
-.zo-header{
-  display:grid;
-  grid-template-columns:40px 90px 1fr 20px;
-  align-items:center;
-  gap:12px;
-  padding:16px 20px;
-}
-.zo-num{
-  width:36px;height:36px;
-  border-radius:50%;
-  border:1.5px solid;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Jost',sans-serif;
-  font-size:14px;font-weight:600;
-  flex-shrink:0;
-}
-.zo-tag{
-  font-family:'DM Sans',sans-serif;
-  font-size:9px;letter-spacing:3px;text-transform:uppercase;
-  white-space:nowrap;
-}
-.zo-q{
-  font-family:'Cormorant Garamond',serif;
-  font-size:17px;font-style:italic;font-weight:300;
-  line-height:1.3;
-}
-.zo-arrow{
-  font-family:'Jost',sans-serif;
-  font-size:20px;
-  color:rgba(45,212,191,0.35);
-  text-align:center;
-  transition:transform 0.3s ease, color 0.2s ease;
-  line-height:1;
-}
-.zo-item.zo-open .zo-arrow{
-  transform:rotate(90deg);
-  color:rgba(45,212,191,0.75);
-}
-.zo-body{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height 0.35s ease, padding 0.25s ease;
-  padding:0 20px 0 72px;
-}
-.zo-item.zo-open .zo-body{
-  max-height:160px;
-  padding:0 20px 18px 72px;
-}
-.zo-body p{
-  font-family:'Cormorant Garamond',serif;
-  font-size:16px;font-style:italic;
-  color:rgba(200,235,232,0.75);
-  line-height:1.80;margin:0;
-}
-@media(max-width:600px){
-  .zo-header{grid-template-columns:36px 70px 1fr 18px;gap:8px;padding:14px 16px;}
-  .zo-q{font-size:15px;}
-  .zo-body{padding:0 16px 0 56px;}
-  .zo-item.zo-open .zo-body{padding:0 16px 14px 56px;}
-}
+
+
+
+/* ── 8 Questions single-screen ── */
+.zo-q-row.zo-vis{opacity:1 !important;transform:translateY(0) !important;}
 
 </style>
 </head>
@@ -4121,122 +4054,96 @@ As for how often: there is no right frequency. Some people write daily. Some wri
 
     <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 52px;"></div>
 
-    <!-- 8 Questions — Compact accordion -->
+    <!-- 8 Questions — Single screen, all visible -->
     <div style="margin-bottom:48px;">
-      <div style="text-align:center;margin-bottom:20px;">
+      <div style="text-align:center;margin-bottom:24px;">
         <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.60);margin-bottom:8px;">The Eight Questions · Zoom Out</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(45,212,191,0.75);line-height:1.5;">How are you? &rarr; Who are you? &mdash; The path.</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(45,212,191,0.75);">How are you? &rarr; Who are you? &mdash; The path.</div>
       </div>
+      <div id="zoomOutList" style="background:rgba(5,18,22,0.80);border:1px solid rgba(45,212,191,0.12);border-radius:14px;padding:8px 0;">
 
-      <div id="zoomOutList" style="border:1px solid rgba(45,212,191,0.12);border-radius:12px;overflow:hidden;">
-
-        <!-- Q1 -->
-        <div class="zo-item" onclick="zoToggle(0)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
-          <div class="zo-header">
-            <div class="zo-num" style="background:rgba(185,98,26,0.20);border-color:rgba(195,105,28,0.70);color:rgba(195,105,28,1);">1</div>
-            <div class="zo-tag" style="color:rgba(195,105,28,0.65);">The surface</div>
-            <div class="zo-q" style="color:#e8fdfb;">How are you feeling today?</div>
-            <div class="zo-arrow">›</div>
+        <div class="zo-q-row" data-delay="0" style="display:grid;grid-template-columns:54px 1fr;align-items:center;gap:0;opacity:0;transform:translateY(8px);transition:opacity 0.55s ease,transform 0.55s ease;">
+          <div style="display:flex;justify-content:center;align-items:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(185,98,26,0.18);border:1.5px solid rgba(185,98,26,1);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;color:rgba(185,98,26,1);">1</div>
           </div>
-          <div class="zo-body" id="zo-body-0">
-            <p>No agenda. Just what is actually here — the cloud you are currently inside. Not what you should feel, not a summary. The raw truth of this moment.</p>
+          <div style="padding:14px 16px 14px 4px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(185,98,26,0.55);margin-bottom:4px;">The surface</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;">How are you feeling today?</div>
           </div>
         </div>
-
-        <!-- Q2 -->
-        <div class="zo-item" onclick="zoToggle(1)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
-          <div class="zo-header">
-            <div class="zo-num" style="background:rgba(208,122,40,0.18);border-color:rgba(220,135,60,0.70);color:rgba(220,135,60,1);">2</div>
-            <div class="zo-tag" style="color:rgba(220,135,60,0.65);">The story</div>
-            <div class="zo-q" style="color:#e8fdfb;">What is the cause?</div>
-            <div class="zo-arrow">›</div>
+        <div style="width:1px;height:14px;background:linear-gradient(to bottom,rgba(185,98,26,0.25),transparent);margin:0 auto 0 27px;"></div>
+        <div class="zo-q-row" data-delay="120" style="display:grid;grid-template-columns:54px 1fr;align-items:center;gap:0;opacity:0;transform:translateY(8px);transition:opacity 0.55s ease,transform 0.55s ease;">
+          <div style="display:flex;justify-content:center;align-items:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(210,130,50,0.16);border:1.5px solid rgba(210,130,50,1);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;color:rgba(210,130,50,1);">2</div>
           </div>
-          <div class="zo-body" id="zo-body-1">
-            <p>The mind names a cause. LumeRI listens not to confirm the story but to see what the mind reaches for first — that reaching is itself the pattern.</p>
+          <div style="padding:14px 16px 14px 4px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(210,130,50,0.55);margin-bottom:4px;">The story</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;">What is the cause?</div>
           </div>
         </div>
-
-        <!-- Q3 -->
-        <div class="zo-item" onclick="zoToggle(2)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
-          <div class="zo-header">
-            <div class="zo-num" style="background:rgba(112,180,104,0.16);border-color:rgba(148,215,142,0.70);color:rgba(148,215,142,1);">3</div>
-            <div class="zo-tag" style="color:rgba(148,215,142,0.65);">Time</div>
-            <div class="zo-q" style="color:#e8fdfb;">When — past or future?</div>
-            <div class="zo-arrow">›</div>
+        <div style="width:1px;height:14px;background:linear-gradient(to bottom,rgba(210,130,50,0.25),transparent);margin:0 auto 0 27px;"></div>
+        <div class="zo-q-row" data-delay="240" style="display:grid;grid-template-columns:54px 1fr;align-items:center;gap:0;opacity:0;transform:translateY(8px);transition:opacity 0.55s ease,transform 0.55s ease;">
+          <div style="display:flex;justify-content:center;align-items:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(112,180,104,0.16);border:1.5px solid rgba(148,215,142,1);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;color:rgba(148,215,142,1);">3</div>
           </div>
-          <div class="zo-body" id="zo-body-2">
-            <p>Almost all suffering lives in the past or future. Naming which one creates the first distance — the present moment becomes visible by contrast.</p>
+          <div style="padding:14px 16px 14px 4px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(148,215,142,0.55);margin-bottom:4px;">Time</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;">When — past or future?</div>
           </div>
         </div>
-
-        <!-- Q4 -->
-        <div class="zo-item" onclick="zoToggle(3)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
-          <div class="zo-header">
-            <div class="zo-num" style="background:rgba(40,182,152,0.16);border-color:rgba(58,215,182,0.70);color:rgba(58,215,182,1);">4</div>
-            <div class="zo-tag" style="color:rgba(58,215,182,0.65);">The pattern</div>
-            <div class="zo-q" style="color:#e8fdfb;">Why is it an issue exactly?</div>
-            <div class="zo-arrow">›</div>
+        <div style="width:1px;height:14px;background:linear-gradient(to bottom,rgba(148,215,142,0.25),transparent);margin:0 auto 0 27px;"></div>
+        <div class="zo-q-row" data-delay="360" style="display:grid;grid-template-columns:54px 1fr;align-items:center;gap:0;opacity:0;transform:translateY(8px);transition:opacity 0.55s ease,transform 0.55s ease;">
+          <div style="display:flex;justify-content:center;align-items:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(40,182,152,0.16);border:1.5px solid rgba(58,215,182,1);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;color:rgba(58,215,182,1);">4</div>
           </div>
-          <div class="zo-body" id="zo-body-3">
-            <p>Not whether — but why. The conditioning shows its shape. Named clearly, it can be seen rather than inhabited. The pattern loses the power of the unnamed.</p>
+          <div style="padding:14px 16px 14px 4px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(58,215,182,0.55);margin-bottom:4px;">The pattern</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;">Why is it an issue exactly?</div>
           </div>
         </div>
-
-        <!-- Q5 — The Mirror threshold -->
-        <div class="zo-item zo-threshold" onclick="zoToggle(4)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
-          <div class="zo-header">
-            <div class="zo-num" style="background:rgba(45,212,191,0.14);border-color:rgba(45,212,191,0.80);color:rgba(45,212,191,1);">5</div>
-            <div class="zo-tag" style="color:rgba(45,212,191,0.65);">The mirror</div>
-            <div class="zo-q" style="color:#e8fdfb;">Who is facing this issue?</div>
-            <div class="zo-arrow">›</div>
+        <div style="width:1px;height:14px;background:linear-gradient(to bottom,rgba(58,215,182,0.25),transparent);margin:0 auto 0 27px;"></div>
+        <div class="zo-q-row" data-delay="480" style="display:grid;grid-template-columns:54px 1fr;align-items:center;gap:0;opacity:0;transform:translateY(8px);transition:opacity 0.55s ease,transform 0.55s ease;">
+          <div style="display:flex;justify-content:center;align-items:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(45,212,191,0.16);border:1.5px solid rgba(45,212,191,1);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;color:rgba(45,212,191,1);">5</div>
           </div>
-          <div class="zo-body" id="zo-body-4">
-            <p>The conditioned self who inherited this pattern — or the one already watching it? This is the threshold. Cloud or sky. The question does not need an answer. It needs to be felt.</p>
+          <div style="padding:14px 16px 14px 4px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:4px;">The mirror</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;">Who is facing this issue?</div>
           </div>
         </div>
-
-        <!-- Q6 -->
-        <div class="zo-item" onclick="zoToggle(5)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
-          <div class="zo-header">
-            <div class="zo-num" style="background:rgba(45,212,191,0.10);border-color:rgba(45,212,191,0.70);color:rgba(45,212,191,1);">6</div>
-            <div class="zo-tag" style="color:rgba(45,212,191,0.60);">Identity</div>
-            <div class="zo-q" style="color:#e8fdfb;">Who are you — conditioned self or choicelessly aware?</div>
-            <div class="zo-arrow">›</div>
+        <div style="width:1px;height:14px;background:linear-gradient(to bottom,rgba(45,212,191,0.25),transparent);margin:0 auto 0 27px;"></div>
+        <div class="zo-q-row" data-delay="600" style="display:grid;grid-template-columns:54px 1fr;align-items:center;gap:0;opacity:0;transform:translateY(8px);transition:opacity 0.55s ease,transform 0.55s ease;">
+          <div style="display:flex;justify-content:center;align-items:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(45,212,191,0.12);border:1.5px solid rgba(45,212,191,1);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;color:rgba(45,212,191,1);">6</div>
           </div>
-          <div class="zo-body" id="zo-body-5">
-            <p>Krishnamurti's question — not answered in words, but seen inwardly. In this moment: cloud or sky? The conditioning still runs. But something else is watching it run.</p>
+          <div style="padding:14px 16px 14px 4px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:4px;">Identity</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;">Who are you — conditioned self or choicelessly aware?</div>
           </div>
         </div>
-
-        <!-- Q7 -->
-        <div class="zo-item" onclick="zoToggle(6)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
-          <div class="zo-header">
-            <div class="zo-num" style="background:rgba(45,212,191,0.10);border-color:rgba(45,212,191,0.70);color:rgba(45,212,191,1);">7</div>
-            <div class="zo-tag" style="color:rgba(45,212,191,0.60);">Compassion</div>
-            <div class="zo-q" style="color:#e8fdfb;">What would you advise a friend?</div>
-            <div class="zo-arrow">›</div>
+        <div style="width:1px;height:14px;background:linear-gradient(to bottom,rgba(45,212,191,0.25),transparent);margin:0 auto 0 27px;"></div>
+        <div class="zo-q-row" data-delay="720" style="display:grid;grid-template-columns:54px 1fr;align-items:center;gap:0;opacity:0;transform:translateY(8px);transition:opacity 0.55s ease,transform 0.55s ease;">
+          <div style="display:flex;justify-content:center;align-items:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(45,212,191,0.10);border:1.5px solid rgba(45,212,191,1);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;color:rgba(45,212,191,1);">7</div>
           </div>
-          <div class="zo-body" id="zo-body-6">
-            <p>Stepping outside your own cloud, the witness speaks — not the pattern. Compassion arrives without effort. What you would tell a friend is what you already know but could not say to yourself.</p>
+          <div style="padding:14px 16px 14px 4px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.50);margin-bottom:4px;">Compassion</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;">What would you advise a friend?</div>
           </div>
         </div>
-
-        <!-- Q8 — Gold arrival -->
-        <div class="zo-item" onclick="zoToggle(7)">
-          <div class="zo-header">
-            <div class="zo-num" style="background:rgba(212,168,67,0.18);border-color:rgba(212,168,67,0.80);color:rgba(212,168,67,1);">8</div>
-            <div class="zo-tag" style="color:rgba(212,168,67,0.70);">Arrival</div>
-            <div class="zo-q" style="color:#e8fdfb;">What will you do after seeing this?</div>
-            <div class="zo-arrow" style="color:rgba(212,168,67,0.60);">›</div>
+        <div style="width:1px;height:14px;background:linear-gradient(to bottom,rgba(45,212,191,0.25),transparent);margin:0 auto 0 27px;"></div>
+        <div class="zo-q-row" data-delay="840" style="display:grid;grid-template-columns:54px 1fr;align-items:center;gap:0;opacity:0;transform:translateY(8px);transition:opacity 0.55s ease,transform 0.55s ease;">
+          <div style="display:flex;justify-content:center;align-items:center;">
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(212,168,67,0.18);border:1.5px solid rgba(212,168,67,1);display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-size:15px;font-weight:600;color:rgba(212,168,67,1);">8</div>
           </div>
-          <div class="zo-body" id="zo-body-7">
-            <p style="color:rgba(212,168,67,0.85);">Action from awareness, not compulsion. Not chosen or managed. Whole. Action that arises from seeing is different in kind from action driven by thought — complete, causing no new conflict.</p>
+          <div style="padding:14px 16px 14px 4px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.65);margin-bottom:4px;">Arrival</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;">What will you do after seeing this?</div>
           </div>
         </div>
-
+        
       </div>
     </div>
-
 
     <!-- Arrival -->
     <div style="text-align:center;padding:48px 24px;background:radial-gradient(ellipse at center,rgba(45,212,191,0.06) 0%,transparent 65%);border:1px solid rgba(45,212,191,0.12);border-radius:8px;margin-bottom:44px;position:relative;overflow:hidden;">
@@ -4642,19 +4549,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <script>
-// ── Zoom Out Accordion ────────────────────────────────────
-function zoToggle(n){
-  for(var i=0;i<8;i++){
-    var item=document.querySelectorAll('.zo-item')[i];
-    if(!item)continue;
-    if(i===n){
-      item.classList.toggle('zo-open');
-    } else {
-      item.classList.remove('zo-open');
-    }
-  }
-}
-window.zoToggle=zoToggle;
 
 /* ── About sky/clouds canvas ── */
 (function(){
@@ -4973,61 +4867,75 @@ function ph1(e){
   drawEdge(0,1,TEAL,0.20,1.5);
   drawEdge(1,2,TEAL,0.20,1.5);
   drawEdge(2,3,TEAL,0.20,1.5);
-  // T→A edge — glowing, flickering amber line (not dashed)
-  var ta=Math.min(1,e/50);
+  // T pulses bright
+  var pu=Math.sin(e*0.09)*0.5+0.5;
+  for(var i=0;i<5;i++) drawNode(kcNodes[i], i===3?'bright':'dim', i===3?pu:0);
+
+  // Gap midpoint between T and A
+  var gx=(kcNodes[3].x+kcNodes[4].x)/2;
+  var gy=(kcNodes[3].y+kcNodes[4].y)/2;
+
+  // T→A glowing amber path — tapered, soft, energy-like
+  var ta=Math.min(1,e/60);
   if(ta>0.02){
     var f5=kcNodes[3],t5=kcNodes[4];
     var dx5=t5.x-f5.x,dy5=t5.y-f5.y,len5=Math.sqrt(dx5*dx5+dy5*dy5);
     var NR5=Math.max(20,R2*0.088);
     var sx5=f5.x+dx5/len5*NR5,sy5=f5.y+dy5/len5*NR5;
-    var ex5=t5.x-dx5/len5*NR5,ey5=t5.y-dy5/len5*NR5;
-    // Flicker: brightness oscillates fast
-    var flicker=0.55+Math.sin(tick2*0.18)*0.28+Math.sin(tick2*0.31)*0.17;
+    // Line goes T → midpoint only (intercepted at gap, not reaching A)
+    var midX=gx, midY=gy;
+    var flicker=0.60+Math.sin(tick2*0.15)*0.22+Math.sin(tick2*0.27)*0.18;
     ctx2.save();
-    ctx2.globalAlpha=ta*flicker;
-    ctx2.strokeStyle=AMBER;
-    ctx2.lineWidth=2.8;
-    ctx2.beginPath();ctx2.moveTo(sx5,sy5);ctx2.lineTo(ex5,ey5);ctx2.stroke();
-    // Glow layer — wider, more transparent
+    // Wide soft glow underneath
+    ctx2.globalAlpha=ta*flicker*0.20;
+    ctx2.strokeStyle=AMBER;ctx2.lineWidth=14;
+    ctx2.lineCap='round';
+    ctx2.beginPath();ctx2.moveTo(sx5,sy5);ctx2.lineTo(midX,midY);ctx2.stroke();
+    // Medium glow
     ctx2.globalAlpha=ta*flicker*0.35;
-    ctx2.lineWidth=7;
-    ctx2.beginPath();ctx2.moveTo(sx5,sy5);ctx2.lineTo(ex5,ey5);ctx2.stroke();
+    ctx2.lineWidth=6;
+    ctx2.beginPath();ctx2.moveTo(sx5,sy5);ctx2.lineTo(midX,midY);ctx2.stroke();
+    // Core bright line
+    ctx2.globalAlpha=ta*flicker*0.85;
+    ctx2.lineWidth=2.2;
+    ctx2.beginPath();ctx2.moveTo(sx5,sy5);ctx2.lineTo(midX,midY);ctx2.stroke();
+    ctx2.lineCap='butt';
     ctx2.restore();
   }
-  // T pulses bright
-  var pu=Math.sin(e*0.09)*0.5+0.5;
-  for(var i=0;i<5;i++) drawNode(kcNodes[i], i===3?'bright':'dim', i===3?pu:0);
-  // Gap midpoint between T and A
-  var gx=(kcNodes[3].x+kcNodes[4].x)/2;
-  var gy=(kcNodes[3].y+kcNodes[4].y)/2;
-  // "the gap" label — amber
-  var ta2=Math.min(1,Math.max(0,e-30)/50);
-  kcTxt('the gap',gx,gy-24,'14',AMBER,ta2*0.95,false);
-  // LumeRI drop icon at gap midpoint
-  var ta3=Math.min(1,Math.max(0,e-70)/60);
+
+  // "the gap" label — amber, fades in
+  var ta2=Math.min(1,Math.max(0,e-40)/50);
+  kcTxt('the gap',gx,gy-50,'13',AMBER,ta2*0.90,false);
+
+  // LumeRI icon — large glowing amber circle with pulse ring
+  var ta3=Math.min(1,Math.max(0,e-80)/70);
   if(ta3>0.05){
+    var DX=gx, DY=gy, DR=18;
+    var pulse=Math.sin(tick2*0.12)*0.5+0.5;
     ctx2.save();ctx2.globalAlpha=ta3;
-    var DX=gx, DY=gy+6, DR=11;
-    // Glow halo
-    ctx2.beginPath();ctx2.arc(DX,DY-DR*0.3,DR*1.8,0,Math.PI*2);
-    ctx2.fillStyle=AMBER_R+'0.10)';ctx2.fill();
-    // Drop shape
-    ctx2.beginPath();
-    ctx2.arc(DX,DY-DR*0.4,DR,Math.PI,0);
-    ctx2.bezierCurveTo(DX+DR,DY-DR*0.4,DX+DR*0.5,DY+DR*0.8,DX,DY+DR*0.9);
-    ctx2.bezierCurveTo(DX-DR*0.5,DY+DR*0.8,DX-DR,DY-DR*0.4,DX-DR,DY-DR*0.4);
-    ctx2.closePath();
-    ctx2.fillStyle=AMBER_R+'0.18)';ctx2.fill();
+    // Outer pulse ring
+    ctx2.beginPath();ctx2.arc(DX,DY,DR+4+pulse*10,0,Math.PI*2);
+    ctx2.strokeStyle=AMBER;ctx2.lineWidth=1.2;
+    ctx2.globalAlpha=ta3*(0.15+pulse*0.20);ctx2.stroke();
+    // Inner glow fill
+    ctx2.globalAlpha=ta3*0.25;
+    ctx2.beginPath();ctx2.arc(DX,DY,DR+2,0,Math.PI*2);
+    ctx2.fillStyle=AMBER;ctx2.fill();
+    // Main circle
+    ctx2.globalAlpha=ta3;
+    ctx2.beginPath();ctx2.arc(DX,DY,DR,0,Math.PI*2);
+    ctx2.fillStyle=AMBER_R+'0.22)';ctx2.fill();
     ctx2.lineWidth=2;ctx2.strokeStyle=AMBER;ctx2.stroke();
-    // "L" inside
-    ctx2.font='bold 11px \'Jost\',sans-serif';
-    ctx2.fillStyle=AMBER;ctx2.textAlign='center';ctx2.textBaseline='middle';
-    ctx2.fillText('L',DX,DY-DR*0.3);
+    // "L" — larger, white
+    ctx2.font='bold 16px \'Jost\',sans-serif';
+    ctx2.fillStyle='#e8fdfb';ctx2.textAlign='center';ctx2.textBaseline='middle';
+    ctx2.fillText('L',DX,DY);
     ctx2.restore();
   }
-  // "LumeRI enters here" label
-  var ta4=Math.min(1,Math.max(0,e-110)/60);
-  kcTxt('LumeRI enters here',gx,gy+36,'11',AMBER,ta4*0.80,false);
+
+  // "LumeRI enters here" — below icon
+  var ta4=Math.min(1,Math.max(0,e-120)/60);
+  kcTxt('LumeRI enters here',gx,gy+22,'12',AMBER,ta4*0.85,false);
 }
 
 function ph2(e){
@@ -5217,5 +5125,26 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 })();
 
 </script>
+
+// ── 8 Questions scroll-in ─────────────────────────────────
+(function(){
+  function revealQs(){
+    var rows=document.querySelectorAll('.zo-q-row');
+    var triggered=false;
+    for(var i=0;i<rows.length;i++){
+      var r=rows[i];
+      var rect=r.getBoundingClientRect();
+      if(rect.top<window.innerHeight*0.92 && !r.classList.contains('zo-vis')){
+        (function(row,delay){
+          setTimeout(function(){row.classList.add('zo-vis');},delay);
+        })(r, parseInt(r.dataset.delay||0));
+        triggered=true;
+      }
+    }
+  }
+  window.addEventListener('scroll',revealQs);
+  setTimeout(revealQs,400);
+})();
+
 </body>
 </html>
