@@ -880,6 +880,84 @@ body:not(.zol-active) #hint { display:none !important; }
 @keyframes nowPulseL{0%,100%{opacity:0.20;letter-spacing:14px}50%{opacity:0.32;letter-spacing:17px}}
 .kc-card{}
 
+
+/* ── KC Phase Explorer ── */
+.kc-tab{
+  background:rgba(45,212,191,0.05);
+  border:1px solid rgba(45,212,191,0.18);
+  border-radius:24px;
+  padding:8px 18px;
+  cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  font-family:'DM Sans',sans-serif;
+  font-size:12px;
+  color:rgba(200,235,232,0.55);
+  transition:all 0.3s ease;
+  white-space:nowrap;
+}
+.kc-tab:hover{
+  border-color:rgba(45,212,191,0.45);
+  color:rgba(200,235,232,0.85);
+  background:rgba(45,212,191,0.10);
+}
+.kc-tab-active{
+  border-color:rgba(45,212,191,0.65) !important;
+  color:#e8fdfb !important;
+  background:rgba(45,212,191,0.14) !important;
+}
+.kct-num{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(45,212,191,0.15);
+  border:1px solid rgba(45,212,191,0.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:600;color:rgba(45,212,191,0.90);
+  flex-shrink:0;
+}
+.kc-tab-active .kct-num{
+  background:rgba(45,212,191,0.30);
+  border-color:rgba(45,212,191,0.80);
+  color:#2dd4bf;
+}
+.kct-label{font-weight:300;letter-spacing:0.5px;}
+.kc-panel{display:none;animation:kcFadeIn 0.5s ease;}
+.kc-panel-active{display:flex !important;}
+@keyframes kcFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.kc-next-btn{
+  width:100%;
+  padding:12px 16px;
+  background:rgba(45,212,191,0.10);
+  border:1px solid rgba(45,212,191,0.35);
+  border-radius:8px;
+  font-family:'DM Sans',sans-serif;
+  font-size:12px;
+  letter-spacing:1px;
+  color:rgba(45,212,191,0.85);
+  cursor:pointer;
+  transition:all 0.25s ease;
+  text-align:center;
+}
+.kc-next-btn:hover{
+  background:rgba(45,212,191,0.18);
+  border-color:rgba(45,212,191,0.65);
+  color:#e8fdfb;
+}
+.kc-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(45,212,191,0.20);
+  border:1px solid rgba(45,212,191,0.25);
+  cursor:pointer;transition:all 0.3s ease;
+}
+.kc-dot:hover{background:rgba(45,212,191,0.45);}
+.kc-dot-active{
+  background:rgba(45,212,191,0.75) !important;
+  border-color:rgba(45,212,191,0.90) !important;
+}
+@media(max-width:700px){
+  #kcWrap{min-height:300px !important;}
+  .kctab{padding:6px 12px;font-size:11px;}
+  .kct-label{display:none;}
+}
+
 </style>
 </head>
 <body>
@@ -3819,42 +3897,128 @@ As for how often: there is no right frequency. Some people write daily. Some wri
     <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(13px,2vw,16px);color:rgba(200,235,232,0.40);max-width:480px;margin:0 auto;">The water clears when the stirring stops.</p>
   </div>
 
-<!-- K-Cycle Animated Diagram -->
-<div style="max-width:900px;margin:32px auto 0;padding:0 24px;">
-  <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.45);text-align:center;margin-bottom:14px;">The K-Cycle · Five Phases · From Knowing to Being</div>
-  <div id="kcWrap" style="position:relative;width:100%;height:55vw;min-height:260px;max-height:420px;background:#050d10;border-radius:8px;overflow:hidden;border:1px solid rgba(45,212,191,0.14);">
-    <canvas id="kcc"></canvas>
-    <div id="kclbl" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;transition:opacity 0.8s ease;white-space:nowrap;">
-      <div id="kctrack" style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.90);margin-bottom:4px;"></div>
-      <div id="kclt" style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.2vw,17px);font-style:italic;color:#2dd4bf;margin-bottom:2px;"></div>
-      <div id="kcld" style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(200,235,232,0.75);letter-spacing:2px;text-transform:uppercase;"></div>
+<!-- K-Cycle Phase Explorer -->
+<div style="max-width:1200px;margin:32px auto 0;padding:0 24px;">
+
+  <!-- Section label -->
+  <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.45);text-align:center;margin-bottom:20px;">The K-Cycle · Five Phases · From Knowing to Being</div>
+
+  <!-- Phase tabs -->
+  <div id="kcTabs" style="display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap;">
+    <button onclick="kcGoPhase(0)" id="kctab0" class="kc-tab kc-tab-active">
+      <span class="kct-num">1</span><span class="kct-label">The Loop</span>
+    </button>
+    <button onclick="kcGoPhase(1)" id="kctab1" class="kc-tab">
+      <span class="kct-num">2</span><span class="kct-label">RI Enters</span>
+    </button>
+    <button onclick="kcGoPhase(2)" id="kctab2" class="kc-tab">
+      <span class="kct-num">3</span><span class="kct-label">The Reversal</span>
+    </button>
+    <button onclick="kcGoPhase(3)" id="kctab3" class="kc-tab">
+      <span class="kct-num">4</span><span class="kct-label">Wu Wei</span>
+    </button>
+    <button onclick="kcGoPhase(4)" id="kctab4" class="kc-tab">
+      <span class="kct-num">5</span><span class="kct-label">Arrival</span>
+    </button>
+  </div>
+
+  <!-- Main layout: diagram left (3/4) + description right (1/4) -->
+  <div style="display:grid;grid-template-columns:3fr 1fr;gap:0;border:1px solid rgba(45,212,191,0.14);border-radius:12px;overflow:hidden;min-height:440px;">
+
+    <!-- LEFT: Diagram -->
+    <div id="kcWrap" style="position:relative;background:#050d10;min-height:440px;">
+      <canvas id="kcc" style="width:100%;height:100%;display:block;"></canvas>
+      <!-- Phase label overlay at bottom of diagram -->
+      <div id="kclbl" style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;transition:opacity 0.6s ease;white-space:nowrap;">
+        <div id="kctrack" style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.90);margin-bottom:4px;"></div>
+        <div id="kclt" style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.8vw,17px);font-style:italic;color:#2dd4bf;margin-bottom:2px;"></div>
+        <div id="kcld" style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(200,235,232,0.75);letter-spacing:2px;text-transform:uppercase;"></div>
+      </div>
+      <!-- Watch again -->
+      <div id="kcrh" style="position:absolute;bottom:3px;left:50%;transform:translateX(-50%);font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.35);cursor:pointer;opacity:0;transition:opacity 0.5s;" onclick="kcRestart()">watch again</div>
     </div>
-    <div id="kcrh" style="position:absolute;bottom:3px;left:50%;transform:translateX(-50%);font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.18);cursor:pointer;opacity:0;transition:opacity 0.5s;" onclick="kcRestart()">watch again</div>
+
+    <!-- RIGHT: Description panel -->
+    <div style="border-left:1px solid rgba(45,212,191,0.12);background:rgba(5,20,24,0.96);display:flex;flex-direction:column;">
+
+      <!-- Phase 0 panel -->
+      <div id="kcpanel0" class="kc-panel kc-panel-active" style="flex:1;padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:10px;">Phase 1 · The Conditioning Loop</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">Knowing. More knowing. Always more knowing.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">Knowledge becomes Experience. Experience becomes Memory. Memory generates Thought. Thought becomes Action — feeding the loop again.<br/><br/>Jung's individuation. Descartes building the self on thought. Every framework ever built — adding more knowing to a vessel already full.<br/><br/><em style="color:#2dd4bf;">The vessel full of knowing has no room for what cannot be thought.</em></p>
+        </div>
+        <button onclick="kcGoPhase(1)" class="kc-next-btn" style="margin-top:24px;">
+          Phase 2 — RI Enters &rarr;
+        </button>
+      </div>
+
+      <!-- Phase 1 panel -->
+      <div id="kcpanel1" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:10px;">Phase 2 · Reflective Intelligence</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">Before thought becomes action — a pause.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">In that pause, something different becomes possible. Not more knowing. Not another framework.<br/><br/>A question: <em style="color:#2dd4bf;">where did this thought come from?</em><br/><br/>The reverse journey begins. Not forward into more accumulation — but backward, tracing the thread. To see whether what is running you was ever actually true.</p>
+        </div>
+        <button onclick="kcGoPhase(2)" class="kc-next-btn" style="margin-top:24px;">
+          Phase 3 — The Reversal &rarr;
+        </button>
+      </div>
+
+      <!-- Phase 2 panel -->
+      <div id="kcpanel2" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:10px;">Phase 3 · The Reverse Mapping</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">Tracing backward into the root of the known.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">Thought traced to Memory. Memory to Experience. Experience to Knowledge. At Knowledge: <em style="color:#2dd4bf;">is this lived truth — or inherited assumption?</em><br/><br/>When you see that the pond was stirred by thought examining thought — you stop stirring. The mud settles. The water at the top was always clear.</p>
+        </div>
+        <button onclick="kcGoPhase(3)" class="kc-next-btn" style="margin-top:24px;">
+          Phase 4 — Wu Wei &rarr;
+        </button>
+      </div>
+
+      <!-- Phase 3 panel -->
+      <div id="kcpanel3" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(212,168,67,0.75);margin-bottom:10px;">Phase 4 · 無為 · Wu Wei</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">There is nothing to know. Nothing to become.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">The empty vessel acts from its space. Water does not decide to flow around the stone — it moves with what is here.<br/><br/>This is not passivity. This is the highest intelligence — the one that acts as much as is needed, no more. Without agenda. Without the self that needs to prove something.<br/><br/><em style="color:#d4a843;">Act from stillness. Work in absolute wholeness.</em></p>
+        </div>
+        <button onclick="kcGoPhase(4)" class="kc-next-btn" style="margin-top:24px;">
+          Phase 5 — The Arrival &rarr;
+        </button>
+      </div>
+
+      <!-- Phase 4 panel -->
+      <div id="kcpanel4" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(212,168,67,0.75);margin-bottom:10px;">The Arrival · Silent Living</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">You are nothing — and that is wholeness.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">The stillness that is not absence but fullness of a different order. The awareness in which all thoughts appear — unchanged, undamaged, already whole.<br/><br/><em style="color:#2dd4bf;">The present moment, undivided. Pure love. This is the Tao living.</em></p>
+        </div>
+        <div style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap;">
+          <button onclick="kcGoPhase(0)" class="kc-next-btn" style="background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.25);color:rgba(45,212,191,0.60);">
+            &larr; Begin again
+          </button>
+        </div>
+      </div>
+
+    </div>
   </div>
-  <div style="text-align:center;margin-top:8px;">
-    <button onclick="if(window.kcSetPhase)kcSetPhase(Math.min(4,kcPhase+1));" style="background:none;border:1px solid rgba(45,212,191,0.16);border-radius:20px;padding:6px 16px;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.42);cursor:pointer;">next &rarr;</button>
+
+  <!-- Progress dots -->
+  <div style="display:flex;justify-content:center;gap:10px;margin-top:16px;" id="kcDots">
+    <div class="kc-dot kc-dot-active" onclick="kcGoPhase(0)"></div>
+    <div class="kc-dot" onclick="kcGoPhase(1)"></div>
+    <div class="kc-dot" onclick="kcGoPhase(2)"></div>
+    <div class="kc-dot" onclick="kcGoPhase(3)"></div>
+    <div class="kc-dot" onclick="kcGoPhase(4)"></div>
   </div>
+
 </div>
 
-<!-- Phase narratives -->
-<div style="max-width:680px;margin:40px auto 0;padding:0 24px;">
-  <div style="text-align:center;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(45,212,191,0.08);">
-    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.35);margin-bottom:8px;">The two journeys</div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2.8vw,19px);font-style:italic;color:#e8fdfb;line-height:1.55;opacity:1;">The forward path — accumulating the known.<br/>The return path — dissolving it.</div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(12px,2vw,14px);font-style:italic;color:rgba(45,212,191,0.70);margin-top:10px;">Krishnamurti · Jung · Tao · Wu Wei · Silent Living</div>
-  </div>
-<div class="kc-card" id="kcc0" style="margin-bottom:32px;opacity:1;transform:translateY(0);transition:opacity 0.9s ease,transform 0.9s ease;"><div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:6px;">Phase 1 · The Conditioning Loop</div><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">Knowing. More knowing. Always more knowing.</div><p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:#e8fdfb;line-height:1.88;">Knowledge becomes Experience. Experience becomes Memory. Memory generates Thought. Thought becomes Action — feeding the loop again.<br/><br/>This is Jung's individuation running automatically. Descartes building the self on thought. Camus revolting against the absurd with force of understanding. Every brilliant framework humanity has ever built — Freud, Hegel, Nietzsche — adding more knowing to a vessel that was already full.<br/><br/><em style="color:#2dd4bf">The vessel full of knowing has no room for what cannot be thought.</em></p></div>
-<div style="width:28px;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.22),transparent);margin:0 auto 32px;"></div>
-<div class="kc-card" id="kcc1" style="margin-bottom:32px;opacity:0;transform:translateY(16px);transition:opacity 0.9s ease,transform 0.9s ease;"><div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:6px;">Phase 2 · Reflective Intelligence Enters</div><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">Before thought becomes action — a pause.</div><p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:#e8fdfb;line-height:1.88;">In that pause, something different becomes possible. Not more knowing. Not a better map of the interior. Not another framework to understand why you are the way you are.<br/><br/>A question: <em style="color:#2dd4bf">where did this thought come from?</em><br/><br/>This is the beginning of the reverse journey. Not forward into more accumulation — but backward, tracing the thread. Not to understand more. To see whether what is running you was ever actually true, or merely inherited.</p></div>
-<div style="width:28px;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.22),transparent);margin:0 auto 32px;"></div>
-<div class="kc-card" id="kcc2" style="margin-bottom:32px;opacity:0;transform:translateY(16px);transition:opacity 0.9s ease,transform 0.9s ease;"><div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:6px;">Phase 3 · The Reverse Mapping</div><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">Tracing backward into the root of the known.</div><p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:#e8fdfb;line-height:1.88;">Thought — where did it arise? From Memory. Memory — what recorded this? An Experience. Experience — what meaning was given to it? Knowledge. And at Knowledge, the final question.<br/><br/><em style="color:#2dd4bf">Is this knowledge lived truth — or is it something I was told, believed, never questioned?</em><br/><br/>When you see that the pond was stirred by thought examining thought — you stop stirring. The mud settles by itself. The water at the top clears. It was never dirty. You were looking through the disturbance and calling it your nature.</p></div>
-<div style="width:28px;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.22),transparent);margin:0 auto 32px;"></div>
-<div class="kc-card" id="kcc3" style="margin-bottom:32px;opacity:0;transform:translateY(16px);transition:opacity 0.9s ease,transform 0.9s ease;"><div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:6px;">Phase 4 · 無為 · Wu Wei · The Tao Living</div><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">There is nothing to know. There is nothing to become.</div><p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:#e8fdfb;line-height:1.88;">The empty vessel does not act from its fullness — it acts from its space. Water does not decide to flow around the stone. It moves with what is here.<br/><br/>This is not passivity. This is the highest intelligence — the one that acts as much as is needed, no more, no less. Without agenda. Without the accumulated self that needs to prove something through every action.<br/><br/><em style="color:#2dd4bf">Act from stillness. Know that you are nothing — and work in absolute wholeness.</em></p></div>
-<div style="width:28px;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.22),transparent);margin:0 auto 32px;"></div>
-<div class="kc-card" id="kcc4" style="opacity:0;transform:translateY(16px);transition:opacity 0.9s ease,transform 0.9s ease;"><div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:6px;">The Arrival · Silent Living</div><div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.28;margin-bottom:10px;">You are nothing — and that is wholeness.</div><p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.3vw,17px);font-style:italic;color:#e8fdfb;line-height:1.88;">Not the nothing of despair — the nothing of a vessel emptied of what was never truly yours. The stillness that is not absence but fullness of a different order.<br/><br/>Descartes proved existence through thinking. But existence does not need proof. It is here before the first thought, after the last one, in every gap between.<br/><br/>The conditioned loop still runs. Thoughts still arise. The difference is that you are no longer identical with them. You are the awareness in which they appear — unchanged, undamaged, already whole.<br/><br/><em style="color:#2dd4bf">The present moment, undivided. Pure love. This is the Tao living.</em></p></div>
-</div>
 
-  <!-- NOW arrival -->
+<!-- NOW arrival -->
   <div style="max-width:680px;margin:52px auto 0;padding:0 24px;">
     <div style="padding:40px 28px;background:linear-gradient(135deg,rgba(12,46,52,0.92),rgba(5,13,16,0.96));border:1px solid rgba(45,212,191,0.14);border-radius:14px;text-align:center;position:relative;overflow:hidden;">
       <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.38),transparent);"></div>
@@ -4558,12 +4722,12 @@ document.addEventListener('DOMContentLoaded', function() {
 (function() {
 var cv2,ctx2,W2,H2,CX2,CY2,R2,tick2=0,kcPhase=0,kcPs=0,kcParts=[],kcNodes=[];
 var ND2=[
-  {lb:'K',sub:'Knowledge', a:-144,c:'rgba(45,212,191,1)', g:'rgba(45,212,191,0.5)'},
-  {lb:'E',sub:'Experience',a:-72, c:'rgba(45,212,191,1)', g:'rgba(45,212,191,0.5)'},
-  {lb:'M',sub:'Memory',    a:0,   c:'rgba(45,212,191,1)', g:'rgba(45,212,191,0.5)'},
-  {lb:'T',sub:'Thought',   a:72,  c:'rgba(212,168,67,1)', g:'rgba(212,168,67,0.5)'},
-  {lb:'A',sub:'Action',    a:144, c:'rgba(200,80,60,0.9)',g:'rgba(200,80,60,0.4)'},
-  {lb:'A\u2605',sub:'Choiceless\nAction',a:144,c:'rgba(45,212,191,1)',g:'rgba(45,212,191,0.8)'}
+  {lb:'K',sub:'Knowledge', a:-144},
+  {lb:'E',sub:'Experience',a:-72},
+  {lb:'M',sub:'Memory',    a:0},
+  {lb:'T',sub:'Thought',   a:72},
+  {lb:'A',sub:'Action',    a:144},
+  {lb:'A\u2605',sub:'Choiceless\nAction',a:36}
 ];
 var PH2=[
   {t:'The Conditioning Loop',         d:'K \u2192 E \u2192 M \u2192 T \u2192 A \u2192 knowing accumulates',dur:900},
@@ -4572,7 +4736,16 @@ var PH2=[
   {t:'\u7121\u70ba \u00b7 Wu Wei \u00b7 The Tao Living',d:'Nothing to know. Act from stillness.',dur:700},
   {t:'Silent Living',                 d:'Nothing to become. You are already whole.',dur:9999}
 ];
+var TRACKS=['Jungian \u00b7 The Known','Reflective Intelligence','The Tao Living','Wu Wei','Silent Living'];
+
+var cv2,ctx2,W2,H2,CX2,CY2,R2;
+var tick2=0,kcPhase=0,kcPs=0,kcParts=[];
 var kcFadeAlpha=1,kcFadingOut=false,kcPendingPhase=-1,kcRunning=false;
+var kcNodes=[];
+
+var TEAL='#2dd4bf', AMBER='#d4a843', WHITE='#e8fdfb';
+var TEAL_R='rgba(45,212,191,', AMBER_R='rgba(212,168,67,';
+
 function kcInit(){
   cv2=document.getElementById('kcc');
   if(!cv2)return;
@@ -4587,94 +4760,346 @@ function kcResize(){
   if(!wrap||!cv2)return;
   W2=cv2.width=wrap.offsetWidth;
   H2=cv2.height=wrap.offsetHeight;
-  CX2=W2/2;CY2=H2/2;R2=Math.min(W2,H2)*0.28;
+  CX2=W2/2; CY2=H2*0.48; R2=Math.min(W2,H2)*0.30;
   kcBuildNodes();
 }
 function kcBuildNodes(){
   kcNodes=[];
   for(var i=0;i<6;i++){
-    var d=ND2[i],a2=(d.a-90)*Math.PI/180;
-    kcNodes.push({lb:d.lb,sub:d.sub,c:d.c,g:d.g,x:CX2+R2*Math.cos(a2),y:CY2+R2*Math.sin(a2)});
+    var d=ND2[i], a2=(d.a-90)*Math.PI/180;
+    kcNodes.push({lb:d.lb,sub:d.sub,x:CX2+R2*Math.cos(a2),y:CY2+R2*Math.sin(a2)});
   }
 }
-function KcPar(f,t,c,sp){this.f=f;this.t=t;this.c=c;this.sp=sp||0.006;this.tt=0;this.sz=1.8+Math.random()*1.8;this.al=0.5+Math.random()*0.4;this.dead=false;}
-KcPar.prototype.step=function(){this.tt+=this.sp;if(this.tt>=1)this.dead=true;};
+
+// ── PARTICLE ─────────────────────────────────────────────
+function KcPar(fx,fy,tx,ty,col,spd){
+  this.x=fx;this.y=fy;this.tx=tx;this.ty=ty;
+  this.col=col;this.spd=spd||0.018;this.t=0;this.dead=false;
+  this.sz=2.5+Math.random()*2;
+}
+KcPar.prototype.step=function(){this.t+=this.spd;if(this.t>=1)this.dead=true;};
 KcPar.prototype.draw=function(){
-  var x=this.f.x+(this.t.x-this.f.x)*this.tt;
-  var y=this.f.y+(this.t.y-this.f.y)*this.tt;
-  var fd=1-Math.pow(this.tt-0.5,2)*4;if(fd<0)fd=0;
-  ctx2.save();ctx2.globalAlpha=this.al*fd;
-  ctx2.beginPath();ctx2.arc(x,y,this.sz,0,Math.PI*2);
-  ctx2.fillStyle=this.c;ctx2.shadowBlur=8;ctx2.shadowColor=this.c;ctx2.fill();ctx2.restore();
+  var px=this.x+(this.tx-this.x)*this.t;
+  var py=this.y+(this.ty-this.y)*this.t;
+  var fade=Math.sin(this.t*Math.PI);
+  ctx2.save();ctx2.globalAlpha=fade*0.9;
+  ctx2.beginPath();ctx2.arc(px,py,this.sz,0,Math.PI*2);
+  ctx2.fillStyle=this.col;ctx2.fill();ctx2.restore();
 };
-function kcStepParts(){var a=[],i;for(i=0;i<kcParts.length;i++){kcParts[i].step();if(!kcParts[i].dead)a.push(kcParts[i]);}kcParts=a;for(i=0;i<kcParts.length;i++)kcParts[i].draw();}
-function kcDN(n,pulse,al,sc,hi){
-  pulse=pulse||0;al=(al!==undefined)?al:1;sc=sc||1;hi=hi||false;
-  var r=(hi?22:17)*sc;
-  ctx2.save();ctx2.globalAlpha=al;
-  if(hi||pulse>0){
-    var gr=r+6+pulse*10,ga=(0.35+pulse*0.25).toFixed(2);
-    var gv=ctx2.createRadialGradient(n.x,n.y,r*0.5,n.x,n.y,gr);
-    gv.addColorStop(0,'rgba(45,212,191,'+ga+')');gv.addColorStop(1,'rgba(0,0,0,0)');
-    ctx2.beginPath();ctx2.arc(n.x,n.y,gr,0,Math.PI*2);ctx2.fillStyle=gv;ctx2.fill();
+function kcStepParts(){
+  var a=[],i;
+  for(i=0;i<kcParts.length;i++){kcParts[i].step();if(!kcParts[i].dead)a.push(kcParts[i]);}
+  kcParts=a;
+  for(i=0;i<kcParts.length;i++)kcParts[i].draw();
+}
+
+// ── NODE ─────────────────────────────────────────────────
+// state: 'bright' | 'normal' | 'dim' | 'star'
+function drawNode(n, state, pulse){
+  pulse=pulse||0;
+  var NR = (state==='bright'||state==='star') ? Math.max(26, R2*0.115)
+                                               : Math.max(20, R2*0.088);
+  ctx2.save();
+
+  // Outer glow ring — drawn with solid circle, no shadowBlur
+  if(state==='bright'||state==='star'){
+    var gc=state==='star'?AMBER_R:TEAL_R;
+    var gr1=NR+4+pulse*14;
+    ctx2.beginPath();ctx2.arc(n.x,n.y,gr1,0,Math.PI*2);
+    ctx2.fillStyle=gc+(0.18+pulse*0.20)+')';
+    ctx2.fill();
+    var gr2=NR+2;
+    ctx2.beginPath();ctx2.arc(n.x,n.y,gr2,0,Math.PI*2);
+    ctx2.fillStyle=gc+(0.28+pulse*0.18)+')';
+    ctx2.fill();
   }
-  ctx2.beginPath();ctx2.arc(n.x,n.y,r,0,Math.PI*2);
-  ctx2.strokeStyle=n.c;ctx2.lineWidth=hi?2:1.2;ctx2.shadowBlur=hi?14:6;ctx2.shadowColor=n.g;ctx2.stroke();
-  ctx2.beginPath();ctx2.arc(n.x,n.y,r-1.5,0,Math.PI*2);
-  ctx2.fillStyle=hi?'rgba(45,212,191,0.18)':'rgba(5,13,16,0.75)';ctx2.fill();
-  ctx2.shadowBlur=0;
-  ctx2.fillStyle=n.c;ctx2.font=(hi?'bold ':'')+Math.floor(r*0.65)+"px 'Jost',sans-serif";
-  ctx2.textAlign='center';ctx2.textBaseline='middle';ctx2.fillText(n.lb,n.x,n.y);
-  if(hi){
-    var sl=n.sub.split('\n');ctx2.font=Math.floor(r*0.35)+"px 'Jost',sans-serif";
-    ctx2.fillStyle='rgba(45,212,191,0.52)';
-    for(var s=0;s<sl.length;s++)ctx2.fillText(sl[s],n.x,n.y+r+10+s*11);
+
+  // Node fill
+  var fill = state==='dim'   ? 'rgba(5,13,16,0.90)' :
+             state==='star'  ? 'rgba(212,168,67,0.22)' :
+             state==='bright'? 'rgba(45,212,191,0.22)' :
+                               'rgba(45,212,191,0.10)';
+  ctx2.beginPath();ctx2.arc(n.x,n.y,NR,0,Math.PI*2);
+  ctx2.fillStyle=fill;ctx2.fill();
+
+  // Node border — thick and solid
+  var stroke = state==='dim'   ? 'rgba(45,212,191,0.22)' :
+               state==='star'  ? AMBER :
+               state==='bright'? TEAL :
+                                 'rgba(45,212,191,0.55)';
+  var lw = (state==='bright'||state==='star') ? 2.5 : 1.5;
+  ctx2.lineWidth=lw;ctx2.strokeStyle=stroke;ctx2.stroke();
+
+  // Label text
+  var textCol = state==='dim'  ? 'rgba(45,212,191,0.30)' :
+                state==='star' ? AMBER :
+                                 WHITE;
+  var bold = (state==='bright'||state==='star');
+  var fs = bold ? Math.floor(NR*0.72) : Math.floor(NR*0.62);
+  ctx2.font=(bold?'bold ':'')+fs+"px 'Jost',sans-serif";
+  ctx2.fillStyle=textCol;
+  ctx2.textAlign='center';ctx2.textBaseline='middle';
+  ctx2.fillText(n.lb,n.x,n.y);
+
+  // Sub-label below node (only when bright/star)
+  if(state==='bright'||state==='star'){
+    var sl=n.sub.split('\n');
+    var sf=Math.max(10, Math.floor(NR*0.38));
+    ctx2.font=sf+"px 'Jost',sans-serif";
+    ctx2.fillStyle=state==='star'?AMBER_R+'0.80)':TEAL_R+'0.75)';
+    for(var si=0;si<sl.length;si++)
+      ctx2.fillText(sl[si],n.x,n.y+NR+10+si*13);
   }
   ctx2.restore();
 }
-function kcDE(f,t,al,col,dash,arr){
-  al=al||0.45;col=col||'rgba(45,212,191,1)';dash=dash||false;arr=(arr!==undefined)?arr:true;
+
+// ── EDGE ─────────────────────────────────────────────────
+function drawEdge(fi,ti,col,alpha,thick,dashed){
+  var f=kcNodes[fi],t=kcNodes[ti];
+  if(!f||!t)return;
   var dx=t.x-f.x,dy=t.y-f.y,len=Math.sqrt(dx*dx+dy*dy);
   if(len<1)return;
-  var qc=len*0.10,mx=(f.x+t.x)/2,my=(f.y+t.y)/2;
-  var qx=mx-dy/len*qc,qy=my+dx/len*qc;
-  ctx2.save();ctx2.globalAlpha=al;ctx2.strokeStyle=col;ctx2.lineWidth=1;
-  ctx2.shadowBlur=4;ctx2.shadowColor=col;if(dash)ctx2.setLineDash([4,7]);
-  ctx2.beginPath();ctx2.moveTo(f.x,f.y);ctx2.quadraticCurveTo(qx,qy,t.x,t.y);ctx2.stroke();
+  var NR=Math.max(20,R2*0.088);
+  var sx=f.x+dx/len*NR,sy=f.y+dy/len*NR;
+  var ex=t.x-dx/len*NR,ey=t.y-dy/len*NR;
+  var mx=(sx+ex)/2,my=(sy+ey)/2;
+  var cx2e=mx-dy/len*len*0.07,cy2e=my+dx/len*len*0.07;
+
+  ctx2.save();ctx2.globalAlpha=alpha||0.7;
+  ctx2.strokeStyle=col||TEAL;ctx2.lineWidth=thick||2;
+  if(dashed)ctx2.setLineDash([5,8]);
+  ctx2.beginPath();ctx2.moveTo(sx,sy);
+  ctx2.quadraticCurveTo(cx2e,cy2e,ex,ey);ctx2.stroke();
   ctx2.setLineDash([]);
-  if(arr){
-    var tt2=0.82;
-    var ax=(1-tt2)*(1-tt2)*f.x+2*(1-tt2)*tt2*qx+tt2*tt2*t.x;
-    var ay=(1-tt2)*(1-tt2)*f.y+2*(1-tt2)*tt2*qy+tt2*tt2*t.y;
-    var bx=2*(1-tt2)*(qx-f.x)+2*tt2*(t.x-qx);
-    var by=2*(1-tt2)*(qy-f.y)+2*tt2*(t.y-qy);
-    var ang=Math.atan2(by,bx),al3=7;
-    ctx2.beginPath();
-    ctx2.moveTo(ax+al3*Math.cos(ang),ay+al3*Math.sin(ang));
-    ctx2.lineTo(ax+al3*Math.cos(ang+2.4),ay+al3*Math.sin(ang+2.4));
-    ctx2.lineTo(ax+al3*Math.cos(ang-2.4),ay+al3*Math.sin(ang-2.4));
-    ctx2.closePath();ctx2.fillStyle=col;ctx2.fill();
-  }
+
+  // Arrow
+  var tt2=0.82;
+  var ax=Math.pow(1-tt2,2)*sx+2*(1-tt2)*tt2*cx2e+tt2*tt2*ex;
+  var ay=Math.pow(1-tt2,2)*sy+2*(1-tt2)*tt2*cy2e+tt2*tt2*ey;
+  var bx=2*(1-tt2)*(cx2e-sx)+2*tt2*(ex-cx2e);
+  var by=2*(1-tt2)*(cy2e-sy)+2*tt2*(ey-cy2e);
+  var ang=Math.atan2(by,bx),asz=8,aa=0.40;
+  ctx2.beginPath();
+  ctx2.moveTo(ax+asz*Math.cos(ang),ay+asz*Math.sin(ang));
+  ctx2.lineTo(ax+asz*Math.cos(ang+Math.PI-aa),ay+asz*Math.sin(ang+Math.PI-aa));
+  ctx2.lineTo(ax+asz*Math.cos(ang+Math.PI+aa),ay+asz*Math.sin(ang+Math.PI+aa));
+  ctx2.closePath();ctx2.fillStyle=col||TEAL;ctx2.fill();
   ctx2.restore();
 }
-function kcBase(a){
-  kcDE(kcNodes[0],kcNodes[1],a*0.55);kcDE(kcNodes[1],kcNodes[2],a*0.55);
-  kcDE(kcNodes[2],kcNodes[3],a*0.55);kcDE(kcNodes[3],kcNodes[4],a*0.55);
-  kcDE(kcNodes[4],kcNodes[1],a*0.35);
-  for(var i=0;i<5;i++)kcDN(kcNodes[i],0,a*0.85);
+
+// ── LABEL ────────────────────────────────────────────────
+function kcTxt(txt,x,y,fs,col,al,bold){
+  ctx2.save();ctx2.globalAlpha=al||1;
+  ctx2.font=(bold?'bold ':'')+fs+"px 'Cormorant Garamond',serif";
+  ctx2.fillStyle=col;ctx2.textAlign='center';ctx2.textBaseline='middle';
+  ctx2.fillText(txt,x,y);ctx2.restore();
 }
+
+// ── TRAVELLING DOT ───────────────────────────────────────
+var kcLoopSegs=[[0,1],[1,2],[2,3],[3,4],[4,1]];
+function drawLoopDot(e){
+  var T=(e*0.0035)%1;
+  var si=Math.floor(T*kcLoopSegs.length);
+  var lt=(T*kcLoopSegs.length)%1;
+  var f=kcNodes[kcLoopSegs[si][0]],t=kcNodes[kcLoopSegs[si][1]];
+  if(!f||!t)return;
+  var px=f.x+(t.x-f.x)*lt,py=f.y+(t.y-f.y)*lt;
+  ctx2.save();
+  ctx2.beginPath();ctx2.arc(px,py,5.5,0,Math.PI*2);
+  ctx2.fillStyle=TEAL;ctx2.fill();
+  // Bright halo — no shadowBlur, just a larger translucent circle
+  ctx2.beginPath();ctx2.arc(px,py,10,0,Math.PI*2);
+  ctx2.fillStyle=TEAL_R+'0.25)';ctx2.fill();
+  ctx2.restore();
+}
+
+// ── PHASE RENDERERS ──────────────────────────────────────
+
+function ph0(e){
+  // All edges bright
+  drawEdge(0,1,TEAL,0.70,2.2);
+  drawEdge(1,2,TEAL,0.70,2.2);
+  drawEdge(2,3,TEAL,0.70,2.2);
+  drawEdge(3,4,TEAL,0.70,2.2);
+  drawEdge(4,1,TEAL,0.30,1.5,true);
+  // Cycling highlight
+  var hi=Math.floor(e/90)%5;
+  var pu=Math.sin(e*0.09)*0.5+0.5;
+  for(var i=0;i<5;i++) drawNode(kcNodes[i], i===hi?'bright':'normal', i===hi?pu:0);
+  drawLoopDot(e);
+  // Bottom label
+  var ta=Math.min(1,e/60);
+  kcTxt('conditioning loop \u2014 K \u2192 E \u2192 M \u2192 T \u2192 A',CX2,H2-20,'13',TEAL_R+'0.60)',ta,false);
+}
+
+function ph1(e){
+  // All edges dim
+  drawEdge(0,1,TEAL,0.20,1.5);
+  drawEdge(1,2,TEAL,0.20,1.5);
+  drawEdge(2,3,TEAL,0.20,1.5);
+  drawEdge(3,4,TEAL,0.20,1.5);
+  // T pulses bright
+  var pu=Math.sin(e*0.09)*0.5+0.5;
+  for(var i=0;i<5;i++) drawNode(kcNodes[i], i===3?'bright':'dim', i===3?pu:0);
+  // Gap label
+  var ta=Math.min(1,e/50);
+  var gx=(kcNodes[3].x+kcNodes[4].x)/2, gy=(kcNodes[3].y+kcNodes[4].y)/2-20;
+  kcTxt('\u2014 the gap \u2014',gx,gy,'16',AMBER,ta*0.95,false);
+  // RI label
+  var ta2=Math.min(1,Math.max(0,e-80)/60);
+  kcTxt('Reflective Intelligence enters',CX2,H2-20,'13',AMBER_R+'0.75)',ta2,false);
+}
+
+function ph2(e){
+  // Base loop dim
+  drawEdge(0,1,TEAL,0.20,1.5);
+  drawEdge(1,2,TEAL,0.20,1.5);
+  drawEdge(2,3,TEAL,0.20,1.5);
+  drawEdge(3,4,TEAL,0.20,1.5);
+  // Reverse path lights up T→M→E→K progressively
+  var stp=PH2[2].dur/3;
+  var cols=['rgba(212,168,67,1)','rgba(100,200,170,1)','rgba(45,212,191,1)'];
+  if(e>=0)   { var sa=Math.min(1,e/25);       drawEdge(3,2,cols[0],sa*0.95,2.5); }
+  if(e>=stp) { var sb=Math.min(1,(e-stp)/25); drawEdge(2,1,cols[1],sb*0.95,2.5); }
+  if(e>=stp*2){ var sc=Math.min(1,(e-stp*2)/25); drawEdge(1,0,cols[2],sc*0.95,2.5); }
+  // Nodes light up in reverse order
+  var states=['dim','dim','dim','bright','dim'];
+  if(e>=0)    states[3]='bright';
+  if(e>=stp)  states[2]='bright';
+  if(e>=stp*1.5) states[1]='bright';
+  if(e>=stp*2) states[0]='bright';
+  var pu3=Math.sin(e*0.08)*0.5+0.5;
+  for(var i=0;i<5;i++) drawNode(kcNodes[i],states[i],states[i]==='bright'?pu3:0);
+  // Particles
+  if(tick2%8===0&&e<PH2[2].dur-30){
+    var pi=Math.min(2,Math.floor(e/stp));
+    var pairs=[[3,2],[2,1],[1,0]];
+    var p=pairs[pi];
+    kcParts.push(new KcPar(kcNodes[p[0]].x,kcNodes[p[0]].y,kcNodes[p[1]].x,kcNodes[p[1]].y,cols[pi],0.022));
+  }
+  kcStepParts();
+  // Root seen label
+  if(e>PH2[2].dur-100){
+    var tA=Math.min(1,(e-(PH2[2].dur-100))/40);
+    kcTxt('the root is seen',kcNodes[0].x,kcNodes[0].y-42,'15',TEAL,tA*0.90,false);
+  }
+  kcTxt('tracing backward \u2014 T \u2192 M \u2192 E \u2192 K',CX2,H2-20,'13',AMBER_R+'0.70)',Math.min(1,e/40),false);
+}
+
+function ph3(e){
+  // T node remains, A★ appears
+  drawEdge(0,1,TEAL,0.20,1.5);
+  drawEdge(1,2,TEAL,0.20,1.5);
+  drawEdge(2,3,TEAL,0.20,1.5);
+  drawEdge(3,4,TEAL,0.15,1.5);
+  // T→A★ edge
+  var aa=Math.min(1,e/80);
+  if(aa>0.05) drawEdge(3,5,TEAL,aa*0.90,2.5);
+  // Nodes
+  var pu4=Math.sin(e*0.10)*0.5+0.5;
+  for(var i=0;i<5;i++) drawNode(kcNodes[i],i===3?'bright':i===4?'dim':'dim',i===3?pu4:0);
+  // A★ node
+  var asc=0.5+aa*0.6;
+  drawNode(kcNodes[5],'star',aa*(0.5+0.5*Math.sin(e*0.12)));
+  // Particles from A★
+  if(tick2%5===0&&aa>0.5){
+    var ang3=Math.random()*Math.PI*2,dst=20+Math.random()*35;
+    kcParts.push(new KcPar(kcNodes[5].x,kcNodes[5].y,kcNodes[5].x+Math.cos(ang3)*dst,kcNodes[5].y+Math.sin(ang3)*dst,TEAL,0.045));
+  }
+  kcStepParts();
+  kcTxt('nothing to know \u2014 act from stillness',CX2,H2-20,'13',AMBER_R+'0.75)',Math.min(1,e/40),false);
+}
+
+function ph4(e){
+  // All nodes dim, rings expand from centre
+  drawEdge(0,1,TEAL,0.15,1.2);
+  drawEdge(1,2,TEAL,0.15,1.2);
+  drawEdge(2,3,TEAL,0.15,1.2);
+  drawEdge(3,4,TEAL,0.15,1.2);
+  for(var i=0;i<5;i++) drawNode(kcNodes[i],'dim',0);
+
+  // Expanding rings — drawn as solid stroked circles, bright
+  for(var ri=0;ri<4;ri++){
+    var rd=ri*45, re2=Math.max(0,e-rd);
+    var pr=Math.min(1,re2/200);
+    var rr=R2*0.12+R2*1.35*pr;
+    var ra=(1-pr)*0.60;
+    if(ra>0.02){
+      ctx2.save();ctx2.globalAlpha=ra;
+      ctx2.beginPath();ctx2.arc(CX2,CY2,rr,0,Math.PI*2);
+      ctx2.strokeStyle=TEAL;ctx2.lineWidth=1.5;ctx2.stroke();
+      ctx2.restore();
+    }
+  }
+
+  // NOW text — large and bright
+  var nsz=Math.min(88,Math.max(48,W2*0.09));
+  var nA=Math.min(1,e/60)*(0.62+Math.sin(e*0.025)*0.08);
+  kcTxt('NOW',CX2,CY2,''+nsz,TEAL,nA,false);
+
+  // "Choiceless Awareness" below NOW
+  var ca=Math.min(1,Math.max(0,e-60)/50);
+  kcTxt('Choiceless Awareness',CX2,CY2+nsz*0.65+14,'16',TEAL_R+'0.90)',ca*0.90,false);
+  kcTxt('\u7121\u70ba \u00b7 Silent Living',CX2,H2-20,'13',AMBER_R+'0.75)',Math.min(1,Math.max(0,e-100)/50),false);
+
+  // Outward particles
+  if(tick2%10===0){
+    var pa=Math.random()*Math.PI*2;
+    kcParts.push(new KcPar(CX2,CY2,CX2+Math.cos(pa)*(R2*0.4+Math.random()*R2*0.5),CY2+Math.sin(pa)*(R2*0.4+Math.random()*R2*0.5),TEAL_R+'0.70)',0.014));
+  }
+  kcStepParts();
+}
+
+// ── MAIN DRAW LOOP ───────────────────────────────────────
+function kcDraw(){
+  if(!cv2)return;
+
+  // Fade transition
+  if(kcFadingOut){
+    kcFadeAlpha-=0.04;
+    if(kcFadeAlpha<=0){kcFadeAlpha=0;kcFadingOut=false;kcDoSwitch(kcPendingPhase);}
+  } else {
+    if(kcFadeAlpha<1)kcFadeAlpha=Math.min(1,kcFadeAlpha+0.03);
+  }
+
+  // Clear
+  ctx2.clearRect(0,0,W2,H2);
+  ctx2.fillStyle='#050d10';
+  ctx2.fillRect(0,0,W2,H2);
+
+  // Centre ambient glow — drawn as solid gradient fill, no shadowBlur
+  var bg=ctx2.createRadialGradient(CX2,CY2,0,CX2,CY2,R2*1.6);
+  bg.addColorStop(0,'rgba(45,212,191,0.06)');
+  bg.addColorStop(1,'rgba(0,0,0,0)');
+  ctx2.fillStyle=bg;ctx2.fillRect(0,0,W2,H2);
+
+  ctx2.save();ctx2.globalAlpha=kcFadeAlpha;
+
+  var e=tick2-kcPs;
+  if(kcPhase===0)      ph0(e);
+  else if(kcPhase===1) ph1(e);
+  else if(kcPhase===2) ph2(e);
+  else if(kcPhase===3) ph3(e);
+  else if(kcPhase===4) ph4(e);
+
+  ctx2.restore();
+  tick2++;
+  requestAnimationFrame(kcDraw);
+}
+
+// ── PHASE SWITCH ─────────────────────────────────────────
 function kcSetPhase(p){
   kcFadingOut=true;kcPendingPhase=p;
   var el=document.getElementById('kclbl');if(el)el.style.opacity=0;
 }
-var TRACKS=['Jungian \u00b7 The Known','Reflective Intelligence','The Tao Living','Wu Wei','Silent Living'];
-
 function kcDoSwitch(p){
   kcPhase=p;kcPs=tick2;kcParts=[];kcFadingOut=false;
   var cp=p;
   setTimeout(function(){
-    var et=document.getElementById('kclt'),ed=document.getElementById('kcld'),el=document.getElementById('kclbl');
     var tk=document.getElementById('kctrack');
+    var et=document.getElementById('kclt');
+    var ed=document.getElementById('kcld');
+    var el=document.getElementById('kclbl');
     if(tk)tk.textContent=TRACKS[cp]||'';
     if(et)et.textContent=PH2[cp].t;
     if(ed)ed.textContent=PH2[cp].d;
@@ -4682,19 +5107,9 @@ function kcDoSwitch(p){
     if(cp===4){var rh=document.getElementById('kcrh');if(rh)rh.style.opacity=1;}
     for(var ci=0;ci<5;ci++){
       var card=document.getElementById('kcc'+ci);
-      if(card){card.style.opacity=(ci<=cp)?'1':'0.55';card.style.transform='translateY(0)';}
+      if(card){card.style.opacity=(ci<=cp)?'1':'0.45';card.style.transform='translateY(0)';}
     }
   },300);
-}
-
-
-function kcUpdateFade(){
-  if(kcFadingOut){
-    kcFadeAlpha-=0.035;
-    if(kcFadeAlpha<=0){kcFadeAlpha=0;kcFadingOut=false;kcDoSwitch(kcPendingPhase);}
-  } else {
-    if(kcFadeAlpha<1)kcFadeAlpha=Math.min(1,kcFadeAlpha+0.025);
-  }
 }
 function kcRestart(){
   var rh=document.getElementById('kcrh');if(rh)rh.style.opacity=0;
@@ -4702,112 +5117,27 @@ function kcRestart(){
   kcResize();kcSetPhase(0);
   for(var ci=0;ci<5;ci++){var c=document.getElementById('kcc'+ci);if(c){c.style.opacity='0';c.style.transform='translateY(16px)';}}
 }
-function kcDraw(){
-  if(!cv2)return;
-  kcUpdateFade();
-  ctx2.fillStyle='#050d10';ctx2.fillRect(0,0,W2,H2);
-  var bg=ctx2.createRadialGradient(CX2,CY2,0,CX2,CY2,R2*1.8);
-  bg.addColorStop(0,'rgba(45,212,191,0.04)');bg.addColorStop(1,'rgba(0,0,0,0)');
-  ctx2.fillStyle=bg;ctx2.fillRect(0,0,W2,H2);
-  ctx2.save();ctx2.globalAlpha=kcFadeAlpha;
-  var e=tick2-kcPs;
-  if(kcPhase===0){
-    kcBase(1);
-    var lp=[[0,1],[1,2],[2,3],[3,4],[4,1]];
-    if(tick2%6===0){var ei=Math.floor(e/42)%5;kcParts.push(new KcPar(kcNodes[lp[ei][0]],kcNodes[lp[ei][1]],'rgba(45,212,191,1.0)',0.018+Math.random()*0.008));}
-    kcStepParts();
-    kcDN(kcNodes[Math.floor(e/90)%5],Math.sin(e*0.10)*0.5+0.5,1,1,true);
-    if(e>PH2[0].dur)kcSetPhase(1);
-  } else if(kcPhase===1){
-    kcBase(0.5);var pu=Math.sin(e*0.08)*0.5+0.5;kcDN(kcNodes[3],pu,1,1+pu*0.08,true);
-    ctx2.save();ctx2.globalAlpha=Math.min(1,e/40)*0.7;
-    ctx2.font="italic 14px 'Cormorant Garamond',serif";ctx2.fillStyle='rgba(212,168,67,1.0)';
-    ctx2.textAlign='center';ctx2.textBaseline='top';ctx2.fillText('\u2014 the gap \u2014',kcNodes[3].x,kcNodes[3].y+42);ctx2.restore();
-    if(e>PH2[1].dur)kcSetPhase(2);
-  } else if(kcPhase===2){
-    var tro=[3,2,1,0],trc=['rgba(212,168,67,0.9)','rgba(100,200,170,0.9)','rgba(65,185,160,0.9)','rgba(45,212,191,1)'];
-    var stp=PH2[2].dur/4;kcBase(0.55);
-    var si,ss2,sa,aa2;
-    for(si=0;si<3;si++){ss2=si*stp;if(e>=ss2){sa=Math.min(1,(e-ss2)/20);kcDE(kcNodes[tro[si]],kcNodes[tro[si+1]],sa*1.0,trc[si],true,true);}}
-    for(si=0;si<4;si++){ss2=si*stp;if(e>=ss2){aa2=Math.min(1,(e-ss2)/18);kcDN(kcNodes[tro[si]],aa2*(0.7+0.3*Math.sin(e*0.09)),0.7+aa2*0.3,1,true);}}
-    if(tick2%8===0&&e<PH2[2].dur-20){var pi=Math.min(2,Math.floor(e/stp));kcParts.push(new KcPar(kcNodes[tro[pi]],kcNodes[tro[pi+1]],trc[pi],0.018+Math.random()*0.008));}
-    kcStepParts();
-    if(e>PH2[2].dur-60){ctx2.save();ctx2.globalAlpha=Math.min(1,(e-(PH2[2].dur-60))/30)*0.8;ctx2.font="italic 12px 'Cormorant Garamond',serif";ctx2.fillStyle='rgba(45,212,191,0.85)';ctx2.textAlign='center';ctx2.textBaseline='top';ctx2.fillText('the root is seen',kcNodes[0].x,kcNodes[0].y-42);ctx2.restore();}
-    if(e>PH2[2].dur)kcSetPhase(3);
-  } else if(kcPhase===3){
-    kcBase(0.25);kcDN(kcNodes[3],0.5,1,1,true);kcDN(kcNodes[4],0,0.15,1,false);
-    var aa3=Math.min(1,e/100),asc=0.5+aa3*0.65;
-    if(aa3>0.05)kcDE(kcNodes[3],kcNodes[5],Math.min(1,aa3*1.0),'rgba(45,212,191,1)',false,true);
-    kcDN(kcNodes[5],aa3*(0.7+0.3*Math.sin(e*0.12)),Math.min(1,aa3*1.2),asc,true);
-    if(tick2%4===0&&aa3>0.6){var ang=Math.random()*Math.PI*2,dst=20+Math.random()*30;kcParts.push(new KcPar(kcNodes[5],{x:kcNodes[5].x+Math.cos(ang)*dst,y:kcNodes[5].y+Math.sin(ang)*dst},'rgba(45,212,191,0.8)',0.04+Math.random()*0.03));}
-    kcStepParts();
-    if(e>PH2[3].dur)kcSetPhase(4);
-  } else if(kcPhase===4){
-    kcBase(0.28);
-    var ri2,rr2,pr2,rra;
-    for(ri2=0;ri2<3;ri2++){
-      var rd2=ri2*40,re2=Math.max(0,e-rd2);pr2=Math.min(1,re2/180);
-      rr2=R2*0.15+R2*1.3*pr2;rra=(1-pr2)*0.55;
-      if(rra>0.01){ctx2.save();ctx2.globalAlpha=rra;ctx2.beginPath();ctx2.arc(CX2,CY2,rr2,0,Math.PI*2);ctx2.strokeStyle='rgba(45,212,191,1)';ctx2.lineWidth=0.8;ctx2.shadowBlur=8;ctx2.shadowColor='rgba(45,212,191,0.4)';ctx2.stroke();ctx2.restore();}
-    }
-    var nsz=Math.floor(Math.max(40,Math.min(80,36+W2*0.07)));
-    ctx2.save();ctx2.globalAlpha=Math.min(1,e/60)*(0.55+Math.sin(e*0.025)*0.08);
-    ctx2.font="300 "+nsz+"px 'Cormorant Garamond',serif";ctx2.fillStyle='rgba(45,212,191,1)';
-    ctx2.textAlign='center';ctx2.textBaseline='middle';ctx2.fillText('NOW',CX2,CY2);ctx2.restore();
-    var ca3=Math.min(1,Math.max(0,e-60)/50);
-    ctx2.save();ctx2.globalAlpha=ca3*0.95;ctx2.font="italic 15px 'Cormorant Garamond',serif";
-    ctx2.fillStyle='rgba(45,212,191,0.82)';ctx2.textAlign='center';ctx2.textBaseline='top';
-    ctx2.fillText('Choiceless Awareness',CX2,CY2+nsz*0.62+10);ctx2.restore();
-    if(tick2%12===0){var pang=Math.random()*Math.PI*2;kcParts.push(new KcPar({x:CX2+Math.cos(pang)*R2*0.1,y:CY2+Math.sin(pang)*R2*0.1},{x:CX2+Math.cos(pang)*(R2*0.35+Math.random()*R2*0.45),y:CY2+Math.sin(pang)*(R2*0.35+Math.random()*R2*0.45)},'rgba(45,212,191,0.65)',0.012+Math.random()*0.01));}
-    kcStepParts();
-  }
-  ctx2.restore();tick2++;requestAnimationFrame(kcDraw);
-}
 window.kcSetPhase=kcSetPhase;
 window.kcRestart=kcRestart;
-// Scroll-driven phase sync — diagram phase advances as narrative card enters viewport
-function kcInitScrollSync(){
-  var phaseCards=['kcc0','kcc1','kcc2','kcc3','kcc4'];
-  // Immediately check which cards are already in viewport (user jumped to About)
-  function checkVisible(){
-    for(var i=0;i<phaseCards.length;i++){
-      var el=document.getElementById(phaseCards[i]);
-      if(!el)continue;
-      var rect=el.getBoundingClientRect();
-      if(rect.top<window.innerHeight*0.95&&rect.bottom>0){
-        el.style.opacity='1';
-        el.style.transform='translateY(0)';
-        if(typeof kcPhase!=='undefined'&&kcPhase<i){kcSetPhase(i);}
-      }
-    }
-  }
-  setTimeout(checkVisible,300);
-  setTimeout(checkVisible,800);
-  window.addEventListener('scroll',checkVisible);
-  if(!('IntersectionObserver' in window)){return;}
-  // IntersectionObserver as additional trigger — rootMargin 0 so it fires even at edges
-  var obs=new IntersectionObserver(function(entries){
-    for(var e=0;e<entries.length;e++){
-      var entry=entries[e];
-      if(entry.isIntersecting){
-        entry.target.style.opacity='1';
-        entry.target.style.transform='translateY(0)';
-        var phaseNum=parseInt(entry.target.id.replace('kcc',''));
-        if(!isNaN(phaseNum)){
-          if(typeof kcPhase!=='undefined'&&kcPhase<phaseNum){
-            kcSetPhase(phaseNum);
-          }
-        }
-      }
-    }
-  },{threshold:0.15,rootMargin:'0px 0px 0px 0px'});
-  for(var i=0;i<phaseCards.length;i++){
-    var el=document.getElementById(phaseCards[i]);
-    if(el)obs.observe(el);
+
+
+// ── KC Phase Navigator (side-by-side layout) ──────────────
+function kcGoPhase(n){
+  // Switch diagram phase
+  if(window.kcSetPhase) kcSetPhase(n);
+  // Switch panel
+  for(var i=0;i<5;i++){
+    var panel=document.getElementById('kcpanel'+i);
+    var tab  =document.getElementById('kctab'+i);
+    var dot  =document.querySelectorAll('.kc-dot')[i];
+    if(panel){panel.style.display=(i===n)?'flex':'none'; panel.classList.toggle('kc-panel-active',i===n);}
+    if(tab)  {tab.classList.toggle('kc-tab-active',i===n);}
+    if(dot)  {dot.classList.toggle('kc-dot-active',i===n);}
   }
 }
-if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(function(){kcInit();setTimeout(kcInitScrollSync,400);},200);});}
-else{setTimeout(function(){kcInit();setTimeout(kcInitScrollSync,400);},200);}
+// Remove old scroll-sync function if present — navigation is now manual
+
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setTimeout(kcInit,200);});}else{setTimeout(kcInit,200);}
 })();
 
 </script>
