@@ -929,9 +929,9 @@ body:not(.zol-active) #hint { display:none !important; }
   border:1px solid rgba(45,212,191,0.35);
   border-radius:8px;
   font-family:'DM Sans',sans-serif;
-  font-size:12px;
-  letter-spacing:1px;
-  color:rgba(45,212,191,0.85);
+  font-size:14px;
+  letter-spacing:0.5px;
+  color:rgba(45,212,191,0.90);
   cursor:pointer;
   transition:all 0.25s ease;
   text-align:center;
@@ -3923,16 +3923,16 @@ As for how often: there is no right frequency. Some people write daily. Some wri
   </div>
 
   <!-- Main layout: diagram left (3/4) + description right (1/4) -->
-  <div style="display:grid;grid-template-columns:3fr 1fr;gap:0;border:1px solid rgba(45,212,191,0.14);border-radius:12px;overflow:hidden;min-height:440px;">
+  <div style="display:grid;grid-template-columns:2.5fr 1fr;gap:0;border:1px solid rgba(45,212,191,0.14);border-radius:12px;overflow:hidden;min-height:460px;">
 
     <!-- LEFT: Diagram -->
     <div id="kcWrap" style="position:relative;background:#050d10;min-height:440px;">
       <canvas id="kcc" style="width:100%;height:100%;display:block;"></canvas>
       <!-- Phase label overlay at bottom of diagram -->
-      <div id="kclbl" style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;transition:opacity 0.6s ease;white-space:nowrap;">
-        <div id="kctrack" style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.90);margin-bottom:4px;"></div>
-        <div id="kclt" style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.8vw,17px);font-style:italic;color:#2dd4bf;margin-bottom:2px;"></div>
-        <div id="kcld" style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(200,235,232,0.75);letter-spacing:2px;text-transform:uppercase;"></div>
+      <div id="kclbl" style="position:absolute;bottom:16px;left:0;right:0;text-align:center;pointer-events:none;transition:opacity 0.6s ease;">
+        <div id="kctrack" style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(212,168,67,0.80);margin-bottom:0;"></div>
+        <div id="kclt" style="font-family:'Cormorant Garamond',serif;font-size:clamp(13px,1.5vw,15px);font-style:italic;color:rgba(45,212,191,0.80);margin-bottom:0;"></div>
+        <div id="kcld" style="display:none;"></div>
       </div>
       <!-- Watch again -->
       <div id="kcrh" style="position:absolute;bottom:3px;left:50%;transform:translateX(-50%);font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.35);cursor:pointer;opacity:0;transition:opacity 0.5s;" onclick="kcRestart()">watch again</div>
@@ -3942,11 +3942,11 @@ As for how often: there is no right frequency. Some people write daily. Some wri
     <div style="border-left:1px solid rgba(45,212,191,0.12);background:rgba(5,20,24,0.96);display:flex;flex-direction:column;">
 
       <!-- Phase 0 panel -->
-      <div id="kcpanel0" class="kc-panel kc-panel-active" style="flex:1;padding:32px 28px;display:flex;flex-direction:column;justify-content:space-between;">
+      <div id="kcpanel0" class="kc-panel kc-panel-active" style="flex:1;padding:36px 32px;display:flex;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:10px;">Phase 1 · The Conditioning Loop</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">Knowing. More knowing. Always more knowing.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">Knowledge becomes Experience. Experience becomes Memory. Memory generates Thought. Thought becomes Action — feeding the loop again.<br/><br/>Jung's individuation. Descartes building the self on thought. Every framework ever built — adding more knowing to a vessel already full.<br/><br/><em style="color:#2dd4bf;">The vessel full of knowing has no room for what cannot be thought.</em></p>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:10px;">Phase 1 · The Conditioning Loop</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">Knowing. More knowing. Always more knowing.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">Knowledge becomes Experience. Experience becomes Memory. Memory generates Thought. Thought becomes Action — feeding the loop again.<br/><br/>Jung's individuation. Descartes building the self on thought. Every framework ever built — adding more knowing to a vessel already full.<br/><br/><em style="color:#2dd4bf;">The vessel full of knowing has no room for what cannot be thought.</em></p>
         </div>
         <button onclick="kcGoPhase(1)" class="kc-next-btn" style="margin-top:24px;">
           Phase 2 — RI Enters &rarr;
@@ -3956,9 +3956,9 @@ As for how often: there is no right frequency. Some people write daily. Some wri
       <!-- Phase 1 panel -->
       <div id="kcpanel1" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:10px;">Phase 2 · Reflective Intelligence</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">Before thought becomes action — a pause.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">In that pause, something different becomes possible. Not more knowing. Not another framework.<br/><br/>A question: <em style="color:#2dd4bf;">where did this thought come from?</em><br/><br/>The reverse journey begins. Not forward into more accumulation — but backward, tracing the thread. To see whether what is running you was ever actually true.</p>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:10px;">Phase 2 · Reflective Intelligence</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">Before thought becomes action — a pause.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">In that pause, something different becomes possible. Not more knowing. Not another framework.<br/><br/>A question: <em style="color:#2dd4bf;">where did this thought come from?</em><br/><br/>The reverse journey begins. Not forward into more accumulation — but backward, tracing the thread. To see whether what is running you was ever actually true.</p>
         </div>
         <button onclick="kcGoPhase(2)" class="kc-next-btn" style="margin-top:24px;">
           Phase 3 — The Reversal &rarr;
@@ -3968,9 +3968,9 @@ As for how often: there is no right frequency. Some people write daily. Some wri
       <!-- Phase 2 panel -->
       <div id="kcpanel2" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-bottom:10px;">Phase 3 · The Reverse Mapping</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">Tracing backward into the root of the known.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">Thought traced to Memory. Memory to Experience. Experience to Knowledge. At Knowledge: <em style="color:#2dd4bf;">is this lived truth — or inherited assumption?</em><br/><br/>When you see that the pond was stirred by thought examining thought — you stop stirring. The mud settles. The water at the top was always clear.</p>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:10px;">Phase 3 · The Reverse Mapping</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">Tracing backward into the root of the known.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">Thought traced to Memory. Memory to Experience. Experience to Knowledge. At Knowledge: <em style="color:#2dd4bf;">is this lived truth — or inherited assumption?</em><br/><br/>When you see that the pond was stirred by thought examining thought — you stop stirring. The mud settles. The water at the top was always clear.</p>
         </div>
         <button onclick="kcGoPhase(3)" class="kc-next-btn" style="margin-top:24px;">
           Phase 4 — Wu Wei &rarr;
@@ -3980,9 +3980,9 @@ As for how often: there is no right frequency. Some people write daily. Some wri
       <!-- Phase 3 panel -->
       <div id="kcpanel3" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(212,168,67,0.75);margin-bottom:10px;">Phase 4 · 無為 · Wu Wei</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">There is nothing to know. Nothing to become.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">The empty vessel acts from its space. Water does not decide to flow around the stone — it moves with what is here.<br/><br/>This is not passivity. This is the highest intelligence — the one that acts as much as is needed, no more. Without agenda. Without the self that needs to prove something.<br/><br/><em style="color:#d4a843;">Act from stillness. Work in absolute wholeness.</em></p>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.80);margin-bottom:10px;">Phase 4 · 無為 · Wu Wei</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">There is nothing to know. Nothing to become.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">The empty vessel acts from its space. Water does not decide to flow around the stone — it moves with what is here.<br/><br/>This is not passivity. This is the highest intelligence — the one that acts as much as is needed, no more. Without agenda. Without the self that needs to prove something.<br/><br/><em style="color:#d4a843;">Act from stillness. Work in absolute wholeness.</em></p>
         </div>
         <button onclick="kcGoPhase(4)" class="kc-next-btn" style="margin-top:24px;">
           Phase 5 — The Arrival &rarr;
@@ -3992,9 +3992,9 @@ As for how often: there is no right frequency. Some people write daily. Some wri
       <!-- Phase 4 panel -->
       <div id="kcpanel4" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(212,168,67,0.75);margin-bottom:10px;">The Arrival · Silent Living</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,22px);font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">You are nothing — and that is wholeness.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,1.4vw,16px);font-style:italic;color:rgba(220,245,242,0.80);line-height:1.85;margin-bottom:0;">The stillness that is not absence but fullness of a different order. The awareness in which all thoughts appear — unchanged, undamaged, already whole.<br/><br/><em style="color:#2dd4bf;">The present moment, undivided. Pure love. This is the Tao living.</em></p>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.80);margin-bottom:10px;">The Arrival · Silent Living</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">You are nothing — and that is wholeness.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">The stillness that is not absence but fullness of a different order. The awareness in which all thoughts appear — unchanged, undamaged, already whole.<br/><br/><em style="color:#2dd4bf;">The present moment, undivided. Pure love. This is the Tao living.</em></p>
         </div>
         <div style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap;">
           <button onclick="kcGoPhase(0)" class="kc-next-btn" style="background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.25);color:rgba(45,212,191,0.60);">
@@ -4929,25 +4929,50 @@ function ph0(e){
   drawLoopDot(e);
   // Bottom label
   var ta=Math.min(1,e/60);
-  kcTxt('conditioning loop \u2014 K \u2192 E \u2192 M \u2192 T \u2192 A',CX2,H2-20,'13',TEAL_R+'0.60)',ta,false);
 }
 
 function ph1(e){
-  // All edges dim
+  // Base loop dim
   drawEdge(0,1,TEAL,0.20,1.5);
   drawEdge(1,2,TEAL,0.20,1.5);
   drawEdge(2,3,TEAL,0.20,1.5);
-  drawEdge(3,4,TEAL,0.20,1.5);
+  // T→A edge in AMBER — the automatic jump about to be intercepted
+  var ta=Math.min(1,e/50);
+  drawEdge(3,4,AMBER,ta*0.75,2.2,true); // dashed amber
   // T pulses bright
   var pu=Math.sin(e*0.09)*0.5+0.5;
   for(var i=0;i<5;i++) drawNode(kcNodes[i], i===3?'bright':'dim', i===3?pu:0);
-  // Gap label
-  var ta=Math.min(1,e/50);
-  var gx=(kcNodes[3].x+kcNodes[4].x)/2, gy=(kcNodes[3].y+kcNodes[4].y)/2-20;
-  kcTxt('\u2014 the gap \u2014',gx,gy,'16',AMBER,ta*0.95,false);
-  // RI label
-  var ta2=Math.min(1,Math.max(0,e-80)/60);
-  kcTxt('Reflective Intelligence enters',CX2,H2-20,'13',AMBER_R+'0.75)',ta2,false);
+  // Gap midpoint between T and A
+  var gx=(kcNodes[3].x+kcNodes[4].x)/2;
+  var gy=(kcNodes[3].y+kcNodes[4].y)/2;
+  // "the gap" label — amber
+  var ta2=Math.min(1,Math.max(0,e-30)/50);
+  kcTxt('the gap',gx,gy-24,'14',AMBER,ta2*0.95,false);
+  // LumeRI drop icon at gap midpoint
+  var ta3=Math.min(1,Math.max(0,e-70)/60);
+  if(ta3>0.05){
+    ctx2.save();ctx2.globalAlpha=ta3;
+    var DX=gx, DY=gy+6, DR=11;
+    // Glow halo
+    ctx2.beginPath();ctx2.arc(DX,DY-DR*0.3,DR*1.8,0,Math.PI*2);
+    ctx2.fillStyle=AMBER_R+'0.10)';ctx2.fill();
+    // Drop shape
+    ctx2.beginPath();
+    ctx2.arc(DX,DY-DR*0.4,DR,Math.PI,0);
+    ctx2.bezierCurveTo(DX+DR,DY-DR*0.4,DX+DR*0.5,DY+DR*0.8,DX,DY+DR*0.9);
+    ctx2.bezierCurveTo(DX-DR*0.5,DY+DR*0.8,DX-DR,DY-DR*0.4,DX-DR,DY-DR*0.4);
+    ctx2.closePath();
+    ctx2.fillStyle=AMBER_R+'0.18)';ctx2.fill();
+    ctx2.lineWidth=2;ctx2.strokeStyle=AMBER;ctx2.stroke();
+    // "L" inside
+    ctx2.font='bold 11px \'Jost\',sans-serif';
+    ctx2.fillStyle=AMBER;ctx2.textAlign='center';ctx2.textBaseline='middle';
+    ctx2.fillText('L',DX,DY-DR*0.3);
+    ctx2.restore();
+  }
+  // "LumeRI enters here" label
+  var ta4=Math.min(1,Math.max(0,e-110)/60);
+  kcTxt('LumeRI enters here',gx,gy+36,'11',AMBER,ta4*0.80,false);
 }
 
 function ph2(e){
@@ -4983,7 +5008,6 @@ function ph2(e){
     var tA=Math.min(1,(e-(PH2[2].dur-100))/40);
     kcTxt('the root is seen',kcNodes[0].x,kcNodes[0].y-42,'15',TEAL,tA*0.90,false);
   }
-  kcTxt('tracing backward \u2014 T \u2192 M \u2192 E \u2192 K',CX2,H2-20,'13',AMBER_R+'0.70)',Math.min(1,e/40),false);
 }
 
 function ph3(e){
@@ -5007,7 +5031,6 @@ function ph3(e){
     kcParts.push(new KcPar(kcNodes[5].x,kcNodes[5].y,kcNodes[5].x+Math.cos(ang3)*dst,kcNodes[5].y+Math.sin(ang3)*dst,TEAL,0.045));
   }
   kcStepParts();
-  kcTxt('nothing to know \u2014 act from stillness',CX2,H2-20,'13',AMBER_R+'0.75)',Math.min(1,e/40),false);
 }
 
 function ph4(e){
