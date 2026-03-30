@@ -958,6 +958,80 @@ body:not(.zol-active) #hint { display:none !important; }
   .kct-label{display:none;}
 }
 
+
+/* ── Zoom Out Accordion ── */
+.zo-item{
+  background:rgba(5,20,24,0.85);
+  cursor:pointer;
+  transition:background 0.2s ease;
+}
+.zo-item:hover{background:rgba(12,36,42,0.90);}
+.zo-item.zo-open{background:rgba(10,28,34,0.95);}
+.zo-threshold{
+  border-top:1px solid rgba(45,212,191,0.18) !important;
+  border-bottom:1px solid rgba(45,212,191,0.18) !important;
+}
+.zo-header{
+  display:grid;
+  grid-template-columns:40px 90px 1fr 20px;
+  align-items:center;
+  gap:12px;
+  padding:16px 20px;
+}
+.zo-num{
+  width:36px;height:36px;
+  border-radius:50%;
+  border:1.5px solid;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Jost',sans-serif;
+  font-size:14px;font-weight:600;
+  flex-shrink:0;
+}
+.zo-tag{
+  font-family:'DM Sans',sans-serif;
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  white-space:nowrap;
+}
+.zo-q{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;font-style:italic;font-weight:300;
+  line-height:1.3;
+}
+.zo-arrow{
+  font-family:'Jost',sans-serif;
+  font-size:20px;
+  color:rgba(45,212,191,0.35);
+  text-align:center;
+  transition:transform 0.3s ease, color 0.2s ease;
+  line-height:1;
+}
+.zo-item.zo-open .zo-arrow{
+  transform:rotate(90deg);
+  color:rgba(45,212,191,0.75);
+}
+.zo-body{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.35s ease, padding 0.25s ease;
+  padding:0 20px 0 72px;
+}
+.zo-item.zo-open .zo-body{
+  max-height:160px;
+  padding:0 20px 18px 72px;
+}
+.zo-body p{
+  font-family:'Cormorant Garamond',serif;
+  font-size:16px;font-style:italic;
+  color:rgba(200,235,232,0.75);
+  line-height:1.80;margin:0;
+}
+@media(max-width:600px){
+  .zo-header{grid-template-columns:36px 70px 1fr 18px;gap:8px;padding:14px 16px;}
+  .zo-q{font-size:15px;}
+  .zo-body{padding:0 16px 0 56px;}
+  .zo-item.zo-open .zo-body{padding:0 16px 14px 56px;}
+}
+
 </style>
 </head>
 <body>
@@ -3935,7 +4009,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
         <div id="kcld" style="display:none;"></div>
       </div>
       <!-- Watch again -->
-      <div id="kcrh" style="position:absolute;bottom:3px;left:50%;transform:translateX(-50%);font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.35);cursor:pointer;opacity:0;transition:opacity 0.5s;" onclick="kcRestart()">watch again</div>
+      <div id="kcrh" style="position:absolute;bottom:58px;left:50%;transform:translateX(-50%);font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.35);cursor:pointer;opacity:0;transition:opacity 0.5s;" onclick="kcRestart()">watch again</div>
     </div>
 
     <!-- RIGHT: Description panel -->
@@ -4019,16 +4093,6 @@ As for how often: there is no right frequency. Some people write daily. Some wri
 
 
 <!-- NOW arrival -->
-  <div style="max-width:680px;margin:52px auto 0;padding:0 24px;">
-    <div style="padding:40px 28px;background:linear-gradient(135deg,rgba(12,46,52,0.92),rgba(5,13,16,0.96));border:1px solid rgba(45,212,191,0.14);border-radius:14px;text-align:center;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.38),transparent);"></div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.26);margin-bottom:10px;">無為 &middot; Wu Wei &middot; The Silent Living</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(52px,12vw,80px);font-weight:300;color:rgba(45,212,191,0.20);line-height:1;letter-spacing:14px;margin-bottom:8px;animation:nowPulseL 5s ease-in-out infinite;">NOW</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2.5vw,18px);font-style:italic;color:rgba(45,212,191,0.65);margin-bottom:12px;">Nothing to know. Nothing to become.</div>
-      <p style="font-family:'DM Sans',sans-serif;font-size:12px;color:rgba(200,235,232,0.75);line-height:1.75;max-width:320px;margin:0 auto;font-weight:300;">Act as much as is needed. No more. No less.<br/> Work in absolute wholeness.<br/><br/><em style="color:rgba(45,212,191,0.40);">The water clears when the stirring stops.</em></p>
-    </div>
-  </div>
-
   <!-- Content -->
   <div style="max-width:680px;margin:0 auto;padding:64px 24px 0;">
 
@@ -4057,105 +4121,122 @@ As for how often: there is no right frequency. Some people write daily. Some wri
 
     <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 52px;"></div>
 
-    <!-- 8 Questions -->
-    <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.58);text-align:center;margin-bottom:10px;">The Eight Questions · Zoom Out</div>
-    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;color:rgba(45,212,191,0.70);text-align:center;margin-bottom:40px;line-height:1.6;">How are you? → Who are you? — The path.</p>
+    <!-- 8 Questions — Compact accordion -->
+    <div style="margin-bottom:48px;">
+      <div style="text-align:center;margin-bottom:20px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.60);margin-bottom:8px;">The Eight Questions · Zoom Out</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(45,212,191,0.75);line-height:1.5;">How are you? &rarr; Who are you? &mdash; The path.</div>
+      </div>
 
-    <div id="aboutQList" style="display:flex;flex-direction:column;margin-bottom:60px;">
-      <div class="aq-row" data-d="0" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
-        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(185,98,26,0.22);border:1.5px solid rgba(185,98,26,0.72);color:rgba(195,105,28,1);">1</div>
-          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(195,105,28,0.22),rgba(140,65,15,0.06));"></div>
+      <div id="zoomOutList" style="border:1px solid rgba(45,212,191,0.12);border-radius:12px;overflow:hidden;">
+
+        <!-- Q1 -->
+        <div class="zo-item" onclick="zoToggle(0)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
+          <div class="zo-header">
+            <div class="zo-num" style="background:rgba(185,98,26,0.20);border-color:rgba(195,105,28,0.70);color:rgba(195,105,28,1);">1</div>
+            <div class="zo-tag" style="color:rgba(195,105,28,0.65);">The surface</div>
+            <div class="zo-q" style="color:#e8fdfb;">How are you feeling today?</div>
+            <div class="zo-arrow">›</div>
+          </div>
+          <div class="zo-body" id="zo-body-0">
+            <p>No agenda. Just what is actually here — the cloud you are currently inside. Not what you should feel, not a summary. The raw truth of this moment.</p>
+          </div>
         </div>
-        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
-          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(195,105,28,1);opacity:0.7;margin-bottom:5px;">The surface</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">How are you feeling today?</div>
-          <div style="font-size:13px;line-height:1.72;color:rgba(195,105,28,1);opacity:0.72;">No agenda. Just what is actually here — the cloud you are currently inside.</div>
+
+        <!-- Q2 -->
+        <div class="zo-item" onclick="zoToggle(1)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
+          <div class="zo-header">
+            <div class="zo-num" style="background:rgba(208,122,40,0.18);border-color:rgba(220,135,60,0.70);color:rgba(220,135,60,1);">2</div>
+            <div class="zo-tag" style="color:rgba(220,135,60,0.65);">The story</div>
+            <div class="zo-q" style="color:#e8fdfb;">What is the cause?</div>
+            <div class="zo-arrow">›</div>
+          </div>
+          <div class="zo-body" id="zo-body-1">
+            <p>The mind names a cause. LumeRI listens not to confirm the story but to see what the mind reaches for first — that reaching is itself the pattern.</p>
+          </div>
         </div>
-      </div>
-      <div class="aq-row" data-d="80" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
-        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(208,122,40,0.18);border:1.5px solid rgba(208,122,40,0.68);color:rgba(220,135,60,1);">2</div>
-          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(220,135,60,0.20),rgba(160,85,20,0.05));"></div>
+
+        <!-- Q3 -->
+        <div class="zo-item" onclick="zoToggle(2)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
+          <div class="zo-header">
+            <div class="zo-num" style="background:rgba(112,180,104,0.16);border-color:rgba(148,215,142,0.70);color:rgba(148,215,142,1);">3</div>
+            <div class="zo-tag" style="color:rgba(148,215,142,0.65);">Time</div>
+            <div class="zo-q" style="color:#e8fdfb;">When — past or future?</div>
+            <div class="zo-arrow">›</div>
+          </div>
+          <div class="zo-body" id="zo-body-2">
+            <p>Almost all suffering lives in the past or future. Naming which one creates the first distance — the present moment becomes visible by contrast.</p>
+          </div>
         </div>
-        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
-          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(220,135,60,1);opacity:0.7;margin-bottom:5px;">The story</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">What is the cause?</div>
-          <div style="font-size:13px;line-height:1.72;color:rgba(220,135,60,1);opacity:0.72;">The mind names a cause. LumeRI listens not to confirm the story but to see what the mind reaches for.</div>
+
+        <!-- Q4 -->
+        <div class="zo-item" onclick="zoToggle(3)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
+          <div class="zo-header">
+            <div class="zo-num" style="background:rgba(40,182,152,0.16);border-color:rgba(58,215,182,0.70);color:rgba(58,215,182,1);">4</div>
+            <div class="zo-tag" style="color:rgba(58,215,182,0.65);">The pattern</div>
+            <div class="zo-q" style="color:#e8fdfb;">Why is it an issue exactly?</div>
+            <div class="zo-arrow">›</div>
+          </div>
+          <div class="zo-body" id="zo-body-3">
+            <p>Not whether — but why. The conditioning shows its shape. Named clearly, it can be seen rather than inhabited. The pattern loses the power of the unnamed.</p>
+          </div>
         </div>
-      </div>
-      <div class="aq-row" data-d="160" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
-        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(112,180,104,0.14);border:1.5px solid rgba(112,180,104,0.60);color:rgba(148,215,142,1);">3</div>
-          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(148,215,142,0.18),rgba(80,140,70,0.05));"></div>
+
+        <!-- Q5 — The Mirror threshold -->
+        <div class="zo-item zo-threshold" onclick="zoToggle(4)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
+          <div class="zo-header">
+            <div class="zo-num" style="background:rgba(45,212,191,0.14);border-color:rgba(45,212,191,0.80);color:rgba(45,212,191,1);">5</div>
+            <div class="zo-tag" style="color:rgba(45,212,191,0.65);">The mirror</div>
+            <div class="zo-q" style="color:#e8fdfb;">Who is facing this issue?</div>
+            <div class="zo-arrow">›</div>
+          </div>
+          <div class="zo-body" id="zo-body-4">
+            <p>The conditioned self who inherited this pattern — or the one already watching it? This is the threshold. Cloud or sky. The question does not need an answer. It needs to be felt.</p>
+          </div>
         </div>
-        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
-          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(148,215,142,1);opacity:0.7;margin-bottom:5px;">Time</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">When — past or future?</div>
-          <div style="font-size:13px;line-height:1.72;color:rgba(148,215,142,1);opacity:0.72;">Almost all suffering lives in the past or future. Naming which one creates the first distance.</div>
+
+        <!-- Q6 -->
+        <div class="zo-item" onclick="zoToggle(5)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
+          <div class="zo-header">
+            <div class="zo-num" style="background:rgba(45,212,191,0.10);border-color:rgba(45,212,191,0.70);color:rgba(45,212,191,1);">6</div>
+            <div class="zo-tag" style="color:rgba(45,212,191,0.60);">Identity</div>
+            <div class="zo-q" style="color:#e8fdfb;">Who are you — conditioned self or choicelessly aware?</div>
+            <div class="zo-arrow">›</div>
+          </div>
+          <div class="zo-body" id="zo-body-5">
+            <p>Krishnamurti's question — not answered in words, but seen inwardly. In this moment: cloud or sky? The conditioning still runs. But something else is watching it run.</p>
+          </div>
         </div>
-      </div>
-      <div class="aq-row" data-d="240" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
-        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(40,182,152,0.14);border:1.5px solid rgba(40,182,152,0.60);color:rgba(58,215,182,1);">4</div>
-          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(58,215,182,0.18),rgba(25,145,115,0.05));"></div>
+
+        <!-- Q7 -->
+        <div class="zo-item" onclick="zoToggle(6)" style="border-bottom:1px solid rgba(45,212,191,0.09);">
+          <div class="zo-header">
+            <div class="zo-num" style="background:rgba(45,212,191,0.10);border-color:rgba(45,212,191,0.70);color:rgba(45,212,191,1);">7</div>
+            <div class="zo-tag" style="color:rgba(45,212,191,0.60);">Compassion</div>
+            <div class="zo-q" style="color:#e8fdfb;">What would you advise a friend?</div>
+            <div class="zo-arrow">›</div>
+          </div>
+          <div class="zo-body" id="zo-body-6">
+            <p>Stepping outside your own cloud, the witness speaks — not the pattern. Compassion arrives without effort. What you would tell a friend is what you already know but could not say to yourself.</p>
+          </div>
         </div>
-        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
-          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(58,215,182,1);opacity:0.7;margin-bottom:5px;">The pattern</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">Why is it an issue exactly?</div>
-          <div style="font-size:13px;line-height:1.72;color:rgba(58,215,182,1);opacity:0.72;">Not whether — but why. The conditioning shows its shape. Named, it can be seen rather than inhabited.</div>
+
+        <!-- Q8 — Gold arrival -->
+        <div class="zo-item" onclick="zoToggle(7)">
+          <div class="zo-header">
+            <div class="zo-num" style="background:rgba(212,168,67,0.18);border-color:rgba(212,168,67,0.80);color:rgba(212,168,67,1);">8</div>
+            <div class="zo-tag" style="color:rgba(212,168,67,0.70);">Arrival</div>
+            <div class="zo-q" style="color:#e8fdfb;">What will you do after seeing this?</div>
+            <div class="zo-arrow" style="color:rgba(212,168,67,0.60);">›</div>
+          </div>
+          <div class="zo-body" id="zo-body-7">
+            <p style="color:rgba(212,168,67,0.85);">Action from awareness, not compulsion. Not chosen or managed. Whole. Action that arises from seeing is different in kind from action driven by thought — complete, causing no new conflict.</p>
+          </div>
         </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;padding:9px 0 9px 52px;border-top:1px solid rgba(45,212,191,0.14);border-bottom:1px solid rgba(45,212,191,0.14);margin:2px 0;background:rgba(45,212,191,0.04);">
-        <div style="flex:1;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.5),transparent);"></div>
-        <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.55);white-space:nowrap;">· crossing the mirror · self-inquiry begins ·</div>
-        <div style="flex:1;height:1px;background:linear-gradient(to left,rgba(45,212,191,0.5),transparent);"></div>
-      </div>
-      <div class="aq-row" data-d="320" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
-        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(45,212,191,0.12);border:2px solid rgba(45,212,191,0.72);color:rgba(45,212,191,1);box-shadow:0 0 16px rgba(45,212,191,0.20);">5</div>
-          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.26),rgba(45,212,191,0.05));"></div>
-        </div>
-        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
-          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,1);opacity:0.7;margin-bottom:5px;">The mirror</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">Who is facing this issue?</div>
-          <div style="font-size:13px;line-height:1.72;color:rgba(45,212,191,1);opacity:0.72;">The conditioned self who inherited this pattern — or the one already watching it? This is the threshold between cloud and sky.</div>
-        </div>
-      </div>
-      <div class="aq-row" data-d="400" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
-        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(45,212,191,0.10);border:1.5px solid rgba(45,212,191,0.65);color:rgba(45,212,191,1);">6</div>
-          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.22),rgba(45,212,191,0.04));"></div>
-        </div>
-        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
-          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,1);opacity:0.7;margin-bottom:5px;">Identity</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">Who are you — conditioned self or choicelessly aware?</div>
-          <div style="font-size:13px;line-height:1.72;color:rgba(45,212,191,1);opacity:0.72;">Krishnamurti's question — not answered in words, but seen inwardly: in this moment, cloud or sky?</div>
-        </div>
-      </div>
-      <div class="aq-row" data-d="480" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
-        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(45,212,191,0.10);border:1.5px solid rgba(45,212,191,0.62);color:rgba(45,212,191,1);">7</div>
-          <div style="width:1px;flex:1;min-height:14px;margin-top:4px;background:linear-gradient(to bottom,rgba(45,212,191,0.20),rgba(45,212,191,0.04));"></div>
-        </div>
-        <div style="padding:12px 0 22px 8px;border-bottom:1px solid rgba(45,212,191,0.07);">
-          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,1);opacity:0.7;margin-bottom:5px;">Compassion</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.8vw,20px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">What would you advise a friend?</div>
-          <div style="font-size:13px;line-height:1.72;color:rgba(45,212,191,1);opacity:0.72;">Stepping outside your own cloud, the witness speaks — not the pattern. Compassion arrives without effort.</div>
-        </div>
-      </div>
-      <div class="aq-row" data-d="560" style="display:grid;grid-template-columns:52px 1fr;opacity:0;transform:translateY(10px);transition:opacity 0.6s ease,transform 0.6s ease;">
-        <div style="display:flex;flex-direction:column;align-items:center;padding-top:14px;">
-          <div style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;background:rgba(212,168,67,0.15);border:2px solid rgba(212,168,67,0.75);color:rgba(212,168,67,1);box-shadow:0 0 20px rgba(212,168,67,0.25);">8</div>
-          
-        </div>
-        <div style="padding:12px 0 22px 8px;">
-          <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,1);opacity:0.7;margin-bottom:5px;">Arrival</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,21px);line-height:1.35;color:rgba(235,250,248,0.95);margin-bottom:6px;">What will you do after seeing this?</div>
-          <div style="font-size:13px;line-height:1.72;color:rgba(212,168,67,1);opacity:0.72;">Not chosen. Not managed. Whole. Action that arises from seeing is different in kind from action driven by thought. Not the old movement repeated. This is what Krishnamurti called right action — complete, causing no new conflict.</div>
-        </div>
+
       </div>
     </div>
+
 
     <!-- Arrival -->
     <div style="text-align:center;padding:48px 24px;background:radial-gradient(ellipse at center,rgba(45,212,191,0.06) 0%,transparent 65%);border:1px solid rgba(45,212,191,0.12);border-radius:8px;margin-bottom:44px;position:relative;overflow:hidden;">
@@ -4561,19 +4642,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <script>
-/* ── About scroll reveal ── */
-(function(){
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        var d = parseInt(e.target.dataset.d||0);
-        setTimeout(function(){e.target.style.opacity='1';e.target.style.transform='translateY(0)';},d);
-        obs.unobserve(e.target);
-      }
-    });
-  },{threshold:0.12});
-  document.querySelectorAll('#aboutQList .aq-row').forEach(function(el){obs.observe(el);});
-})();
+// ── Zoom Out Accordion ────────────────────────────────────
+function zoToggle(n){
+  for(var i=0;i<8;i++){
+    var item=document.querySelectorAll('.zo-item')[i];
+    if(!item)continue;
+    if(i===n){
+      item.classList.toggle('zo-open');
+    } else {
+      item.classList.remove('zo-open');
+    }
+  }
+}
+window.zoToggle=zoToggle;
 
 /* ── About sky/clouds canvas ── */
 (function(){
@@ -4606,54 +4687,35 @@ document.addEventListener('DOMContentLoaded', function() {
     g.addColorStop(0,'rgba(195,115,45,0.55)');
     g.addColorStop(0.5,'rgba(165,90,30,0.28)');
     g.addColorStop(1,'rgba(140,70,20,0)');
-    ctx.beginPath();
-    ctx.arc(x,y,r*1.4,0,Math.PI*2);
-    ctx.fillStyle=g;
-    ctx.fill();
+    ctx.beginPath();ctx.arc(x,y,r*1.4,0,Math.PI*2);
+    ctx.fillStyle=g;ctx.fill();
     ctx.globalAlpha=alpha;
     ctx.font='bold '+(11*scale)+'px "DM Sans",sans-serif';
     ctx.fillStyle='rgba(228,175,110,0.92)';
-    ctx.textAlign='center';
-    ctx.textBaseline='middle';
+    ctx.textAlign='center';ctx.textBaseline='middle';
     ctx.fillText(label,x,y);
     ctx.restore();
   }
 
   function drawFrame(){
-    canvas.width=W; canvas.height=H;
-    // Sky gradient
+    canvas.width=W;canvas.height=H;
     var sg=ctx.createLinearGradient(0,0,0,HORIZON);
-    sg.addColorStop(0,'#050f12');
-    sg.addColorStop(0.45,'#07201e');
-    sg.addColorStop(1,'#0a2a26');
-    ctx.fillStyle=sg;
-    ctx.fillRect(0,0,W,HORIZON);
-    // Cloud world gradient
+    sg.addColorStop(0,'#050f12');sg.addColorStop(0.45,'#07201e');sg.addColorStop(1,'#0a2a26');
+    ctx.fillStyle=sg;ctx.fillRect(0,0,W,HORIZON);
     var cg=ctx.createLinearGradient(0,HORIZON,0,H);
-    cg.addColorStop(0,'#1a0e08');
-    cg.addColorStop(1,'#120a05');
-    ctx.fillStyle=cg;
-    ctx.fillRect(0,HORIZON,W,H-HORIZON);
-    // Horizon glow
-    ctx.save();
-    ctx.globalAlpha=0.18+0.04*Math.sin(tick*0.012);
+    cg.addColorStop(0,'#1a0e08');cg.addColorStop(1,'#120a05');
+    ctx.fillStyle=cg;ctx.fillRect(0,HORIZON,W,H-HORIZON);
+    ctx.save();ctx.globalAlpha=0.18+0.04*Math.sin(tick*0.012);
     var hg=ctx.createLinearGradient(0,HORIZON-18,0,HORIZON+18);
-    hg.addColorStop(0,'transparent');
-    hg.addColorStop(0.5,'rgba(45,212,191,0.45)');
-    hg.addColorStop(1,'transparent');
-    ctx.fillStyle=hg; ctx.fillRect(0,HORIZON-18,W,36);
-    ctx.restore();
-    // Horizon line
-    ctx.save();
-    ctx.globalAlpha=0.35; ctx.strokeStyle='rgba(45,212,191,0.6)';
-    ctx.lineWidth=0.5; ctx.setLineDash([4,8]);
-    ctx.beginPath(); ctx.moveTo(0,HORIZON); ctx.lineTo(W,HORIZON); ctx.stroke();
-    ctx.restore();
-    // Sky labels
+    hg.addColorStop(0,'transparent');hg.addColorStop(0.5,'rgba(45,212,191,0.45)');hg.addColorStop(1,'transparent');
+    ctx.fillStyle=hg;ctx.fillRect(0,HORIZON-18,W,36);ctx.restore();
+    ctx.save();ctx.globalAlpha=0.35;ctx.strokeStyle='rgba(45,212,191,0.6)';
+    ctx.lineWidth=0.5;ctx.setLineDash([4,8]);
+    ctx.beginPath();ctx.moveTo(0,HORIZON);ctx.lineTo(W,HORIZON);ctx.stroke();ctx.restore();
     ctx.save();
     ctx.font='italic 11px "Cormorant Garamond",serif';
-    ctx.fillStyle=('rgba(45,212,191,'+(0.10+0.03*Math.sin(tick*0.007))+')');
-    ctx.textAlign='center'; ctx.fillText('the only moment that is real',W/2,26);
+    ctx.fillStyle='rgba(45,212,191,'+(0.10+0.03*Math.sin(tick*0.007))+')';
+    ctx.textAlign='center';ctx.fillText('the only moment that is real',W/2,26);
     ctx.font='italic '+(Math.floor(clamp(46+4*Math.sin(tick*0.008),44,52)))+'px "Cormorant Garamond",serif';
     ctx.fillStyle='rgba(45,212,191,'+(0.12+0.04*Math.sin(tick*0.009))+')';
     ctx.fillText('NOW',W/2,HORIZON-72);
@@ -4665,53 +4727,28 @@ document.addEventListener('DOMContentLoaded', function() {
     ctx.fillText('whole · empty · fully present',W/2,78);
     ctx.font='italic 19px "Cormorant Garamond",serif';
     ctx.fillStyle='rgba(210,235,232,0.82)';
-    ctx.textAlign='left'; ctx.fillText('Stillness',62,128);
-    ctx.textAlign='right'; ctx.fillText('Being Present',638,128);
-    ctx.textAlign='center'; ctx.fillStyle='rgba(210,235,232,0.65)';
+    ctx.textAlign='left';ctx.fillText('Stillness',62,128);
+    ctx.textAlign='right';ctx.fillText('Being Present',638,128);
+    ctx.textAlign='center';ctx.fillStyle='rgba(210,235,232,0.65)';
     ctx.fillText('Knowing you are enough',W/2,192);
-    // Navigation labels
     ctx.font='9px "DM Sans",sans-serif';
     ctx.fillStyle='rgba(45,212,191,0.28)';
-    ctx.textAlign='left'; ctx.fillText('SILENCE',18,HORIZON-8);
-    ctx.textAlign='right'; ctx.fillText('ATTENTION',W-18,HORIZON-8);
-    // PATTERNS ghost
+    ctx.textAlign='left';ctx.fillText('SILENCE',18,HORIZON-8);
+    ctx.textAlign='right';ctx.fillText('ATTENTION',W-18,HORIZON-8);
     ctx.font='italic '+(Math.floor(clamp(72+6*Math.sin(tick*0.006+1.8),68,80)))+'px "Cormorant Garamond",serif';
-    ctx.fillStyle=('rgba(210,130,50,'+(0.50+0.08*Math.sin(tick*0.006+1.8))+')');
-    ctx.textAlign='center'; ctx.fillText('Patterns',W/2,H-52);
+    ctx.fillStyle='rgba(210,130,50,'+(0.50+0.08*Math.sin(tick*0.006+1.8))+')';
+    ctx.textAlign='center';ctx.fillText('Patterns',W/2,H-52);
     ctx.font='10px "DM Sans",sans-serif';
     ctx.fillStyle='rgba(220,178,110,0.72)';
     ctx.fillText('we all begin here · and this is human',W/2,H-32);
     ctx.restore();
-    // Bouncing clouds
     clouds.forEach(function(c){
       var bob=Math.sin(tick*0.008+c.laneY*0.02)*3;
       drawCloud(c.x,c.laneY+bob,c.sc,c.al,c.label);
       c.x+=c.sp*c.dir;
       if(c.x>W+80){c.x=-80;} if(c.x<-80){c.x=W+80;}
     });
-    // Zoom-out arc dots
-    var dots=8;
-    for(var i=0;i<dots;i++){
-      var t=i/(dots-1);
-      var sx=80+t*540, sy=HORIZON+160-t*230;
-      var bright=(tick%160)/160;
-      var alpha=(i===Math.floor(bright*dots))?0.85:0.22+(i/(dots-1))*0.25;
-      ctx.save(); ctx.globalAlpha=alpha;
-      ctx.beginPath(); ctx.arc(sx,sy,i===0?14:i===dots-1?14:7,0,Math.PI*2);
-      ctx.strokeStyle=i===0?'rgba(195,115,30,0.8)':i===dots-1?'rgba(212,168,67,0.85)':'rgba(45,212,191,0.5)';
-      ctx.lineWidth=i===0||i===dots-1?2:1.5; ctx.stroke();
-      if(i===0){ctx.font='8px "DM Sans",sans-serif';ctx.fillStyle='rgba(195,115,30,0.6)';ctx.textAlign='center';ctx.fillText('START',sx,sy+22);}
-      if(i===dots-1){ctx.font='8px "DM Sans",sans-serif';ctx.fillStyle='rgba(212,168,67,0.7)';ctx.textAlign='center';ctx.fillText('ENDPOINT',sx,sy-18);}
-      if(i>0&&i<dots){
-        var px=80+(i-1)/(dots-1)*540, py=HORIZON+160-(i-1)/(dots-1)*230;
-        ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(sx,sy);
-        ctx.strokeStyle='rgba(45,212,191,0.18)';
-        ctx.lineWidth=1; ctx.setLineDash([3,6]); ctx.stroke(); ctx.setLineDash([]);
-      }
-      ctx.restore();
-    }
-    tick++;
-    requestAnimationFrame(drawFrame);
+    tick++;requestAnimationFrame(drawFrame);
   }
   function clamp(v,mn,mx){return Math.max(mn,Math.min(mx,v));}
   drawFrame();
@@ -4727,7 +4764,7 @@ var ND2=[
   {lb:'M',sub:'Memory',    a:0},
   {lb:'T',sub:'Thought',   a:72},
   {lb:'A',sub:'Action',    a:144},
-  {lb:'A\u2605',sub:'Choiceless\nAction',a:36}
+  {lb:'A\u2605',sub:'Choiceless\nAction',a:108,r:0.60}
 ];
 var PH2=[
   {t:'The Conditioning Loop',         d:'K \u2192 E \u2192 M \u2192 T \u2192 A \u2192 knowing accumulates',dur:900},
@@ -4766,8 +4803,8 @@ function kcResize(){
 function kcBuildNodes(){
   kcNodes=[];
   for(var i=0;i<6;i++){
-    var d=ND2[i], a2=(d.a-90)*Math.PI/180;
-    kcNodes.push({lb:d.lb,sub:d.sub,x:CX2+R2*Math.cos(a2),y:CY2+R2*Math.sin(a2)});
+    var d=ND2[i], a2=(d.a-90)*Math.PI/180, rm=d.r||1;
+    kcNodes.push({lb:d.lb,sub:d.sub,x:CX2+R2*rm*Math.cos(a2),y:CY2+R2*rm*Math.sin(a2)});
   }
 }
 
@@ -4936,9 +4973,27 @@ function ph1(e){
   drawEdge(0,1,TEAL,0.20,1.5);
   drawEdge(1,2,TEAL,0.20,1.5);
   drawEdge(2,3,TEAL,0.20,1.5);
-  // T→A edge in AMBER — the automatic jump about to be intercepted
+  // T→A edge — glowing, flickering amber line (not dashed)
   var ta=Math.min(1,e/50);
-  drawEdge(3,4,AMBER,ta*0.75,2.2,true); // dashed amber
+  if(ta>0.02){
+    var f5=kcNodes[3],t5=kcNodes[4];
+    var dx5=t5.x-f5.x,dy5=t5.y-f5.y,len5=Math.sqrt(dx5*dx5+dy5*dy5);
+    var NR5=Math.max(20,R2*0.088);
+    var sx5=f5.x+dx5/len5*NR5,sy5=f5.y+dy5/len5*NR5;
+    var ex5=t5.x-dx5/len5*NR5,ey5=t5.y-dy5/len5*NR5;
+    // Flicker: brightness oscillates fast
+    var flicker=0.55+Math.sin(tick2*0.18)*0.28+Math.sin(tick2*0.31)*0.17;
+    ctx2.save();
+    ctx2.globalAlpha=ta*flicker;
+    ctx2.strokeStyle=AMBER;
+    ctx2.lineWidth=2.8;
+    ctx2.beginPath();ctx2.moveTo(sx5,sy5);ctx2.lineTo(ex5,ey5);ctx2.stroke();
+    // Glow layer — wider, more transparent
+    ctx2.globalAlpha=ta*flicker*0.35;
+    ctx2.lineWidth=7;
+    ctx2.beginPath();ctx2.moveTo(sx5,sy5);ctx2.lineTo(ex5,ey5);ctx2.stroke();
+    ctx2.restore();
+  }
   // T pulses bright
   var pu=Math.sin(e*0.09)*0.5+0.5;
   for(var i=0;i<5;i++) drawNode(kcNodes[i], i===3?'bright':'dim', i===3?pu:0);
@@ -5063,8 +5118,6 @@ function ph4(e){
   // "Choiceless Awareness" below NOW
   var ca=Math.min(1,Math.max(0,e-60)/50);
   kcTxt('Choiceless Awareness',CX2,CY2+nsz*0.65+14,'16',TEAL_R+'0.90)',ca*0.90,false);
-  kcTxt('\u7121\u70ba \u00b7 Silent Living',CX2,H2-20,'13',AMBER_R+'0.75)',Math.min(1,Math.max(0,e-100)/50),false);
-
   // Outward particles
   if(tick2%10===0){
     var pa=Math.random()*Math.PI*2;
