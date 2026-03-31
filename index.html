@@ -1855,9 +1855,9 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
       col: 'teal'
     },
     {
-      tag: 'Phase 2 · RI activates',
-      head: 'Before thought becomes action — RI enters.',
-      body: 'In the gap between Thought and Action, RI activates — shown here as an inner node between T and A. The automatic T → A jump is intercepted. Thought arrives — but before it becomes Action, awareness enters. This is the gap. This is where everything can change.',
+      tag: 'Phase 2 · RI — the mirror activates',
+      head: 'Thought moves to action. It always does. But something else becomes possible.',
+      body: 'T → A is always there. The human cycle never breaks — thought becomes action, action feeds back to knowledge. This is how we are built.\n\nLumeRI is not interrupting this. It is a mirror. When you write into LumeRI and see your patterns over time — something in you begins to notice. A gap. Not a block. Just a moment of awareness alongside the automatic movement.\n\nRI activates here — not between T and A, but beside it. Watching.',
       col: 'amber'
     },
     {
@@ -1877,6 +1877,18 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
       head: 'From RI, a different action becomes possible.',
       body: 'Not reaction. Not suppression. A* — action arising from what is actually seen now, not from old conditioning. RI passes to A* on the orbit. The same situation. A completely different response. The loop opens.',
       col: 'amber'
+    },
+    {
+      tag: 'Phase 6 · A* returns to K',
+      head: 'The action completes — but the loop is different now.',
+      body: 'A* does not disappear. It feeds back into Knowledge — as all action does. But this time, it is not reinforcing the old pattern. The conditioning is not deepened. One layer, quietly, begins to peel. What was accumulated through years of reaction — starts to thin. Not through effort. Through seeing.',
+      col: 'gold'
+    },
+    {
+      tag: 'Phase 7 · K — one step back',
+      head: 'Knowledge itself becomes a little freer.',
+      body: 'The K node is not sharper with more information. It is lighter — with less noise. One fear seen. One inherited belief recognised. One layer of conditioning that no longer needs to be carried. The cycle restarts. From here. A little more free than before.',
+      col: 'gold'
     }
   ];
 
@@ -1896,7 +1908,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     const dots  = document.getElementById('lib-dots');
     if (!pills || !dots) return;
     // Short labels for pills
-    const shortTags = ['1 · Loop','2 · Pause','3 · Trace','4 · Root','5 · A*'];
+    const shortTags = ['1 · Loop','2 · Pause','3 · Trace','4 · Root','5 · A*','6 · Returns','7 · Free'];
     pills.innerHTML = PHASES.map((ph, i) => `
       <div id="pill-${i}" onclick="libGoTo(${i})" style="
         flex-shrink:0;
@@ -1978,7 +1990,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     const content = document.getElementById('lib-content');
     if (!content) return;
     const ph = PHASES[p];
-    const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)' };
+    const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)', gold: 'rgba(245,197,24,0.85)' };
     const bodyFormatted = ph.body.split('\n').join('<br/>');
     content.innerHTML = `
       <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:${colMap[ph.col]};margin-bottom:8px;">Phase ${p+1} · ${ph.tag}</div>
@@ -2032,7 +2044,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     if (content) {
       const tl = TRACE_LABELS[traceStep];
       const ph = PHASES[2];
-      const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)' };
+      const colMap = { teal: 'rgba(45,212,191,0.65)', amber: 'rgba(232,160,32,0.75)', gold: 'rgba(245,197,24,0.85)' };
       const descHTML = traceDone
         ? '<div style="font-family:DM Sans,sans-serif;font-size:14px;color:rgba(232,253,251,0.88);line-height:1.6;font-weight:400;margin-bottom:10px;">' + tl.desc + '</div>'
           + '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:rgba(200,240,238,0.68);line-height:1.75;font-weight:300;">' + tl.context + '</div>'
@@ -2122,7 +2134,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     const riR = nr * 1.15; // slightly larger than K-cycle nodes
 
     // Phase label at top
-    const phaseNames = ['Phase 1 — Conditioning loop','Phase 2 — RI activates','Phase 3 — Tracing backward','Phase 4 — Source seen','Phase 5 — A* response'];
+    const phaseNames = ['Phase 1 — Conditioning loop','Phase 2 — RI activates','Phase 3 — Tracing backward','Phase 4 — Source seen','Phase 5 — A* response','Phase 6 — A* returns to K','Phase 7 — Knowledge, freed'];
     ctx.font = `500 ${Math.max(7, 8.5 * sc)}px 'DM Sans',sans-serif`;
     ctx.fillStyle = 'rgba(45,212,191,0.38)';
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
@@ -2162,46 +2174,51 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     }
 
     // ────────────────────────────────────────────
-    // PHASE 1: RI activates in T→A gap
-    // Show T→RI arrow. T→A path "intercepted".
-    // RI pulses/breathes.
+    // PHASE 1: RI — the mirror activates beside T→A gap
+    // T→A always runs. RI is a witness, not an interceptor.
     // ────────────────────────────────────────────
     if (phase === 1) {
-      // Show the K→E→M→T arrows (conditioning approach, faded)
+      // Show K→E→M→T arrows (conditioning approach, faded)
       for (let i = 0; i < 4; i++) {
         const f=nodes[i], t2=nodes[i+1];
         const dx=t2.x-f.x, dy=t2.y-f.y, len=Math.sqrt(dx*dx+dy*dy);
         const ux=dx/len, uy=dy/len;
-        drawArrow(ctx, f.x+ux*nr, f.y+uy*nr, t2.x-ux*nr, t2.y-uy*nr, AM_, 0.25, 1.2*sc, sc, false);
+        drawArrow(ctx, f.x+ux*nr, f.y+uy*nr, t2.x-ux*nr, t2.y-uy*nr, AM_, 0.22, 1.2*sc, sc, false);
       }
 
-      // T→RI activation arrow — draws in during first third of loop
-      const actP = lp < 0.4 ? cl(lp / 0.4) : 1;
-      const dxTR=RI.x-T.x, dyTR=RI.y-T.y, lenTR=Math.sqrt(dxTR*dxTR+dyTR*dyTR);
-      const uxTR=dxTR/lenTR, uyTR=dyTR/lenTR;
-      const exTR=T.x+uxTR*(nr+(lenTR-nr*2)*actP);
-      const eyTR=T.y+uyTR*(nr+(lenTR-nr*2)*actP);
-      ctx.beginPath(); ctx.moveTo(T.x+uxTR*nr, T.y+uyTR*nr); ctx.lineTo(exTR, eyTR);
-      ctx.strokeStyle=G_+'0.75)'; ctx.lineWidth=2*sc;
-      ctx.shadowColor=G_+'0.35)'; ctx.shadowBlur=10; ctx.stroke(); ctx.shadowBlur=0;
-      if (actP > 0.85) {
-        const ang2=Math.atan2(eyTR-(T.y+uyTR*nr),exTR-(T.x+uxTR*nr));
-        ctx.save(); ctx.translate(exTR,eyTR); ctx.rotate(ang2);
-        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-9*sc,-4*sc); ctx.lineTo(-9*sc,4*sc);
-        ctx.closePath(); ctx.fillStyle=G_+'0.85)'; ctx.fill(); ctx.restore();
-      }
+      // T→A arrow — always present, full strength, teal
+      // This is the unbroken human cycle. LumeRI does not break it.
+      const dxTA=A.x-T.x, dyTA=A.y-T.y, lenTA=Math.sqrt(dxTA*dxTA+dyTA*dyTA);
+      const uxTA=dxTA/lenTA, uyTA=dyTA/lenTA;
+      ctx.beginPath();
+      ctx.moveTo(T.x+uxTA*nr, T.y+uyTA*nr);
+      ctx.lineTo(A.x-uxTA*nr, A.y-uyTA*nr);
+      ctx.strokeStyle=AM_+'0.55)'; ctx.lineWidth=2*sc;
+      ctx.shadowColor=AM_+'0.20)'; ctx.shadowBlur=8; ctx.stroke(); ctx.shadowBlur=0;
+      // T→A arrowhead
+      const angTA=Math.atan2(A.y-T.y, A.x-T.x);
+      ctx.save(); ctx.translate(A.x-uxTA*nr, A.y-uyTA*nr); ctx.rotate(angTA);
+      ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-9*sc,-4*sc); ctx.lineTo(-9*sc,4*sc);
+      ctx.closePath(); ctx.fillStyle=AM_+'0.60)'; ctx.fill(); ctx.restore();
 
-      // Single clean label: show "The Gap" above the T→RI arrow midpoint
-      // Only one label, positioned above the arrow, never near RI node text
-      const ga = lp < 0.15 ? lp/0.15 : lp > 0.85 ? (1-lp)/0.15 : 1;
-      const gapMidX = (T.x + RI.x) / 2, gapMidY = (T.y + RI.y) / 2;
-      // Push label to the LEFT of the T→RI arrow so it doesn't crowd RI
+      // "T → A always" label near midpoint of T→A arrow
+      const midTAx=(T.x+A.x)/2, midTAy=(T.y+A.y)/2;
+      const labelPulse=0.5+0.5*Math.sin(phaseTick*0.030);
       ctx.font=`italic ${Math.max(8,9*sc)}px 'Cormorant Garamond',serif`;
-      ctx.fillStyle=G_+ga*.60+')';
-      ctx.textAlign='right'; ctx.textBaseline='middle';
-      ctx.fillText('the gap', gapMidX - 8*sc, gapMidY - 10*sc);
+      ctx.fillStyle=AM_+(0.38+labelPulse*0.18)+')';
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      ctx.fillText('always', midTAx, midTAy - 12*sc);
 
-      // RI glows — actively breathing
+      // RI glows beside the gap — a witness, not a blocker
+      // Its glow illuminates the T→A space without stopping it
+      const ga = lp < 0.15 ? lp/0.15 : lp > 0.85 ? (1-lp)/0.15 : 1;
+      ctx.font=`italic ${Math.max(7,8*sc)}px 'Cormorant Garamond',serif`;
+      ctx.fillStyle=G_+ga*.52+')';
+      ctx.textAlign='center'; ctx.textBaseline='middle';
+      // Label above RI: "a mirror, not a block"
+      ctx.fillText('a mirror, watching', RI.x, RI.y - riR - 16*sc);
+
+      // RI glows — actively breathing, beside the gap
       _drawRINode(ctx, RI, riR, sc, 0.85 + 0.15*lp, true, phaseTick);
     }
 
@@ -2416,6 +2433,119 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
       _drawRINode(ctx, RI, riR, sc, 0.85+ap*.15, true, phaseTick);
     }
 
+    // ── PHASE 6: A* feeds back into K — peeling, not conditioning ──
+    if (phase === 5) {
+      const lp2 = (phaseTick % LOOP) / LOOP;
+      const ap2 = Math.sin(lp2 * Math.PI);
+      const G2_ = 'rgba(245,197,24,';
+
+      // Faint RI→A* residual arc (A* just happened)
+      const dxRA=A.x-RI.x, dyRA=A.y-RI.y, lenRA=Math.sqrt(dxRA*dxRA+dyRA*dyRA);
+      const uxRA=dxRA/lenRA, uyRA=dyRA/lenRA;
+      ctx.beginPath();
+      ctx.moveTo(RI.x+uxRA*riR, RI.y+uyRA*riR);
+      ctx.lineTo(A.x-uxRA*nr, A.y-uyRA*nr);
+      ctx.strokeStyle=G2_+'0.18)'; ctx.lineWidth=1.5*sc;
+      ctx.setLineDash([3*sc,4*sc]); ctx.stroke(); ctx.setLineDash([]);
+
+      // A→K arc — gold, traveling dot, the return
+      const dxAK=K.x-A.x, dyAK=K.y-A.y, lenAK=Math.sqrt(dxAK*dxAK+dyAK*dyAK);
+      const uxAK=dxAK/lenAK, uyAK=dyAK/lenAK;
+      const drawAK = cl(lp2 < 0.5 ? lp2*2 : 1);
+      const exAK=A.x+uxAK*(nr+(lenAK-nr-nr)*drawAK);
+      const eyAK=A.y+uyAK*(nr+(lenAK-nr-nr)*drawAK);
+      ctx.beginPath(); ctx.moveTo(A.x+uxAK*nr, A.y+uyAK*nr); ctx.lineTo(exAK, eyAK);
+      ctx.strokeStyle=G2_+(0.45+ap2*.30)+')'; ctx.lineWidth=2.5*sc;
+      ctx.shadowColor=G2_+'0.35)'; ctx.shadowBlur=12; ctx.stroke(); ctx.shadowBlur=0;
+      // Arrowhead
+      if (drawAK > 0.85) {
+        const ang=Math.atan2(eyAK-(A.y+uyAK*nr), exAK-(A.x+uxAK*nr));
+        ctx.save(); ctx.translate(exAK,eyAK); ctx.rotate(ang);
+        ctx.beginPath(); ctx.moveTo(0,0); ctx.lineTo(-10*sc,-4.5*sc); ctx.lineTo(-10*sc,4.5*sc);
+        ctx.closePath(); ctx.fillStyle=G2_+(0.65+ap2*.25)+')'; ctx.fill(); ctx.restore();
+      }
+      // Traveling dot on A→K
+      const dotP2 = (lp2 % 1);
+      const dotX2 = A.x+uxAK*(nr+(lenAK-nr-nr)*dotP2);
+      const dotY2 = A.y+uyAK*(nr+(lenAK-nr-nr)*dotP2);
+      ctx.beginPath(); ctx.arc(dotX2, dotY2, 4*sc, 0, Math.PI*2);
+      ctx.fillStyle=G2_+(0.75+ap2*.2)+')'; ctx.fill();
+
+      // "peeling" label near midpoint of A→K
+      const midAKx = (A.x+K.x)/2, midAKy = (A.y+K.y)/2;
+      if (drawAK > 0.55) {
+        const la2=cl((drawAK-0.55)/0.45);
+        ctx.font=`italic ${Math.max(8,9*sc)}px 'Cormorant Garamond',serif`;
+        ctx.fillStyle=G2_+la2*.65+')';
+        ctx.textAlign='center'; ctx.textBaseline='middle';
+        ctx.fillText('not adding — peeling', midAKx, midAKy - 14*sc);
+      }
+
+      // K pulses gold — receiving, lighter
+      const kPulse6=0.40+0.35*Math.sin(phaseTick*0.030);
+      const kg6=ctx.createRadialGradient(K.x,K.y,0,K.x,K.y,nr*3.8);
+      kg6.addColorStop(0,G2_+kPulse6*.28+')'); kg6.addColorStop(1,G2_+'0)');
+      ctx.fillStyle=kg6; ctx.beginPath(); ctx.arc(K.x,K.y,nr*3.8,0,Math.PI*2); ctx.fill();
+
+      // RI fades — it has done its work
+      _drawRINode(ctx, RI, riR, sc, 0.30, false, phaseTick);
+    }
+
+    // ── PHASE 7: K — one layer peeled, cycle restarts lighter ──
+    if (phase === 6) {
+      const lp3 = (phaseTick % LOOP) / LOOP;
+      const ap3 = Math.sin(lp3 * Math.PI);
+      const G2_ = 'rgba(245,197,24,';
+
+      // K glows gold strongly — the freed node
+      const kPulse7=0.55+0.40*Math.sin(phaseTick*0.025);
+      const kg7=ctx.createRadialGradient(K.x,K.y,0,K.x,K.y,nr*5.0);
+      kg7.addColorStop(0,G2_+kPulse7*.42+')'); kg7.addColorStop(1,G2_+'0)');
+      ctx.fillStyle=kg7; ctx.beginPath(); ctx.arc(K.x,K.y,nr*5.0,0,Math.PI*2); ctx.fill();
+
+      // "one step back" label above K
+      ctx.font=`italic ${Math.max(9,10*sc)}px 'Cormorant Garamond',serif`;
+      ctx.fillStyle=G2_+(0.55+kPulse7*.25)+')';
+      ctx.textAlign='center'; ctx.textBaseline='bottom';
+      ctx.fillText('one layer, seen — and released', K.x, K.y-nr-10*sc);
+
+      // Faint full conditioning loop — showing it still runs, but lighter
+      [[K,E],[E,M],[M,T],[T,A],[A,K]].forEach(([f,t2])=>{
+        const dx=t2.x-f.x,dy=t2.y-f.y,len=Math.sqrt(dx*dx+dy*dy);
+        const ux=dx/len,uy=dy/len;
+        ctx.beginPath(); ctx.moveTo(f.x+ux*nr,f.y+uy*nr); ctx.lineTo(t2.x-ux*nr,t2.y-uy*nr);
+        ctx.strokeStyle=G2_+'0.12)'; ctx.lineWidth=1*sc;
+        ctx.setLineDash([2*sc,4*sc]); ctx.stroke(); ctx.setLineDash([]);
+      });
+
+      // One traveling teal dot — the cycle restarting, freer
+      const T_ = 'rgba(45,212,191,';
+      const seg7=Math.floor(lp3*5), segP7=(lp3*5)%1;
+      const seqNodes=[K,E,M,T,A];
+      if (seg7 < 4) {
+        const f7=seqNodes[seg7], t7=seqNodes[seg7+1];
+        const dx7=t7.x-f7.x,dy7=t7.y-f7.y,len7=Math.sqrt(dx7*dx7+dy7*dy7);
+        const ux7=dx7/len7,uy7=dy7/len7;
+        const dotX7=f7.x+ux7*(nr+(len7-nr-nr)*segP7);
+        const dotY7=f7.y+uy7*(nr+(len7-nr-nr)*segP7);
+        ctx.beginPath(); ctx.arc(dotX7,dotY7,4.5*sc,0,Math.PI*2);
+        ctx.fillStyle=T_+'0.70)'; ctx.fill();
+        // Glow around dot
+        const dg7=ctx.createRadialGradient(dotX7,dotY7,0,dotX7,dotY7,12*sc);
+        dg7.addColorStop(0,T_+'0.25)'); dg7.addColorStop(1,T_+'0)');
+        ctx.fillStyle=dg7; ctx.beginPath(); ctx.arc(dotX7,dotY7,12*sc,0,Math.PI*2); ctx.fill();
+      }
+
+      // "cycle restarts" subtle caption bottom of canvas
+      ctx.font=`${Math.max(7,8*sc)}px 'DM Sans',sans-serif`;
+      ctx.fillStyle=T_+'0.35)';
+      ctx.textAlign='center'; ctx.textBaseline='bottom';
+      ctx.fillText('The cycle restarts. A little more free.', W/2, H - 6*sc);
+
+      // RI very faint — present, always
+      _drawRINode(ctx, RI, riR, sc, 0.18, false, phaseTick);
+    }
+
     // ────────────────────────────────────────────
     // RI NODE — draw function (on orbit, between T and A)
     // ────────────────────────────────────────────
@@ -2471,7 +2601,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     nodes.forEach((n,i) => {
       const isK=i===0, isA=i===4;
       const kGold=(isK&&phase>=3)?cl(phase===3?(0.5+0.5*Math.sin(phaseTick*0.035)):1):0;
-      const aGold=(isA&&phase===4)?cl(lp<0.5?lp*2:1):0;
+      const aGold=(isA&&(phase===4||phase===5))?cl(lp<0.5?lp*2:1):0;
       const col=kGold>.1
         ?`rgba(${Math.round(15+kGold*230)},${Math.round(184+kGold*13)},${Math.round(164-kGold*98)},`
         :aGold>.1?G_:T_;
@@ -3908,7 +4038,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
 <div style="max-width:1200px;margin:32px auto 0;padding:0 24px;">
 
   <!-- Section label -->
-  <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.45);text-align:center;margin-bottom:20px;">The K-Cycle · Five Phases · From Knowing to Being</div>
+  <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.45);text-align:center;margin-bottom:20px;">The K-Cycle · Seven Phases · From Knowing to Being</div>
 
   <!-- Phase tabs -->
   <div id="kcTabs" style="display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap;">
@@ -3926,6 +4056,12 @@ As for how often: there is no right frequency. Some people write daily. Some wri
     </button>
     <button onclick="kcGoPhase(4)" id="kctab4" class="kc-tab">
       <span class="kct-num">5</span><span class="kct-label">Arrival</span>
+    </button>
+    <button onclick="kcGoPhase(5)" id="kctab5" class="kc-tab">
+      <span class="kct-num">6</span><span class="kct-label">Returns</span>
+    </button>
+    <button onclick="kcGoPhase(6)" id="kctab6" class="kc-tab">
+      <span class="kct-num">7</span><span class="kct-label">Free</span>
     </button>
   </div>
 
@@ -4004,14 +4140,40 @@ As for how often: there is no right frequency. Some people write daily. Some wri
           <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">The stillness that is not absence but fullness of a different order. The awareness in which all thoughts appear — unchanged, undamaged, already whole.<br/><br/><em style="color:#2dd4bf;">The present moment, undivided. Pure love. This is the Tao living.</em></p>
         </div>
         <div style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap;">
-          <button onclick="kcGoPhase(0)" class="kc-next-btn" style="background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.25);color:rgba(45,212,191,0.60);">
-            &larr; Begin again
+          <button onclick="kcGoPhase(5)" class="kc-next-btn">
+            Phase 6 — A* Returns &rarr;
           </button>
         </div>
       </div>
 
     </div>
   </div>
+
+      <!-- Phase 5 panel -->
+      <div id="kcpanel5" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,197,24,0.80);margin-bottom:10px;">Phase 6 · A* Returns to K</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">The action completes — but the loop is different now.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">A* feeds back into Knowledge — as all action does. But this time it is not reinforcing the old pattern. The conditioning is not deepened.<br/><br/>One layer, quietly, begins to peel. What was accumulated through years of reaction — starts to thin. Not through effort. Through seeing.<br/><br/><em style="color:rgba(245,197,24,0.85);">Not adding. Peeling.</em></p>
+        </div>
+        <button onclick="kcGoPhase(6)" class="kc-next-btn" style="margin-top:24px;border-color:rgba(245,197,24,0.35);color:rgba(245,197,24,0.80);">
+          Phase 7 — Knowledge, Freed &rarr;
+        </button>
+      </div>
+
+      <!-- Phase 6 panel -->
+      <div id="kcpanel6" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
+        <div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,197,24,0.80);margin-bottom:10px;">Phase 7 · The Return</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:24px;">You return to the beginning.<br/>But you are not the same.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:2.0;margin-bottom:0;">The loop still runs.<br/>Knowledge still shapes experience.<br/>Thought still moves to action.<br/><br/>But one layer has been seen.<br/>One inherited belief, recognised.<br/>One fear that was never actually yours —<br/><em style="color:rgba(245,197,24,0.90);">quietly set down.</em><br/><br/>The cycle continues.<br/><em style="color:rgba(45,212,191,0.90);">A little more free than before.</em></p>
+        </div>
+        <div style="margin-top:24px;">
+          <button onclick="kcGoPhase(0)" class="kc-next-btn" style="background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.25);color:rgba(45,212,191,0.60);">
+            &larr; Begin again
+          </button>
+        </div>
+      </div>
 
   <!-- Progress dots -->
   <div style="display:flex;justify-content:center;gap:10px;margin-top:16px;" id="kcDots">
@@ -4020,6 +4182,8 @@ As for how often: there is no right frequency. Some people write daily. Some wri
     <div class="kc-dot" onclick="kcGoPhase(2)"></div>
     <div class="kc-dot" onclick="kcGoPhase(3)"></div>
     <div class="kc-dot" onclick="kcGoPhase(4)"></div>
+    <div class="kc-dot" onclick="kcGoPhase(5)"></div>
+    <div class="kc-dot" onclick="kcGoPhase(6)"></div>
   </div>
 
 </div>
@@ -4685,9 +4849,11 @@ var PH2=[
   {t:'Reflective Intelligence Enters',d:'The gap. The reverse journey begins.',dur:600},
   {t:'The Reverse Mapping',           d:'T \u2192 M \u2192 E \u2192 K \u00b7 unknowing the known',dur:800},
   {t:'\u7121\u70ba \u00b7 Wu Wei \u00b7 The Tao Living',d:'Nothing to know. Act from stillness.',dur:700},
-  {t:'Silent Living',                 d:'Nothing to become. You are already whole.',dur:9999}
+  {t:'Silent Living',                 d:'Nothing to become. You are already whole.',dur:9999},
+  {t:'A* Returns to K',              d:'Not adding. Peeling.',dur:9999},
+  {t:'The Return',    d:'A little more free than before.',dur:9999}
 ];
-var TRACKS=['Jungian \u00b7 The Known','Reflective Intelligence','The Tao Living','Wu Wei','Silent Living'];
+var TRACKS=['Jungian \u00b7 The Known','Reflective Intelligence','The Tao Living','Wu Wei','Silent Living','A* Returns','K — Freed'];
 
 var cv2,ctx2,W2,H2,CX2,CY2,R2;
 var tick2=0,kcPhase=0,kcPs=0,kcParts=[];
@@ -5054,7 +5220,81 @@ function ph4(e){
   kcStepParts();
 }
 
-// ── MAIN DRAW LOOP ───────────────────────────────────────
+// ── PHASE 5: A* feeds back into K — peeling ──────────────
+function ph5(e){
+  var GOLD='rgba(245,197,24,';
+  // Faint full loop
+  drawEdge(0,1,TEAL,0.12,1.2);
+  drawEdge(1,2,TEAL,0.12,1.2);
+  drawEdge(2,3,TEAL,0.12,1.2);
+  drawEdge(3,4,TEAL,0.12,1.2);
+  // A★ → K gold arc animating
+  var aa=Math.min(1,e/80);
+  if(aa>0.05){
+    var f5=kcNodes[5],k5=kcNodes[0];
+    var dx5=k5.x-f5.x,dy5=k5.y-f5.y,len5=Math.sqrt(dx5*dx5+dy5*dy5);
+    var ux5=dx5/len5,uy5=dy5/len5;
+    var nr5=16;
+    var ex5=f5.x+ux5*(nr5+(len5-nr5*2)*aa);
+    var ey5=f5.y+uy5*(nr5+(len5-nr5*2)*aa);
+    ctx2.save();
+    ctx2.beginPath();ctx2.moveTo(f5.x+ux5*nr5,f5.y+uy5*nr5);ctx2.lineTo(ex5,ey5);
+    ctx2.strokeStyle=GOLD+(0.55+aa*0.25)+')';ctx2.lineWidth=2.5;ctx2.stroke();
+    if(aa>0.85){
+      var ang5=Math.atan2(ey5-(f5.y+uy5*nr5),ex5-(f5.x+ux5*nr5));
+      ctx2.translate(ex5,ey5);ctx2.rotate(ang5);
+      ctx2.beginPath();ctx2.moveTo(0,0);ctx2.lineTo(-10,-4.5);ctx2.lineTo(-10,4.5);
+      ctx2.closePath();ctx2.fillStyle=GOLD+'0.75)';ctx2.fill();
+    }
+    ctx2.restore();
+    // traveling dot
+    var dotX5=f5.x+ux5*(nr5+(len5-nr5*2)*((e%80)/80));
+    var dotY5=f5.y+uy5*(nr5+(len5-nr5*2)*((e%80)/80));
+    ctx2.beginPath();ctx2.arc(dotX5,dotY5,4,0,Math.PI*2);
+    ctx2.fillStyle=GOLD+'0.80)';ctx2.fill();
+  }
+  // All nodes dim, K pulses gold
+  var kpu=0.4+0.4*Math.sin(e*0.05);
+  for(var i=0;i<5;i++) drawNode(kcNodes[i],i===0?'bright':'dim',i===0?kpu:0);
+  drawNode(kcNodes[5],'star',aa*0.60);
+  // "not adding — peeling" label near midpoint
+  if(aa>0.5){
+    var mx5=(kcNodes[5].x+kcNodes[0].x)/2;
+    var my5=(kcNodes[5].y+kcNodes[0].y)/2;
+    kcTxt('not adding — peeling',mx5,my5-20,'13',GOLD+((aa-0.5)*2*0.72)+')',false);
+  }
+  // K glow gold
+  var kg=ctx2.createRadialGradient(kcNodes[0].x,kcNodes[0].y,0,kcNodes[0].x,kcNodes[0].y,R2*0.55);
+  kg.addColorStop(0,GOLD+kpu*0.30+')');kg.addColorStop(1,GOLD+'0)');
+  ctx2.fillStyle=kg;ctx2.beginPath();ctx2.arc(kcNodes[0].x,kcNodes[0].y,R2*0.55,0,Math.PI*2);ctx2.fill();
+  kcStepParts();
+}
+
+// ── PHASE 6: K — one layer peeled, cycle restarts lighter ──
+function ph6(e){
+  var GOLD='rgba(245,197,24,';
+  // Faint full loop — lighter, still running
+  drawEdge(0,1,TEAL,0.18,1.5);
+  drawEdge(1,2,TEAL,0.18,1.5);
+  drawEdge(2,3,TEAL,0.18,1.5);
+  drawEdge(3,4,TEAL,0.18,1.5);
+  drawEdge(4,1,TEAL,0.10,1.2,true);
+  // One teal dot traveling the loop — cycle restarts
+  drawLoopDot(e);
+  // K glows gold strongly
+  var kpu6=0.55+0.40*Math.sin(e*0.04);
+  var kg6=ctx2.createRadialGradient(kcNodes[0].x,kcNodes[0].y,0,kcNodes[0].x,kcNodes[0].y,R2*0.70);
+  kg6.addColorStop(0,GOLD+kpu6*0.44+')');kg6.addColorStop(1,GOLD+'0)');
+  ctx2.fillStyle=kg6;ctx2.beginPath();ctx2.arc(kcNodes[0].x,kcNodes[0].y,R2*0.70,0,Math.PI*2);ctx2.fill();
+  // All nodes dim except K bright gold
+  for(var i=0;i<5;i++) drawNode(kcNodes[i],i===0?'bright':'dim',i===0?kpu6:0);
+  // Two lines of poetry fading in above K — staggered
+  var ta6=Math.min(1,e/60);
+  var ta6b=Math.min(1,Math.max(0,e-70)/50);
+  kcTxt('one fear, seen.',kcNodes[0].x,kcNodes[0].y-64,'13',GOLD+(ta6*0.82)+')',false);
+  kcTxt('one layer, released.',kcNodes[0].x,kcNodes[0].y-44,'13',GOLD+(ta6b*0.68)+')',false);
+  kcStepParts();
+}
 function kcDraw(){
   if(!cv2)return;
 
@@ -5085,6 +5325,8 @@ function kcDraw(){
   else if(kcPhase===2) ph2(e);
   else if(kcPhase===3) ph3(e);
   else if(kcPhase===4) ph4(e);
+  else if(kcPhase===5) ph5(e);
+  else if(kcPhase===6) ph6(e);
 
   ctx2.restore();
   tick2++;
@@ -5108,8 +5350,8 @@ function kcDoSwitch(p){
     if(et)et.textContent=PH2[cp].t;
     if(ed)ed.textContent=PH2[cp].d;
     if(el)el.style.opacity=1;
-    if(cp===4){var rh=document.getElementById('kcrh');if(rh)rh.style.opacity=1;}
-    for(var ci=0;ci<5;ci++){
+    if(cp===6){var rh=document.getElementById('kcrh');if(rh)rh.style.opacity=1;}
+    for(var ci=0;ci<7;ci++){
       var card=document.getElementById('kcc'+ci);
       if(card){card.style.opacity=(ci<=cp)?'1':'0.45';card.style.transform='translateY(0)';}
     }
@@ -5130,7 +5372,7 @@ function kcGoPhase(n){
   // Switch diagram phase
   if(window.kcSetPhase) kcSetPhase(n);
   // Switch panel
-  for(var i=0;i<5;i++){
+  for(var i=0;i<7;i++){
     var panel=document.getElementById('kcpanel'+i);
     var tab  =document.getElementById('kctab'+i);
     var dot  =document.querySelectorAll('.kc-dot')[i];
@@ -5148,6 +5390,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
 
 
+<script>
 // ── 8 Questions scroll reveal ─────────────────────────────
 (function(){
   function revealAll(){
@@ -5192,6 +5435,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
     document.querySelectorAll('#aboutQList .aq-row').forEach(function(r){obs.observe(r);});
   }
 })();
+</script>
 
 </body>
 </html>
