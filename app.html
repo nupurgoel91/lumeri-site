@@ -1364,6 +1364,118 @@
     ::-webkit-scrollbar-thumb { background:rgba(20,184,166,0.25);border-radius:2px; }
 
     /* ══ MILESTONE TOAST — v4.6.0 ══ */
+    /* ══ PATTERNS & JOURNEY REDESIGN CSS ══ */
+
+    /* Window pills */
+    .pw-pill {
+      font-family: var(--sans); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 7px 16px; border-radius: 20px; border: 1.5px solid rgba(20,184,166,0.20);
+      background: transparent; color: rgba(10,61,66,0.40); cursor: pointer; font-weight: 300;
+      transition: all 0.22s; flex-shrink: 0;
+    }
+    .pw-pill:hover { border-color: rgba(20,184,166,0.50); color: var(--teal); background: rgba(20,184,166,0.04); }
+    .pw-active { background: rgba(20,184,166,0.10) !important; border-color: var(--teal-mid) !important; color: var(--teal) !important; font-weight: 600; }
+
+    /* Quality score cards in radar grid */
+    .q-score-card {
+      background: rgba(255,255,255,0.50); border-radius: 12px; border: 1px solid rgba(20,184,166,0.12);
+      padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;
+    }
+    .q-score-icon { font-size: 18px; margin-bottom: 2px; }
+    .q-score-label { font-family: var(--sans); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(10,61,66,0.40); font-weight: 300; }
+    .q-score-val { font-family: var(--serif); font-size: 26px; font-style: italic; color: var(--deep); line-height: 1; }
+    .q-score-sub { font-family: var(--sans); font-size: 10px; color: rgba(20,184,166,0.65); font-weight: 400; }
+
+    /* Pattern frequency bars */
+    .pat-freq-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .pat-freq-label { font-family: var(--serif); font-size: 12px; font-style: italic; color: var(--text-dark); flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .pat-freq-bar-wrap { flex: 0 0 100px; height: 6px; background: rgba(20,184,166,0.10); border-radius: 4px; overflow: hidden; }
+    .pat-freq-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg,#0d5c63,#14b8a6); transition: width 1.2s cubic-bezier(0.34,1.56,0.64,1); }
+    .pat-freq-count { font-family: var(--sans); font-size: 10px; color: rgba(10,61,66,0.35); font-weight: 300; flex: 0 0 20px; text-align: right; }
+
+    /* NRM cards */
+    .pat-nrm-card { background: rgba(255,255,255,0.50); border-radius: 12px; border: 1px solid rgba(20,184,166,0.12); padding: 14px 16px; margin-bottom: 10px; }
+    .pat-nrm-label { font-family: var(--sans); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(20,184,166,0.65); font-weight: 600; margin-bottom: 4px; }
+    .pat-nrm-desc { font-family: var(--sans); font-size: 13px; color: var(--text-body); line-height: 1.6; font-weight: 300; margin-bottom: 6px; }
+    .pat-nrm-note { font-family: var(--serif); font-size: 12px; font-style: italic; color: rgba(10,61,66,0.45); }
+
+    /* Recurrence callout */
+    .pat-recurrence { padding: 16px 18px; border-radius: 14px; background: linear-gradient(135deg,rgba(180,94,10,0.07),rgba(232,163,58,0.05)); border: 1px solid rgba(180,94,10,0.18); margin-bottom: 20px; }
+    .pat-recurrence-label { font-family: var(--sans); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(180,94,10,0.55); margin-bottom: 7px; }
+    .pat-recurrence-text { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--text-dark); line-height: 1.65; }
+
+    /* Journey milestones */
+    .jour-milestone {
+      background: linear-gradient(135deg,rgba(212,168,67,0.10),rgba(20,184,166,0.06));
+      border: 1px solid rgba(212,168,67,0.22); border-radius: 16px;
+      padding: 18px 18px 16px; margin-bottom: 12px; position: relative; overflow: hidden;
+    }
+    .jour-milestone::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,rgba(212,168,67,0.6),rgba(20,184,166,0.3)); }
+    .jour-milestone-icon { font-size: 24px; margin-bottom: 8px; }
+    .jour-milestone-title { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--deep); margin-bottom: 6px; line-height: 1.3; }
+    .jour-milestone-body { font-family: var(--sans); font-size: 12px; color: var(--text-soft); font-weight: 300; line-height: 1.65; }
+
+    /* Journey session cards */
+    .jour-session-card { background: rgba(255,255,255,0.55); border-radius: 14px; border: 1px solid rgba(20,184,166,0.12); margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; }
+    .jour-session-card:hover { border-color: rgba(20,184,166,0.28); box-shadow: 0 6px 24px rgba(10,61,66,0.08); }
+    .jour-session-header { padding: 16px 18px; cursor: pointer; }
+    .jour-session-date { font-family: var(--sans); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(10,61,66,0.35); margin-bottom: 3px; font-weight: 300; }
+    .jour-session-pattern { font-family: var(--serif); font-size: 14px; font-style: italic; color: rgba(20,184,166,0.75); margin-bottom: 5px; }
+    .jour-session-preview { font-family: var(--serif); font-size: 15px; color: var(--text-body); line-height: 1.5; }
+    .jour-session-badges { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; align-items: center; }
+    .jour-badge { font-family: var(--sans); font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 12px; font-weight: 400; }
+    .jour-badge-recur { background: rgba(20,184,166,0.10); color: rgba(10,61,66,0.55); border: 1px solid rgba(20,184,166,0.20); }
+    .jour-badge-seen   { background: rgba(20,184,166,0.08); color: rgba(13,92,99,0.65); }
+    .jour-badge-stirred{ background: rgba(212,168,67,0.10); color: rgba(140,95,15,0.75); }
+    .jour-badge-heavy  { background: rgba(180,60,60,0.07); color: rgba(140,40,40,0.60); }
+    .jour-badge-gentle { background: rgba(20,184,166,0.06); color: rgba(10,61,66,0.50); }
+    .jour-badge-deep   { background: rgba(100,80,160,0.08); color: rgba(70,50,130,0.65); }
+    .jour-session-body { display: none; padding: 0 18px 18px; border-top: 1px solid rgba(20,184,166,0.08); }
+    .jour-session-body.open { display: block; }
+    .jour-session-body-label { font-family: var(--sans); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(20,184,166,0.45); margin: 14px 0 6px; }
+    .jour-session-text { font-family: var(--sans); font-size: 13px; color: var(--text-body); line-height: 1.75; font-weight: 300; white-space: pre-wrap; }
+    .jour-session-reflection { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--text-dark); line-height: 1.75; }
+    .jour-session-scores { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .jour-score-pill { background: rgba(20,184,166,0.06); border-radius: 10px; border: 1px solid rgba(20,184,166,0.12); padding: 8px 10px; text-align: center; }
+    .jour-score-pill-label { font-family: var(--sans); font-size: 8px; letter-spacing: 1px; text-transform: uppercase; color: rgba(10,61,66,0.35); font-weight: 300; }
+    .jour-score-pill-val { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--deep); }
+
+    /* ── Time window buttons ── */
+    .pat-window-btn {
+      font-family: var(--sans); font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(20,184,166,0.20);
+      background: transparent; color: rgba(12,46,52,0.40); cursor: pointer; font-weight: 300;
+      transition: all 0.2s;
+    }
+    .pat-window-btn:hover { border-color: rgba(20,184,166,0.50); color: var(--teal-dark); }
+    .pat-window-active { background: rgba(20,184,166,0.10); border-color: rgba(20,184,166,0.50); color: var(--teal-dark) !important; font-weight: 400; }
+
+    /* ── Journey timeline ── */
+    .jour-timeline { position: relative; padding: 8px 0 16px 24px; margin: 8px 0 24px; }
+    .jour-timeline::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:1px; background:rgba(20,184,166,0.15); }
+    .jour-tl-dot { position: absolute; left: -20px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; border-radius: 50%; border: 2px solid rgba(20,184,166,0.30); background: var(--bg-white); transition: all 0.2s; }
+    .jour-tl-entry { position: relative; margin-bottom: 12px; padding: 10px 12px; border-radius: 6px; background: rgba(20,184,166,0.03); border: 1px solid rgba(20,184,166,0.10); cursor: pointer; transition: all 0.2s; }
+    .jour-tl-entry:hover { border-color: rgba(20,184,166,0.30); background: rgba(20,184,166,0.06); }
+    .jour-tl-date { font-family: var(--sans); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: rgba(12,46,52,0.35); margin-bottom: 3px; }
+    .jour-tl-pattern { font-family: var(--serif); font-size: 13px; font-style: italic; color: rgba(20,184,166,0.70); margin-bottom: 3px; }
+    .jour-tl-preview { font-family: var(--serif); font-size: 14px; color: var(--text-soft); line-height: 1.4; }
+    .jour-tl-badges { display: flex; gap: 6px; margin-top: 5px; flex-wrap: wrap; }
+    .jour-tl-badge { font-family: var(--sans); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 10px; }
+    .jour-tl-badge.heavy  { background: rgba(180,60,60,0.08); color: rgba(180,60,60,0.70); }
+    .jour-tl-badge.light  { background: rgba(20,184,166,0.08); color: rgba(20,184,166,0.70); }
+    .jour-tl-badge.deep   { background: rgba(212,168,67,0.10); color: rgba(180,130,30,0.80); }
+
+    /* ── Milestone cards ── */
+    .jour-milestone { margin: 16px 0; padding: 14px 16px; border-radius: 8px; background: linear-gradient(135deg, rgba(212,168,67,0.08), rgba(20,184,166,0.06)); border: 1px solid rgba(212,168,67,0.20); }
+    .jour-milestone-icon { font-size: 20px; margin-bottom: 6px; }
+    .jour-milestone-title { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--text-dark); margin-bottom: 4px; }
+    .jour-milestone-body { font-family: var(--sans); font-size: 12px; color: rgba(12,46,52,0.50); font-weight: 300; line-height: 1.5; }
+
+    /* ── Pattern recurrence callout ── */
+    .pat-recurrence { margin: 16px 0; padding: 12px 14px; border-radius: 6px; background: rgba(212,168,67,0.06); border-left: 2px solid rgba(212,168,67,0.35); }
+    .pat-recurrence-label { font-family: var(--sans); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(180,130,30,0.60); margin-bottom: 5px; }
+    .pat-recurrence-text { font-family: var(--serif); font-size: 14px; font-style: italic; color: var(--text-dark); line-height: 1.5; }
+
     .milestone-toast {
       position: fixed;
       bottom: 80px;
@@ -1839,8 +1951,8 @@
     </div>
     <div class="system-name" style="margin-bottom:10px;">Reflective Intelligence</div>
     <div class="pitch" id="regPitch" style="text-align:center;margin-bottom:10px;">
-      <p class="pitch-soft">Most tools tell you what to think about yourself.</p>
-      <p class="pitch-strong">This one shows you <span class="hi">what you're already thinking.</span></p>
+      <p class="pitch-soft">You already know more than you realise.</p>
+      <p class="pitch-strong">Writing shows you <span class="hi">how the mind was moving.</span></p>
     </div>
     <div style="text-align:center;margin-bottom:18px;margin-top:-6px;">
       <button onclick="showAboutFromReg()" style="background:none;border:none;font-family:var(--serif);font-size:clamp(15px,3vw,18px);font-style:italic;color:var(--teal-mid);cursor:pointer;text-decoration:underline;text-underline-offset:4px;letter-spacing:0.2px;">
@@ -1953,7 +2065,7 @@
     <div class="writing-card">
       <div class="panel-label">Your words</div>
       <textarea id="journalInput"
-        placeholder="What feels most real right now? Write as little or as much as you need."
+        placeholder="What is actually present for you right now? Write as little or as much as you need. There is no right way."
         oninput="updateWordCount()"></textarea>
       <div class="word-row">
         <span class="word-hint" id="wordHint">A few lines is enough.</span>
@@ -1986,10 +2098,23 @@
     <div id="reflectContent" style="display:none;">
       <div class="refl-label" id="reflLabel">Reflection for the Day</div>
       <div class="refl-text" id="reflText"></div>
-      <!-- v4.1: Human Condition pattern — research/analysis only, never shown to user -->
-      <div id="patternChipWrap" style="display:none;" aria-hidden="true">
-        <span id="patternChipLabel"></span>
+      <!-- v5.0: Thought-movement pattern — shown as a quiet observation, not a diagnosis -->
+      <div id="patternChipWrap" style="display:none;margin:20px 0 8px;text-align:center;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(20,184,166,0.50);margin-bottom:6px;">what the mirror noticed</div>
+        <div style="display:inline-block;padding:8px 16px;border:1px solid rgba(20,184,166,0.20);border-radius:20px;background:rgba(20,184,166,0.05);">
+          <span id="patternChipLabel" style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--text-dark);"></span>
+        </div>
+        <div style="font-family:var(--sans);font-size:11px;color:rgba(12,46,52,0.35);margin-top:6px;font-weight:300;">This is what thought was doing — not what you are.</div>
       </div>
+      <!-- v5.0: One thing to hold — a single sentence crystallised from the reflection -->
+      <div id="oneThingWrap" style="display:none;margin:24px 0 4px;padding:16px 20px;border-left:2px solid rgba(20,184,166,0.35);background:rgba(20,184,166,0.04);border-radius:0 6px 6px 0;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(20,184,166,0.45);margin-bottom:6px;">one thing to hold</div>
+        <div id="oneThingText" style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--text-dark);line-height:1.55;"></div>
+      </div>
+
+      <!-- Reverse Trace: questions to carry forward in the K-cycle journey -->
+      <div id="reverseTraceWrap" style="display:none;margin:4px 0 20px;"></div>
+
       <div class="choice-label">Take the next step</div>
       <div class="choice-cards">
         <div class="choice-card" id="deepCard" onclick="goDeeper()">
@@ -2023,12 +2148,10 @@
       <div id="clearingLines"></div>
       <div class="clearing-feedback" id="clearingFeedback">
         <div class="feedback-prompt">How did this land</div>
-        <div class="feedback-cards">
-          <div class="feedback-card" onclick="submitFeedback('Seen',this)"><span class="feedback-word">Seen</span><span class="feedback-desc">Felt true.</span></div>
+        <div class="feedback-cards" style="grid-template-columns:1fr 1fr 1fr;">
+          <div class="feedback-card" onclick="submitFeedback('Seen',this)"><span class="feedback-word">Seen</span><span class="feedback-desc">It landed.</span></div>
           <div class="feedback-card" onclick="submitFeedback('Stirred',this)"><span class="feedback-word">Stirred</span><span class="feedback-desc">Something moved.</span></div>
-          <div class="feedback-card" onclick="submitFeedback('Gentle',this)"><span class="feedback-word">Gentle</span><span class="feedback-desc">Good, not deep.</span></div>
-          <div class="feedback-card" onclick="submitFeedback('Distant',this)"><span class="feedback-word">Distant</span><span class="feedback-desc">Did not reach me.</span></div>
-          <div class="feedback-card" onclick="submitFeedback('Heavy',this)"><span class="feedback-word">Heavy</span><span class="feedback-desc">Too much today.</span></div>
+          <div class="feedback-card" onclick="submitFeedback('Quiet',this)"><span class="feedback-word">Quiet</span><span class="feedback-desc">Not today.</span></div>
         </div>
         <div class="feedback-thanks" id="feedbackThanks">noted, with care</div>
       </div>
@@ -2041,158 +2164,209 @@
 
 <!-- ══ SCREEN 4 — PATTERNS TAB ══ -->
 <div class="screen has-nav" id="screenPatterns">
-  <div class="screen-inner">
+  <div class="screen-inner" style="padding-bottom:100px;">
 
-    <!-- SVG gradient defs for rings -->
     <svg width="0" height="0" style="position:absolute;">
       <defs>
         <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#0d5c63"/>
-          <stop offset="100%" style="stop-color:#14b8a6"/>
+          <stop offset="0%" style="stop-color:#0d5c63"/><stop offset="100%" style="stop-color:#14b8a6"/>
         </linearGradient>
+        <linearGradient id="ringGradWarm" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#b45e0a"/><stop offset="100%" style="stop-color:#e8a33a"/>
+        </linearGradient>
+        <filter id="softGlow"><feGaussianBlur stdDeviation="3" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
       </defs>
     </svg>
 
-    <div class="pat-header">
-      <span class="pat-name">Patterns</span>
-      <div class="pat-count" id="patCount"></div>
-      <!-- v4.1: most recent Human Condition pattern -->
-      <div id="patCurrentPattern" style="display:none;margin-top:12px;">
-        <div class="pattern-chip" style="margin:0 auto;">
-          <div class="pattern-chip-dot"></div>
-          <span style="font-size:11px;letter-spacing:2px;">most recent pattern</span>
-          <span class="pattern-chip-label" id="patCurrentPatternLabel"></span>
-        </div>
-      </div>
+    <!-- Header -->
+    <div style="padding-top:8px;margin-bottom:4px;">
+      <div style="font-family:var(--serif);font-size:28px;font-style:italic;font-weight:300;color:var(--deep);letter-spacing:0.3px;">Patterns</div>
+      <div id="patCount" style="font-family:var(--sans);font-size:11px;color:rgba(10,61,66,0.40);font-weight:300;margin-top:2px;letter-spacing:0.3px;"></div>
     </div>
-    <div id="patLoading" class="tab-loading-state">
-      <div class="tab-spinner"></div>
-      <div class="tab-loading-text">Reading your patterns...</div>
+
+    <!-- Time window pills -->
+    <div id="patWindowRow" style="display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 20px;">
+      <button class="pw-pill pw-active" onclick="setPatWindow(7)"  id="pw7">7 days</button>
+      <button class="pw-pill" onclick="setPatWindow(14)" id="pw14">14 days</button>
+      <button class="pw-pill" onclick="setPatWindow(30)" id="pw30">30 days</button>
+      <button class="pw-pill" onclick="setPatWindow(0)"  id="pw0">All time</button>
     </div>
+
+    <div id="patLoading" class="tab-loading-state"><div class="tab-spinner"></div><div class="tab-loading-text">Reading your patterns...</div></div>
     <div id="patEmpty" class="tab-empty-state" style="display:none;">
-      <div class="tab-empty-icon">🌱</div>
-      <div class="tab-empty-title">Your patterns will appear here</div>
-      <div class="tab-empty-desc">Write your first entry and LumeRI will begin to notice how your mind moves.</div>
+      <div style="font-size:40px;margin-bottom:16px;opacity:0.6;">🌱</div>
+      <div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--deep);margin-bottom:8px;">Your patterns will appear here</div>
+      <div style="font-family:var(--sans);font-size:13px;color:var(--text-soft);line-height:1.7;font-weight:300;">Write your first entry and LumeRI will begin to notice how your mind moves.</div>
     </div>
+
     <div id="patContent" style="display:none;">
-      <!-- Trend story -->
-      <div id="patTrendStory"></div>
-      <!-- Overall -->
-      <div class="tab-section-title">Overall picture</div>
-      <div class="pat-aci-row">
-        <div class="pat-aci-card">
-          <div class="pat-aci-label">Mind's Range</div>
-          <div class="pat-aci-meaning">how openly thoughts moved</div>
-          <div class="pat-aci-score" id="patAci">—</div>
-          <div class="pat-aci-trend" id="patAciTrend"></div>
-        </div>
-        <div class="pat-aci-card">
-          <div class="pat-aci-label">Weight Carried</div>
-          <div class="pat-aci-meaning">what your words held</div>
-          <div class="pat-aci-score" id="patPls">—</div>
-          <div class="pat-aci-trend" id="patPlsTrend"></div>
-        </div>
+
+      <!-- Mirror reads this period — warm narrative card -->
+      <div id="patMirrorCard" style="margin-bottom:20px;padding:20px;border-radius:16px;background:linear-gradient(135deg,rgba(20,184,166,0.07),rgba(20,184,166,0.03));border:1px solid rgba(20,184,166,0.15);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(20,184,166,0.6),rgba(20,184,166,0.1));border-radius:16px 16px 0 0;"></div>
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(20,184,166,0.55);margin-bottom:8px;">what the mirror sees</div>
+        <div id="patMirrorText" style="font-family:var(--serif);font-size:16px;font-style:italic;color:var(--text-dark);line-height:1.7;"></div>
       </div>
-      <!-- Four qualities -->
-      <div class="tab-section-title">Four qualities</div>
-      <div class="pat-cluster-grid">
-        <div class="pat-cluster-card">
-          <div class="pat-cluster-ring-wrap">
-            <svg viewBox="0 0 72 72">
-              <circle class="pat-cluster-ring-bg" cx="36" cy="36" r="30"/>
-              <circle class="pat-cluster-ring-fill" id="patRingA" cx="36" cy="36" r="30"/>
-            </svg>
-            <div class="pat-cluster-ring-label" id="patCA">—</div>
-          </div>
-          <div class="pat-cluster-info">
-            <div class="pat-cluster-name">🌀 Openness</div>
-            <div class="pat-cluster-meaning">holding more than one truth</div>
-            <div class="pat-bar-track"><div class="pat-bar-fill" id="patBarA" style="width:0%"></div></div>
-            <div class="pat-cluster-trend" id="patTrendA"></div>
-          </div>
-        </div>
-        <div class="pat-cluster-card">
-          <div class="pat-cluster-ring-wrap">
-            <svg viewBox="0 0 72 72">
-              <circle class="pat-cluster-ring-bg" cx="36" cy="36" r="30"/>
-              <circle class="pat-cluster-ring-fill" id="patRingB" cx="36" cy="36" r="30"/>
-            </svg>
-            <div class="pat-cluster-ring-label" id="patCB">—</div>
-          </div>
-          <div class="pat-cluster-info">
-            <div class="pat-cluster-name">🌊 Stillness</div>
-            <div class="pat-cluster-meaning">how settled the mind felt</div>
-            <div class="pat-bar-track"><div class="pat-bar-fill" id="patBarB" style="width:0%"></div></div>
-            <div class="pat-cluster-trend" id="patTrendB"></div>
-          </div>
-        </div>
-        <div class="pat-cluster-card">
-          <div class="pat-cluster-ring-wrap">
-            <svg viewBox="0 0 72 72">
-              <circle class="pat-cluster-ring-bg" cx="36" cy="36" r="30"/>
-              <circle class="pat-cluster-ring-fill" id="patRingC" cx="36" cy="36" r="30"/>
-            </svg>
-            <div class="pat-cluster-ring-label" id="patCC">—</div>
-          </div>
-          <div class="pat-cluster-info">
-            <div class="pat-cluster-name">🌸 Self-Warmth</div>
-            <div class="pat-cluster-meaning">how gently you held yourself</div>
-            <div class="pat-bar-track"><div class="pat-bar-fill" id="patBarC" style="width:0%"></div></div>
-            <div class="pat-cluster-trend" id="patTrendC"></div>
-          </div>
-        </div>
-        <div class="pat-cluster-card">
-          <div class="pat-cluster-ring-wrap">
-            <svg viewBox="0 0 72 72">
-              <circle class="pat-cluster-ring-bg" cx="36" cy="36" r="30"/>
-              <circle class="pat-cluster-ring-fill" id="patRingD" cx="36" cy="36" r="30"/>
-            </svg>
-            <div class="pat-cluster-ring-label" id="patCD">—</div>
-          </div>
-          <div class="pat-cluster-info">
-            <div class="pat-cluster-name">💎 Clarity</div>
-            <div class="pat-cluster-meaning">how clearly the story came through</div>
-            <div class="pat-bar-track"><div class="pat-bar-fill" id="patBarD" style="width:0%"></div></div>
-            <div class="pat-cluster-trend" id="patTrendD"></div>
+
+      <!-- Dominant thought-movement — large beautiful card -->
+      <div id="patDominantWrap" style="display:none;margin-bottom:20px;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(10,61,66,0.38);margin-bottom:10px;">most present movement</div>
+        <div style="padding:20px 20px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(13,92,99,0.06),rgba(13,92,99,0.02));border:1px solid rgba(13,92,99,0.12);position:relative;">
+          <div id="patDominantName" style="font-family:var(--serif);font-size:20px;font-style:italic;color:var(--deep);line-height:1.35;margin-bottom:8px;"></div>
+          <div id="patDominantDesc" style="font-family:var(--sans);font-size:12px;color:var(--text-soft);font-weight:300;line-height:1.6;margin-bottom:10px;"></div>
+          <!-- Mini bar showing dominance -->
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="flex:1;height:4px;background:rgba(20,184,166,0.12);border-radius:4px;overflow:hidden;">
+              <div id="patDominantBar" style="height:100%;width:0%;background:linear-gradient(90deg,#0d5c63,#14b8a6);border-radius:4px;transition:width 1.2s cubic-bezier(0.34,1.56,0.64,1);"></div>
+            </div>
+            <div id="patDominantCount" style="font-family:var(--sans);font-size:10px;color:rgba(10,61,66,0.45);font-weight:300;white-space:nowrap;"></div>
           </div>
         </div>
       </div>
-      <!-- Things that come back -->
-      <div id="patNrmSection" style="display:none;">
-        <div class="tab-section-title">Things that come back</div>
+
+      <!-- Spider / Radar chart — 4 qualities visualised -->
+      <div style="margin-bottom:20px;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(10,61,66,0.38);margin-bottom:14px;">four qualities of mind</div>
+        <!-- Radar SVG -->
+        <div style="background:rgba(255,255,255,0.60);border-radius:16px;border:1px solid rgba(20,184,166,0.12);padding:20px;display:flex;flex-direction:column;align-items:center;">
+          <svg id="patRadar" viewBox="0 0 240 240" style="width:100%;max-width:240px;height:auto;margin-bottom:16px;">
+            <!-- Grid rings -->
+            <polygon points="120,40 196,85 196,155 120,200 44,155 44,85" fill="none" stroke="rgba(20,184,166,0.08)" stroke-width="1"/>
+            <polygon points="120,65 173,93 173,148 120,177 67,148 67,93" fill="none" stroke="rgba(20,184,166,0.08)" stroke-width="1"/>
+            <polygon points="120,90 150,106 150,135 120,150 90,135 90,106" fill="none" stroke="rgba(20,184,166,0.08)" stroke-width="1"/>
+            <!-- Axes -->
+            <line x1="120" y1="40" x2="120" y2="200" stroke="rgba(20,184,166,0.07)" stroke-width="1"/>
+            <line x1="44"  y1="85" x2="196" y2="155" stroke="rgba(20,184,166,0.07)" stroke-width="1"/>
+            <line x1="196" y1="85" x2="44"  y2="155" stroke="rgba(20,184,166,0.07)" stroke-width="1"/>
+            <!-- Data polygon — filled by JS -->
+            <polygon id="radarPoly" points="120,120 120,120 120,120 120,120" fill="rgba(20,184,166,0.15)" stroke="rgba(20,184,166,0.60)" stroke-width="2" stroke-linejoin="round"/>
+            <!-- Data points -->
+            <circle id="rp0" cx="120" cy="120" r="5" fill="#14b8a6" opacity="0"/>
+            <circle id="rp1" cx="120" cy="120" r="5" fill="#14b8a6" opacity="0"/>
+            <circle id="rp2" cx="120" cy="120" r="5" fill="#14b8a6" opacity="0"/>
+            <circle id="rp3" cx="120" cy="120" r="5" fill="#14b8a6" opacity="0"/>
+            <!-- Labels -->
+            <text x="120" y="28" text-anchor="middle" font-family="var(--sans)" font-size="9" fill="rgba(10,61,66,0.55)" letter-spacing="1">Openness</text>
+            <text x="210" y="90" text-anchor="start" font-family="var(--sans)" font-size="9" fill="rgba(10,61,66,0.55)" letter-spacing="1">Stillness</text>
+            <text x="208" y="162" text-anchor="start" font-family="var(--sans)" font-size="9" fill="rgba(10,61,66,0.55)" letter-spacing="1">Clarity</text>
+            <text x="32"  y="162" text-anchor="end"   font-family="var(--sans)" font-size="9" fill="rgba(10,61,66,0.55)" letter-spacing="1">Warmth</text>
+          </svg>
+          <!-- Four quality scores in a clean grid -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;">
+            <div class="q-score-card" id="qcardA"><div class="q-score-icon">🌀</div><div class="q-score-label">Openness</div><div class="q-score-val" id="patCA">—</div><div class="q-score-sub" id="patTrendA"></div></div>
+            <div class="q-score-card" id="qcardB"><div class="q-score-icon">🌊</div><div class="q-score-label">Stillness</div><div class="q-score-val" id="patCB">—</div><div class="q-score-sub" id="patTrendB"></div></div>
+            <div class="q-score-card" id="qcardC"><div class="q-score-icon">🌸</div><div class="q-score-label">Self-Warmth</div><div class="q-score-val" id="patCC">—</div><div class="q-score-sub" id="patTrendC"></div></div>
+            <div class="q-score-card" id="qcardD"><div class="q-score-icon">💎</div><div class="q-score-label">Clarity</div><div class="q-score-val" id="patCD">—</div><div class="q-score-sub" id="patTrendD"></div></div>
+            <div class="q-score-card" id="qcardE"><div class="q-score-icon">⚖️</div><div class="q-score-label">Source</div><div class="q-score-val" id="patCE">—</div><div class="q-score-sub" id="patTrendE"></div></div>
+            <div class="q-score-card" id="qcardF"><div class="q-score-icon">🔭</div><div class="q-score-label">Depth</div><div class="q-score-val" id="patCF">—</div><div class="q-score-sub" id="patTrendF"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mind weight arc — ACI + PLS as a beautiful arc chart -->
+      <div style="margin-bottom:20px;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(10,61,66,0.38);margin-bottom:14px;">mind range &amp; weight</div>
+        <div style="background:rgba(255,255,255,0.60);border-radius:16px;border:1px solid rgba(20,184,166,0.12);padding:20px;display:flex;gap:16px;justify-content:center;align-items:center;">
+          <!-- ACI arc -->
+          <div style="text-align:center;flex:1;">
+            <svg viewBox="0 0 120 70" style="width:100%;max-width:120px;">
+              <path d="M10,65 A50,50 0 0,1 110,65" fill="none" stroke="rgba(20,184,166,0.10)" stroke-width="10" stroke-linecap="round"/>
+              <path id="aciArc" d="M10,65 A50,50 0 0,1 110,65" fill="none" stroke="url(#ringGrad)" stroke-width="10" stroke-linecap="round" stroke-dasharray="157" stroke-dashoffset="157" style="transition:stroke-dashoffset 1.4s cubic-bezier(0.34,1.56,0.64,1);"/>
+              <text x="60" y="56" text-anchor="middle" font-family="var(--serif)" font-size="18" font-style="italic" fill="var(--deep)" id="patAci">—</text>
+              <text x="60" y="68" text-anchor="middle" font-family="var(--sans)" font-size="7" fill="rgba(10,61,66,0.45)" letter-spacing="1">MIND'S RANGE</text>
+            </svg>
+            <div id="patAciTrend" style="font-family:var(--sans);font-size:10px;color:rgba(20,184,166,0.70);font-weight:400;margin-top:2px;"></div>
+          </div>
+          <!-- Divider -->
+          <div style="width:1px;height:60px;background:rgba(20,184,166,0.12);"></div>
+          <!-- PLS arc — inverted (lower = lighter) -->
+          <div style="text-align:center;flex:1;">
+            <svg viewBox="0 0 120 70" style="width:100%;max-width:120px;">
+              <path d="M10,65 A50,50 0 0,1 110,65" fill="none" stroke="rgba(180,94,10,0.08)" stroke-width="10" stroke-linecap="round"/>
+              <path id="plsArc" d="M10,65 A50,50 0 0,1 110,65" fill="none" stroke="url(#ringGradWarm)" stroke-width="10" stroke-linecap="round" stroke-dasharray="157" stroke-dashoffset="157" style="transition:stroke-dashoffset 1.4s cubic-bezier(0.34,1.56,0.64,1);"/>
+              <text x="60" y="56" text-anchor="middle" font-family="var(--serif)" font-size="18" font-style="italic" fill="var(--deep)" id="patPls">—</text>
+              <text x="60" y="68" text-anchor="middle" font-family="var(--sans)" font-size="7" fill="rgba(10,61,66,0.45)" letter-spacing="1">WEIGHT HELD</text>
+            </svg>
+            <div id="patPlsTrend" style="font-family:var(--sans);font-size:10px;color:rgba(180,94,10,0.60);font-weight:400;margin-top:2px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pattern frequency bars — visible distribution of 7 patterns -->
+      <div id="patFreqSection" style="display:none;margin-bottom:20px;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(10,61,66,0.38);margin-bottom:14px;">thought movements in this period</div>
+        <div id="patFreqBars" style="background:rgba(255,255,255,0.60);border-radius:16px;border:1px solid rgba(20,184,166,0.12);padding:16px 20px;"></div>
+      </div>
+
+      <!-- Recurrence mirror callout -->
+      <div id="patRecurrenceCard" style="display:none;margin-bottom:20px;"></div>
+
+      <!-- Mirror Suggestion — the Zoom-Out question the mirror points to -->
+      <div id="patMirrorSuggestion" style="margin-bottom:16px;"></div>
+
+      <!-- Things that keep returning -->
+      <div id="patNrmSection" style="display:none;margin-bottom:20px;">
+        <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(10,61,66,0.38);margin-bottom:6px;">themes that keep returning</div>
+        <div style="font-family:var(--sans);font-size:11px;color:rgba(10,61,66,0.35);margin-bottom:12px;font-weight:300;line-height:1.6;">Not problems to solve. Patterns to see.</div>
         <div id="patNrmContent"></div>
       </div>
-      <!-- What these mean -->
-      <div class="tab-section-title">What these mean</div>
-      <div class="pat-disclaimer">
-        These numbers are not grades. They are not judgments. They do not say anything about who you are or how you are doing as a person.<br><br>
-        They are more like a quiet weather reading — a snapshot of how your mind was moving on the day you wrote. They shift with your mood, the events of the week, how much sleep you got, how honest you felt like being. A lower number on a hard day is not failure. It is information.<br><br>
-        Tap any category below to understand what it is actually measuring, and what the different ranges mean in plain language.
+
+      <!-- Understand your scores — collapsible guide -->
+      <div style="margin-bottom:8px;">
+        <button onclick="toggleGuideSection()" style="width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(20,184,166,0.15);background:rgba(20,184,166,0.03);font-family:var(--sans);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(10,61,66,0.45);cursor:pointer;display:flex;justify-content:space-between;align-items:center;">
+          <span>Understand what these mean</span>
+          <span id="guideChevron" style="font-size:14px;transition:transform 0.3s;">▾</span>
+        </button>
+        <div id="guideSection" style="display:none;padding:4px 0 0;">
+          <div id="patGuideContent"></div>
+        </div>
       </div>
-      <div id="patGuideContent"></div>
+
+      <div id="patTrendStory" style="display:none;"></div>
+
     </div>
   </div>
 </div>
 
 <!-- ══ SCREEN 5 — JOURNEY TAB ══ -->
 <div class="screen has-nav" id="screenJourney">
-  <div class="screen-inner">
-    <div class="pat-header">
-      <span class="pat-name">Journey</span>
-      <div class="jour-intro" id="jourIntro"></div>
+  <div class="screen-inner" style="padding-bottom:100px;">
+
+    <!-- Header -->
+    <div style="padding-top:8px;margin-bottom:4px;">
+      <div style="font-family:var(--serif);font-size:28px;font-style:italic;font-weight:300;color:var(--deep);letter-spacing:0.3px;">Journey</div>
+      <div id="jourIntro" style="font-family:var(--sans);font-size:11px;color:rgba(10,61,66,0.40);font-weight:300;margin-top:2px;letter-spacing:0.3px;"></div>
+      <div id="jourCountLine" style="display:none;font-family:var(--sans);font-size:11px;color:rgba(10,61,66,0.38);margin-top:2px;font-weight:300;"></div>
     </div>
-    <!-- v4.6.0: longitudinal arc card — appears after 3+ sessions -->
-    <div id="jourArcCard"></div>
-    <div id="jourLoading" class="tab-loading-state">
-      <div class="tab-spinner"></div>
-      <div class="tab-loading-text">Gathering your reflections...</div>
-    </div>
+
+    <div id="jourLoading" class="tab-loading-state"><div class="tab-spinner"></div><div class="tab-loading-text">Gathering your reflections...</div></div>
     <div id="jourEmpty" class="tab-empty-state" style="display:none;">
-      <div class="tab-empty-icon">📖</div>
-      <div class="tab-empty-title">Your journey begins here</div>
-      <div class="tab-empty-desc">Every entry you write will be held here — your words, your reflections, your patterns over time.</div>
+      <div style="font-size:40px;margin-bottom:16px;opacity:0.6;">🪞</div>
+      <div style="font-family:var(--serif);font-size:22px;font-style:italic;color:var(--deep);margin-bottom:8px;">Your journey begins here</div>
+      <div style="font-family:var(--sans);font-size:13px;color:var(--text-soft);line-height:1.7;font-weight:300;">Every entry you write will be held here — your words, your reflections, your patterns over time.</div>
     </div>
-    <div id="jourTrend"  style="display:none;"></div>
+
+    <!-- Milestones -->
+    <div id="jourArcCard"></div>
+
+    <!-- Trend sentence -->
+    <div id="jourTrend" style="display:none;"></div>
+
+    <!-- Mini timeline chart — dots showing ACI over time -->
+    <div id="jourTimelineWrap" style="display:none;margin:16px 0 20px;">
+      <div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(10,61,66,0.38);margin-bottom:10px;">your mind across time</div>
+      <div style="background:rgba(255,255,255,0.60);border-radius:16px;border:1px solid rgba(20,184,166,0.12);padding:16px 12px 10px;">
+        <svg id="jourTimelineSvg" style="width:100%;overflow:visible;" viewBox="0 0 300 80" preserveAspectRatio="none">
+          <!-- Filled by JS -->
+        </svg>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;">
+          <span id="jourTimelineFirst" style="font-family:var(--sans);font-size:9px;color:rgba(10,61,66,0.30);"></span>
+          <span style="font-family:var(--sans);font-size:9px;color:rgba(20,184,166,0.45);">Mind's Range over time</span>
+          <span id="jourTimelineLast" style="font-family:var(--sans);font-size:9px;color:rgba(10,61,66,0.30);"></span>
+        </div>
+      </div>
+    </div>
+
     <div id="jourContent" style="display:none;"></div>
   </div>
 </div>
@@ -2232,7 +2406,7 @@
   // ── SCORE GUIDE DATA ──
   const SCORE_GUIDE = [
     {
-      title: "Mind's Range",
+      title: "Mind&#39;s Range",
       emoji: "◈",
       intro: "Think of this as the overall temperature of a session — a single number that captures how freely and openly your mind was moving when you wrote. It brings together all four qualities below into one picture.",
       what: "It looks at how flexible your thinking was, how settled you felt underneath, how gently you were holding yourself, and how clearly things connected. None of those have to be perfect for this to feel like a good session — it just gives you a sense of where things were.",
@@ -2581,7 +2755,27 @@
     const chipLabel = document.getElementById("patternChipLabel");
     // v4.1: pattern stored silently — never shown to user
     if (response.pattern_name && chipLabel) {
-      chipLabel.textContent = response.pattern_name; // kept for internal reference only
+      chipLabel.textContent = response.pattern_name;
+      if (chipWrap) chipWrap.style.display = 'block'; // v5.0: visible to user
+      // v5.0: One thing to hold — mapped from pattern
+      const ONE_THING = {
+        'Comparing oneself':         'The one judging and the one being judged are the same movement. Seeing this is enough.',
+        'Replaying the past':  'It will not be set down by thinking harder about it. Only by sitting with it, clearly.',
+        'Skimming surface': 'The surface is not what needs attention. What is beneath it — that is what brought you here.',
+        'Seeking certainty': 'What you are trying to control has not happened yet. This moment, right here — is actually fine.',
+        'Escaping reality': 'The thing that has not been named is already present. You do not have to name it today.',
+        'Needing security':          'The searching itself is the ground. There is something that is watching the search.',
+        'Observing clearly':     'That small distance you just opened — between the observer and what is observed — is everything.',
+        'Chasing becoming':     'The arriving never arrives because thought creates a new destination the moment the old one is reached.',
+        'Carrying images':      'You are not seeing the person — you are seeing what you have accumulated about them. That seeing is not the same.',
+      };
+      const oneText = ONE_THING[response.pattern_name];
+      const oneWrap = document.getElementById('oneThingWrap');
+      const oneTxt  = document.getElementById('oneThingText');
+      if (oneText && oneWrap && oneTxt) {
+        oneTxt.textContent = oneText;
+        oneWrap.style.display = 'block';
+      }
     }
     if (chipWrap) chipWrap.style.display = "none";
     const deepCard = document.getElementById("deepCard");
@@ -2819,11 +3013,19 @@
     document.getElementById("patContent").style.display = "none";
     document.getElementById("patEmpty").style.display   = "none";
 
+    // v5.0: load both analytics AND full history for windowed pattern view
     gasCall("getUserAnalytics", { email: currentEmail }, function(data) {
         document.getElementById("patLoading").style.display = "none";
         if (!data || data.error || !data.sessionCount) { document.getElementById("patEmpty").style.display=""; return; }
         renderPatterns(data);
         document.getElementById("patContent").style.display = "";
+        // Also load full history for time-window filtering
+        gasCall("getUserHistory", { email: currentEmail }, function(hist) {
+          if (hist && hist.sessions) {
+            patAllSessions = hist.sessions;
+            renderWindowedPatterns();
+          }
+        }, function(){});
       }, function() {
         document.getElementById("patLoading").style.display = "none";
         document.getElementById("patEmpty").style.display   = "";
@@ -2833,61 +3035,91 @@
   function renderPatterns(data) {
     const fmt = v => Math.round((v||0)*100) + "%";
     const n   = data.sessionCount;
-
     document.getElementById("patCount").textContent = n + " " + (n===1?"entry":"entries") + " reflected on";
 
-    // v4.1: show most recent pattern if available
-    const latestPattern = data.latestPattern || (currentPatternName || null);
-    if (latestPattern) {
-      const pw = document.getElementById("patCurrentPattern");
-      const pl = document.getElementById("patCurrentPatternLabel");
-      if (pw && pl) { pl.textContent = latestPattern; pw.style.display = ""; }
+    // Mind range & weight — weather words, not percentages
+    const aciVal = data.aci ? (data.aci.current || 0) : 0;
+    const plsVal = data.pls ? (data.pls.current || 0) : 0;
+    const aciWord = QUALITY_LANG.mindsRange(aciVal);
+    const plsWord = QUALITY_LANG.weight(plsVal);
+    const aciSub  = QUALITY_Q.mindsRange;
+    const plsSub  = QUALITY_Q.weight;
+    const aciEl = document.getElementById("patAci"); if (aciEl) aciEl.textContent = aciWord;
+    const plsEl = document.getElementById("patPls"); if (plsEl) plsEl.textContent = plsWord;
+    const aciSubEl = document.getElementById("patAciSub"); if (aciSubEl) aciSubEl.textContent = aciSub;
+    const plsSubEl = document.getElementById("patPlsSub"); if (plsSubEl) plsSubEl.textContent = plsSub;
+    // Arc visual still animates by value but label is now a word
+    const arcLen = 157;
+    setTimeout(() => {
+      const aciArc = document.getElementById("aciArc");
+      const plsArc = document.getElementById("plsArc");
+      if (aciArc) aciArc.style.strokeDashoffset = arcLen - aciVal * arcLen;
+      if (plsArc) plsArc.style.strokeDashoffset = arcLen - plsVal * arcLen;
+    }, 400);
+    const tl = t => t==="improving" ? "↑ opening lately" : t==="declining" ? "↘ settling" : "→ steady";
+    const tlW= t => t==="improving" ? "↑ more lately" : t==="declining" ? "↘ lighter lately" : "→ steady";
+    const aciTrEl = document.getElementById("patAciTrend");
+    const plsTrEl = document.getElementById("patPlsTrend");
+    if (aciTrEl) aciTrEl.textContent = n>=3 && data.aci ? tl(data.aci.trend) : "";
+    if (plsTrEl) plsTrEl.textContent = n>=3 && data.pls ? tlW(data.pls.trend) : "";
+
+    // Cluster data
+    const clusterVals = {
+      A: data.clusters && data.clusters.A ? (data.clusters.A.current || 0) : 0,
+      B: data.clusters && data.clusters.B ? (data.clusters.B.current || 0) : 0,
+      C: data.clusters && data.clusters.C ? (data.clusters.C.current || 0) : 0,
+      D: data.clusters && data.clusters.D ? (data.clusters.D.current || 0) : 0
+    };
+    // C3 (Attribution/Source) and C4 (Depth) from raw session averages
+    const allHist = data.history || [];
+    const c3Avg = allHist.length ? allHist.reduce((s,x)=>s+(x.c3||x.C3||0.5),0)/allHist.length : 0.5;
+    const c4Avg = allHist.length ? allHist.reduce((s,x)=>s+(x.c4||x.C4||0),0)/allHist.length : 0;
+    const eEl = document.getElementById("patCE");
+    const fEl = document.getElementById("patCF");
+    if (eEl) eEl.textContent = c3Avg>=0.65?"outward":c3Avg>=0.42?"balanced":"inward";
+    if (fEl) fEl.textContent = c4Avg>=0.60?"exploring":c4Avg>=0.35?"partly":"reporting";
+    const feltWord = (v, key) => QUALITY_LANG[key||'openness'] ? QUALITY_LANG[key||'openness'](v) : (v>=0.65?'present':v>=0.40?'some':'faint');
+    const feltSegs = (v) => {
+      const filled = v >= 0.80 ? 5 : v >= 0.60 ? 4 : v >= 0.40 ? 3 : v >= 0.20 ? 2 : 1;
+      return Array.from({length:5},(_,i) => '<div class="felt-seg'+(i<filled?' felt-on':' felt-off')+'"></div>').join('');
+    };
+    const CLUSTER_KEYS = {A:'openness', B:'stillness', C:'warmth', D:'clarity'};
+    [["A","patCA","patTrendA"],["B","patCB","patTrendB"],["C","patCC","patTrendC"],["D","patCD","patTrendD"]].forEach(([k,sid,tid]) => {
+      const v = clusterVals[k];
+      const el = document.getElementById(sid);
+      if (el) el.textContent = QUALITY_LANG[CLUSTER_KEYS[k]](v);
+      const segsEl = document.getElementById(sid+'Segs');
+      if (segsEl) segsEl.innerHTML = feltSegs(v);
+      const tr = document.getElementById(tid);
+      if (tr && n>=3 && data.clusters && data.clusters[k]) {
+        tr.textContent = data.clusters[k].trend==="improving" ? "↑ more lately" : data.clusters[k].trend==="declining" ? "↘ easing" : "→ steady";
+      }
+    });
+
+    // Radar chart animation
+    setTimeout(() => drawRadar(clusterVals), 500);
+
+    // Mirror card narrative
+    const mc = document.getElementById("patMirrorCard");
+    const mt = document.getElementById("patMirrorText");
+    if (mt) {
+      const a = aciVal, p = plsVal;
+      let msg = "";
+      if      (a >= 0.65 && p <= 0.35) msg = "Something has quieted. The mind has had room to breathe — more open, less held.";
+      else if (a >= 0.65)               msg = "A quality of openness has been present. The mind could hold more than one thing at once.";
+      else if (p >= 0.65)               msg = "There has been a lot moving through. The writing held weight — that took courage to bring to the page.";
+      else if (a >= 0.45 && p >= 0.45) msg = "Weight and steadiness together — grounded, even when things felt full.";
+      else if (a <= 0.35)              msg = "The mind has been looking for firmer ground. Something underneath has felt unsettled.";
+      else                              msg = "An ordinary, human span of days — not crisis, not ease. Just being with what is actually here.";
+      mt.textContent = msg;
     }
 
-    // Trend story
-    const tsEl = document.getElementById("patTrendStory");
-    if (n >= 3 && data.history && data.history.length >= 3) {
-      const recent = data.history.slice(-3);
-      const avgAci = recent.reduce((s,x) => s+(x.aci||0),0)/3;
-      const avgPls = recent.reduce((s,x) => s+(x.pls||0),0)/3;
-      const lines  = [];
-      if      (avgAci >= 0.60) lines.push("Your recent entries have had a certain spaciousness — a mind moving a little more freely.");
-      else if (avgAci >= 0.40) lines.push("Lately your writing has felt grounded — steady underfoot, even if not always easy.");
-      else                     lines.push("The last few entries have carried some weight. Something has been working itself through.");
-      if      (avgPls >= 0.60) lines.push("There has been a lot moving through you lately.");
-      else if (avgPls <= 0.30) lines.push("Things have felt a little quieter recently.");
-      tsEl.innerHTML = '<div class="pat-trend-story"><div class="pat-trend-label">What your friend notices</div><div class="pat-trend-text">' + lines.join(" ") + "</div></div>";
-    } else { tsEl.innerHTML = ""; }
-
-    // ACI + PLS
-    document.getElementById("patAci").textContent = fmt(data.aci.current);
-    document.getElementById("patPls").textContent = fmt(data.pls.current);
-    const tl = t => t==="improving" ? "↑ opening up" : t==="declining" ? "→ settling" : "→ steady";
-    document.getElementById("patAciTrend").textContent = n>=3 ? tl(data.aci.trend) : n+" "+(n===1?"entry":"entries")+" so far";
-    document.getElementById("patPlsTrend").textContent = n>=3 ? tl(data.pls.trend) : "";
-
-    // Clusters
-    const CIRCUMFERENCE = 188; // 2 * pi * 30
-    [
-      {key:"A",score:"patCA",bar:"patBarA",trend:"patTrendA",ring:"patRingA"},
-      {key:"B",score:"patCB",bar:"patBarB",trend:"patTrendB",ring:"patRingB"},
-      {key:"C",score:"patCC",bar:"patBarC",trend:"patTrendC",ring:"patRingC"},
-      {key:"D",score:"patCD",bar:"patBarD",trend:"patTrendD",ring:"patRingD"}
-    ].forEach(c => {
-      const cd = data.clusters[c.key];
-      document.getElementById(c.score).textContent = fmt(cd.current);
-      // Animate ring
-      const ring = document.getElementById(c.ring);
-      if (ring) {
-        const offset = CIRCUMFERENCE - (cd.current || 0) * CIRCUMFERENCE;
-        setTimeout(() => { ring.style.strokeDashoffset = offset; }, 300);
-      }
-      const tEl = document.getElementById(c.trend);
-      if (n>=3) {
-        tEl.textContent = cd.trend==="improving" ? "↑ more of this lately" : cd.trend==="declining" ? "→ shifting a little" : "→ holding steady";
-        tEl.className   = "pat-cluster-trend"+(cd.trend==="improving"?" improving":cd.trend==="declining"?" easing":"");
-      } else { tEl.textContent=""; tEl.className="pat-cluster-trend"; }
-    });
+    // Mirror Suggestion — which Zoom-Out question does the mirror point to?
+    const suggWrap = document.getElementById("patMirrorSuggestion");
+    if (suggWrap) {
+      const sugg = getMirrorSuggestion(clusterVals, aciVal, plsVal, c3Avg, c4Avg);
+      renderMirrorSuggestion(sugg, suggWrap);
+    }
 
     // NRM
     const nrmSec = document.getElementById("patNrmSection");
@@ -2895,35 +3127,208 @@
     if (data.narrativeRecurrence && data.narrativeRecurrence.length > 0) {
       nrmSec.style.display = "";
       nrmEl.innerHTML = data.narrativeRecurrence.map(nr => {
-        const note = nr.trend==="increasing" ? "Showing up a little more lately — worth a quiet glance."
+        const note = nr.trend==="increasing" ? "Showing up a little more lately."
                    : nr.trend==="decreasing" ? "This seems to be easing. Something may be shifting."
                    : "Steady in the background for a while now.";
-        return '<div class="pat-nrm-card"><div class="pat-nrm-label">'+nr.label+'</div><div class="pat-nrm-desc">'+nr.description+'</div><div class="pat-nrm-note">'+note+' · noticed in '+nr.count+' entries</div></div>';
+        return '<div class="pat-nrm-card"><div class="pat-nrm-label">'+nr.label+'</div><div class="pat-nrm-desc">'+nr.description+'</div><div class="pat-nrm-note">'+note+' Noticed in '+nr.count+' entries.</div></div>';
       }).join("");
     } else { nrmSec.style.display="none"; }
 
     // Score guide
     const guideEl = document.getElementById("patGuideContent");
-    guideEl.innerHTML = SCORE_GUIDE.map((item,i) =>
+    if (guideEl) guideEl.innerHTML = SCORE_GUIDE.map((item,i) =>
       '<div class="pat-guide-item" onclick="toggleGuide('+i+')">' +
-        '<div class="pat-guide-header">' +
-          '<div style="display:flex;align-items:center;gap:10px;">' +
-            '<span style="font-size:18px;opacity:0.6;">'+item.emoji+'</span>' +
-            '<div class="pat-guide-title">'+item.title+'</div>' +
-          '</div>' +
-          '<div class="pat-guide-chevron" id="gc'+i+'">▾</div>' +
-        '</div>' +
-        '<div class="pat-guide-body" id="gb'+i+'">' +
-          '<div class="pat-guide-intro">'+item.intro+'</div>' +
-          '<div class="pat-guide-what">'+item.what+'</div>' +
-          '<div class="pat-guide-note">'+item.note+'</div>' +
-          '<div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--teal-mid);opacity:0.6;margin-bottom:10px;">The ranges</div>' +
-          '<div class="pat-range-row">' +
-            item.ranges.map(r => '<div class="pat-range-item '+r.cls+'"><div class="range-label">'+r.label+'</div>'+r.text+'</div>').join("") +
-          '</div>' +
-        '</div>' +
-      '</div>'
+        '<div class="pat-guide-header"><div style="display:flex;align-items:center;gap:10px;"><span style="font-size:16px;opacity:0.6;">'+item.emoji+'</span><div class="pat-guide-title">'+item.title+'</div></div><div class="pat-guide-chevron" id="gc'+i+'">▾</div></div>' +
+        '<div class="pat-guide-body" id="gb'+i+'"><div class="pat-guide-intro">'+item.intro+'</div><div class="pat-guide-what">'+item.what+'</div><div class="pat-guide-note">'+item.note+'</div>' +
+        '<div class="pat-range-row">'+item.ranges.map(r => '<div class="pat-range-item '+r.cls+'"><div class="range-label">'+r.label+'</div>'+r.text+'</div>').join("")+'</div></div></div>'
     ).join("");
+  }
+
+  // Draw SVG radar chart for 4 qualities
+  function drawRadar(vals) {
+    // 4 axes: top=Openness(A), right=Stillness(B), bottom-right=Clarity(D), bottom-left=Warmth(C)
+    const cx=120, cy=120, maxR=80;
+    const axes = [
+      {v:vals.A, angle:-90},  // Openness — top
+      {v:vals.B, angle:0},    // Stillness — right
+      {v:vals.D, angle:90},   // Clarity — bottom-right (approx)
+      {v:vals.C, angle:180},  // Warmth — left
+    ];
+    const toXY = (val, deg) => {
+      const r = (val || 0) * maxR;
+      const rad = deg * Math.PI / 180;
+      return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+    };
+    const pts = axes.map(a => toXY(a.v, a.angle));
+    const polyStr = pts.map(p => p.x+","+p.y).join(" ");
+    const poly = document.getElementById("radarPoly");
+    if (poly) poly.setAttribute("points", polyStr);
+    pts.forEach((p,i) => {
+      const dot = document.getElementById("rp"+i);
+      if (dot) { dot.setAttribute("cx",p.x); dot.setAttribute("cy",p.y); dot.style.opacity="1"; }
+    });
+  }
+
+  function toggleGuideSection() {
+    const sec = document.getElementById("guideSection");
+    const ch  = document.getElementById("guideChevron");
+    if (!sec) return;
+    const open = sec.style.display === "block";
+    sec.style.display = open ? "none" : "block";
+    if (ch) ch.style.transform = open ? "rotate(0deg)" : "rotate(180deg)";
+  }
+
+  // ══════════════════════════════════════════════
+  // PATTERNS — Time window + dominant pattern logic
+  // ══════════════════════════════════════════════
+  let patAllSessions = [];   // all sessions from getUserHistory
+  let patWindowDays  = 7;    // current selected window
+
+  function setPatWindow(days) {
+    patWindowDays = days;
+    // Update active button with new pw-pill classes
+    [7,14,30,0].forEach(d => {
+      const btn = document.getElementById('pw' + d);
+      if (btn) btn.className = 'pw-pill' + (d === days ? ' pw-active' : '');
+    });
+    renderWindowedPatterns();
+  }
+
+  function renderWindowedPatterns() {
+    if (!patAllSessions.length) return;
+
+    // Filter sessions to window
+    const now = new Date();
+    const cutoff = patWindowDays === 0 ? null : new Date(now - patWindowDays * 86400000);
+    const filtered = cutoff
+      ? patAllSessions.filter(s => new Date(s.date) >= cutoff)
+      : patAllSessions;
+
+    if (!filtered.length) {
+      document.getElementById('patDominantWrap').style.display = 'none';
+      return;
+    }
+
+    // Dominant thought-movement in window — count pattern_name occurrences
+    // pattern_name is stored in session data if backend returns it
+    // If not available, derive from aci/pls proxy
+    const patternCounts = {};
+    filtered.forEach(s => {
+      if (s.pattern_name) {
+        patternCounts[s.pattern_name] = (patternCounts[s.pattern_name] || 0) + 1;
+      }
+    });
+
+    const dominantWrap  = document.getElementById('patDominantWrap');
+    const dominantName  = document.getElementById('patDominantName');
+    const dominantCount = document.getElementById('patDominantCount');
+
+    if (Object.keys(patternCounts).length > 0) {
+      const PDESC = {
+        'Comparing oneself':'The observer and the judge have become the same voice.',
+        'Replaying the past':'Something has not been set down. Thought keeps returning.',
+        'Skimming surface':'The writing describes the surface. Something else waits beneath.',
+        'Seeking certainty':'The anxiety is in the attempt to control what has not happened yet.',
+        'Escaping reality':'Something is present that the words keep going around.',
+        'Needing security':'The question is not about the situation. It is about who is facing it.',
+        'Observing clearly':'Something is watching without being entirely inside what it watches.',
+        'Chasing becoming':'The movement toward a better self is the self continuing.',
+        'Carrying images':'You are relating to the image of the person, not the person.',
+      };
+      const sorted = Object.entries(patternCounts).sort((a,b) => b[1]-a[1]);
+      const [name, count] = sorted[0];
+      const pct = Math.round(count / filtered.length * 100);
+      const periodLabel = patWindowDays === 0 ? 'across all your entries' : 'in the last ' + patWindowDays + ' days';
+      if (dominantName) dominantName.textContent = name;
+      const ddEl = document.getElementById('patDominantDesc');
+      if (ddEl) ddEl.textContent = PDESC[name] || '';
+      if (dominantCount) dominantCount.textContent = count + ' of ' + filtered.length + ' entries ' + periodLabel;
+      const dbEl = document.getElementById('patDominantBar');
+      if (dbEl) setTimeout(() => { dbEl.style.width = pct + '%'; }, 400);
+      dominantWrap.style.display = 'block';
+      // Pattern frequency bars
+      const freqSec = document.getElementById('patFreqSection');
+      const freqBars = document.getElementById('patFreqBars');
+      if (freqSec && freqBars && sorted.length > 0) {
+        freqSec.style.display = '';
+        const maxC = sorted[0][1];
+        freqBars.innerHTML = sorted.map(([pn, pc]) => {
+          const bw = Math.round(pc/maxC*100);
+          const short = pn.replace('Thought ','');
+          return '<div class="pat-freq-row"><div class="pat-freq-label" title="'+pn+'">'+short+'</div>' +
+            '<div class="pat-freq-bar-wrap"><div class="pat-freq-bar-fill" style="width:0%" data-w="'+bw+'%"></div></div>' +
+            '<div class="pat-freq-count">'+pc+'</div></div>';
+        }).join('');
+        setTimeout(() => { freqBars.querySelectorAll('.pat-freq-bar-fill').forEach(b => { b.style.transition='width 1.0s cubic-bezier(0.34,1.56,0.64,1)'; b.style.width=b.dataset.w; }); }, 300);
+      }
+      // Recurrence insight
+      const rcEl = document.getElementById('patRecurrenceCard');
+      if (rcEl && sorted[0][1] >= 2) { showRecurrenceInsight(sorted, filtered.length, patWindowDays); rcEl.style.display = ''; }
+    } else {
+      dominantWrap.style.display = 'none';
+    }
+
+    // Recalculate cluster averages for window
+    if (filtered.length >= 1) {
+      const avg = key => filtered.reduce((s,x) => s + (x[key] || 0), 0) / filtered.length;
+      const feltWord = v => v >= 0.72 ? "full" : v >= 0.55 ? "present" : v >= 0.38 ? "some" : v >= 0.22 ? "faint" : "quiet";
+      const feltSegs = v => { const f = v>=0.80?5:v>=0.60?4:v>=0.40?3:v>=0.20?2:1; return Array.from({length:5},(_,i)=>'<div class="felt-seg'+(i<f?' felt-on':' felt-off')+'"></div>').join(''); };
+      const aciW = (v) => v>=0.70?"Wide open":v>=0.55?"Partly open":v>=0.38?"Grounded":"Looking for ground";
+      const plsW = (v) => v>=0.65?"A lot present":v>=0.45?"Noticeable":v>=0.28?"Steady":"Quiet";
+      const aci = avg('aci'), pls = avg('pls');
+      const aciEl = document.getElementById('patAci'); if(aciEl) aciEl.textContent = aciW(aci);
+      const plsEl = document.getElementById('patPls'); if(plsEl) plsEl.textContent = plsW(pls);
+      const arcLen = 157;
+      setTimeout(() => {
+        const ae = document.getElementById('aciArc'); if(ae) ae.style.strokeDashoffset = arcLen - aci*arcLen;
+        const pe = document.getElementById('plsArc'); if(pe) pe.style.strokeDashoffset = arcLen - pls*arcLen;
+      }, 200);
+      const clusterMap = {A:'cluster_A', B:'cluster_B', C:'cluster_C', D:'cluster_D'};
+      ['A','B','C','D'].forEach(k => {
+        const score = avg(clusterMap[k]);
+        const lbl  = document.getElementById('patC'+k); if(lbl) lbl.textContent = feltWord(score);
+        const segs = document.getElementById('patC'+k+'Segs'); if(segs) segs.innerHTML = feltSegs(score);
+      });
+    }
+
+    // Window summary sentence
+    const tsEl = document.getElementById('patTrendStory');
+    if (tsEl && filtered.length >= 2) {
+      const avgAci = filtered.reduce((s,x)=>s+(x.aci||0),0)/filtered.length;
+      const avgPls = filtered.reduce((s,x)=>s+(x.pls||0),0)/filtered.length;
+      const windowLabel = patWindowDays === 0 ? 'across your whole practice' : 'over this period';
+      let line = '';
+      if      (avgAci >= 0.60 && avgPls <= 0.35) line = 'A spacious, quieter time — the mind moved with some ease ' + windowLabel + '.';
+      else if (avgAci >= 0.60)                    line = 'Real openness was present ' + windowLabel + ' — the mind could hold more than one thing.';
+      else if (avgPls >= 0.60)                    line = 'Something heavy was moving through ' + windowLabel + '. What you were carrying shows in the writing.';
+      else if (avgAci >= 0.40 && avgPls >= 0.40)  line = 'Weight and steadiness together ' + windowLabel + ' — grounded even when things were full.';
+      else if (avgAci <= 0.35)                    line = 'The mind was looking for firmer ground ' + windowLabel + '. Something underneath was unsettled.';
+      else                                         line = 'A human, ordinary span of days ' + windowLabel + ' — neither crisis nor ease. Just being with what was here.';
+      tsEl.innerHTML = '<div class="pat-trend-story"><div class="pat-trend-label">What the mirror sees ' + (patWindowDays > 0 ? '— last ' + patWindowDays + ' days' : '— all time') + '</div><div class="pat-trend-text">' + line + '</div></div>';
+    }
+
+    // Show window row
+    if (patAllSessions.length >= 3) {
+      document.getElementById('patWindowRow').style.display = 'flex';
+    }
+  }
+
+  function showRecurrenceInsight(sorted, total, days) {
+    const card = document.getElementById('patRecurrenceCard');
+    if (!card) return;
+    const [topName, topCount] = sorted[0];
+    const hasSecond = sorted.length > 1;
+    const period = days === 0 ? 'your whole practice' : 'the last ' + days + ' days';
+    let msg = '';
+    if (topCount / total >= 0.70) {
+      msg = '"' + topName.replace('Thought ','') + '" showed up in ' + topCount + ' of ' + total + ' entries across ' + period + '. The mind has been returning to the same movement again and again. That is worth sitting with quietly.';
+    } else if (hasSecond && sorted[1][1] >= 2) {
+      msg = 'Two movements have been alternating across ' + period + ': "' + topName.replace('Thought ','') + '" and "' + sorted[1][0].replace('Thought ','') + '". Something is working itself through.';
+    } else {
+      msg = '"' + topName.replace('Thought ','') + '" has been the most present movement across ' + period + '. The mirror has noticed it ' + topCount + ' times.';
+    }
+    card.className = 'pat-recurrence';
+    card.innerHTML = '<div class="pat-recurrence-label">the mirror notices</div><div class="pat-recurrence-text">' + msg + '</div>';
   }
 
   function toggleGuide(i) {
@@ -2950,6 +3355,18 @@
     gasCall("getUserHistory", { email: currentEmail }, function(data) {
         document.getElementById("jourLoading").style.display = "none";
         if (!data || !data.sessions || data.sessions.length === 0) { document.getElementById("jourEmpty").style.display=""; return; }
+        // v5.0: Show entry count with honest milestone language
+        const countLine = document.getElementById('jourCountLine');
+        if (countLine) {
+          const n = data.sessions.length;
+          const countMsg = n === 1 ? 'One entry. The mirror is beginning to form.'
+            : n < 5  ? n + ' entries. The pattern is just beginning to emerge.'
+            : n < 15 ? n + ' entries. Something is becoming visible across time.'
+            : n < 30 ? n + ' entries. The mirror has been watching long enough to see what repeats.'
+            : n + ' entries. You have looked honestly at yourself ' + n + ' times. That is not nothing.';
+          countLine.textContent = countMsg;
+          countLine.style.display = 'block';
+        }
         if (data.sessions.length >= 3) {
           gasCall("generateArcNarrative", { email: currentEmail }, function(arcData) {
             renderArcCard(document.getElementById("jourArcCard"), arcData, data.sessions.length);
@@ -2967,92 +3384,408 @@
       .getUserHistory(currentEmail);
   }
 
+  function computeMilestones(sessions) {
+    const n = sessions.length;
+    const milestones = [];
+
+    // Session count milestones
+    if      (n >= 100) milestones.push({ icon:'🌌', title:'One hundred times.', body:'You have sat with yourself honestly one hundred times. That is not a streak. That is a practice.' });
+    else if (n >= 50)  milestones.push({ icon:'🌿', title:'Fifty entries.', body:'The mirror has been watching long enough to see not just moments but movements across months.' });
+    else if (n >= 30)  milestones.push({ icon:'🪞', title:'Thirty sessions.', body:'Something has shifted — not dramatically, not all at once. Quietly, across the days.' });
+    else if (n >= 15)  milestones.push({ icon:'✦', title:'Fifteen sessions.', body:'The pattern is becoming visible. Not just what you write about — how the mind was moving when you wrote it.' });
+    else if (n >= 7)   milestones.push({ icon:'🌱', title:'Seven sessions.', body:'A week of honest writing. The mirror is beginning to form.' });
+
+    // Streak — consecutive days written
+    const days = sessions.map(s => new Date(s.date).toDateString());
+    const uniqueDays = [...new Set(days)];
+    if (uniqueDays.length >= 7) {
+      milestones.push({ icon:'⬡', title:'Written across many days.', body: uniqueDays.length + ' different days of showing up. Consistency is rarer than people think.' });
+    }
+
+    // Pattern shift — dominant pattern changed between first half and second half
+    const half = Math.floor(n/2);
+    if (n >= 6) {
+      const earlierSessions = sessions.slice(half);
+      const recentSessions  = sessions.slice(0, half);
+      const dominantPattern = arr => {
+        const counts = {};
+        arr.forEach(s => { if(s.pattern_name) counts[s.pattern_name] = (counts[s.pattern_name]||0)+1; });
+        return Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0] || null;
+      };
+      const earlyDom  = dominantPattern(earlierSessions);
+      const recentDom = dominantPattern(recentSessions);
+      if (earlyDom && recentDom && earlyDom !== recentDom) {
+        milestones.push({ icon:'↗', title:'Something has shifted.', body: 'The thought-movement that showed up most in your earlier entries — "' + earlyDom + '" — is no longer the most present one. Something changed.' });
+      }
+    }
+
+    // Weight shift — PLS dropped significantly from early to recent
+    if (n >= 6) {
+      const earlyPls  = sessions.slice(Math.floor(n*0.5)).reduce((s,x)=>s+(x.pls||0),0) / Math.floor(n*0.5);
+      const recentPls = sessions.slice(0, Math.floor(n*0.5)).reduce((s,x)=>s+(x.pls||0),0) / Math.floor(n*0.5);
+      if (earlyPls - recentPls > 0.12) {
+        milestones.push({ icon:'🌤', title:'The weight has lightened.', body: 'What you were carrying in your earlier entries is measurably less present now. The mirror noticed.' });
+      }
+    }
+
+    // Deep Lens used
+    const deepCount = sessions.filter(s => s.deep_lens_text).length;
+    if (deepCount >= 5) {
+      milestones.push({ icon:'◎', title: deepCount + ' times going deeper.', body: 'You have reached for the philosophical layer ' + deepCount + ' times. The questions behind the questions.' });
+    }
+
+    return milestones;
+  }
+
+  // ══ Quality language — name · question? · 1-2 word answer ══
+  const QUALITY_LANG = {
+    mindsRange: v => v>=0.65 ? "Wide open"  : v>=0.42 ? "Grounded"     : "Contracted",
+    weight:     v => v>=0.65 ? "Heavy"      : v>=0.42 ? "Present"      : "Light",
+    openness:   v => v>=0.65 ? "Open"       : v>=0.40 ? "Partly open"  : "Fixed",
+    stillness:  v => v>=0.65 ? "Settled"    : v>=0.40 ? "Both"         : "Circling",
+    warmth:     v => v>=0.65 ? "Gentle"     : v>=0.40 ? "Neutral"      : "Harsh",
+    clarity:    v => v>=0.65 ? "Clear"      : v>=0.40 ? "Forming"      : "Scattered",
+    source:     v => v>=0.62 ? "External"   : v>=0.40 ? "Balanced"     : "Internal",
+    depth:      v => v>=0.55 ? "Exploring"  : v>=0.30 ? "Both"         : "Reporting",
+  };
+  const QUALITY_Q = {
+    mindsRange: "How openly moving?",
+    weight:     "Light or heavy?",
+    openness:   "Fixed or open?",
+    stillness:  "Settled or circling?",
+    warmth:     "Gentle or harsh?",
+    clarity:    "Clear or scattered?",
+    source:     "Internal or external?",
+    depth:      "Exploring or reporting?",
+  };
+
+  // ══ Reverse Trace Map — 7 patterns → K-node → reverse questions + closing ══
+  // These are the fingers pointing at the moon. Not answers. Directions.
+  const REVERSE_TRACE = {
+    'Comparing oneself': {
+      kNode: 'Knowledge is judging Experience',
+      questions: [
+        'Who taught you the standard you are being measured against right now?',
+        'Is the one judging and the one being judged the same movement of thought?',
+        'What would this experience be, without the verdict you have already placed on it?',
+      ],
+      closing: 'The judge is not separate from what is being judged. Seeing that is already a step free of it.',
+    },
+    'Replaying the past': {
+      kNode: 'Thought is caught in Memory',
+      questions: [
+        'What would actually have to happen for this to feel resolved — be precise.',
+        'Is the returning itself doing something useful, or is it a habit of attention?',
+        'What is underneath the unresolved thing — what fear, what need, what belief?',
+      ],
+      closing: 'What returns again and again is not a problem to solve. It is something asking to be seen — not fixed.',
+    },
+    'Skimming surface': {
+      kNode: 'Thought is at the surface — Experience not yet touched',
+      questions: [
+        'Beneath the story you have told — what is the actual feeling that has no name yet?',
+        'If you set aside what happened and only stayed with how it left you — what is there?',
+        'Who is the one presenting all of this — and what are they not yet saying?',
+      ],
+      closing: 'The surface is not wrong. It is where every deeper thing begins. You are already at the door.',
+    },
+    'Seeking certainty': {
+      kNode: 'Memory is projecting a future Thought is trying to control',
+      questions: [
+        'What is the worst thing you are actually afraid will happen — say it plainly.',
+        'Has this fear appeared before, in a different situation? What does it know about you?',
+        'If the thing you are gripping were simply allowed to be uncertain — what remains?',
+      ],
+      closing: 'The grip itself is the suffering — not the thing being gripped. You already know this. That knowing is not nothing.',
+    },
+    'Escaping reality': {
+      kNode: 'Experience is present but has not yet surfaced into Thought',
+      questions: [
+        'What is the thing your writing keeps going around — without landing on it directly?',
+        'If you had to give this unnamed thing one honest word — even an imprecise one — what would it be?',
+        'When did you first feel this, approximately? Was it before this situation?',
+      ],
+      closing: 'Naming is not solving. But the unnamed thing loses some of its power the moment it is clearly seen.',
+    },
+    'Needing security': {
+      kNode: 'Something foundational in Knowledge has been disturbed',
+      questions: [
+        'What did you believe about yourself or the world that this situation has called into question?',
+        'Is the ground you are looking for something you need to find — or something you need to stop requiring?',
+        'Who would you be if this particular foundation were simply not there?',
+      ],
+      closing: 'The searching is not weakness. It is the beginning of seeing that the ground was never as fixed as it seemed — and that is freedom, not loss.',
+    },
+    'Observing clearly': {
+      kNode: 'The T → RI gap is opening — awareness is present',
+      questions: [
+        'Can the watching itself be watched — or does it remain as background?',
+        'Is the one watching also a thought, or is it something prior to thought?',
+        'From this place of watching — what does the situation actually ask of you?',
+      ],
+      closing: 'This quality of attention — seeing without immediately reacting — is not a technique. It is the thing itself. You are already here.',
+    },
+    'Chasing becoming': {
+      kNode: 'Thought is caught in the movement toward an ideal self',
+      questions: [
+        'The version of yourself you are trying to reach — when you imagine arriving there, what do you imagine will be different?',
+        'Have you reached earlier versions of that place — and did the wanting stop when you arrived?',
+        'Is there anything about right now — exactly as it is — that is actually complete?',
+      ],
+      closing: 'The one who is always becoming never arrives — because arriving would mean the movement stops. Is it possible to see that?',
+    },
+    'Carrying images': {
+      kNode: 'Knowledge has built fixed images — of self, of others, of relationships',
+      questions: [
+        'When you think of the person you are describing — are you seeing them as they are right now, or through everything that has happened between you?',
+        'In this situation — which version of you is responding? The one at work, at home, with this person specifically?',
+        'Underneath all the roles and responses — is there a sense of who you are when none of those are operating?',
+      ],
+      closing: 'The images are real — they were built from real experience. But they are not the person in front of you. And they are not all of you.',
+    },
+  };
+
+  function renderReverseTrace(patternName, container) {
+    const trace = REVERSE_TRACE[patternName];
+    if (!trace || !container) return;
+    container.innerHTML =
+      '<div style="margin:20px 0 0;">' +
+      // K-node indicator
+      '<div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(20,184,166,0.55);font-weight:700;margin-bottom:6px;">where you are in the cycle</div>' +
+      '<div style="font-family:var(--serif);font-size:14px;font-style:italic;color:var(--text-soft);margin-bottom:20px;line-height:1.5;">' + trace.kNode + '</div>' +
+      // Questions
+      '<div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(20,184,166,0.55);font-weight:700;margin-bottom:10px;">questions to carry forward</div>' +
+      trace.questions.map((q, i) =>
+        '<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;">' +
+        '<div style="flex-shrink:0;width:20px;height:20px;border-radius:50%;border:1px solid rgba(20,184,166,0.30);display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:9px;color:rgba(20,184,166,0.60);font-weight:700;margin-top:2px;">' + (i+1) + '</div>' +
+        '<div style="font-family:var(--serif);font-size:16px;font-style:italic;color:var(--text-dark);line-height:1.65;">' + q + '</div>' +
+        '</div>'
+      ).join('') +
+      // Closing line
+      '<div style="margin-top:18px;padding:14px 16px;border-left:2px solid rgba(20,184,166,0.35);background:rgba(20,184,166,0.04);border-radius:0 8px 8px 0;">' +
+      '<div style="font-family:var(--serif);font-size:15px;font-style:italic;color:var(--text-dark);line-height:1.65;">' + trace.closing + '</div>' +
+      '</div>' +
+      '</div>';
+  }
+
+    // ── Mirror Suggestion: maps quality readings to Zoom-Out questions ──
+  // Priority: C7 (Self-Warmth) → C1 (Openness) → C6 (Stillness) → C3 (Source) → C4 (Depth) → C2 (Weight)
+  // Each maps to a K-cycle layer and the corresponding Zoom-Out question
+  function getMirrorSuggestion(clusterVals, aciVal, plsVal, c3, c4) {
+    const A = clusterVals.A || 0;  // Openness (C1-based)
+    const B = clusterVals.B || 0;  // Stillness (C6)
+    const C = clusterVals.C || 0;  // Self-Warmth (C7)
+    const c3v = c3 || 0.5;
+    const c4v = c4 || 0.5;
+
+    // Q6 — Self-Warmth harsh: conditioned self running (Experience layer)
+    if (C < 0.35) return {
+      kLayer: 'Experience layer',
+      q: 'Is the one facing this the conditioned self, or something watching it?',
+      why: 'The inner voice has been turned harshly inward. The conditioned self is the one writing — and the one judging what it wrote.',
+      qNum: 6,
+    };
+    // Q4 — Openness fixed: a belief or fear is holding (Knowledge layer)
+    if (A < 0.35) return {
+      kLayer: 'Knowledge layer',
+      q: 'Why is it an issue exactly — what is actually at stake?',
+      why: 'The thinking has been fixed in one frame this week. Something at the root — a belief, a fear — is keeping it there.',
+      qNum: 4,
+    };
+    // Q3 — Stillness circling: stuck in time (Memory layer)
+    if (B < 0.38) return {
+      kLayer: 'Memory layer',
+      q: 'Is this about something past, or something not yet happened?',
+      why: 'The mind has been returning to the same thought repeatedly. Something is pulling it back in time.',
+      qNum: 3,
+    };
+    // Q2 — Source internal: placing cause on self (Memory → Experience)
+    if (c3v < 0.40) return {
+      kLayer: 'Memory → Experience',
+      q: 'What is actually causing this feeling?',
+      why: 'The mind has been placing the cause on itself. What is the actual source?',
+      qNum: 2,
+    };
+    // Q5 — Depth reporting: T→M trace not yet begun
+    if (c4v < 0.32) return {
+      kLayer: 'Thought → Memory trace',
+      q: 'Who is the one actually facing this? Look carefully.',
+      why: 'The writing has been describing the surface. The one facing this has not yet been looked at directly.',
+      qNum: 5,
+    };
+    // Q1 — Weight heavy: start with what is here (Thought layer)
+    if (plsVal >= 0.55) return {
+      kLayer: 'Thought layer',
+      q: 'How are you feeling right now — honestly?',
+      why: 'There has been a lot moving through this week. Start with what is actually present.',
+      qNum: 1,
+    };
+    // Default — Q7: the perspective shift
+    return {
+      kLayer: 'Awareness',
+      q: 'What would you tell a friend who came to you with exactly this?',
+      why: 'The mirror sees steadiness in this period. The question that opens most from here is perspective.',
+      qNum: 7,
+    };
+  }
+
+  function renderMirrorSuggestion(suggestion, container) {
+    if (!container || !suggestion) return;
+    container.innerHTML =
+      '<div style="margin-top:4px;padding:16px 18px;border-radius:14px;background:linear-gradient(135deg,rgba(13,92,99,0.08),rgba(20,184,166,0.04));border:1px solid rgba(20,184,166,0.18);position:relative;overflow:hidden;">' +
+      '<div style="position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,rgba(245,197,24,0.70),rgba(20,184,166,0.30));"></div>' +
+      '<div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,197,24,0.80);font-weight:700;margin-bottom:8px;">zoom-out · question ' + suggestion.qNum + '</div>' +
+      '<div style="font-family:var(--serif);font-size:17px;font-style:italic;color:var(--text-dark);line-height:1.50;margin-bottom:10px;">' + suggestion.q + '</div>' +
+      '<div style="font-family:var(--sans);font-size:11px;color:var(--text-soft);font-weight:400;line-height:1.55;">' + suggestion.why + '</div>' +
+      '</div>';
+  }
+  function feltWordSess(v) { return QUALITY_LANG.mindsRange(v||0); }
+  function feltWeightSess(v) { return QUALITY_LANG.weight(v||0); }
+
   function renderJourney(data) {
     const sessions = data.sessions;
 
-    // Trend story
-    if (sessions.length >= 3) {
-      const recent = sessions.slice(-3);
-      const avgAci = recent.reduce((s,x)=>s+(x.aci||0),0)/3;
-      const avgPls = recent.reduce((s,x)=>s+(x.pls||0),0)/3;
-      const lines  = [];
-      if      (avgAci>=0.60) lines.push("Your recent entries have had a certain spaciousness — a mind moving more freely.");
-      else if (avgAci>=0.40) lines.push("Lately your writing has felt grounded — steady underfoot, even if not always easy.");
-      else                   lines.push("The last few entries have carried some weight. Something has been working itself through.");
-      if      (avgPls>=0.60) lines.push("There has been a lot moving through you lately.");
-      else if (avgPls<=0.30) lines.push("Things have felt a little quieter recently.");
-      const td = document.getElementById("jourTrend");
-      td.style.display = "";
-      td.innerHTML = '<div class="jour-trend"><div class="jour-trend-label">What your friend notices</div><div class="jour-trend-text">'+lines.join(" ")+"</div></div>";
+    // Milestones
+    const ms = computeMilestones(sessions);
+    const jourArc = document.getElementById("jourArcCard");
+    if (ms.length > 0 && jourArc) {
+      jourArc.innerHTML = ms.map(m =>
+        '<div class="jour-milestone"><div class="jour-milestone-icon">'+m.icon+'</div><div class="jour-milestone-title">'+m.title+'</div><div class="jour-milestone-body">'+m.body+'</div></div>'
+      ).join("");
     }
 
+    // Trend sentence
+    if (sessions.length >= 3) {
+      const recent = sessions.slice(0, 3);
+      const avgAci = recent.reduce((s,x)=>s+(x.aci||0),0)/3;
+      const avgPls = recent.reduce((s,x)=>s+(x.pls||0),0)/3;
+      let line = "";
+      if      (avgAci>=0.60 && avgPls<=0.35) line = "Something has quieted. The writing lately has had a different quality — more open, less held.";
+      else if (avgAci>=0.60)                  line = "A quality of spaciousness has been present in your recent entries. The mind moving a little more freely.";
+      else if (avgPls>=0.60)                  line = "Something heavy has been moving through lately. The writing held a lot. That takes courage.";
+      else if (avgAci>=0.40)                  line = "Grounded, steady writing — neither in crisis nor in ease. Just being with what is here.";
+      else                                     line = "The last few entries carried some weight. Something has been working itself through.";
+      const td = document.getElementById("jourTrend");
+      if (td) {
+        td.style.display = "";
+        td.innerHTML = '<div style="margin:12px 0 20px;padding:16px 18px;border-radius:14px;background:rgba(20,184,166,0.05);border:1px solid rgba(20,184,166,0.13);">' +
+          '<div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(20,184,166,0.50);margin-bottom:7px;">the mirror&#39;s reading right now</div>' +
+          '<div style="font-family:var(--serif);font-size:16px;font-style:italic;color:var(--text-dark);line-height:1.65;">'+line+'</div></div>';
+      }
+    }
+
+    // Timeline sparkline — ACI values as a flowing line chart
+    if (sessions.length >= 2) {
+      const tw = document.getElementById("jourTimelineWrap");
+      const svg = document.getElementById("jourTimelineSvg");
+      if (tw && svg) {
+        tw.style.display = "block";
+        const svgW = 300, svgH = 80, pad = 10;
+        const vals = sessions.slice().reverse().map(s => s.aci || 0);
+        const n = vals.length;
+        const xStep = (svgW - pad*2) / Math.max(1, n-1);
+        const yScale = v => svgH - pad - v * (svgH - pad*2);
+
+        // Gradient fill path
+        const pts = vals.map((v,i) => [(pad + i*xStep).toFixed(1), yScale(v).toFixed(1)]);
+        const linePath = "M" + pts.map(p => p[0]+","+p[1]).join(" L");
+        const fillPath = linePath + " L"+(pts[pts.length-1][0])+","+(svgH-pad)+" L"+pad+","+(svgH-pad)+" Z";
+
+        // Color dots by ACI value
+        const dotColor = v => v >= 0.60 ? "#14b8a6" : v >= 0.40 ? "#8bb8bc" : "#e8a33a";
+
+        svg.innerHTML =
+          '<defs><linearGradient id="tlGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(20,184,166,0.25)"/><stop offset="100%" stop-color="rgba(20,184,166,0.02)"/></linearGradient></defs>' +
+          '<path d="'+fillPath+'" fill="url(#tlGrad)"/>' +
+          '<path d="'+linePath+'" fill="none" stroke="rgba(20,184,166,0.50)" stroke-width="1.5" stroke-linejoin="round"/>' +
+          pts.map((p,i) => '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3" fill="'+dotColor(vals[i])+'" opacity="0.85"/>').join("");
+
+        // Date labels
+        const first = document.getElementById("jourTimelineFirst");
+        const last  = document.getElementById("jourTimelineLast");
+        if (first && sessions.length) {
+          const d0 = new Date(sessions[sessions.length-1].date);
+          first.textContent = d0.toLocaleDateString("en-GB",{day:"numeric",month:"short"});
+        }
+        if (last && sessions.length) {
+          const d1 = new Date(sessions[0].date);
+          last.textContent = d1.toLocaleDateString("en-GB",{day:"numeric",month:"short"});
+        }
+      }
+    }
+
+    // Session cards
     function interp(key, val) {
       const p = Math.round((val||0)*100);
-      if (key==="aci") return p>=70?"open & spacious":p>=40?"grounded":"holding some weight";
-      if (key==="pls") return p>=65?"a full day":p>=35?"some weight":"quietly";
-      if (key==="A")   return p>=70?"spacious":p>=40?"some room":"looking for ground";
-      if (key==="B")   return p>=70?"settled":p>=40?"some movement":"working through";
-      if (key==="C")   return p>=70?"warm toward self":p>=40?"finding balance":"some hardness";
-      if (key==="D")   return p>=70?"clear through-line":p>=40?"mostly together":"still arriving";
+      if (key==="aci") return p>=70?"open & spacious":p>=40?"grounded":"holding weight";
+      if (key==="pls") return p>=65?"a full day":p>=35?"some weight":"quieter";
       return "";
     }
     const fmt = v => Math.round((v||0)*100)+"%";
 
     document.getElementById("jourContent").innerHTML = sessions.map((s,i) => {
       const d       = new Date(s.date);
-      const dateStr = d.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+      const dateStr = d.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});
       const preview = s.journal_text
-        ? s.journal_text.substring(0, 90).replace(/\n/g, " ") + "…"
-        : s.reflection
-          ? s.reflection.substring(0, 90).replace(/\n/g, " ") + "…"
-          : "A reflection was held for you.";
-      const fbCls   = s.feedback ? "feedback-"+s.feedback.toLowerCase() : "";
-      return '<div class="session-card">'+
-        '<div class="session-card-header" onclick="toggleSession('+i+')">'+
-          '<div class="session-card-left">'+
-            '<div class="session-date">'+dateStr+'</div>'+
-            '<div class="session-preview">'+preview+'</div>'+
-            '<div class="session-badges">'+
-              (s.feedback?"<span class=\"session-badge "+fbCls+'">'+s.feedback+"</span>":"")+
-              (s.deep_lens_text?'<span class="session-badge deep">went deeper</span>':"")+
-            '</div>'+
-          '</div>'+
-          '<div class="session-chevron" id="sc'+i+'">▾</div>'+
-        '</div>'+
-        '<div class="session-card-body" id="sb'+i+'">'+
-          '<div class="session-section-label">What you wrote</div>'+
-          (s.journal_text ? '<div class="session-journal-text">'+ s.journal_text.replace(/</g,"&lt;") +'</div>' : '<div class="session-journal-text" style="opacity:0.4;font-style:italic;">Your words from this session are not available.</div>')+
-          '<div class="session-section-label">Reflection</div>'+
-          '<div class="session-reflection-text">'+(s.reflection||"").replace(/</g,"&lt;")+'</div>'+
-          (s.deep_lens_text?'<div class="session-section-label">A deeper layer</div><div class="session-deep-text">'+s.deep_lens_text.replace(/</g,"&lt;")+'</div>':"")+
-          '<div class="session-k-quote">'+pickQuote(i)+'</div>'+
-          '<div class="session-section-label">How your mind moved that day</div>'+
-          '<div class="session-scores-grid">'+
-            ['aci','pls','A','B','C','D'].map((k,j) => {
-              const labels  = ["Mind's Range","Weight Carried","Openness","Stillness","Self-Warmth","Clarity"];
-              const emojis  = ["◈","◉","🌀","🌊","🌸","💎"];
-              const vals    = [s.aci,s.pls,s.cluster_A,s.cluster_B,s.cluster_C,s.cluster_D];
-              const pct     = Math.round((vals[j]||0)*100);
-              return '<div class="session-score-tile">'+
-                '<div class="session-score-left">'+
-                  '<div class="session-score-name">'+emojis[j]+' '+labels[j]+'</div>'+
-                  '<div class="session-score-val">'+fmt(vals[j])+'</div>'+
-                  '<div class="session-score-interp">'+interp(k,vals[j])+'</div>'+
-                '</div>'+
-                '<div class="session-score-bar-wrap">'+
-                  '<div class="session-score-bar-track">'+
-                    '<div class="session-score-bar-fill" style="height:'+pct+'%"></div>'+
-                  '</div>'+
-                '</div>'+
-              '</div>';
-            }).join("")+
-          '</div>'+
-        '</div>'+
+        ? s.journal_text.substring(0,100).replace(/\n/g," ")+"…"
+        : s.reflection ? s.reflection.substring(0,100).replace(/\n/g," ")+"…" : "A reflection was held for you.";
+      const fbCls   = s.feedback ? "jour-badge-"+s.feedback.toLowerCase() : "";
+
+      // Recurrence check
+      const patternName = s.pattern_name || null;
+      const prevOcc = patternName
+        ? sessions.slice(i+1).filter(ps => ps.pattern_name === patternName).length
+        : 0;
+      const recurBadge = prevOcc > 0
+        ? '<span class="jour-badge jour-badge-recur">'+
+          (prevOcc===1?"seen before":"seen "+prevOcc+"× before")+'</span>'
+        : "";
+
+      const fbBadge = s.feedback
+        ? '<span class="jour-badge '+fbCls+'">'+s.feedback+'</span>'
+        : "";
+      const deepBadge = s.deep_lens_text
+        ? '<span class="jour-badge jour-badge-deep">went deeper</span>'
+        : "";
+
+      return '<div class="jour-session-card">' +
+        '<div class="jour-session-header" onclick="toggleJourSession('+i+')">' +
+          '<div class="jour-session-date">'+dateStr+'</div>' +
+          (patternName ? '<div class="jour-session-pattern">'+patternName+'</div>' : '') +
+          '<div class="jour-session-preview">'+preview+'</div>' +
+          '<div class="jour-session-badges">'+recurBadge+fbBadge+deepBadge+'</div>' +
+        '</div>' +
+        '<div class="jour-session-body" id="jsb'+i+'">' +
+          '<div class="jour-session-body-label">What you wrote</div>' +
+          '<div class="jour-session-text">'+
+            (s.journal_text
+              ? s.journal_text.replace(/</g,"&lt;")
+              : '<span style="opacity:0.4;font-style:italic;">Your words from this session are not available.</span>') +
+          '</div>' +
+          '<div class="jour-session-body-label">The mirror&#39;s reflection</div>' +
+          '<div class="jour-session-reflection">'+((s.reflection||"")).replace(/</g,"&lt;")+'</div>' +
+          (s.deep_lens_text
+            ? '<div class="jour-session-body-label">A deeper layer</div><div class="jour-session-reflection" style="font-size:14px;color:rgba(10,61,66,0.65);">'+s.deep_lens_text.replace(/</g,"&lt;")+'</div>'
+            : '') +
+          '<div class="jour-session-scores" style="grid-template-columns:1fr 1fr 1fr;">' +
+            '<div class="jour-score-pill"><div class="jour-score-pill-label">Mind\'s Range</div><div class="jour-score-pill-val">'+feltWordSess(s.aci)+'</div></div>' +
+            '<div class="jour-score-pill"><div class="jour-score-pill-label">Weight</div><div class="jour-score-pill-val">'+feltWeightSess(s.pls)+'</div></div>' +
+            '<div class="jour-score-pill"><div class="jour-score-pill-label">Warmth</div><div class="jour-score-pill-val">'+feltWordSess(s.cluster_C)+'</div></div>' +
+            '<div class="jour-score-pill"><div class="jour-score-pill-label">Stillness</div><div class="jour-score-pill-val">'+feltWordSess(s.cluster_B)+'</div></div>' +
+            '<div class="jour-score-pill"><div class="jour-score-pill-label">Source</div><div class="jour-score-pill-val">'+((s.c3||s.C3||0.5)>=0.65?'outward':(s.c3||s.C3||0.5)>=0.42?'balanced':'inward')+'</div></div>' +
+            '<div class="jour-score-pill"><div class="jour-score-pill-label">Depth</div><div class="jour-score-pill-val">'+((s.c4||s.C4||0)>=0.60?'exploring':(s.c4||s.C4||0)>=0.35?'partly':'reporting')+'</div></div>' +
+          '</div>' +
+        '</div>' +
       '</div>';
     }).join("");
   }
 
-  function showAboutFromReg() {
+  function toggleJourSession(i) {
+    const body = document.getElementById("jsb"+i);
+    if (body) body.classList.toggle("open");
+  }
+
+    function showAboutFromReg() {
     const si = document.getElementById("screenAbout");
     if (!si) return;
     if (!document.getElementById("aboutBackBtn")) {
@@ -3195,12 +3928,14 @@
           </div>
           <div class="about-step-body" id="step2">
             <div class="about-feat-icon-large">◈</div>
-            <p class="about-feat-desc">After a few entries, LumeRI begins to show you how your mind has been moving — across Openness, Stillness, Self-Warmth, and Clarity. Not grades. Not diagnoses. A quiet, honest picture of where you've been.</p>
+            <p class="about-feat-desc">After a few entries, LumeRI begins to show you how your mind has been moving — across six qualities it reads in everything you write. Not grades. Not diagnoses. A quiet, honest picture of where you've been.</p>
             <div class="about-qualities-row">
               <div class="about-quality-chip">🌀 Openness</div>
               <div class="about-quality-chip">🌊 Stillness</div>
               <div class="about-quality-chip">🌸 Self-Warmth</div>
               <div class="about-quality-chip">💎 Clarity</div>
+              <div class="about-quality-chip">⚖️ Source</div>
+              <div class="about-quality-chip">🔭 Depth</div>
             </div>
           </div>
         </div>
