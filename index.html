@@ -5,7 +5,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>LumeRI — Write what is actually true.</title>
-<meta name="description" content="LumeRI is your private space to write honestly and receive a reflection grounded in psychology and ancient wisdom. Not a diary. Not a mood tracker. A mirror. By Reflective Intelligence."/>
+<meta name="description" content="LumeRI is your private space to write honestly and receive a reflection grounded in psychology and ancient wisdom. Not a diary. Not a mood tracker. A mirror. Observe the observer. See the movement of your thought."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@200;300;400&display=swap" rel="stylesheet"/>
 <style>
@@ -62,8 +62,15 @@ nav{
 .nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0}
 .nav-brand img{width:46px;height:40px;object-fit:contain}
 .nav-brand-text{display:flex;flex-direction:column;line-height:1}
-.nav-brand-text .lume{font-family:var(--serif);font-size:24px;font-style:italic;color:#0c2e34;line-height:1}
-.nav-brand-text .by-ri{font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);opacity:0.72;margin-top:5px;font-weight:300}
+.nav-brand-text .lume{font-family:var(--serif);font-size:24px;font-style:italic;color:#0c2e34;line-height:1;letter-spacing:0.3px}
+.nav-brand-text .lume .lume-ri{color:var(--brand);font-style:normal;font-weight:400}
+.nav-brand-text .by-ri{font-family:var(--serif);font-size:8px;color:rgba(45,212,191,0.55);margin-top:4px;font-weight:300;font-style:italic;letter-spacing:1px;line-height:1.3}
+/* Master brand decode — reusable wherever LumeRI appears as a brand block */
+.lumeri-decode{font-family:var(--serif);font-style:italic;font-weight:300;letter-spacing:1px;line-height:1.4}
+.lumeri-decode .d-ill{color:#2dd4bf}
+.lumeri-decode .d-sep{color:rgba(45,212,191,0.22);margin:0 4px;font-style:normal}
+.lumeri-decode .d-ref{color:rgba(200,235,232,0.50)}
+.lumeri-decode .d-inq{color:rgba(245,197,24,0.68)}
 .nav-links{display:flex;gap:2px;list-style:none;align-items:center}
 .nav-links li a{
   display:flex;flex-direction:column;align-items:center;gap:5px;
@@ -111,23 +118,30 @@ nav{
 
 /* ══ HERO ══ */
 #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:60px 24px 80px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#0c2e34 0%,#0f3d45 45%,#0a2830 100%)}
-.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:var(--max);width:100%;position:relative;z-index:2}
-.hero-text{padding-right:40px}
-.hero-eyeline{font-family:var(--sans);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--brand);opacity:1;margin-bottom:28px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 40%,#0f3d45 0%,#0c2e34 45%,#060e11 100%)}
+.hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:900px;width:100%;position:relative;z-index:2;gap:0}
+.hero-text{padding-right:0}
+.hero-eyeline{font-family:var(--sans);font-size:10px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.38);margin-bottom:52px;font-weight:300}
 .hero-h1{font-family:var(--serif);font-size:clamp(38px,5.5vw,68px);font-weight:300;color:#e8fdfb;line-height:1.15;margin-bottom:12px}
 .hero-h2{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:300;font-style:italic;color:var(--brand);line-height:1.3;margin-bottom:32px}
-.hero-body{font-family:var(--sans);font-weight:300;font-size:16px;color:rgba(220,245,242,0.92);line-height:1.9;margin-bottom:40px;max-width:480px}
-.hero-cta-row{display:flex;gap:16px;flex-wrap:wrap}
+.hero-body{font-family:var(--sans);font-weight:300;font-size:16px;color:rgba(220,245,242,0.75);line-height:1.9;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto}
+.hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
 .btn-primary{font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--abyss);background:var(--brand);padding:16px 36px;border:none;cursor:pointer;text-decoration:none;transition:all 0.3s;display:inline-block}
 .btn-primary:hover{background:var(--lite);transform:translateY(-2px)}
 .btn-ghost{font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--lite);background:transparent;padding:16px 36px;border:1px solid rgba(94,234,212,0.3);cursor:pointer;text-decoration:none;transition:all 0.3s;display:inline-block}
 .btn-ghost:hover{border-color:var(--lite)}
 .hero-logo-side{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px}
 .hero-logo-img{width:280px;height:248px;object-fit:contain;filter:drop-shadow(0 0 60px rgba(20,184,166,0.25));animation:breathe 5s ease-in-out infinite}
-@keyframes breathe{0%,100%{transform:scale(1) translateY(0);filter:drop-shadow(0 0 60px rgba(20,184,166,0.25))}50%{transform:scale(1.03) translateY(-8px);filter:drop-shadow(0 0 80px rgba(20,184,166,0.40))}}
+@keyframes breathe{0%,100%{transform:scale(1) translateY(0);filter:drop-shadow(0 0 60px rgba(20,184,166,0.25))}50%{transform:scale(1.03) translateY(-8px);filter:drop-shadow(0 0 90px rgba(20,184,166,0.45))}}
 .hero-rumi{text-align:center;font-family:var(--serif);font-size:clamp(15px,2vw,19px);font-style:italic;color:var(--lite);opacity:1;line-height:1.6;max-width:320px}
 .hero-rumi cite{display:block;font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--brand);opacity:0.6;margin-top:10px;font-style:normal}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.hero-anim-1{animation:heroFadeUp 1.0s ease forwards;opacity:0}
+.hero-anim-2{animation:heroFadeUp 1.0s ease 0.25s forwards;opacity:0}
+.hero-anim-3{animation:heroFadeUp 1.0s ease 0.5s forwards;opacity:0}
+.hero-anim-4{animation:heroFadeUp 1.0s ease 0.75s forwards;opacity:0}
+.hero-anim-5{animation:heroFadeUp 1.0s ease 1.0s forwards;opacity:0}
+@keyframes glowPulse{0%,100%{text-shadow:0 0 40px rgba(45,212,191,0.15)}50%{text-shadow:0 0 80px rgba(45,212,191,0.28),0 0 120px rgba(45,212,191,0.10)}}
 
 /* ══ SHARED SECTION STYLES ══ */
 section{padding:110px 24px;position:relative}
@@ -650,15 +664,10 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 }
 @media(max-width:768px){
   body{font-size:16px;line-height:1.7}
-  #hero{padding:40px 20px 60px}
-  .hero-inner{grid-template-columns:1fr;gap:32px}
-  .hero-logo-side{order:-1}
-  .hero-logo-img{width:140px;height:124px}
-  .hero-text{padding-right:0}
-  .hero-h1{font-size:clamp(30px,9vw,46px)}
-  .hero-h2{font-size:clamp(18px,5vw,26px)}
+  #hero{padding:48px 20px 60px}
+  .hero-inner{flex-direction:column;gap:0;align-items:center;text-align:center}
   .hero-body{font-size:15px}
-  .hero-rumi{font-size:14px}
+  .hero-cta-row{flex-direction:column;gap:12px;align-items:center}
   section{padding:60px 20px}
   .step{grid-template-columns:44px 1fr;gap:16px}
   .step-num{width:44px;height:44px;font-size:18px}
@@ -974,8 +983,8 @@ body:not(.zol-active) #hint { display:none !important; }
   <a href="#ri-intelligence" class="nav-brand">
     <img src="lumeri-logo.png" alt="LumeRI"/>
     <div class="nav-brand-text">
-      <span class="lume">LumeRI</span>
-      <span class="by-ri">by Reflective Intelligence</span>
+      <span class="lume">Lume<span class="lume-ri">RI</span></span>
+      <span class="by-ri lumeri-decode"><span class="d-ill">Illuminate</span><span class="d-sep">·</span><span class="d-ref">Reflect</span><span class="d-sep">·</span><span class="d-inq">Inquire</span></span>
     </div>
   </a>
 
@@ -987,11 +996,11 @@ body:not(.zol-active) #hint { display:none !important; }
       </svg>
       <span class="nav-label">The Cycle</span>
     </a></li>
-      <li><a href="#how">
+      <li><a href="#sample-entry">
       <svg class="nav-icon" viewBox="0 0 18 18" stroke-width="1.2">
         <circle cx="9" cy="9" r="7"/><polygon points="7,6 14,9 7,12"/>
       </svg>
-      <span class="nav-label">How It Works</span>
+      <span class="nav-label">See It Work</span>
     </a></li>
       <li><a href="#the-mirror">
       <svg class="nav-icon" viewBox="0 0 18 18" stroke-width="1.2">
@@ -1047,24 +1056,130 @@ body:not(.zol-active) #hint { display:none !important; }
 <!-- ══ HERO ══ -->
 <section id="hero">
   <div class="hero-bg"></div>
-  <div class="hero-inner container">
-    <div class="hero-text reveal">
-      <p class="hero-eyeline">By Reflective Intelligence</p>
-      <h1 class="hero-h1">Write what is<br/>actually true.</h1>
-      <h2 class="hero-h2">And watch something quietly begin to shift.</h2>
-      <p class="hero-body">Not a diary. Not a mood tracker. Not another app asking how you feel on a scale of one to ten. LumeRI is a private space to write honestly — and a quiet intelligence that reads what you write and reflects back what it notices.</p>
+
+  <!-- Radial ambient glow at centre -->
+  <div style="position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:radial-gradient(ellipse 55% 50% at 50% 42%,rgba(45,212,191,0.07) 0%,transparent 70%);"></div>
+
+  <!-- Horizontal hairlines — structural geometry -->
+  <div style="position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:1;">
+    <div style="position:absolute;top:28%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(45,212,191,0.07) 20%,rgba(45,212,191,0.12) 50%,rgba(45,212,191,0.07) 80%,transparent 100%);"></div>
+    <div style="position:absolute;top:72%;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(45,212,191,0.05) 30%,rgba(45,212,191,0.08) 50%,rgba(45,212,191,0.05) 70%,transparent 100%);"></div>
+  </div>
+
+  <div class="hero-inner">
+
+    <!-- LOGO — breathes at top, large -->
+    <div class="hero-anim-1" style="margin-bottom:40px;">
+      <img src="lumeri-logo.png" alt="LumeRI"
+        style="width:clamp(100px,14vw,160px);height:auto;object-fit:contain;
+          filter:drop-shadow(0 0 50px rgba(20,184,166,0.35)) drop-shadow(0 0 20px rgba(45,212,191,0.20));
+          animation:breathe 6s ease-in-out infinite;"/>
+    </div>
+
+    <!-- BRAND MARK — LumeRI with RI distinguished -->
+    <div class="hero-anim-2" style="margin-bottom:44px;display:flex;flex-direction:column;align-items:center;gap:10px;">
+
+      <!-- Lume + RI -->
+      <div style="
+        font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:clamp(28px,4vw,42px);
+        font-weight:300;
+        font-style:italic;
+        letter-spacing:2px;
+        line-height:1;
+        color:rgba(232,253,251,0.72);
+      ">Lume<span style="
+        color:#2dd4bf;
+        font-style:normal;
+        font-weight:400;
+        letter-spacing:1px;
+      ">RI</span></div>
+
+      <!-- Illuminate · Reflect · Inquire -->
+      <div style="
+        font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:clamp(11px,1.6vw,15px);
+        font-style:italic;
+        font-weight:300;
+        letter-spacing:2px;
+        line-height:1.5;
+        display:flex;align-items:center;gap:0;
+      ">
+        <span style="color:#2dd4bf;">Illuminate</span>
+        <span style="color:rgba(45,212,191,0.22);margin:0 10px;font-style:normal;">·</span>
+        <span style="color:rgba(200,235,232,0.48);">Reflect</span>
+        <span style="color:rgba(45,212,191,0.22);margin:0 10px;font-style:normal;">·</span>
+        <span style="color:rgba(245,197,24,0.65);">Inquire</span>
+      </div>
+
+    </div>
+
+    <!-- THE TAGLINE — the heart of the hero -->
+    <div class="hero-anim-3" style="margin-bottom:16px;position:relative;padding:0 12px;">
+
+      <!-- Line 1: OBSERVE THE OBSERVER -->
+      <div style="
+        font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:clamp(42px,8vw,96px);
+        font-weight:300;
+        line-height:1.05;
+        margin-bottom:4px;
+        animation:glowPulse 6s ease-in-out infinite;
+        letter-spacing:-1px;
+      ">
+        <span style="color:#2dd4bf;font-style:normal;font-weight:400;">Observe</span><span style="color:rgba(180,230,225,0.30);font-style:italic;font-weight:300;"> the </span><span style="color:rgba(232,253,251,0.82);font-style:italic;font-weight:300;">observer.</span>
+      </div>
+
+      <!-- Breathing separator -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:14px auto;width:fit-content;">
+        <div style="height:1px;width:clamp(40px,6vw,90px);background:linear-gradient(to right,transparent,rgba(45,212,191,0.25));"></div>
+        <div style="width:3px;height:3px;border-radius:50%;background:rgba(45,212,191,0.35);flex-shrink:0;"></div>
+        <div style="height:1px;width:clamp(40px,6vw,90px);background:linear-gradient(to left,transparent,rgba(45,212,191,0.25));"></div>
+      </div>
+
+      <!-- Line 2: SEE THE MOVEMENT OF YOUR THOUGHT -->
+      <div style="
+        font-family:'Cormorant Garamond',Georgia,serif;
+        font-size:clamp(22px,4vw,48px);
+        font-weight:300;
+        font-style:italic;
+        line-height:1.25;
+        color:rgba(160,215,210,0.40);
+        letter-spacing:0.2px;
+      ">
+        <span style="color:rgba(45,212,191,0.68);font-style:normal;font-weight:300;">See</span> the movement of your <span style="color:rgba(245,197,24,0.78);font-style:italic;">thought.</span>
+      </div>
+
+    </div>
+
+    <!-- Thin full-width rule -->
+    <div class="hero-anim-4" style="
+      width:clamp(60px,10vw,120px);
+      height:1px;
+      background:linear-gradient(to right,transparent,rgba(45,212,191,0.22),transparent);
+      margin:40px auto 40px;
+    "></div>
+
+    <!-- Body + CTA -->
+    <div class="hero-anim-5" style="max-width:520px;text-align:center;margin:0 auto;">
+      <p class="hero-body" style="margin-bottom:40px;">Not a diary. Not a mood tracker. A private space to write honestly — and a quiet intelligence that reads what you write and reflects back what it notices. The pattern, over time, becomes visible.</p>
       <div class="hero-cta-row">
         <a href="https://lumeri.co.in/app" class="btn-primary" target="_blank">Begin Writing — Free</a>
-        <a href="#how" class="btn-ghost">How it works</a>
+        <a href="#sample-entry" class="btn-ghost">See how it works</a>
       </div>
     </div>
-    <div class="hero-logo-side reveal">
-      <img src="lumeri-logo.png" alt="LumeRI — The ocean inside a drop" class="hero-logo-img"/>
-      <p class="hero-rumi">
-        "You are not a drop in the ocean.<br/>You are the ocean inside a drop."
-        <cite>Rumi</cite>
-      </p>
+
+    <!-- Scroll invitation -->
+    <div style="
+      margin-top:72px;
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+      animation:heroFadeUp 1s ease 1.4s forwards;opacity:0;
+    ">
+      <div style="font-family:var(--sans);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.25);">scroll</div>
+      <div style="width:1px;height:36px;background:linear-gradient(to bottom,rgba(45,212,191,0.25),transparent);animation:breathe 3s ease-in-out infinite;"></div>
     </div>
+
   </div>
 </section>
 
@@ -1661,6 +1776,7 @@ canvas { width: 100%; display: block; border-radius: 10px; margin-bottom: 0; }
       </p>
       <div style="margin-top:20px;">
         <a href="https://lumeri.co.in/app" target="_blank" style="display:inline-block;font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:var(--teal);padding:14px 32px;text-decoration:none;border-radius:3px;font-weight:500;">Begin Writing in LumeRI →</a>
+        <a href="https://lumeri.co.in" target="_blank" style="display:inline-block;font-family:var(--sans);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.50);text-decoration:none;margin-top:10px;">lumeri.co.in ↗</a>
       </div>
     </div>
 
@@ -1861,32 +1977,32 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
       col: 'amber'
     },
     {
-      tag: 'Phase 3 · Tracing backward',
-      head: 'RI traces the thought back to its root.',
+      tag: 'Phase 3 · Self-Inquiry',
+      head: 'Where did this thought come from? Trace it back.',
       body: 'From RI, awareness traces backward:\nT — seeing the thought clearly.\nT → M — detecting the recurring pattern in memory.\nM → E — identifying the original experience or event.\nE → K — identifying the source: lived truth, inherited belief, or conditioned assumption?',
       col: 'amber'
     },
     {
-      tag: 'Phase 4 · The source is seen',
-      head: 'K illuminates — where did this come from?',
+      tag: 'Phase 4 · The Root is Seen',
+      head: 'The root is visible. Simply seen — not fought.',
       body: 'The root is now visible. The original knowledge — inherited, unexamined, mistaken for truth — is seen for what it is. Not fought. Not suppressed. Simply seen. What is seen clearly, loses its grip.',
       col: 'amber'
     },
     {
-      tag: 'Phase 5 · A* — response from clarity',
-      head: 'From RI, a different action becomes possible.',
+      tag: 'Phase 5 · Choiceless Action',
+      head: 'Action arising from what is actually seen now.',
       body: 'Not reaction. Not suppression. A* — action arising from what is actually seen now, not from old conditioning. RI passes to A* on the orbit. The same situation. A completely different response. The loop opens.',
       col: 'amber'
     },
     {
-      tag: 'Phase 6 · A* returns to K',
-      head: 'The action completes — but the loop is different now.',
+      tag: 'Phase 6 · The Known, Loosening',
+      head: 'The conditioning did not deepen. One layer, seen.',
       body: 'A* does not disappear. It feeds back into Knowledge — as all action does. But this time, it is not reinforcing the old pattern. The conditioning is not deepened. One layer, quietly, begins to peel. What was accumulated through years of reaction — starts to thin. Not through effort. Through seeing.',
       col: 'gold'
     },
     {
-      tag: 'Phase 7 · K — one step back',
-      head: 'Knowledge itself becomes a little freer.',
+      tag: 'Phase 7 · A Little More Free',
+      head: 'The cycle restarts. The same person — but lighter.',
       body: 'The K node is not sharper with more information. It is lighter — with less noise. One fear seen. One inherited belief recognised. One layer of conditioning that no longer needs to be carried. The cycle restarts. From here. A little more free than before.',
       col: 'gold'
     }
@@ -1908,7 +2024,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     const dots  = document.getElementById('lib-dots');
     if (!pills || !dots) return;
     // Short labels for pills
-    const shortTags = ['1 · Loop','2 · Pause','3 · Trace','4 · Root','5 · A*','6 · Returns','7 · Free'];
+    const shortTags = ['1 · Loop','2 · Mirror','3 · Inquiry','4 · Seen','5 · Action','6 · Loosening','7 · Freer'];
     pills.innerHTML = PHASES.map((ph, i) => `
       <div id="pill-${i}" onclick="libGoTo(${i})" style="
         flex-shrink:0;
@@ -2012,24 +2128,24 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
   // Sub-step labels for phase 3
   const TRACE_LABELS = [
     {
-      arrow: 'Reflective Intelligence sees the Thought',
-      desc: 'What exactly is this thought?',
-      context: 'Before doing anything, just pause and look at the thought. Not good or bad — just what it actually is. Most people skip this. They react before they even notice what they are reacting to.'
+      arrow: 'Awareness sees the Thought',
+      desc: 'Look at the thought directly. What exactly is it?',
+      context: 'Before anything else — just look at the thought itself. Not labelling it good or bad. Not trying to solve it. What is it, exactly? Most people never do this. They react before they even notice what they are reacting to.'
     },
     {
-      arrow: 'Thought traces back to Memory',
-      desc: 'Have I felt this way before?',
-      context: 'Every thought comes from somewhere. Your mind is not creating something new — it is replaying a stored pattern. This feeling, this reaction, has shown up before. Where does it usually appear?'
+      arrow: 'T → M — does this recur?',
+      desc: 'Has this feeling shown up before? When?',
+      context: 'This thought is not new. It is a pattern that has shown up before — in different situations, with the same emotional structure underneath. Where else has this appeared?'
     },
     {
-      arrow: 'Memory traces back to Experience',
-      desc: 'What happened that created this pattern?',
-      context: 'At some point in your life, something happened — a moment, a relationship, a loss, a criticism. Your mind stored it. And ever since, it has been running that stored response automatically, even in new situations.'
+      arrow: 'M → E — when did this begin?',
+      desc: 'What experience is this pattern rooted in?',
+      context: 'At some point, something happened. A moment. A relationship. A loss. The mind stored it — and has been running that stored response in new situations ever since, without questioning it.'
     },
     {
-      arrow: 'Experience traces back to Knowledge',
-      desc: 'Where did the original belief come from?',
-      context: 'At the root is a belief — something you accepted as true. Maybe you were taught it. Maybe you concluded it from a painful experience. The question now is: is it actually true? Or was it just what you learned to believe?'
+      arrow: 'E → K — is this actually true?',
+      desc: 'Is this actually true — or just what was learned?',
+      context: 'At the root: a belief accepted as true. Taught, or concluded from pain. The question is not whether it was understandable to believe it — but whether it is actually true, right now.'
     },
   ];
 
@@ -2050,7 +2166,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
           + '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:rgba(200,240,238,0.68);line-height:1.75;font-weight:300;">' + tl.context + '</div>'
         : '<div style="font-family:DM Sans,sans-serif;font-size:13px;color:rgba(245,197,24,0.50);font-style:italic;line-height:1.6;">Watch the arrow draw...</div>';
       content.innerHTML =
-        '<div style="font-family:DM Sans,sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:rgba(232,160,32,0.75);margin-bottom:10px;">Step ' + (traceStep+1) + ' of 4 · Tracing Backward</div>'
+        '<div style="font-family:DM Sans,sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:rgba(232,160,32,0.75);margin-bottom:10px;">Step ' + (traceStep+1) + ' of 4 · Self-Inquiry</div>'
         + '<div style="font-family:Cormorant Garamond,Georgia,serif;font-size:15px;font-weight:400;line-height:1.35;color:rgba(245,197,24,0.85);margin-bottom:8px;">' + tl.arrow + '</div>'
         + descHTML;
     }
@@ -2061,7 +2177,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
         nextBtn.style.borderColor = traceDone ? 'rgba(245,197,24,0.30)' : 'rgba(245,197,24,0.10)';
         nextBtn.onclick = traceDone ? () => { traceStep++; traceArrowP=0; traceDone=false; updateTraceUI(); } : null;
       } else {
-        nextBtn.textContent = traceDone ? 'Phase 4 — The source →' : '...';
+        nextBtn.textContent = traceDone ? 'Phase 4 — The Root is Seen →' : '...';
         nextBtn.style.color = traceDone ? 'rgba(45,212,191,0.80)' : 'rgba(45,212,191,0.30)';
         nextBtn.style.borderColor = traceDone ? 'rgba(45,212,191,0.30)' : 'rgba(45,212,191,0.10)';
         nextBtn.onclick = traceDone ? () => libNext() : null;
@@ -2134,7 +2250,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     const riR = nr * 1.15; // slightly larger than K-cycle nodes
 
     // Phase label at top
-    const phaseNames = ['Phase 1 — Conditioning loop','Phase 2 — RI activates','Phase 3 — Tracing backward','Phase 4 — Source seen','Phase 5 — A* response','Phase 6 — A* returns to K','Phase 7 — Knowledge, freed'];
+    const phaseNames = ['Phase 1 — The Conditioning Loop','Phase 2 — The Mirror Activates','Phase 3 — Self-Inquiry','Phase 4 — The Root is Seen','Phase 5 — Choiceless Action','Phase 6 — The Known, Loosening','Phase 7 — A Little More Free'];
     ctx.font = `500 ${Math.max(7, 8.5 * sc)}px 'DM Sans',sans-serif`;
     ctx.fillStyle = 'rgba(45,212,191,0.38)';
     ctx.textAlign = 'center'; ctx.textBaseline = 'top';
@@ -2413,7 +2529,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
         ctx.font=`italic ${Math.max(9,10*sc)}px 'Cormorant Garamond',serif`;
         ctx.fillStyle=G_+la*.78+')';
         ctx.textAlign='center'; ctx.textBaseline='bottom';
-        ctx.fillText('A* — response from clarity', A.x, A.y-nr-8*sc);
+        ctx.fillText('A* — action from seeing', A.x, A.y-nr-8*sc);
       }
 
       // A glows gold
@@ -2478,7 +2594,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
         ctx.font=`italic ${Math.max(8,9*sc)}px 'Cormorant Garamond',serif`;
         ctx.fillStyle=G2_+la2*.65+')';
         ctx.textAlign='center'; ctx.textBaseline='middle';
-        ctx.fillText('not adding — peeling', midAKx, midAKy - 14*sc);
+        ctx.fillText('not adding — loosening', midAKx, midAKy - 14*sc);
       }
 
       // K pulses gold — receiving, lighter
@@ -2657,12 +2773,40 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     </div>
     <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:80px;align-items:center;">
       <div class="reveal">
-        <div class="drop-ideology">
-          <p>"You are not a drop in the ocean. You are the ocean inside a drop." — Rumi</p>
-        </div>
         <p class="section-body">The LumeRI logo is a single drop of water — luminous, teal, shaped from light — with a star burning at its centre. It is one of the most ancient and precise metaphors in human tradition for what it means to hold an entire world within a single moment of attention.</p>
         <p class="section-body">The star inside the drop is the point of recognition — the moment the writing lands and something becomes visible. Light in a contained space. The whole illuminated by a single source.</p>
         <p class="section-body">Water is also the oldest mirror. A still surface of water is the first reflective surface human beings ever used. What LumeRI holds is that still surface — the page — on which your inner life becomes, for the first time, visible to you.</p>
+
+        <!-- Rumi quote — given proper visual home here -->
+        <div style="
+          margin-top:40px;
+          padding:32px 36px;
+          border-left:2px solid rgba(45,212,191,0.28);
+          background:rgba(45,212,191,0.03);
+          border-radius:0 8px 8px 0;
+          position:relative;
+        ">
+          <div style="
+            position:absolute;top:0;left:0;right:0;height:1px;
+            background:linear-gradient(90deg,rgba(45,212,191,0.25),transparent);
+          "></div>
+          <p style="
+            font-family:'Cormorant Garamond',serif;
+            font-size:clamp(18px,2.8vw,24px);
+            font-style:italic;
+            color:rgba(232,253,251,0.80);
+            line-height:1.72;
+            margin-bottom:14px;
+          ">"You are not a drop in the ocean.<br/>You are the ocean inside a drop."</p>
+          <cite style="
+            font-family:'DM Sans',sans-serif;
+            font-size:10px;
+            letter-spacing:4px;
+            text-transform:uppercase;
+            color:rgba(45,212,191,0.45);
+            font-style:normal;
+          ">Rumi</cite>
+        </div>
       </div>
       <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:28px;">
         <img src="lumeri-logo.png" alt="LumeRI" style="width:260px;height:231px;object-fit:contain;filter:drop-shadow(0 0 60px rgba(20,184,166,0.3));animation:breathe 5s ease-in-out infinite;"/>
@@ -2837,7 +2981,7 @@ body::before{
 
 
 <canvas id="bgCanvas"></canvas>
-<p class="logo">LumeRI</p>
+<p class="logo" style="margin-bottom:4px;">Lume<span style="color:#2dd4bf;font-style:normal;font-weight:400;">RI</span></p><p style="font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;font-weight:300;letter-spacing:1.5px;color:rgba(45,212,191,0.45);margin-bottom:0;"><span style="color:#2dd4bf;">Illuminate</span><span style="color:rgba(45,212,191,0.22);margin:0 6px;">·</span><span style="color:rgba(200,235,232,0.42);">Reflect</span><span style="color:rgba(45,212,191,0.22);margin:0 6px;">·</span><span style="color:rgba(245,197,24,0.58);">Inquire</span></p>
 <div class="stage" id="stage">
   <div id="zol-counter" style="position:absolute;top:24px;right:32px;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.55);z-index:20;pointer-events:none;"></div>
 
@@ -3392,51 +3536,50 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
 <!-- ══ END ZOOM-OUT ════════════════════════════════════════════════ -->
 
 
-<!-- ══ HOW IT WORKS ══ -->
-<section id="how">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">The Experience</div>
-      <h2 class="section-h2">You write.<br/>LumeRI reads.<br/><em>Something reflects.</em></h2>
-      <p class="section-body" style="max-width:600px;">Five minutes or fifty. A few lines or many. The only requirement is honesty. Everything else follows from that.</p>
+<!-- ══ FREEDOM FROM THE KNOWN ══ -->
+<section id="freedom" style="background:var(--hero-bg);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
+  <div style="max-width:720px;margin:0 auto;">
+
+    <div class="reveal" style="text-align:center;margin-bottom:72px;">
+      <div style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:18px;">The Heart of This</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,52px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.18;margin-bottom:18px;">Freedom from the known.</h2>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2.4vw,18px);color:rgba(45,212,191,0.52);line-height:1.7;max-width:480px;margin:0 auto;">Not freedom from the situation.<br/>Freedom from the accumulated self that is interpreting it.</p>
+      <div style="width:40px;height:1px;background:rgba(45,212,191,0.22);margin:28px auto 0;"></div>
     </div>
-    <div class="steps reveal">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div>
-          <div class="step-title">You write anything.</div>
-          <div class="step-body">What happened today. What you are carrying. What you can't stop thinking about. There are no rules about length, topic, or structure. The only rule is honesty. Everything is completely private — no other person ever reads what you write. LumeRI understands the way you naturally write — without needing you to adjust your voice.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div>
-          <div class="step-title">LumeRI reads the structure, not just the words.</div>
-          <div class="step-body">A carefully designed intelligence reads nine dimensions of how your mind was moving when you wrote. Not what you said. How you were thinking. The quality of attention, the emotional weight, the self-relational tone.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div>
-          <div class="step-title">You receive a reflection.</div>
-          <div class="step-body">A short, personal response drawn from what you actually wrote. Not a generic prompt. Not a motivational quote. Something that lands differently because it was built from what you put on the page. Sometimes a single line. Sometimes uncomfortably precise.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <div>
-          <div class="step-title">If you are ready — the Deep Lens.</div>
-          <div class="step-body">A philosophical layer drawn from Krishnamurti, Rumi, Ramana Maharshi, the Tao, and others — matched to your specific psychological pattern. Not advice. Not a prescription. A different quality of light on the same moment.</div>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-num">5</div>
-        <div>
-          <div class="step-title">Over time, you begin to see yourself.</div>
-          <div class="step-body">Your patterns. The themes your mind keeps returning to. How your Openness, Stillness, Self-Warmth and Clarity have moved across sessions. LumeRI identifies one of human condition patterns in your writing — not a diagnosis, but a name for a shape you may have been living inside without knowing. Seeing it named is often the beginning of something shifting.</div>
-        </div>
-      </div>
+
+    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
+      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Known</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">Most of what we call living is the known in motion — the same reactions dressed in today's clothes, the same fear and the same reaching, arising not from what is actually here but from everything that already happened. Thought moves to action automatically, mechanically, without a gap. Without your awareness.</p>
     </div>
+
+    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
+      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Gap</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-bottom:16px;">Between thought and action, there is a gap. Most people never inhabit it. <em style="color:#2dd4bf;">Reflective Intelligence</em> is the capacity to live in that gap — to see the movement of thought before it becomes action. Not to suppress it. Not to analyse it. Simply to see it clearly, without the interference of judgement.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">That seeing is not a technique. It is what you already are when you stop adding to the noise.</p>
+    </div>
+
+    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
+      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Seeing</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">When the pattern is seen clearly — not understood, not worked through, simply <em style="color:#2dd4bf;">seen</em> — it loses its authority. Not because you fought it. Because the known cannot survive being seen for what it is: accumulated reaction, not present reality.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-top:14px;">There is a difference between analysing a pattern and seeing it. Analysis keeps the observer separate from the observed — the known examining itself, producing more knowledge, not freedom. Seeing is different. When you see the pattern without division — without a separate self that stands apart and explains it — the observer and the observed become one movement. In that instant, there is no one left to be the pattern. The word is not the thing. What is seen clearly begins to lose its grip.</p>
+    </div>
+
+    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
+      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">What Remains</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-bottom:16px;">What remains when the known settles is not emptiness. It is the capacity to act from what is actually here — not from accumulated reaction. This is choiceless action: not because there is no choice, but because the action arises from clarity rather than conditioning.</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">And as the self stops defending its conditioning, something else becomes possible. A natural compassion for the suffering of others, because you are no longer entirely inside your own. A love that is not sentiment, not effort — but the simple quality of a mind that is no longer at war with itself.</p>
+    </div>
+
+    <div class="reveal" style="margin-top:52px;padding:38px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.13);border-radius:6px;text-align:center;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.38),transparent);"></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,24px);font-style:italic;color:#e8fdfb;line-height:1.8;margin-bottom:14px;">This is not improvement. Not healing. Not self-optimisation.<br/><em style="color:#2dd4bf;">Freedom — from the known, from the mechanical, from the duality of what I am and what I should be.</em></p>
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2.2vw,18px);color:rgba(45,212,191,0.48);margin-top:8px;">And in that freedom — choiceless action. Pure love. The present moment, undivided.</p>
+    </div>
+
+    <div class="reveal" style="margin-top:44px;text-align:center;">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,2.2vw,17px);color:rgba(45,212,191,0.70);line-height:1.72;">LumeRI is one instrument for this seeing.</p>
+    </div>
+
   </div>
 </section>
 
@@ -3446,8 +3589,8 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
   <div class="container">
     <div class="sample-intro">
       <div class="section-label">What you receive</div>
-      <h2 class="sample-h2">A real entry.<br/><em>A real reflection.</em></h2>
-      <p class="sample-body">This is what LumeRI actually does. Someone wrote honestly. The mirror read it across nine psychological dimensions and reflected back what it noticed — not advice, not diagnosis. Just a clearer view of what was already there.</p>
+      <h2 class="sample-h2">Someone wrote honestly.<br/><em>This is what came back.</em></h2>
+      <p class="sample-body">Not a prompt. Not a score. Not advice. LumeRI reads the psychological structure of what you wrote — how the mind was moving — and reflects it back as a mirror. This is what that looks like.</p>
     </div>
 
     <div class="sample-tabs">
@@ -3455,7 +3598,7 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
       <button class="sample-tab" onclick="showEntry(1, this)">Entry Two</button>
     </div>
 
-    <!-- ENTRY 1 -->
+    <!-- ENTRY 1: Work pressure, future anxiety, thought gripping what cannot be held (P4) -->
     <div class="mirror-card" id="entry-0" style="display:block">
       <div class="entry-panel">
         <div class="panel-label">
@@ -3463,62 +3606,61 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
           What you wrote
         </div>
         <p class="entry-text">
-          I keep telling myself I'm fine. That the tiredness is just work,
-          just the season, just temporary. But something underneath
-          that is harder to name — a kind of weight I keep moving
-          around instead of setting down. I don't know when I stopped
-          asking myself what I actually want.<span class="cursor"></span>
+          There is so much pressure from all sides right now. The project
+          deadline, my manager's expectations, and at home my mother keeps
+          asking when things will settle. I know I am giving my level best
+          but it does not feel enough. I keep thinking — what if I cannot
+          deliver? What if everything falls apart? I cannot stop running
+          these scenarios in my head even when I know it is not helping.<span class="cursor"></span>
         </p>
-        <p class="entry-date">Written today · Private</p>
+        <p class="entry-date">Written today · Private · Never read by a human</p>
       </div>
       <div class="reflection-panel">
+
         <div class="panel-label" style="color:rgba(45,212,191,0.72);">
           <svg viewBox="0 0 14 14" stroke="rgba(45,212,191,0.45)"><circle cx="7" cy="7" r="5"/><line x1="7" y1="4" x2="7" y2="7"/><line x1="7" y1="7" x2="9" y2="9"/></svg>
-          LumeRI read
-        </div>
-        <div class="constructs-mini">
-          <div class="construct-row">
-            <span class="construct-row-name">Emotional Intensity</span>
-            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="1" style="width:78%"></div></div>
-            <span class="construct-score">78</span>
-          </div>
-          <div class="construct-row">
-            <span class="construct-row-name">Reflective Depth</span>
-            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="2" style="width:85%"></div></div>
-            <span class="construct-score">85</span>
-          </div>
-          <div class="construct-row">
-            <span class="construct-row-name">Self-Relational Tone</span>
-            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="3" style="width:42%"></div></div>
-            <span class="construct-score">42</span>
-          </div>
-          <div class="construct-row">
-            <span class="construct-row-name">Cognitive Flexibility</span>
-            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="4" style="width:61%"></div></div>
-            <span class="construct-score">61</span>
-          </div>
-        </div>
-        <div class="reflection-divider"></div>
-        <div class="reflection-heading">
-          <svg viewBox="0 0 14 14"><circle cx="5" cy="5" r="3.5"/><line x1="8" y1="8" x2="13" y2="13"/></svg>
           What the mirror noticed
         </div>
-        <p class="reflection-body">
-          You are not describing tiredness. You are describing someone
-          who has been very good at continuing — and is beginning to
-          notice the cost of that. The phrase "moving around instead
-          of setting down" suggests real self-awareness. The question
-          you end with is not rhetorical. It is the actual question.
+
+        <p class="reflection-body" style="margin-top:16px;">
+          The exhaustion here is not coming from the work itself.
+          It is coming from the effort of managing a future that has not
+          happened yet. You are delivering on the present while simultaneously
+          trying to secure every possible outcome — and that is two
+          full-time jobs running at once.
         </p>
-        <div class="deep-lens-quote">
-          <p class="deep-lens-label">Deep Lens · Krishnamurti</p>
-          <p class="deep-lens-text">"The first step in freedom is to see what is — not what should be, not what was, but what is actually happening now."</p>
-          <p class="deep-lens-author">— J. Krishnamurti</p>
+        <p class="reflection-body">
+          <em>"What if everything falls apart"</em> — notice that this
+          thought is not a warning. It is a loop. Warnings arrive once.
+          Loops return because something underneath still feels unresolved.
+          The mind keeps running the scenario not because it believes it
+          will help, but because it does not yet know how to stop.
+        </p>
+        <p class="reflection-body">
+          You already know it is not helping. That knowing is something.
+          The part of you that can see the loop is not inside the loop.
+          That is worth staying with for a moment.
+        </p>
+
+        <!-- Pattern pill -->
+        <div style="margin:20px 0 0;">
+          <div style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(45,212,191,0.28);border-radius:20px;padding:6px 16px;color:rgba(45,212,191,0.65);">
+            Seeking certainty
+          </div>
         </div>
+
+        <div class="reflection-divider" style="margin:24px 0;"></div>
+
+        <div class="deep-lens-quote">
+          <p class="deep-lens-label">Deep Lens · Lao Tzu</p>
+          <p class="deep-lens-text">"Do you have the patience to wait until your mud settles and the water is clear? Can you remain unmoving until the right action arises by itself?"</p>
+          <p class="deep-lens-author">— Tao Te Ching</p>
+        </div>
+
       </div>
     </div>
 
-    <!-- ENTRY 2 -->
+    <!-- ENTRY 2: Loss, searching for ground, quiet grief — thought searching for ground (P6) -->
     <div class="mirror-card" id="entry-1" style="display:none;">
       <div class="entry-panel">
         <div class="panel-label">
@@ -3526,64 +3668,64 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
           What you wrote
         </div>
         <p class="entry-text">
-          I had a fight with someone I love and I know I was right
-          but I also feel terrible about how I said it. I keep
-          rehearsing it — what I said, what they said.
-          Why does being right feel so hollow when the other
-          person is hurt? I think I use clarity as a weapon
-          sometimes and I don't know what to do with that.<span class="cursor"></span>
+          My father passed away three months ago and I thought I was
+          doing okay. People kept saying I was handling it so well.
+          But lately I find myself in the middle of ordinary moments —
+          making tea, driving to work — and suddenly I don't know
+          who I am without him being somewhere in the world.
+          It is not grief exactly. It is more like the ground
+          shifted and I have not found new footing yet.<span class="cursor"></span>
         </p>
-        <p class="entry-date">Written today · Private</p>
+        <p class="entry-date">Written today · Private · Never read by a human</p>
       </div>
       <div class="reflection-panel">
+
         <div class="panel-label" style="color:rgba(45,212,191,0.72);">
           <svg viewBox="0 0 14 14" stroke="rgba(45,212,191,0.45)"><circle cx="7" cy="7" r="5"/><line x1="7" y1="4" x2="7" y2="7"/><line x1="7" y1="7" x2="9" y2="9"/></svg>
-          LumeRI read
-        </div>
-        <div class="constructs-mini">
-          <div class="construct-row">
-            <span class="construct-row-name">Emotional Intensity</span>
-            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="1" style="width:88%"></div></div>
-            <span class="construct-score">88</span>
-          </div>
-          <div class="construct-row">
-            <span class="construct-row-name">Self-Relational Tone</span>
-            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="2" style="width:71%"></div></div>
-            <span class="construct-score">71</span>
-          </div>
-          <div class="construct-row">
-            <span class="construct-row-name">Cognitive Flexibility</span>
-            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="3" style="width:79%"></div></div>
-            <span class="construct-score">79</span>
-          </div>
-          <div class="construct-row">
-            <span class="construct-row-name">Reflective Depth</span>
-            <div class="construct-bar-track"><div class="construct-bar-fill" data-delay="4" style="width:91%"></div></div>
-            <span class="construct-score">91</span>
-          </div>
-        </div>
-        <div class="reflection-divider"></div>
-        <div class="reflection-heading">
-          <svg viewBox="0 0 14 14"><circle cx="5" cy="5" r="3.5"/><line x1="8" y1="8" x2="13" y2="13"/></svg>
           What the mirror noticed
         </div>
-        <p class="reflection-body">
-          The discomfort you feel is not weakness — it is
-          the beginning of something more important than being right.
-          "I use clarity as a weapon" is a rare and honest thing
-          to see about yourself. Most people don't. That you see it
-          and sit with it rather than defending it — that is already
-          a different quality of attention.
+
+        <p class="reflection-body" style="margin-top:16px;">
+          What you are describing is precise — and more honest than
+          most people allow themselves to be. It is not just grief for
+          the person. It is grief for a version of yourself that existed
+          in relation to that person. The ground did shift.
+          That is not a metaphor. It is what happened.
         </p>
-        <div class="deep-lens-quote">
-          <p class="deep-lens-label">Deep Lens · Rumi</p>
-          <p class="deep-lens-text">"Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there."</p>
-          <p class="deep-lens-author">— Rumi</p>
+        <p class="reflection-body">
+          <em>"Handling it so well"</em> can be a kind of loneliness.
+          When the people around you have closed the chapter, you are
+          still inside it — and there is nowhere to bring what is
+          actually present. The ordinary moments — tea, driving —
+          are where the real thing lives, not in the ceremonies.
+        </p>
+        <p class="reflection-body">
+          Not knowing who you are without him in the world is not a
+          problem to solve. It is something to be with — to let the
+          new footing find itself, rather than searching for it.
+          The searching is exhausting. The not-knowing, held gently,
+          is different.
+        </p>
+
+        <!-- Pattern pill -->
+        <div style="margin:20px 0 0;">
+          <div style="display:inline-block;font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;border:1px solid rgba(45,212,191,0.28);border-radius:20px;padding:6px 16px;color:rgba(45,212,191,0.65);">
+            Needing security
+          </div>
         </div>
+
+        <div class="reflection-divider" style="margin:24px 0;"></div>
+
+        <div class="deep-lens-quote">
+          <p class="deep-lens-label">Deep Lens · Nisargadatta</p>
+          <p class="deep-lens-text">"The mind creates the abyss. The heart crosses it."</p>
+          <p class="deep-lens-author">— Nisargadatta Maharaj</p>
+        </div>
+
       </div>
     </div>
 
-    <p class="sample-caption">Entries are shown with permission · Names and identifying details changed · <em>Your writing is never shared.</em></p>
+    <p class="sample-caption">Written honestly · Shown with permission · Names and identifying details changed · <em>Your writing is never shared.</em></p>
   </div>
 </section>
 
@@ -3643,12 +3785,100 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
 
     </div>
 
-    <!-- What it sees over time -->
-    <div class="reveal" style="max-width:760px;margin:0 auto;padding:48px 40px;background:linear-gradient(135deg,rgba(12,46,52,0.96),rgba(5,13,16,0.98));border-radius:14px;text-align:center;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.40),transparent);"></div>
-      <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.50);margin-bottom:16px;">Across sessions</div>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.5vw,32px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.3;margin-bottom:16px;">The pattern only becomes visible<br/>when there is enough to reflect.</h3>
-      <p style="font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.85;color:rgba(200,235,232,0.65);font-weight:300;max-width:520px;margin:0 auto;">A single session shows today. Seven sessions show what keeps returning. Thirty sessions show what has shifted, what has endured, and where the loop is still running. The mirror deepens with time.</p>
+    <!-- What it sees over time — with analytics teaser -->
+    <div class="reveal" style="max-width:960px;margin:0 auto 48px;">
+      <div style="text-align:center;max-width:680px;margin:0 auto 48px;">
+        <div class="section-label" style="justify-content:center;">Over time</div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,36px);font-weight:300;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:16px;">The pattern only becomes visible<br/>when there is enough to reflect.</h3>
+        <p style="font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.85;color:rgba(12,46,52,0.65);font-weight:300;">A single session shows today. Seven sessions show what keeps returning. Thirty sessions show what has shifted, what has endured, and where the loop is still running.</p>
+      </div>
+
+      <!-- Analytics visual teaser — 2-column phone mockup strips -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:820px;margin:0 auto;">
+
+        <!-- Patterns strip -->
+        <div style="background:var(--bg-light);border:1px solid rgba(45,212,191,0.15);border-radius:16px;overflow:hidden;position:relative;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0d5c63,#14b8a6);"></div>
+          <div style="padding:24px 22px 20px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#0d5c63;font-weight:700;margin-bottom:14px;">Patterns tab · 7 days</div>
+
+            <!-- Mini dominant movement -->
+            <div style="background:rgba(45,212,191,0.06);border-radius:10px;border:1px solid rgba(45,212,191,0.14);padding:12px 14px;margin-bottom:12px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#0d5c63;font-weight:700;margin-bottom:5px;">most present movement</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:#0c2e34;margin-bottom:8px;">Replaying the past</div>
+              <div style="height:4px;background:rgba(45,212,191,0.12);border-radius:4px;overflow:hidden;"><div style="height:100%;width:71%;background:linear-gradient(90deg,#0d5c63,#14b8a6);border-radius:4px;"></div></div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:10px;color:rgba(12,46,52,0.45);margin-top:4px;">5 of 7 entries this week</div>
+            </div>
+
+            <!-- Mini 6-quality grid -->
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#0d5c63;font-weight:700;margin-bottom:8px;">six qualities of mind</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px;">
+              <div style="background:#fff;border-radius:8px;border:1px solid rgba(45,212,191,0.12);padding:8px;text-align:center;"><div style="font-size:14px;margin-bottom:2px;">🌀</div><div style="font-family:'DM Sans',sans-serif;font-size:8px;color:#0d5c63;font-weight:700;">Openness</div><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#0c2e34;">some</div></div>
+              <div style="background:#fff;border-radius:8px;border:1px solid rgba(45,212,191,0.12);padding:8px;text-align:center;"><div style="font-size:14px;margin-bottom:2px;">⚖️</div><div style="font-family:'DM Sans',sans-serif;font-size:8px;color:#0d5c63;font-weight:700;">Source</div><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#0c2e34;">inward</div></div>
+              <div style="background:#fff;border-radius:8px;border:1px solid rgba(45,212,191,0.12);padding:8px;text-align:center;"><div style="font-size:14px;margin-bottom:2px;">🔭</div><div style="font-family:'DM Sans',sans-serif;font-size:8px;color:#0d5c63;font-weight:700;">Depth</div><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#0c2e34;">partly</div></div>
+              <div style="background:#fff;border-radius:8px;border:1px solid rgba(45,212,191,0.12);padding:8px;text-align:center;"><div style="font-size:14px;margin-bottom:2px;">🌊</div><div style="font-family:'DM Sans',sans-serif;font-size:8px;color:#0d5c63;font-weight:700;">Stillness</div><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#0c2e34;">some</div></div>
+              <div style="background:#fff;border-radius:8px;border:1px solid rgba(45,212,191,0.12);padding:8px;text-align:center;"><div style="font-size:14px;margin-bottom:2px;">🌸</div><div style="font-family:'DM Sans',sans-serif;font-size:8px;color:#0d5c63;font-weight:700;">Warmth</div><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#0c2e34;">some</div></div>
+              <div style="background:#fff;border-radius:8px;border:1px solid rgba(45,212,191,0.12);padding:8px;text-align:center;"><div style="font-size:14px;margin-bottom:2px;">💎</div><div style="font-family:'DM Sans',sans-serif;font-size:8px;color:#0d5c63;font-weight:700;">Clarity</div><div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:#0c2e34;">present</div></div>
+            </div>
+
+            <!-- Recurrence callout -->
+            <div style="background:linear-gradient(135deg,rgba(180,94,10,0.07),rgba(232,163,58,0.03));border:1px solid rgba(180,94,10,0.16);border-radius:10px;padding:10px 12px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(180,94,10,0.70);font-weight:700;margin-bottom:4px;">the mirror notices</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:#0c2e34;line-height:1.55;">The same movement, 5 times in 7 days. Worth sitting with — not fixing.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey strip -->
+        <div style="background:var(--bg-light);border:1px solid rgba(45,212,191,0.15);border-radius:16px;overflow:hidden;position:relative;">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,rgba(212,168,67,0.70),rgba(45,212,191,0.40));"></div>
+          <div style="padding:24px 22px 20px;">
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#0d5c63;font-weight:700;margin-bottom:14px;">Journey tab · 23 entries</div>
+
+            <!-- Milestone -->
+            <div style="background:linear-gradient(135deg,rgba(212,168,67,0.09),rgba(45,212,191,0.05));border:1px solid rgba(212,168,67,0.22);border-radius:10px;padding:12px 14px;margin-bottom:10px;position:relative;overflow:hidden;">
+              <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(212,168,67,0.65),rgba(45,212,191,0.25));"></div>
+              <div style="font-size:18px;margin-bottom:5px;">↗</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:#0c2e34;margin-bottom:4px;">Something has shifted.</div>
+              <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(12,46,52,0.60);font-weight:400;line-height:1.5;">The movement most present in your earlier entries is no longer the most present one.</div>
+            </div>
+
+            <!-- Mini sparkline -->
+            <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#0d5c63;font-weight:700;margin-bottom:6px;">your mind across time</div>
+            <div style="background:#fff;border-radius:10px;border:1px solid rgba(45,212,191,0.12);padding:12px 10px 8px;margin-bottom:10px;">
+              <div style="display:flex;justify-content:space-between;font-family:'DM Sans',sans-serif;font-size:8px;font-weight:700;margin-bottom:4px;">
+                <span style="color:#b45e0a;">↓ heavier</span><span style="color:#14b8a6;">more open ↑</span>
+              </div>
+              <svg viewBox="0 0 240 48" style="width:100%;overflow:visible;">
+                <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(20,184,166,0.20)"/><stop offset="100%" stop-color="rgba(20,184,166,0.01)"/></linearGradient></defs>
+                <path d="M6,42 L22,38 L38,40 L54,32 L70,30 L86,35 L102,27 L118,23 L134,21 L150,16 L166,19 L182,13 L198,10 L214,13 L228,6 L228,45 L6,45 Z" fill="url(#g2)"/>
+                <path d="M6,42 L22,38 L38,40 L54,32 L70,30 L86,35 L102,27 L118,23 L134,21 L150,16 L166,19 L182,13 L198,10 L214,13 L228,6" fill="none" stroke="rgba(20,184,166,0.60)" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="6"   cy="42" r="3.5" fill="#e8a33a" opacity="0.85"/>
+                <circle cx="38"  cy="40" r="3.5" fill="#e8a33a" opacity="0.85"/>
+                <circle cx="86"  cy="35" r="3.5" fill="#8bb8bc" opacity="0.80"/>
+                <circle cx="134" cy="21" r="3.5" fill="#14b8a6" opacity="0.90"/>
+                <circle cx="198" cy="10" r="3.5" fill="#0d5c63" opacity="0.95"/>
+                <circle cx="228" cy="6"  r="4.5" fill="#0a3d42" opacity="1.00"/>
+              </svg>
+              <div style="display:flex;justify-content:space-between;font-family:'DM Sans',sans-serif;font-size:9px;color:rgba(12,46,52,0.40);margin-top:3px;"><span>3 Mar</span><span>Today</span></div>
+            </div>
+
+            <!-- Mini session card -->
+            <div style="background:#fff;border-radius:10px;border:1px solid rgba(45,212,191,0.12);padding:12px 14px;margin-bottom:8px;">
+              <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(12,46,52,0.40);margin-bottom:2px;font-weight:700;">Tuesday · 1 April</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:#14b8a6;margin-bottom:3px;">Replaying the past</div>
+              <div style="font-family:'Cormorant Garamond',serif;font-size:13px;color:rgba(12,46,52,0.70);line-height:1.4;margin-bottom:7px;">I cannot stop running these scenarios in my head…</div>
+              <div style="display:flex;gap:5px;">
+                <span style="font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:10px;background:rgba(20,184,166,0.10);color:#0d5c63;border:1px solid rgba(20,184,166,0.22);font-weight:700;">seen 4× before</span>
+                <span style="font-family:'DM Sans',sans-serif;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;border-radius:10px;background:rgba(212,168,67,0.12);color:rgba(140,95,15,0.90);font-weight:700;">Stirred</span>
+              </div>
+            </div>
+
+            <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(12,46,52,0.40);font-weight:400;text-align:center;font-style:italic;">Every entry held. Every pattern seen.</div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
   </div>
@@ -3770,7 +4000,7 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
         <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-style:italic;color:rgba(45,212,191,0.58);line-height:1;margin-bottom:20px;">1</div>
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8fdfb;line-height:1.3;margin-bottom:18px;">Something you couldn't say out loud finally lands on a page.</h3>
         <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.88);line-height:1.85;font-weight:300;margin-bottom:18px;">Most people write circling something. They write around it. The reflection names what they were circling. It's uncomfortable. It's also a relief.</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.88);line-height:1.85;font-weight:300;">The scores feel strange. Abstracted. You are not sure what Reflective Depth: 62 means for you yet. That's fine. The pattern is beginning to form.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.88);line-height:1.85;font-weight:300;">The thought-movement is beginning to become visible. Not as a label — as a shape you recognise from the outside, perhaps for the first time.</p>
         <div style="margin-top:24px;padding:14px 18px;border:1px solid rgba(45,212,191,0.15);border-radius:6px;background:rgba(45,212,191,0.03);">
           <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(128,237,224,0.75);line-height:1.7;">"I didn't expect it to say that. It saw something I hadn't said directly."</div>
         </div>
@@ -3783,7 +4013,7 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
         <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-style:italic;color:rgba(45,212,191,0.65);line-height:1;margin-bottom:20px;">7</div>
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8fdfb;line-height:1.3;margin-bottom:18px;">You notice you've written about the same thing three different times.</h3>
         <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.75);line-height:1.85;font-weight:300;margin-bottom:18px;">Different situations. Same emotional structure underneath. The theme doesn't announce itself — you notice it. That noticing is Reflective Intelligence beginning to operate.</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.75);line-height:1.85;font-weight:300;">Your pattern is named. For one person it is The Carrier. For another, The Reactor. The name is not a verdict. It's the beginning of seeing from the outside.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.75);line-height:1.85;font-weight:300;">A pattern is named. For one person it is <em style="color:rgba(45,212,191,0.80);">Replaying the past.</em> For another, <em style="color:rgba(45,212,191,0.80);">Comparing oneself.</em> The name is not a verdict on who you are. It is a description of what thought was doing — seen from the outside, for the first time.</p>
         <div style="margin-top:24px;padding:14px 18px;border:1px solid rgba(45,212,191,0.25);border-radius:6px;background:rgba(45,212,191,0.05);">
           <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(128,237,224,0.85);line-height:1.7;">"I kept writing about work. But the mirror kept reflecting something about how I treat myself. I hadn't made that connection."</div>
         </div>
@@ -3796,7 +4026,7 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
         <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-style:italic;color:rgba(255,196,80,0.65);line-height:1;margin-bottom:20px;">30</div>
         <h3 style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#e8fdfb;line-height:1.3;margin-bottom:18px;">You catch yourself in the middle of a reaction. Before it becomes an action.</h3>
         <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.88);line-height:1.85;font-weight:300;margin-bottom:18px;">Not every time. Not perfectly. But there are moments now where the gap Krishnamurti described is not abstract. It is felt. A half-second of space between what arises and what you do with it.</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.88);line-height:1.85;font-weight:300;">Your Self-Warmth score has moved. Your Rumination has dropped. The pattern is shifting — you can see it in the history. More than the scores: you feel it in your days.</p>
+        <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.88);line-height:1.85;font-weight:300;">Something has shifted — not because you tracked it, but because you felt it. The thought-movement that ran automatically for years — it no longer has quite the same grip. You noticed it. You saw it. And in the seeing, it loosened.</p>
         <div style="margin-top:24px;padding:14px 18px;border:1px solid rgba(255,196,80,0.2);border-radius:6px;background:rgba(255,196,80,0.04);">
           <div style="font-family:'Cormorant Garamond',serif;font-size:16px;font-style:italic;color:rgba(255,220,120,0.8);line-height:1.7;">"I don't know exactly when it changed. I just noticed one day that I wasn't carrying the same weight."</div>
         </div>
@@ -3808,6 +4038,118 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
     <div style="max-width:680px;margin:0 auto;text-align:center;">
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-style:italic;color:rgba(200,240,238,0.7);line-height:1.75;margin-bottom:16px;">This is not guaranteed. It is not a programme.<br/>It is what honest writing, seen clearly, tends to do.</p>
       <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.82);line-height:1.8;font-weight:300;">The speed and depth of movement depends entirely on the quality of your honesty, not on the frequency of your sessions.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══ 7 THOUGHT-MOVEMENT PATTERNS ══ -->
+<section id="patterns" style="background:var(--bg-white);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
+  <div class="container">
+
+    <div style="text-align:center;max-width:720px;margin:0 auto 28px;">
+      <div class="section-label" style="justify-content:center;">What LumeRI recognises</div>
+      <h2 class="section-h2">Seven movements of thought.<br/><em>In honest writing.</em></h2>
+      <p class="section-body" style="max-width:600px;margin:0 auto;">LumeRI has learned to recognise seven ways thought moves in honest writing. Each session, it reads which movement is present — not as a verdict on who you are, but as a mirror held clearly at what thought is doing right now.</p>
+    </div>
+
+    <!-- Not a quiz note -->
+    <div style="text-align:center;margin-bottom:64px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2vw,18px);color:rgba(12,46,52,0.55);line-height:1.7;">You will not find yourself here by reading. You will find yourself here by writing.<br/>The pattern surfaces through honest words — not through recognition.</p>
+    </div>
+
+    <!-- 9 pattern cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;max-width:1080px;margin:0 auto 72px;">
+
+      <!-- P1 -->
+      <div class="reveal" style="background:#fff;border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#2dd4bf,transparent);"></div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:14px;">Pattern 1</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:14px;">Comparing oneself.</div>
+        <p style="font-size:14px;line-height:1.80;color:rgba(12,46,52,0.62);font-weight:300;">The same awareness that notices the difficulty is being used to condemn the one who has it. The observer and the judge have become the same voice.</p>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(45,212,191,0.10);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(12,46,52,0.40);">"I should know better. Why do I keep doing this?"</div>
+      </div>
+
+      <!-- P2 -->
+      <div class="reveal" style="background:#fff;border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#2dd4bf,transparent);"></div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:14px;">Pattern 2</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:14px;">Replaying the past.</div>
+        <p style="font-size:14px;line-height:1.80;color:rgba(12,46,52,0.62);font-weight:300;">Something has not been set down. Thought keeps returning to it — not to understand, but because it cannot yet move past.</p>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(45,212,191,0.10);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(12,46,52,0.40);">"I keep thinking about the same thing."</div>
+      </div>
+
+      <!-- P3 -->
+      <div class="reveal" style="background:#fff;border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#2dd4bf,transparent);"></div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:14px;">Pattern 3</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:14px;">Skimming surface.</div>
+        <p style="font-size:14px;line-height:1.80;color:rgba(12,46,52,0.62);font-weight:300;">The writing describes the surface carefully. Beneath it, something is not being looked at directly. Thought is managing the appearance of the moment.</p>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(45,212,191,0.10);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(12,46,52,0.40);">"I am fine, really. Here is what happened..."</div>
+      </div>
+
+      <!-- P4 -->
+      <div class="reveal" style="background:#fff;border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#2dd4bf,transparent);"></div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:14px;">Pattern 4</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:14px;">Seeking certainty.</div>
+        <p style="font-size:14px;line-height:1.80;color:rgba(12,46,52,0.62);font-weight:300;">The anxiety is not in the situation. It is in the attempt to control what has not happened yet. Thought is running ahead of what is actually here.</p>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(45,212,191,0.10);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(12,46,52,0.40);">"What if..." on repeat.</div>
+      </div>
+
+      <!-- P5 -->
+      <div class="reveal" style="background:#fff;border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#2dd4bf,transparent);"></div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:14px;">Pattern 5</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:14px;">Escaping reality.</div>
+        <p style="font-size:14px;line-height:1.80;color:rgba(12,46,52,0.62);font-weight:300;">Something is present in the writing that the words are going around. Thought knows what it is. It has not said it yet. The unspoken thing shapes everything.</p>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(45,212,191,0.10);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(12,46,52,0.40);">The word chosen is always slightly smaller than the feeling.</div>
+      </div>
+
+      <!-- P6 -->
+      <div class="reveal" style="background:#fff;border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(245,197,24,0.60),transparent);"></div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(245,197,24,0.55);margin-bottom:14px;">Pattern 6</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:14px;">Needing security.</div>
+        <p style="font-size:14px;line-height:1.80;color:rgba(12,46,52,0.62);font-weight:300;">The question beneath the writing is not about the situation. It is about who is facing it. Something foundational has shifted and thought is searching for ground.</p>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(245,197,24,0.10);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(12,46,52,0.40);">"Who am I when this is stripped away?"</div>
+      </div>
+
+      <!-- P7 -->
+      <div class="reveal" style="background:linear-gradient(135deg,rgba(45,212,191,0.05),rgba(45,212,191,0.02));border:1px solid rgba(45,212,191,0.25);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#2dd4bf,rgba(245,197,24,0.50));"></div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:14px;">Pattern 7</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:14px;">Observing clearly.</div>
+        <p style="font-size:14px;line-height:1.80;color:rgba(12,46,52,0.62);font-weight:300;">The writing is not just reporting — it is observing. Something is watching the difficulty without being entirely inside it. A small distance has opened between the observer and what is observed.</p>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(45,212,191,0.15);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(12,46,52,0.40);">This is the beginning of the reverse trace.</div>
+      </div>
+
+      <!-- P8 -->
+      <div class="reveal" style="background:#fff;border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(180,94,10,0.50),transparent);"></div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(180,94,10,0.55);margin-bottom:14px;">Pattern 8</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:14px;">Chasing becoming.</div>
+        <p style="font-size:14px;line-height:1.80;color:rgba(12,46,52,0.62);font-weight:300;">There is always a version of yourself just ahead — a better, further, more arrived self. Thought is perpetually in motion toward it. The movement becomes the habit.</p>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(180,94,10,0.10);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(12,46,52,0.40);">"I am working on becoming a better version of myself."</div>
+      </div>
+
+      <!-- P9 -->
+      <div class="reveal" style="background:#fff;border:1px solid rgba(45,212,191,0.12);border-radius:12px;padding:32px 28px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,rgba(45,212,191,0.40),rgba(180,94,10,0.30),transparent);"></div>
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:14px;">Pattern 9</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#0c2e34;line-height:1.3;margin-bottom:14px;">Carrying images.</div>
+        <p style="font-size:14px;line-height:1.80;color:rgba(12,46,52,0.62);font-weight:300;">You are relating to accumulated images of others — not to who they actually are. And the self in this situation is also an image — one of many. Consciousness is its fragments.</p>
+        <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(45,212,191,0.10);font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:rgba(12,46,52,0.40);">"She is always like this." / "At work I am one person, at home another."</div>
+      </div>
+
+    </div>
+
+    <!-- Closing note -->
+    <div style="max-width:640px;margin:0 auto;text-align:center;padding:44px 40px;background:linear-gradient(135deg,rgba(12,46,52,0.96),rgba(5,13,16,0.98));border-radius:14px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.35),transparent);"></div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,21px);font-style:italic;color:#e8fdfb;line-height:1.80;margin-bottom:14px;">The pattern does not tell you what you are.<br/>It tells you what thought was doing — in this writing, in this moment.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:14px;color:rgba(200,240,238,0.50);font-weight:300;line-height:1.7;">Seen clearly, without judgement, the movement begins to lose its authority.<br/>That is the beginning of freedom from the known.</p>
     </div>
 
   </div>
@@ -3843,7 +4185,7 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
     </div>
     <div style="text-align:center;padding:44px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.15);border-radius:12px;max-width:820px;margin:0 auto;">
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.8vw,32px);font-style:italic;color:#0c2e34;line-height:1.6;margin-bottom:16px;">IQ solves problems.<br/>EQ understands people.<br/><em style="color:#5eead4;">RQ understands thinking itself.</em></p>
-      <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.70);line-height:1.8;">LumeRI is a practice in Reflective Intelligence.<br/>Writing is how it is developed.</p>
+      <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.70);line-height:1.8;">LumeRI is a practice in Reflective Intelligence.<br/>Writing is how it is developed.<br/><span style="font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:0;text-transform:none;font-size:15px;color:rgba(45,212,191,0.55);"><span style="color:#2dd4bf;">Observe</span> the observer. <span style="color:rgba(45,212,191,0.60);">See</span> the movement of your <span style="color:rgba(245,197,24,0.70);">thought.</span></span></p>
     </div>
   </div>
 </section>
@@ -3871,60 +4213,6 @@ setTimeout(()=>{startVisual(0);updatePips();},100);
         </div>
         <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.65);text-align:right;margin-top:10px;">↑ writing moves you upward</p>
       </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ INQUIRY QUESTIONS ══ -->
-<section id="inquiry" style="background:var(--bg-white);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
-  <div class="container">
-    <div style="text-align:center;max-width:700px;margin:0 auto 72px;">
-      <div class="section-label" style="justify-content:center;">The Reflective Intelligence Inquiry</div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#0c2e34;line-height:1.2;margin-bottom:20px;text-align:center;">Twelve questions worth<br/><em style="color:#2dd4bf;">writing into.</em></h2>
-      <p style="font-family:var(--sans);font-size:17px;color:rgba(12,46,52,0.75);line-height:1.9;font-weight:300;text-align:center;">Not questions to answer quickly. Questions to write into — honestly, slowly. That is how Reflective Intelligence is developed.</p>
-    </div>
-    <div class="inquiry-grid">
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">01</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Assumption</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What assumptions am I making right now that I have not examined?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">02</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Reaction</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Am I responding to the situation — or reacting to my interpretation of it?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">03</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Identity</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Is my opinion shaped by clear observation — or by the need to defend my identity?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">04</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Certainty</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">How certain am I that my interpretation is correct?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">05</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Influence</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Where did this belief originally come from?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">06</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Perspective</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What might this look like from a completely different perspective?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">07</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Pattern</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Is this reaction part of a recurring pattern in my thinking?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">08</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Emotion</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What emotion is influencing my thinking right now?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">09</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Narrative</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What story am I telling myself about this situation?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">10</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Clarity</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">If I were completely clear, what might I see differently?</p></div>
-      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">11</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Responsibility</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What part of this am I responsible for that I may not be acknowledging?</p></div>
-      <div class="inquiry-card" style="border:2px solid rgba(45,212,191,0.4);background:rgba(45,212,191,0.06);"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">12</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.85);margin-bottom:10px;">The Observer</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Who is the one noticing these thoughts?</p></div>
-    </div>
-    <div style="text-align:center;margin-top:56px;">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(12,46,52,0.80);margin-bottom:28px;">Write any one of these in LumeRI tonight.</p>
-      <a href="https://lumeri.co.in/app" target="_blank" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.9);padding:16px 40px;text-decoration:none;border-radius:3px;font-weight:500;">Begin Writing →</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ 7-DAY JOURNEY ══ -->
-<section id="journey" style="background:var(--hero-bg);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
-  <div class="container">
-    <div style="text-align:center;max-width:680px;margin:0 auto 64px;">
-      <div class="section-label" style="justify-content:center;">Begin The Practice</div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">A 7-day writing journey<br/><em style="color:#2dd4bf;">into your own mind.</em></h2>
-      <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.84);line-height:1.9;font-weight:300;">One session. One theme. Seven days. This is how Reflective Intelligence begins — not with a course, but with seven small honest acts of writing.</p>
-    </div>
-    <div class="journey-grid" style="margin-bottom:56px;">
-      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 1</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Pause</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about what is actually in your mind right now.</div></div>
-      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 2</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Observe</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write what you notice about your own thoughts.</div></div>
-      <div style="background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.20);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 3</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Notice</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about a reaction that surprised you.</div></div>
-      <div style="background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.24);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Question</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about a belief you have never examined.</div></div>
-      <div style="background:rgba(45,212,191,0.09);border:1px solid rgba(45,212,191,0.26);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 5</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">See</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about a pattern you keep repeating.</div></div>
-      <div style="background:rgba(45,212,191,0.10);border:1px solid rgba(45,212,191,0.30);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 6</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Listen</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about a conversation you were not fully present for.</div></div>
-      <div style="background:rgba(45,212,191,0.13);border:2px solid rgba(45,212,191,0.5);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#5eead4;margin-bottom:10px;">Day 7</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#5eead4;margin-bottom:8px;">The Observer</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.80);line-height:1.5;">Write: who has been watching all of this?</div></div>
-    </div>
-    <div style="text-align:center;">
-      <a href="https://lumeri.co.in/app" target="_blank" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.9);padding:18px 44px;text-decoration:none;border-radius:3px;font-weight:500;">Start Day 1 →</a>
     </div>
   </div>
 </section>
@@ -3975,54 +4263,6 @@ As for how often: there is no right frequency. Some people write daily. Some wri
 
 
 
-<!-- ══ FREEDOM FROM THE KNOWN ══ -->
-<section id="freedom" style="background:var(--hero-bg);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
-  <div style="max-width:720px;margin:0 auto;">
-
-    <div class="reveal" style="text-align:center;margin-bottom:72px;">
-      <div style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:18px;">The Heart of This</div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,52px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.18;margin-bottom:18px;">Freedom from the known.</h2>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2.4vw,18px);color:rgba(45,212,191,0.52);line-height:1.7;max-width:480px;margin:0 auto;">Not freedom from the situation.<br/>Freedom from the accumulated self that is interpreting it.</p>
-      <div style="width:40px;height:1px;background:rgba(45,212,191,0.22);margin:28px auto 0;"></div>
-    </div>
-
-    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
-      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Known</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">Most of what we call living is the known in motion — the same reactions dressed in today's clothes, the same fear and the same reaching, arising not from what is actually here but from everything that already happened. Thought moves to action automatically, mechanically, without a gap. Without your awareness.</p>
-    </div>
-
-    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
-      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Gap</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-bottom:16px;">Between thought and action, there is a gap. Most people never inhabit it. <em style="color:#2dd4bf;">Reflective Intelligence</em> is the capacity to live in that gap — to see the movement of thought before it becomes action. Not to suppress it. Not to analyse it. Simply to see it clearly, without the interference of judgement.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">That seeing is not a technique. It is what you already are when you stop adding to the noise.</p>
-    </div>
-
-    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
-      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Seeing</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">When the pattern is seen clearly — not understood, not worked through, simply <em style="color:#2dd4bf;">seen</em> — it loses its authority. Not because you fought it. Because the known cannot survive being seen for what it is: accumulated reaction, not present reality.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-top:14px;">There is a difference between analysing a pattern and seeing it. Analysis keeps the observer separate from the observed — the known examining itself, producing more knowledge, not freedom. Seeing is different. When you see the pattern without division — without a separate self that stands apart and explains it — the observer and the observed become one movement. In that instant, there is no one left to be the pattern. The word is not the thing. What is seen clearly begins to lose its grip.</p>
-    </div>
-
-    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
-      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">What Remains</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-bottom:16px;">What remains when the known settles is not emptiness. It is the capacity to act from what is actually here — not from accumulated reaction. This is choiceless action: not because there is no choice, but because the action arises from clarity rather than conditioning.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">And as the self stops defending its conditioning, something else becomes possible. A natural compassion for the suffering of others, because you are no longer entirely inside your own. A love that is not sentiment, not effort — but the simple quality of a mind that is no longer at war with itself.</p>
-    </div>
-
-    <div class="reveal" style="margin-top:52px;padding:38px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.13);border-radius:6px;text-align:center;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.38),transparent);"></div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,24px);font-style:italic;color:#e8fdfb;line-height:1.8;margin-bottom:14px;">This is not improvement. Not healing. Not self-optimisation.<br/><em style="color:#2dd4bf;">Freedom — from the known, from the mechanical, from the duality of what I am and what I should be.</em></p>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2.2vw,18px);color:rgba(45,212,191,0.48);margin-top:8px;">And in that freedom — choiceless action. Pure love. The present moment, undivided.</p>
-    </div>
-
-    <div class="reveal" style="margin-top:44px;text-align:center;">
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,2.2vw,17px);color:rgba(45,212,191,0.70);line-height:1.72;">LumeRI is one instrument for this seeing.</p>
-    </div>
-
-  </div>
-</section>
-
-
 <!-- ══ ABOUT ══ -->
 <section id="about" style="background:var(--hero-bg);padding:0 0 100px;">
 
@@ -4030,7 +4270,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
   <div style="padding:72px 24px 56px;text-align:center;border-bottom:1px solid rgba(45,212,191,0.07);background:linear-gradient(to bottom,rgba(15,184,164,0.04),transparent);">
     <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.52);margin-bottom:18px;">The Two Journeys</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,48px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.22;max-width:620px;margin:0 auto 18px;">The forward path — accumulating the known.<br/><em style="color:#2dd4bf;">The return path — dissolving it.</em></h2>
-    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,2.2vw,18px);color:rgba(45,212,191,0.55);max-width:520px;margin:0 auto 10px;">Krishnamurti · Jung · Tao · Wu Wei · Silent Living</p>
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,2.2vw,18px);color:rgba(45,212,191,0.55);max-width:520px;margin:0 auto 10px;">Observe the observer. See the movement of your thought.</p>
     <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(13px,2vw,16px);color:rgba(200,235,232,0.40);max-width:480px;margin:0 auto;">The water clears when the stirring stops.</p>
   </div>
 
@@ -4038,7 +4278,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
 <div style="max-width:1200px;margin:32px auto 0;padding:0 24px;">
 
   <!-- Section label -->
-  <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.45);text-align:center;margin-bottom:20px;">The K-Cycle · Seven Phases · From Knowing to Being</div>
+  <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.45);text-align:center;margin-bottom:20px;">The K-Cycle · Seven Phases · From Conditioning to Freedom</div>
 
   <!-- Phase tabs -->
   <div id="kcTabs" style="display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap;">
@@ -4049,19 +4289,19 @@ As for how often: there is no right frequency. Some people write daily. Some wri
       <span class="kct-num">2</span><span class="kct-label">RI Enters</span>
     </button>
     <button onclick="kcGoPhase(2)" id="kctab2" class="kc-tab">
-      <span class="kct-num">3</span><span class="kct-label">The Reversal</span>
+      <span class="kct-num">3</span><span class="kct-label">Self-Inquiry</span>
     </button>
     <button onclick="kcGoPhase(3)" id="kctab3" class="kc-tab">
-      <span class="kct-num">4</span><span class="kct-label">Wu Wei</span>
+      <span class="kct-num">4</span><span class="kct-label">Root Seen</span>
     </button>
     <button onclick="kcGoPhase(4)" id="kctab4" class="kc-tab">
-      <span class="kct-num">5</span><span class="kct-label">Arrival</span>
+      <span class="kct-num">5</span><span class="kct-label">Action</span>
     </button>
     <button onclick="kcGoPhase(5)" id="kctab5" class="kc-tab">
-      <span class="kct-num">6</span><span class="kct-label">Returns</span>
+      <span class="kct-num">6</span><span class="kct-label">Loosening</span>
     </button>
     <button onclick="kcGoPhase(6)" id="kctab6" class="kc-tab">
-      <span class="kct-num">7</span><span class="kct-label">Free</span>
+      <span class="kct-num">7</span><span class="kct-label">Freer</span>
     </button>
   </div>
 
@@ -4100,73 +4340,70 @@ As for how often: there is no right frequency. Some people write daily. Some wri
       <div id="kcpanel1" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
           <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:10px;">Phase 2 · Reflective Intelligence</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">Before thought becomes action — a pause.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">In that pause, something different becomes possible. Not more knowing. Not another framework.<br/><br/>A question: <em style="color:#2dd4bf;">where did this thought come from?</em><br/><br/>The reverse journey begins. Not forward into more accumulation — but backward, tracing the thread. To see whether what is running you was ever actually true.</p>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">Something watches alongside the movement of thought.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">Something becomes possible — not more knowing, not a new framework.<br/><br/>A question arises: <em style="color:#2dd4bf;">where did this thought come from?</em><br/><br/>The trace begins. Not forward into more accumulation — but backward. Seeing whether what is running you was ever actually yours.</p>
         </div>
         <button onclick="kcGoPhase(2)" class="kc-next-btn" style="margin-top:24px;">
-          Phase 3 — The Reversal &rarr;
+          Phase 3 — Self-Inquiry &rarr;
         </button>
       </div>
 
       <!-- Phase 2 panel -->
       <div id="kcpanel2" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:10px;">Phase 3 · The Reverse Mapping</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">Tracing backward into the root of the known.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">Thought traced to Memory. Memory to Experience. Experience to Knowledge. At Knowledge: <em style="color:#2dd4bf;">is this lived truth — or inherited assumption?</em><br/><br/>When you see that the pond was stirred by thought examining thought — you stop stirring. The mud settles. The water at the top was always clear.</p>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:10px;">Phase 3 · Self-Inquiry</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">Tracing the thought back, without force — where did this come from?</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">Thought traced to Memory. Memory to Experience. Experience to Knowledge.<br/><br/>At Knowledge: <em style="color:#2dd4bf;">is this lived truth — or something inherited, unexamined, mistaken for truth?</em><br/><br/>The trace does not fight what it finds. It sees it. Seeing is enough. The mud settles when the stirring stops.</p>
         </div>
         <button onclick="kcGoPhase(3)" class="kc-next-btn" style="margin-top:24px;">
-          Phase 4 — Wu Wei &rarr;
+          Phase 4 — The Root is Seen &rarr;
         </button>
       </div>
 
       <!-- Phase 3 panel -->
       <div id="kcpanel3" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.80);margin-bottom:10px;">Phase 4 · 無為 · Wu Wei</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">There is nothing to know. Nothing to become.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">The empty vessel acts from its space. Water does not decide to flow around the stone — it moves with what is here.<br/><br/>This is not passivity. This is the highest intelligence — the one that acts as much as is needed, no more. Without agenda. Without the self that needs to prove something.<br/><br/><em style="color:#d4a843;">Act from stillness. Work in absolute wholeness.</em></p>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.80);margin-bottom:10px;">Phase 4 · The Root is Seen</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">The root of the conditioning — visible, for the first time.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">The original knowledge — inherited, unexamined, mistaken for truth — is seen for what it is.<br/><br/>Not fought. Not analysed. Not suppressed. Simply <em style="color:#2dd4bf;">seen.</em><br/><br/>What is seen clearly, without the observer standing apart from it — loses its authority. Not because something was done to it. Because the seeing was complete.</p>
         </div>
         <button onclick="kcGoPhase(4)" class="kc-next-btn" style="margin-top:24px;">
-          Phase 5 — The Arrival &rarr;
+          Phase 5 — Choiceless Action &rarr;
         </button>
       </div>
 
       <!-- Phase 4 panel -->
       <div id="kcpanel4" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.80);margin-bottom:10px;">The Arrival · Silent Living</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">You are nothing — and that is wholeness.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">The stillness that is not absence but fullness of a different order. The awareness in which all thoughts appear — unchanged, undamaged, already whole.<br/><br/><em style="color:#2dd4bf;">The present moment, undivided. Pure love. This is the Tao living.</em></p>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(212,168,67,0.80);margin-bottom:10px;">Phase 5 · Choiceless Action</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">Action arising from what is actually here — not from the old pattern.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">Not reaction. Not suppression. Not a decision taken from effort.<br/><br/>Action that arises from what is actually seen now — not from the accumulated weight of what happened before. The same situation. A different response.<br/><br/><em style="color:#2dd4bf;">The loop does not break. But for this moment — it opens.</em></p>
         </div>
         <div style="margin-top:24px;display:flex;gap:8px;flex-wrap:wrap;">
           <button onclick="kcGoPhase(5)" class="kc-next-btn">
-            Phase 6 — A* Returns &rarr;
+            Phase 6 — The Known, Loosening &rarr;
           </button>
         </div>
       </div>
 
-    </div>
-  </div>
-
       <!-- Phase 5 panel -->
       <div id="kcpanel5" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,197,24,0.80);margin-bottom:10px;">Phase 6 · A* Returns to K</div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,197,24,0.80);margin-bottom:10px;">Phase 6 · The Known, Loosening</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:18px;">The action completes — but the loop is different now.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">A* feeds back into Knowledge — as all action does. But this time it is not reinforcing the old pattern. The conditioning is not deepened.<br/><br/>One layer, quietly, begins to peel. What was accumulated through years of reaction — starts to thin. Not through effort. Through seeing.<br/><br/><em style="color:rgba(245,197,24,0.85);">Not adding. Peeling.</em></p>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:1.90;margin-bottom:0;">The action completes and feeds back — as it always does. But something is different.<br/><br/>The conditioning did not deepen. One layer was seen. And seeing was enough. What accumulated through years of reaction starts to thin — not through effort, not through will.<br/><br/><em style="color:rgba(245,197,24,0.85);">Not adding. Loosening.</em></p>
         </div>
         <button onclick="kcGoPhase(6)" class="kc-next-btn" style="margin-top:24px;border-color:rgba(245,197,24,0.35);color:rgba(245,197,24,0.80);">
-          Phase 7 — Knowledge, Freed &rarr;
+          Phase 7 — A Little More Free &rarr;
         </button>
       </div>
 
       <!-- Phase 6 panel -->
       <div id="kcpanel6" class="kc-panel" style="flex:1;padding:32px 28px;display:none;flex-direction:column;justify-content:space-between;">
         <div>
-          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,197,24,0.80);margin-bottom:10px;">Phase 7 · The Return</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:24px;">You return to the beginning.<br/>But you are not the same.</div>
-          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:2.0;margin-bottom:0;">The loop still runs.<br/>Knowledge still shapes experience.<br/>Thought still moves to action.<br/><br/>But one layer has been seen.<br/>One inherited belief, recognised.<br/>One fear that was never actually yours —<br/><em style="color:rgba(245,197,24,0.90);">quietly set down.</em><br/><br/>The cycle continues.<br/><em style="color:rgba(45,212,191,0.90);">A little more free than before.</em></p>
+          <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,197,24,0.80);margin-bottom:10px;">Phase 7 · A Little More Free</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;font-weight:300;color:#e8fdfb;line-height:1.32;margin-bottom:24px;">The cycle continues. The same person — but lighter.</div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:rgba(220,245,242,0.85);line-height:2.0;margin-bottom:0;">The loop still runs.<br/>Thought still moves to action.<br/>Knowledge still shapes experience.<br/><br/>But one layer has been seen — and released.<br/>Not because it was fought.<br/>Because it was seen.<br/><br/><em style="color:rgba(245,197,24,0.90);">The known, loosened.</em><br/><em style="color:rgba(45,212,191,0.90);">A little more free than before.</em></p>
         </div>
         <div style="margin-top:24px;">
           <button onclick="kcGoPhase(0)" class="kc-next-btn" style="background:rgba(45,212,191,0.06);border-color:rgba(45,212,191,0.25);color:rgba(45,212,191,0.60);">
@@ -4174,6 +4411,9 @@ As for how often: there is no right frequency. Some people write daily. Some wri
           </button>
         </div>
       </div>
+
+    </div>
+  </div>
 
   <!-- Progress dots -->
   <div style="display:flex;justify-content:center;gap:10px;margin-top:16px;" id="kcDots">
@@ -4194,7 +4434,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
   <div style="max-width:680px;margin:0 auto;padding:64px 24px 0;">
 
     <!-- Founder note -->
-    <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.58);text-align:center;margin-bottom:30px;">Nupur · Founder</div>
+    <!-- founder label removed — philosophy speaks for itself -->
     <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,20px);font-style:italic;line-height:1.9;color:rgba(232,253,251,0.74);margin-bottom:18px;">The traditions I have lived with — J. Krishnamurti, Ramana Maharshi, Alan Watts, and others — are not ancient curiosities. They are the most precise maps of the human mind ever drawn, and what they point at is available to anyone willing to look.</p>
     <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,20px);font-style:italic;line-height:1.9;color:rgba(232,253,251,0.74);margin-bottom:18px;">I looked. Not theoretically — inwardly, at my own patterns, my own conditioning, the machinery running silently beneath every reaction and choice. I saw it. And once seen, it could not be unseen.</p>
     <div style="border-left:2px solid rgba(45,212,191,0.38);padding:18px 22px;background:rgba(45,212,191,0.04);border-radius:0 6px 6px 0;margin-bottom:52px;">
@@ -4204,7 +4444,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
     <div style="width:1px;height:44px;background:linear-gradient(to bottom,transparent,rgba(45,212,191,0.22),transparent);margin:0 auto 52px;"></div>
 
     <!-- Reflective Intelligence -->
-    <div style="font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.58);text-align:center;margin-bottom:26px;">Reflective Intelligence</div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;color:rgba(45,212,191,0.62);text-align:center;margin-bottom:26px;line-height:1.6;"><span style="color:#2dd4bf;">Observe</span> the observer. &nbsp;·&nbsp; <span style="color:rgba(45,212,191,0.60);">See</span> the movement of your <span style="color:rgba(245,197,24,0.72);">thought.</span></div>
     <h3 style="font-family:'Cormorant Garamond',serif;font-size:clamp(21px,4vw,30px);font-weight:300;color:#e8fdfb;margin-bottom:18px;line-height:1.3;">The intelligence we keep ignoring<br/><em style="color:#2dd4bf;">while building every other kind.</em></h3>
     <p style="font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.88;color:rgba(220,245,242,0.70);margin-bottom:14px;font-weight:300;">Every intelligence humanity has ever built looks outward. The one that lives within — we never looked. <strong style="font-weight:400;color:#e8fdfb;">Reflective Intelligence</strong> is the capacity to stand in the gap between thought and action — to see the movement of the known before it becomes mechanical response. To observe the pattern without becoming it.</p>
     <p style="font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.88;color:rgba(220,245,242,0.70);margin-bottom:38px;font-weight:300;">J. Krishnamurti called it <strong style="font-weight:400;color:#e8fdfb;">choiceless awareness.</strong> Ramana Maharshi pointed at it with <em>Who am I?</em> Alan Watts and Nisargadatta said you are not your story — you are the awareness in which the story appears. Twenty-five centuries. One pointer.</p>
@@ -4212,7 +4452,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
     <!-- Instrument block -->
     <div style="background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.15);border-radius:6px;padding:28px 32px;margin-bottom:52px;position:relative;overflow:hidden;">
       <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.35),transparent);"></div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,22px);font-style:italic;color:#2dd4bf;margin-bottom:13px;">LumeRI — the instrument</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3vw,22px);font-style:italic;color:#2dd4bf;margin-bottom:4px;">Lume<span style="font-style:normal;font-weight:400;">RI</span> — the instrument</div><div style="font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;font-weight:300;letter-spacing:1.5px;color:rgba(45,212,191,0.42);margin-bottom:13px;"><span style="color:#2dd4bf;">Illuminate</span><span style="color:rgba(45,212,191,0.20);margin:0 6px;">·</span><span style="color:rgba(200,235,232,0.40);">Reflect</span><span style="color:rgba(45,212,191,0.20);margin:0 6px;">·</span><span style="color:rgba(245,197,24,0.55);">Inquire</span></div>
       <p style="font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.88;color:#e8fdfb;font-weight:300;">When you write, LumeRI reads the movement — not the content. Not what you felt, but how the mind was moving when you felt it. Rigidity or openness. Circling or settled. The voice turning on itself or holding gently. The thread connecting or scattering.<br/><br/><strong style="font-weight:400;color:#2dd4bf;">It identifies which phase of the loop you are in.</strong> The conditioning running automatically. The gap where RI can enter. The reverse mapping beginning. It holds this mirror across sessions — so what is invisible from inside a single moment becomes undeniable across weeks.<br/><br/>The eight questions then guide the reverse journey: from the surface of how you feel, backward through why, through when, through who — to the root of the known. Not to understand more. To see what was never actually true. And in that seeing, the loop loses its authority.</p>
     </div>
 
@@ -4333,7 +4573,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
     <div style="text-align:center;padding:48px 24px;background:radial-gradient(ellipse at center,rgba(45,212,191,0.06) 0%,transparent 65%);border:1px solid rgba(45,212,191,0.12);border-radius:8px;margin-bottom:44px;position:relative;overflow:hidden;">
       <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.32),transparent);"></div>
       <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(56px,13vw,86px);font-weight:300;letter-spacing:22px;color:rgba(45,212,191,0.22);line-height:1;margin-bottom:12px;animation:nowPulse 5s ease-in-out infinite;">NOW</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3.5vw,24px);font-style:italic;color:rgba(45,212,191,0.70);margin-bottom:12px;">Choiceless Awareness · Whole and Empty</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,3.5vw,24px);font-style:italic;color:rgba(45,212,191,0.70);margin-bottom:12px;">Acting from what is actually here</div>
       <div style="font-family:'DM Sans',sans-serif;font-size:14px;line-height:1.82;color:rgba(220,245,242,0.45);max-width:400px;margin:0 auto;font-weight:300;">Not a destination reached once — a ground you return to, each time more naturally.<br/><br/><em style="font-style:italic;color:rgba(45,212,191,0.48);">Dust seen, not accumulated, slowly fades.</em></div>
     </div>
 
@@ -4349,11 +4589,12 @@ As for how often: there is no right frequency. Some people write daily. Some wri
 <!-- ══ CTA BOTTOM ══ -->
 <section id="cta-bottom">
   <div class="cta-inner">
-    <img src="lumeri-logo.png" alt="LumeRI" class="cta-logo"/>
+    <img src="lumeri-logo.png" alt="LumeRI" class="cta-logo"/><div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:rgba(232,253,251,0.65);letter-spacing:1px;margin-bottom:4px;">Lume<span style="color:#2dd4bf;font-style:normal;font-weight:400;">RI</span></div><div style="font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;font-weight:300;letter-spacing:1.5px;color:rgba(45,212,191,0.50);margin-bottom:28px;"><span style="color:#2dd4bf;">Illuminate</span><span style="color:rgba(45,212,191,0.22);margin:0 8px;">·</span><span style="color:rgba(200,235,232,0.42);">Reflect</span><span style="color:rgba(45,212,191,0.22);margin:0 8px;">·</span><span style="color:rgba(245,197,24,0.60);">Inquire</span></div>
     <h2 class="cta-h2">The mirror has always<br/>been <em>inside you.</em></h2>
     <p class="cta-sub">Write honestly. See clearly. Begin.</p>
     <a href="https://lumeri.co.in/app" class="btn-primary" target="_blank" style="font-size:13px;letter-spacing:3px;padding:18px 48px;">Begin Writing — Free</a>
     <p class="cta-note">Private · Encrypted · No ads · No human eyes</p>
+    <p style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(45,212,191,0.38);margin-top:16px;font-weight:300;letter-spacing:1px;">The philosophy behind LumeRI: <a href="https://reflectiveintelligence.life" target="_blank" style="color:rgba(45,212,191,0.55);text-decoration:none;">reflectiveintelligence.life ↗</a></p>
   </div>
 </section>
 
@@ -4365,16 +4606,16 @@ As for how often: there is no right frequency. Some people write daily. Some wri
       <div>
         <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
           <img src="lumeri-logo.png" alt="LumeRI" style="width:40px;height:40px;object-fit:contain;"/>
-          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:#0c2e34;">LumeRI</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:rgba(232,253,251,0.65);letter-spacing:0.5px;">Lume<span style="color:#2dd4bf;font-style:normal;font-weight:400;">RI</span></span><span style="display:block;font-family:'Cormorant Garamond',serif;font-size:11px;font-style:italic;font-weight:300;letter-spacing:1.5px;margin-top:5px;line-height:1.5;"><span style="color:#2dd4bf;">Illuminate</span><span style="color:rgba(45,212,191,0.22);margin:0 6px;">·</span><span style="color:rgba(200,235,232,0.45);">Reflect</span><span style="color:rgba(45,212,191,0.22);margin:0 6px;">·</span><span style="color:rgba(245,197,24,0.62);">Inquire</span></span>
         </div>
         <p style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);line-height:1.8;font-weight:300;max-width:300px;">Write what is actually true.<br/>And watch something quietly begin to shift.</p>
-        <p style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.65);margin-top:16px;">By Reflective Intelligence</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:rgba(45,212,191,0.65);margin-top:16px;font-style:italic;line-height:1.5;"><span style="color:#2dd4bf;">Observe</span> the observer.<br/><span style="color:rgba(45,212,191,0.55);">See</span> the movement of your <span style="color:rgba(245,197,24,0.70);">thought.</span></p>
       </div>
       <div>
         <h4 style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.78);margin-bottom:18px;">Explore</h4>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:12px;">
           <li><a href="#ri-intelligence" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(220,245,242,0.72)'">The Intelligence</a></li>
-          <li><a href="#how" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(220,245,242,0.72)'">How It Works</a></li>
+          <li><a href="#freedom" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(220,245,242,0.72)'">Freedom from the Known</a></li>
           <li><a href="#the-mirror" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(220,245,242,0.72)'">The Mirror</a></li>
           <li><a href="#arc" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(220,245,242,0.72)'">What Shifts</a></li>
           <li><a href="#faq" style="font-family:'DM Sans',sans-serif;font-size:15px;color:rgba(220,245,242,0.72);text-decoration:none;font-weight:300;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='rgba(220,245,242,0.72)'">FAQ</a></li>
@@ -4389,7 +4630,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
       </div>
     </div>
     <div style="border-top:1px solid rgba(45,212,191,0.07);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-      <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(200,240,238,0.55);font-weight:300;">© 2025 LumeRI · Reflective Intelligence. All rights reserved.</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(200,240,238,0.55);font-weight:300;">© 2025 LumeRI · Observe the observer. All rights reserved.</p>
       <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;color:rgba(45,212,191,0.65);">The mirror has always been inside you.</p>
     </div>
   </div>
@@ -4799,16 +5040,16 @@ document.addEventListener('DOMContentLoaded', function() {
     ctx.fillText('NOW',W/2,HORIZON-72);
     ctx.font='italic 26px "Cormorant Garamond",serif';
     ctx.fillStyle='rgba(45,212,191,0.96)';
-    ctx.fillText('Choiceless Awareness',W/2,58);
+    ctx.fillText('Acting from what is actually here',W/2,58);
     ctx.font='10px "DM Sans",sans-serif';
     ctx.fillStyle='rgba(200,240,238,0.38)';
-    ctx.fillText('whole · empty · fully present',W/2,78);
+    ctx.fillText('not seeking · not defending · present',W/2,78);
     ctx.font='italic 19px "Cormorant Garamond",serif';
     ctx.fillStyle='rgba(210,235,232,0.82)';
     ctx.textAlign='left';ctx.fillText('Stillness',62,128);
     ctx.textAlign='right';ctx.fillText('Being Present',638,128);
     ctx.textAlign='center';ctx.fillStyle='rgba(210,235,232,0.65)';
-    ctx.fillText('Knowing you are enough',W/2,192);
+    ctx.fillText('nothing to add · nothing to defend',W/2,192);
     ctx.font='9px "DM Sans",sans-serif';
     ctx.fillStyle='rgba(45,212,191,0.28)';
     ctx.textAlign='left';ctx.fillText('SILENCE',18,HORIZON-8);
@@ -4845,15 +5086,15 @@ var ND2=[
   {lb:'A\u2605',sub:'Choiceless\nAction',a:108,r:0.60}
 ];
 var PH2=[
-  {t:'The Conditioning Loop',         d:'K \u2192 E \u2192 M \u2192 T \u2192 A \u2192 knowing accumulates',dur:900},
+  {t:'The Conditioning Loop',         d:'K \u2192 E \u2192 M \u2192 T \u2192 A — running automatically, without awareness.',dur:900},
   {t:'Reflective Intelligence Enters',d:'The gap. The reverse journey begins.',dur:600},
-  {t:'The Reverse Mapping',           d:'T \u2192 M \u2192 E \u2192 K \u00b7 unknowing the known',dur:800},
-  {t:'\u7121\u70ba \u00b7 Wu Wei \u00b7 The Tao Living',d:'Nothing to know. Act from stillness.',dur:700},
-  {t:'Silent Living',                 d:'Nothing to become. You are already whole.',dur:9999},
-  {t:'A* Returns to K',              d:'Not adding. Peeling.',dur:9999},
-  {t:'The Return',    d:'A little more free than before.',dur:9999}
+  {t:'Self-Inquiry',                  d:'T \u2192 M \u2192 E \u2192 K — where did this thought come from?',dur:800},
+  {t:'The Root is Seen',              d:'The source of the conditioning — simply seen, not fought.',dur:700},
+  {t:'Choiceless Action',             d:'Action arising from what is actually here — not from the old pattern.',dur:9999},
+  {t:'The Known, Loosening',         d:'One layer seen. The conditioning, not deepened.',dur:9999},
+  {t:'A Little More Free',           d:'The cycle restarts. The same person — but lighter.',dur:9999}
 ];
-var TRACKS=['Jungian \u00b7 The Known','Reflective Intelligence','The Tao Living','Wu Wei','Silent Living','A* Returns','K — Freed'];
+var TRACKS=['The Conditioning Loop','The Mirror Activates','Self-Inquiry','The Root is Seen','Choiceless Action','The Known, Loosening','A Little More Free'];
 
 var cv2,ctx2,W2,H2,CX2,CY2,R2;
 var tick2=0,kcPhase=0,kcPs=0,kcParts=[];
@@ -5155,7 +5396,7 @@ function ph2(e){
   // Root seen label
   if(e>PH2[2].dur-100){
     var tA=Math.min(1,(e-(PH2[2].dur-100))/40);
-    kcTxt('the root is seen',kcNodes[0].x,kcNodes[0].y-52,'14',TEAL,tA*0.90,false);
+    kcTxt('seen — without force',kcNodes[0].x,kcNodes[0].y-52,'14',TEAL,tA*0.90,false);
   }
 }
 
@@ -5211,7 +5452,7 @@ function ph4(e){
 
   // "Choiceless Awareness" below NOW
   var ca=Math.min(1,Math.max(0,e-60)/50);
-  kcTxt('Choiceless Awareness',CX2,CY2+nsz*0.65+14,'16',TEAL_R+'0.90)',ca*0.90,false);
+  kcTxt('acting from what is actually here',CX2,CY2+nsz*0.65+14,'14',TEAL_R+'0.90)',ca*0.90,false);
   // Outward particles
   if(tick2%10===0){
     var pa=Math.random()*Math.PI*2;
@@ -5261,7 +5502,7 @@ function ph5(e){
   if(aa>0.5){
     var mx5=(kcNodes[5].x+kcNodes[0].x)/2;
     var my5=(kcNodes[5].y+kcNodes[0].y)/2;
-    kcTxt('not adding — peeling',mx5,my5-20,'13',GOLD+((aa-0.5)*2*0.72)+')',false);
+    kcTxt('not adding — loosening',mx5,my5-20,'13',GOLD+((aa-0.5)*2*0.72)+')',false);
   }
   // K glow gold
   var kg=ctx2.createRadialGradient(kcNodes[0].x,kcNodes[0].y,0,kcNodes[0].x,kcNodes[0].y,R2*0.55);
@@ -5291,7 +5532,7 @@ function ph6(e){
   // Two lines of poetry fading in above K — staggered
   var ta6=Math.min(1,e/60);
   var ta6b=Math.min(1,Math.max(0,e-70)/50);
-  kcTxt('one fear, seen.',kcNodes[0].x,kcNodes[0].y-64,'13',GOLD+(ta6*0.82)+')',false);
+  kcTxt('one layer, seen.',kcNodes[0].x,kcNodes[0].y-64,'13',GOLD+(ta6*0.82)+')',false);
   kcTxt('one layer, released.',kcNodes[0].x,kcNodes[0].y-44,'13',GOLD+(ta6b*0.68)+')',false);
   kcStepParts();
 }
@@ -5439,3 +5680,124 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 
 </body>
 </html>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTIONS MOVED TO APP (lumeri.co.in/app)
+     These are preserved here as reference — not rendered.
+     Content lives in app.html onboarding flow.
+═══════════════════════════════════════════════════════════ -->
+
+<!-- MOVED TO APP: how_it_works
+<!-- ══ HOW IT WORKS ══ - ->
+<section id="how">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">The Experience</div>
+      <h2 class="section-h2">You write.<br/>LumeRI reads.<br/><em>Something reflects.</em></h2>
+      <p class="section-body" style="max-width:600px;">Five minutes or fifty. A few lines or many. The only requirement is honesty. Everything else follows from that.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">You write anything.</div>
+          <div class="step-body">What happened today. What you are carrying. What you can't stop thinking about. There are no rules about length, topic, or structure. The only rule is honesty. Everything is completely private — no other person ever reads what you write. LumeRI understands the way you naturally write — without needing you to adjust your voice.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">LumeRI reads the structure, not just the words.</div>
+          <div class="step-body">A carefully designed intelligence reads nine dimensions of how your mind was moving when you wrote. Not what you said. How you were thinking. The quality of attention, the emotional weight, the self-relational tone.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">You receive a reflection.</div>
+          <div class="step-body">A short, personal response drawn from what you actually wrote. Not a generic prompt. Not a motivational quote. Something that lands differently because it was built from what you put on the page. Sometimes a single line. Sometimes uncomfortably precise.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">If you are ready — the Deep Lens.</div>
+          <div class="step-body">A philosophical layer drawn from Krishnamurti, Rumi, Ramana Maharshi, the Tao, and others — matched to your specific psychological pattern. Not advice. Not a prescription. A different quality of light on the same moment.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div>
+          <div class="step-title">Over time, you begin to see yourself.</div>
+          <div class="step-body">Your patterns. The themes your mind keeps returning to. How your Openness, Stillness, Self-Warmth and Clarity have moved across sessions. LumeRI identifies one of human condition patterns in your writing — not a diagnosis, but a name for a shape you may have been living inside without knowing. Seeing it named is often the beginning of something shifting.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+-->
+
+<!-- MOVED TO APP: inquiry_questions
+<!-- ══ INQUIRY QUESTIONS ══ - ->
+<section id="inquiry" style="background:var(--bg-white);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
+  <div class="container">
+    <div style="text-align:center;max-width:700px;margin:0 auto 72px;">
+      <div class="section-label" style="justify-content:center;">The Reflective Intelligence Inquiry</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#0c2e34;line-height:1.2;margin-bottom:20px;text-align:center;">Twelve questions worth<br/><em style="color:#2dd4bf;">writing into.</em></h2>
+      <p style="font-family:var(--sans);font-size:17px;color:rgba(12,46,52,0.75);line-height:1.9;font-weight:300;text-align:center;">Not questions to answer quickly. Questions to write into — honestly, slowly. That is how Reflective Intelligence is developed.</p>
+    </div>
+    <div class="inquiry-grid">
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">01</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Assumption</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What assumptions am I making right now that I have not examined?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">02</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Reaction</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Am I responding to the situation — or reacting to my interpretation of it?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">03</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Identity</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Is my opinion shaped by clear observation — or by the need to defend my identity?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">04</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Certainty</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">How certain am I that my interpretation is correct?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">05</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Influence</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Where did this belief originally come from?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">06</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Perspective</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What might this look like from a completely different perspective?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">07</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Pattern</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Is this reaction part of a recurring pattern in my thinking?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">08</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Emotion</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What emotion is influencing my thinking right now?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">09</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Narrative</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What story am I telling myself about this situation?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">10</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Clarity</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">If I were completely clear, what might I see differently?</p></div>
+      <div class="inquiry-card"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">11</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#0a8a7a;margin-bottom:10px;">Responsibility</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">What part of this am I responsible for that I may not be acknowledging?</p></div>
+      <div class="inquiry-card" style="border:2px solid rgba(45,212,191,0.4);background:rgba(45,212,191,0.06);"><div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-style:italic;color:rgba(10,138,122,0.70);line-height:1;margin-bottom:12px;">12</div><div style="font-family:var(--sans);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.85);margin-bottom:10px;">The Observer</div><p style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#0c2e34;line-height:1.55;">Who is the one noticing these thoughts?</p></div>
+    </div>
+    <div style="text-align:center;margin-top:56px;">
+      <p style="font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:rgba(12,46,52,0.80);margin-bottom:28px;">Write any one of these in LumeRI tonight.</p>
+      <a href="https://lumeri.co.in/app" target="_blank" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.9);padding:16px 40px;text-decoration:none;border-radius:3px;font-weight:500;">Begin Writing →</a>
+    </div>
+  </div>
+</section>
+
+
+
+-->
+
+<!-- MOVED TO APP: seven_day_journey
+<!-- ══ 7-DAY JOURNEY ══ - ->
+<section id="journey" style="background:var(--hero-bg);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
+  <div class="container">
+    <div style="text-align:center;max-width:680px;margin:0 auto 64px;">
+      <div class="section-label" style="justify-content:center;">Begin The Practice</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;text-align:center;">A 7-day writing journey<br/><em style="color:#2dd4bf;">into your own mind.</em></h2>
+      <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.84);line-height:1.9;font-weight:300;">One session. One theme. Seven days. This is how Reflective Intelligence begins — not with a course, but with seven small honest acts of writing.</p>
+    </div>
+    <div class="journey-grid" style="margin-bottom:56px;">
+      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 1</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Pause</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about what is actually in your mind right now.</div></div>
+      <div style="background:rgba(45,212,191,0.06);border:1px solid rgba(45,212,191,0.18);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 2</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Observe</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write what you notice about your own thoughts.</div></div>
+      <div style="background:rgba(45,212,191,0.07);border:1px solid rgba(45,212,191,0.20);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 3</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Notice</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about a reaction that surprised you.</div></div>
+      <div style="background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.24);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 4</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Question</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about a belief you have never examined.</div></div>
+      <div style="background:rgba(45,212,191,0.09);border:1px solid rgba(45,212,191,0.26);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 5</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">See</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about a pattern you keep repeating.</div></div>
+      <div style="background:rgba(45,212,191,0.10);border:1px solid rgba(45,212,191,0.30);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.7);margin-bottom:10px;">Day 6</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#e8fdfb;margin-bottom:8px;">Listen</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.88);line-height:1.5;">Write about a conversation you were not fully present for.</div></div>
+      <div style="background:rgba(45,212,191,0.13);border:2px solid rgba(45,212,191,0.5);border-radius:8px;padding:24px 14px;text-align:center;"><div style="font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#5eead4;margin-bottom:10px;">Day 7</div><div style="font-family:'Cormorant Garamond',serif;font-size:17px;font-style:italic;color:#5eead4;margin-bottom:8px;">The Observer</div><div style="font-family:var(--sans);font-size:12px;color:rgba(220,245,242,0.80);line-height:1.5;">Write: who has been watching all of this?</div></div>
+    </div>
+    <div style="text-align:center;">
+      <a href="https://lumeri.co.in/app" target="_blank" style="display:inline-block;font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#040c0f;background:rgba(45,212,191,0.9);padding:18px 44px;text-decoration:none;border-radius:3px;font-weight:500;">Start Day 1 →</a>
+    </div>
+  </div>
+</section>
+
+
+
+-->
