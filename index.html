@@ -60,9 +60,9 @@ nav{
   border-bottom:1px solid rgba(45,212,191,0.10);
 }
 .nav-brand{display:flex;align-items:center;gap:14px;text-decoration:none;flex-shrink:0}
-.nav-brand img{width:46px;height:40px;object-fit:contain}
+.nav-brand img{width:56px;height:50px;object-fit:contain}
 .nav-brand-text{display:flex;flex-direction:column;line-height:1}
-.nav-brand-text .lume{font-family:var(--serif);font-size:24px;font-style:italic;color:#0c2e34;line-height:1;letter-spacing:0.3px}
+.nav-brand-text .lume{font-family:var(--serif);font-size:24px;font-style:italic;color:rgba(220,245,242,0.92);line-height:1;letter-spacing:0.3px}
 .nav-brand-text .lume .lume-ri{color:var(--brand);font-style:normal;font-weight:400}
 .nav-brand-text .by-ri{font-family:var(--serif);font-size:8px;color:rgba(45,212,191,0.55);margin-top:4px;font-weight:300;font-style:italic;letter-spacing:1px;line-height:1.3}
 /* Master brand decode — reusable wherever LumeRI appears as a brand block */
@@ -124,7 +124,7 @@ nav{
 .hero-eyeline{font-family:var(--sans);font-size:10px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.38);margin-bottom:52px;font-weight:300}
 .hero-h1{font-family:var(--serif);font-size:clamp(38px,5.5vw,68px);font-weight:300;color:#e8fdfb;line-height:1.15;margin-bottom:12px}
 .hero-h2{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:300;font-style:italic;color:var(--brand);line-height:1.3;margin-bottom:32px}
-.hero-body{font-family:var(--sans);font-weight:300;font-size:16px;color:rgba(220,245,242,0.75);line-height:1.9;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto}
+.hero-body{font-family:var(--sans);font-weight:300;font-size:16px;color:rgba(220,245,242,0.90);line-height:1.9;margin-bottom:40px;max-width:520px;margin-left:auto;margin-right:auto}
 .hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
 .btn-primary{font-family:var(--sans);font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--abyss);background:var(--brand);padding:16px 36px;border:none;cursor:pointer;text-decoration:none;transition:all 0.3s;display:inline-block}
 .btn-primary:hover{background:var(--lite);transform:translateY(-2px)}
@@ -654,10 +654,11 @@ footer{background:#081e22;padding:56px 24px 36px;border-top:1px solid rgba(20,18
 
 /* ══ MOBILE ══ */
 @media(max-width:900px){
-  nav{padding:0 20px}
+  nav{padding:0 16px}
   .nav-label{display:none}
   .nav-links li a{padding:8px}
   .nav-links{gap:0}
+  .nav-brand{gap:10px}
   .iq-grid,.map-grid,.compass-grid{grid-template-columns:1fr;gap:40px}
   .inquiry-grid{grid-template-columns:1fr 1fr}
   .journey-grid{grid-template-columns:repeat(4,1fr)}
@@ -965,6 +966,9 @@ body:not(.zol-active) #hint { display:none !important; }
   #kcWrap{min-height:300px !important;}
   .kctab{padding:6px 12px;font-size:11px;}
   .kct-label{display:none;}
+  #kc-layout-grid{grid-template-columns:1fr !important;min-height:unset !important;}
+  .nav-brand img{width:64px;height:57px;}
+  .nav-brand-text .lume{font-size:20px;}
 }
 
 
@@ -1108,9 +1112,9 @@ body:not(.zol-active) #hint { display:none !important; }
       ">
         <span style="color:#2dd4bf;">Illuminate</span>
         <span style="color:rgba(45,212,191,0.22);margin:0 10px;font-style:normal;">·</span>
-        <span style="color:rgba(200,235,232,0.48);">Reflect</span>
+        <span style="color:rgba(200,235,232,0.88);">Reflect</span>
         <span style="color:rgba(45,212,191,0.22);margin:0 10px;font-style:normal;">·</span>
-        <span style="color:rgba(245,197,24,0.65);">Inquire</span>
+        <span style="color:rgba(245,197,24,0.92);">Inquire</span>
       </div>
 
     </div>
@@ -1128,7 +1132,7 @@ body:not(.zol-active) #hint { display:none !important; }
         animation:glowPulse 6s ease-in-out infinite;
         letter-spacing:-1px;
       ">
-        <span style="color:#2dd4bf;font-style:normal;font-weight:400;">Observe</span><span style="color:rgba(180,230,225,0.30);font-style:italic;font-weight:300;"> the </span><span style="color:rgba(232,253,251,0.82);font-style:italic;font-weight:300;">observer.</span>
+        <span style="color:#2dd4bf;font-style:normal;font-weight:400;">Observe</span><span style="color:rgba(200,240,238,0.72);font-style:italic;font-weight:300;"> the </span><span style="color:#e8fdfb;font-style:italic;font-weight:300;">observer.</span>
       </div>
 
       <!-- Breathing separator -->
@@ -1145,10 +1149,10 @@ body:not(.zol-active) #hint { display:none !important; }
         font-weight:300;
         font-style:italic;
         line-height:1.25;
-        color:rgba(160,215,210,0.40);
+        color:rgba(200,240,238,0.82);
         letter-spacing:0.2px;
       ">
-        <span style="color:rgba(45,212,191,0.68);font-style:normal;font-weight:300;">See</span> the movement of your <span style="color:rgba(245,197,24,0.78);font-style:italic;">thought.</span>
+        <span style="color:#2dd4bf;font-style:normal;font-weight:300;">See</span> the movement of your <span style="color:rgba(245,197,24,0.92);font-style:italic;">thought.</span>
       </div>
 
     </div>
@@ -1240,14 +1244,14 @@ body:not(.zol-active) #hint { display:none !important; }
   <div class="reveal" style="max-width:800px;margin:0 auto;">
 
     <div id="ri-tabs" style="display:flex;border-bottom:1px solid rgba(45,212,191,0.12);margin-bottom:48px;">
-      <button onclick="riTab(1)" id="ri-tab1" onclick="window.riTab(1)"
+      <button onclick="riTab(1)" id="ri-tab1"
         style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;
                padding:14px 28px;background:transparent;border:none;cursor:pointer;
                color:var(--brand);border-bottom:2px solid var(--brand);transition:all .25s;
                -webkit-tap-highlight-color:transparent;">
         The Cycle
       </button>
-      <button onclick="riTab(2)" id="ri-tab2" onclick="window.riTab(2)"
+      <button onclick="riTab(2)" id="ri-tab2"
         style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;
                padding:14px 28px;background:transparent;border:none;cursor:pointer;
                color:rgba(45,212,191,0.3);border-bottom:2px solid transparent;transition:all .25s;
@@ -1412,7 +1416,7 @@ body:not(.zol-active) #hint { display:none !important; }
 
 
 <!-- ═══ K-CYCLE DIAGRAMS ═══ -->
-<div id="kcycle-diagrams-embed">
+<div id="kcycle-diagrams-embed" style="overflow-x:hidden;max-width:100vw;">
 <style>
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1445,9 +1449,19 @@ html, body {
 /* ── TWO COLUMN ── */
 .diagrams-row { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 @media(max-width: 780px) { .diagrams-row { grid-template-columns: 1fr; gap: 64px; } }
+@media(max-width: 600px) {
+  canvas { min-height: 280px; }
+  .diagram-card { padding: 0; min-width: 0; overflow: hidden; }
+  .page { padding: 40px 16px 80px; }
+  #lib-stepper { max-width: 100%; overflow: hidden; }
+  #lib-content { font-size: 14px !important; word-wrap: break-word; overflow-wrap: break-word; max-width: 100%; }
+  #lib-pills { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .sp-head { font-size: 16px !important; }
+  .sp-body { font-size: 14px !important; }
+}
 
 /* ── DIAGRAM CARD — strict block flow, nothing absolute ── */
-.diagram-card { display: block; }
+.diagram-card { display: block; min-width: 0; overflow: hidden; }
 
 .diagram-header { margin-bottom: 16px; }
 .diagram-tag { font-size: 9px; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 7px; display: block; }
@@ -1491,16 +1505,16 @@ canvas { width: 100%; display: block; border-radius: 10px; margin-bottom: 0; }
 }
 
 /* ── NODE KEY — always below panel, never overlaps ── */
-.node-key { margin-top: 16px; border: 1px solid rgba(45,212,191,0.08); border-radius: 8px; overflow: hidden; display: block; }
-.key-row { display: grid; grid-template-columns: 32px 1fr; border-bottom: 1px solid rgba(45,212,191,0.06); }
+.node-key { margin-top: 16px; border: 1px solid rgba(45,212,191,0.08); border-radius: 8px; overflow: hidden; display: block; width: 100%; }
+.key-row { display: grid; grid-template-columns: 32px 1fr; border-bottom: 1px solid rgba(45,212,191,0.06); min-width: 0; }
 .key-row:last-child { border-bottom: none; }
 .key-letter { display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 14px; font-style: italic; background: rgba(45,212,191,0.04); border-right: 1px solid rgba(45,212,191,0.07); }
 .key-letter.tl { color: var(--teal); }
 .key-letter.am { color: var(--amber); }
 .key-letter.gl { color: var(--gold); }
-.key-content { padding: 8px 11px; }
+.key-content { padding: 8px 11px; min-width: 0; overflow: hidden; }
 .key-name { font-size: 13px; font-weight: 500; color: rgba(12,46,52,0.78); margin-bottom: 2px; }
-.key-desc { font-size: 13px; color: rgba(200,240,238,0.80); font-weight: 300; line-height: 1.5; }
+.key-desc { font-size: 13px; color: rgba(200,240,238,0.80); font-weight: 300; line-height: 1.5; word-wrap: break-word; overflow-wrap: break-word; }
 
 /* ══ ZOOM-OUT SECTION ══ */
 .zo-section { margin-top: 88px; border-top: 1px solid rgba(45,212,191,0.09); padding-top: 72px; }
@@ -1958,7 +1972,16 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 
   function init() { geo = initGeo(canvas); draw(); }
   window.addEventListener('resize', () => setTimeout(init, 80));
-  setTimeout(init, 100);
+  if (canvas.getBoundingClientRect().width > 0) {
+    setTimeout(init, 100);
+  } else if (window.ResizeObserver) {
+    const _ro = new ResizeObserver((entries, observer) => {
+      if (canvas.getBoundingClientRect().width > 0) { observer.disconnect(); init(); }
+    });
+    _ro.observe(canvas);
+  } else {
+    setTimeout(init, 400);
+  }
 })();
 
 // ═══════════════════════════════════════════════════════
@@ -2875,7 +2898,7 @@ body::before{
 
 /* LOGO */
 .logo{
-  position:fixed;top:26px;left:50%;transform:translateX(-50%);
+  position:absolute;top:26px;left:50%;transform:translateX(-50%);
   font-family:'Cormorant Garamond',serif;font-size:15px;font-style:italic;
   color:rgba(24,196,174,0.32);letter-spacing:1px;z-index:400;pointer-events:none;
 }
@@ -3176,18 +3199,24 @@ function next(){
   }
   goTo(cur+1);
 }
-document.addEventListener('click',next);
+// Tap/click scoped to stage only — prevents breaking all other CTAs
+let ty=0;
+document.addEventListener('touchstart',e=>{ty=e.touches[0].clientY;},{passive:true});
+const _stageDiv = document.getElementById('stage');
+if(_stageDiv){
+  _stageDiv.addEventListener('click', function(e){ e.stopPropagation(); next(); });
+  _stageDiv.addEventListener('touchend', function(e){
+    const d = ty - e.changedTouches[0].clientY;
+    e.preventDefault();
+    if(d > 40) next();
+    else if(d < -40 && cur > 0) goTo(cur-1);
+    else next();
+  },{passive:false});
+}
 document.addEventListener('keydown',e=>{
   if(['ArrowRight',' ','Enter'].includes(e.key))next();
   if(e.key==='ArrowLeft'&&cur>0)goTo(cur-1);
 });
-let ty=0;
-document.addEventListener('touchstart',e=>ty=e.touches[0].clientY,{passive:true});
-document.addEventListener('touchend',e=>{
-  const d=ty-e.changedTouches[0].clientY;
-  if(d>40)next();
-  else if(d<-40&&cur>0)goTo(cur-1);
-},{passive:true});
 
 // ── PER-QUESTION VISUALS ──
 // Each question has its own canvas animation
@@ -4308,7 +4337,7 @@ As for how often: there is no right frequency. Some people write daily. Some wri
   </div>
 
   <!-- Main layout: diagram left (3/4) + description right (1/4) -->
-  <div style="display:grid;grid-template-columns:2.5fr 1fr;gap:0;border:1px solid rgba(45,212,191,0.14);border-radius:12px;overflow:hidden;min-height:460px;">
+  <div id="kc-layout-grid" style="display:grid;grid-template-columns:2.5fr 1fr;gap:0;border:1px solid rgba(45,212,191,0.14);border-radius:12px;overflow:hidden;min-height:460px;">
 
     <!-- LEFT: Diagram -->
     <div id="kcWrap" style="position:relative;background:#050d10;min-height:440px;">
@@ -4890,6 +4919,7 @@ function showEntry(idx, btn) {
     if(s0) s0.classList.add('active');
     cur = 0; going = false;
   }
+  window.hideTapThrough = hideTapThrough;
 
   // Use scroll-based detection — more reliable than IntersectionObserver threshold
   // Only show when user explicitly clicks Practice nav link
