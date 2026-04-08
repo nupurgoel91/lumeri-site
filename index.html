@@ -962,6 +962,9 @@ body:not(.zol-active) #hint { display:none !important; }
   background:rgba(45,212,191,0.75) !important;
   border-color:rgba(45,212,191,0.90) !important;
 }
+@media(max-width:500px){
+  .about-two-paths{grid-template-columns:1fr !important;}
+}
 @media(max-width:700px){
   #kcWrap{min-height:300px !important;}
   .kctab{padding:6px 12px;font-size:11px;}
@@ -1726,17 +1729,7 @@ body:not(.zol-active) #hint { display:none !important; }
         <h2 class="section-h2">Centuries of human wisdom<br/>brought to <em>your specific moment.</em></h2>
         <p class="section-body">When a session has sufficient depth, the Deep Lens becomes available. It draws from a curated library of wisdom entries — matched to your specific the writing and the pattern your writing maps to.</p>
         <p class="section-body">The thinker and tradition are named at the close — an invitation to explore further, not a prescription. The wisdom itself is dissolved into the response. You will never feel lectured. You may feel seen.</p>
-        <div class="thinker-pills">
-          <span class="pill">Krishnamurti</span>
-          <span class="pill">Rumi</span>
-          <span class="pill">Ramana Maharshi</span>
-          <span class="pill">Nisargadatta</span>
-          <span class="pill">Lao Tzu</span>
-          <span class="pill">Meister Eckhart</span>
-          <span class="pill">Ibn Arabi</span>
-          <span class="pill">Zhuangzi</span>
-          <span class="pill">The Upanishads</span>
-        </div>
+        
       </div>
       <div class="reveal">
         <div class="drop-ideology" style="margin-bottom:32px;">
@@ -4118,209 +4111,7 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 
 
 
-<section id="drop">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">The Symbol — Our Drop</div>
-      <h2 class="section-h2">Why a <em>drop of light?</em></h2>
-    </div>
-    <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:80px;align-items:center;">
-      <div class="reveal">
-        <p class="section-body">The LumeRI logo is a single drop of water — luminous, teal, shaped from light — with a star burning at its centre. It is one of the most ancient and precise metaphors in human tradition for what it means to hold an entire world within a single moment of attention.</p>
-        <p class="section-body">The star inside the drop is the point of recognition — the moment the writing lands and something becomes visible. Light in a contained space. The whole illuminated by a single source.</p>
-        <p class="section-body">Water is also the oldest mirror. A still surface of water is the first reflective surface human beings ever used. What LumeRI holds is that still surface — the page — on which your inner life becomes, for the first time, visible to you.</p>
 
-        <!-- Rumi quote — given proper visual home here -->
-        <div style="
-          margin-top:40px;
-          padding:32px 36px;
-          border-left:2px solid rgba(45,212,191,0.28);
-          background:rgba(45,212,191,0.03);
-          border-radius:0 8px 8px 0;
-          position:relative;
-        ">
-          <div style="
-            position:absolute;top:0;left:0;right:0;height:1px;
-            background:linear-gradient(90deg,rgba(45,212,191,0.25),transparent);
-          "></div>
-          <p style="
-            font-family:'Cormorant Garamond',serif;
-            font-size:clamp(18px,2.8vw,24px);
-            font-style:italic;
-            color:rgba(232,253,251,0.80);
-            line-height:1.72;
-            margin-bottom:14px;
-          ">"You are not a drop in the ocean.<br/>You are the ocean inside a drop."</p>
-          <cite style="
-            font-family:'DM Sans',sans-serif;
-            font-size:10px;
-            letter-spacing:4px;
-            text-transform:uppercase;
-            color:rgba(45,212,191,0.45);
-            font-style:normal;
-          ">Rumi</cite>
-        </div>
-      </div>
-      <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:28px;">
-        <img src="lumeri-logo.png" alt="LumeRI" style="width:260px;height:231px;object-fit:contain;filter:drop-shadow(0 0 60px rgba(20,184,166,0.3));animation:breathe 5s ease-in-out infinite;"/>
-        <div class="drop-ideology" style="text-align:center;padding:20px 24px;">
-          <p style="font-size:16px;">"Every time you write in LumeRI, you are not adding a drop to an ocean. You are discovering the ocean that was always inside the drop."</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ AWARENESS ══ -->
-
-
-
-<section id="awareness">
-  <div class="awareness-ring"></div>
-  <div class="awareness-ring"></div>
-  <div class="awareness-ring"></div>
-  <div class="awareness-ring"></div>
-  <div class="awareness-inner">
-    <p class="awareness-eyeline">Before you continue</p>
-    <div class="awareness-dot"></div>
-    <ul class="awareness-questions" id="awarenessQs">
-      <li class="awareness-q">Who is the one <em>watching</em><br/>behind all the thoughts, the noise, the doing?</li>
-      <li class="awareness-q">Have you ever noticed that beneath<br/>all that movement, something in you is <em>completely quiet</em>?</li>
-      <li class="awareness-q">Is it possible that what you are <em>seeking</em><br/>has always been there — before the seeking began?</li>
-      <li class="awareness-q">Can you look — without judgement —<br/>at what is actually happening <em>inwardly</em>?</li>
-    </ul>
-    <p class="awareness-landing" id="awarenessLanding">That which noticed — is already awake.</p>
-    <p class="awareness-invitation">
-      LumeRI begins here — not when you open the tool,<br/>
-      but in the moment you become curious about yourself.
-    </p>
-  </div>
-</section>
-
-
-
-<!-- ══ ZOOM-OUT: THE 8 QUESTIONS ══════════════════════════════════ -->
-
-
-<!-- ═══ ZOOM-OUT INTERACTIVE ═══ -->
-
-
-
-<section id="freedom" style="background:var(--hero-bg);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.06);">
-  <div style="max-width:720px;margin:0 auto;">
-
-    <div class="reveal" style="text-align:center;margin-bottom:72px;">
-      <div style="font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.5);margin-bottom:18px;">The Heart of This</div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,6vw,52px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.18;margin-bottom:18px;">Freedom from the known.</h2>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2.4vw,18px);color:rgba(45,212,191,0.52);line-height:1.7;max-width:480px;margin:0 auto;">Not freedom from the situation.<br/>Freedom from the accumulated self that is interpreting it.</p>
-      <div style="width:40px;height:1px;background:rgba(45,212,191,0.22);margin:28px auto 0;"></div>
-    </div>
-
-    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
-      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Known</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">Most of what we call living is the known in motion — the same reactions dressed in today's clothes, the same fear and the same reaching, arising not from what is actually here but from everything that already happened. Thought moves to action automatically, mechanically, without a gap. Without your awareness.</p>
-    </div>
-
-    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
-      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Gap</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-bottom:16px;">Between thought and action, there is a gap. Most people never inhabit it. <em style="color:#2dd4bf;">Reflective Intelligence</em> is the capacity to live in that gap — to see the movement of thought before it becomes action. Not to suppress it. Not to analyse it. Simply to see it clearly, without the interference of judgement.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">That seeing is not a technique. It is what you already are when you stop adding to the noise.</p>
-    </div>
-
-    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
-      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">The Seeing</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">When the pattern is seen clearly — not understood, not worked through, simply <em style="color:#2dd4bf;">seen</em> — it loses its authority. Not because you fought it. Because the known cannot survive being seen for what it is: accumulated reaction, not present reality.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-top:14px;">There is a difference between analysing a pattern and seeing it. Analysis keeps the observer separate from the observed — the known examining itself, producing more knowledge, not freedom. Seeing is different. When you see the pattern without division — without a separate self that stands apart and explains it — the observer and the observed become one movement. In that instant, there is no one left to be the pattern. The word is not the thing. What is seen clearly begins to lose its grip.</p>
-    </div>
-
-    <div class="reveal" style="padding:38px 0;border-top:1px solid rgba(45,212,191,0.08);">
-      <div style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.32);margin-bottom:14px;">What Remains</div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;margin-bottom:16px;">What remains when the known settles is not emptiness. It is the capacity to act from what is actually here — not from accumulated reaction. This is choiceless action: not because there is no choice, but because the action arises from clarity rather than conditioning.</p>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.6vw,21px);font-style:italic;color:rgba(232,253,251,0.76);line-height:1.88;">And as the self stops defending its conditioning, something else becomes possible. A natural compassion for the suffering of others, because you are no longer entirely inside your own. A love that is not sentiment, not effort — but the simple quality of a mind that is no longer at war with itself.</p>
-    </div>
-
-    <div class="reveal" style="margin-top:52px;padding:38px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.13);border-radius:6px;text-align:center;position:relative;overflow:hidden;">
-      <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(45,212,191,0.38),transparent);"></div>
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,3vw,24px);font-style:italic;color:#e8fdfb;line-height:1.8;margin-bottom:14px;">This is not improvement. Not healing. Not self-optimisation.<br/><em style="color:#2dd4bf;">Freedom — from the known, from the mechanical, from the duality of what I am and what I should be.</em></p>
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(15px,2.2vw,18px);color:rgba(45,212,191,0.48);margin-top:8px;">And in that freedom — choiceless action. Pure love. The present moment, undivided.</p>
-    </div>
-
-    <div class="reveal" style="margin-top:44px;text-align:center;">
-      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,2.2vw,17px);color:rgba(45,212,191,0.70);line-height:1.72;">LumeRI is one instrument for this seeing.</p>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ══ SAMPLE ENTRY ══ -->
-
-
-
-<section id="rq" style="background:var(--bg-warm);padding:110px 24px;border-top:1px solid rgba(45,212,191,0.08);">
-  <div class="container">
-    <div style="text-align:center;max-width:760px;margin:0 auto 64px;">
-      <div class="section-label" style="justify-content:center;color:rgba(45,212,191,0.6);">Why This Matters Now</div>
-      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#0c2e34;line-height:1.2;margin-bottom:20px;text-align:center;">The missing intelligence<br/><em style="color:#2dd4bf;">in the age of AI.</em></h2>
-      <p style="font-family:var(--sans);font-size:18px;color:rgba(12,46,52,0.75);line-height:1.9;font-weight:300;text-align:center;max-width:640px;margin:0 auto;">AI is accelerating analytical intelligence. Emotional intelligence is essential. But the dimension that determines the quality of both is rarely developed — and rarely even named.</p>
-    </div>
-    <div class="iq-grid" style="margin-bottom:56px;">
-      <div style="background:rgba(255,255,255,0.03);padding:44px 32px;border-radius:10px 0 0 10px;border:1px solid rgba(45,212,191,0.10);border-right:none;text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.48);line-height:1;margin-bottom:12px;">IQ</div>
-        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:16px;">Analytical Intelligence</div>
-        <p style="font-family:var(--sans);font-size:16px;color:rgba(12,46,52,0.65);line-height:1.8;font-weight:300;">The ability to analyse, calculate, and solve problems. Powers science, technology, and rational thinking.</p>
-      </div>
-      <div style="background:rgba(45,212,191,0.06);padding:44px 32px;border:2px solid rgba(45,212,191,0.5);text-align:center;position:relative;border-radius:10px;margin:-4px -2px;z-index:2;box-shadow:0 0 40px rgba(45,212,191,0.08);">
-        <div style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:rgba(45,212,191,0.9);color:#040c0f;font-family:var(--sans);font-size:9px;letter-spacing:3px;text-transform:uppercase;padding:5px 16px;border-radius:0 0 6px 6px;font-weight:500;white-space:nowrap;">An Emerging Capacity</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.8);line-height:1;margin-bottom:12px;">RQ</div>
-        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.85);margin-bottom:16px;">Reflective Intelligence</div>
-        <p style="font-family:var(--sans);font-size:16px;color:rgba(12,46,52,0.75);line-height:1.8;font-weight:300;">The ability to observe one's own thinking, question assumptions, and act from clarity. Enables insight, wisdom, and conscious action.</p>
-        <p style="font-family:var(--sans);font-size:12px;color:#0a8a7a;line-height:1.7;font-weight:300;margin-top:14px;font-style:italic;">Not yet a standardised measure. A practice, a philosophy, and a direction — grounded in contemplative traditions and psychological research.</p>
-      </div>
-      <div style="background:rgba(255,255,255,0.03);padding:44px 32px;border-radius:0 10px 10px 0;border:1px solid rgba(45,212,191,0.10);border-left:none;text-align:center;">
-        <div style="font-family:'Cormorant Garamond',serif;font-size:68px;font-style:italic;color:rgba(45,212,191,0.48);line-height:1;margin-bottom:12px;">EQ</div>
-        <div style="font-family:var(--sans);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.70);margin-bottom:16px;">Emotional Intelligence</div>
-        <p style="font-family:var(--sans);font-size:16px;color:rgba(12,46,52,0.65);line-height:1.8;font-weight:300;">The ability to understand emotions, relationships, and social dynamics. Shapes leadership, empathy, and collaboration.</p>
-      </div>
-    </div>
-    <div style="text-align:center;padding:44px 40px;background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.15);border-radius:12px;max-width:820px;margin:0 auto;">
-      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.8vw,32px);font-style:italic;color:#0c2e34;line-height:1.6;margin-bottom:16px;">IQ solves problems.<br/>EQ understands people.<br/><em style="color:#5eead4;">RQ understands thinking itself.</em></p>
-      <p style="font-family:var(--sans);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:rgba(45,212,191,0.70);line-height:1.8;">LumeRI is a practice in Reflective Intelligence.<br/>Writing is how it is developed.<br/><span style="font-family:'Cormorant Garamond',serif;font-style:italic;letter-spacing:0;text-transform:none;font-size:15px;color:rgba(45,212,191,0.55);"><span style="color:#2dd4bf;">Observe</span> the observer. <span style="color:rgba(45,212,191,0.60);">See</span> the movement of your <span style="color:rgba(245,197,24,0.70);">thought.</span></span></p>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ THE MAP ══ -->
-
-<section id="map" style="background:var(--hero-bg);padding:110px 24px;">
-  <div class="container">
-    <div class="map-grid">
-      <div>
-        <div class="section-label" style="color:rgba(45,212,191,0.6);">The Reflective Intelligence Map</div>
-        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4vw,52px);font-weight:300;color:#e8fdfb;line-height:1.2;margin-bottom:20px;">Where does writing<br/><em style="color:#2dd4bf;">take you?</em></h2>
-        <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.86);line-height:1.9;font-weight:300;margin-bottom:24px;">LumeRI is a tool for moving through the Map — from the automatic reactions that fill most inner life, toward something more clear and more true.</p>
-        <p style="font-family:var(--sans);font-size:18px;color:rgba(220,245,242,0.86);line-height:1.9;font-weight:300;margin-bottom:24px;">Each session is a step. Writing honestly is how you move. The map is drawn from contemplative traditions and psychological research — not as a hierarchy of achievement, but as an honest description of how inner life tends to develop when it is genuinely looked at.</p>
-        <p style="font-family:var(--sans);font-size:14px;color:rgba(200,240,238,0.45);line-height:1.8;font-weight:300;font-style:italic;">Most people live between levels 1–3. Movement is rarely linear. The map is descriptive, not prescriptive.</p>
-      </div>
-      <div>
-        <div style="display:flex;flex-direction:column;gap:0;">
-          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(45,212,191,0.22),rgba(45,212,191,0.10));border:1px solid rgba(45,212,191,0.5);border-radius:10px 10px 0 0;border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#5eead4;min-width:34px;text-align:center;text-shadow:0 0 20px rgba(45,212,191,0.6);">6</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Wisdom</div><div style="font-family:var(--sans);font-size:13px;color:rgba(220,245,242,0.88);font-weight:300;">Insight integrated into how you live.</div></div></div>
-          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(45,212,191,0.15),rgba(45,212,191,0.06));border:1px solid rgba(45,212,191,0.38);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#5eead4;min-width:34px;text-align:center;">5</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#e8fdfb;margin-bottom:4px;">Clarity</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,240,238,0.72);font-weight:300;">Perception becomes conscious and deliberate.</div></div></div>
-          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(56,189,168,0.12),rgba(56,189,168,0.04));border:1px solid rgba(56,189,168,0.30);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#4dd9c0;min-width:34px;text-align:center;">4</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#dff5f0;margin-bottom:4px;">Insight</div><div style="font-family:var(--sans);font-size:13px;color:rgba(220,245,242,0.90);font-weight:300;">Direct perception — not analysis.</div></div></div>
-          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(100,180,190,0.10),rgba(100,180,190,0.03));border:1px solid rgba(100,180,190,0.28);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#7ecfcc;min-width:34px;text-align:center;">3</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#ceeae6;margin-bottom:4px;">Reflection</div><div style="font-family:var(--sans);font-size:13px;color:rgba(220,245,242,0.84);font-weight:300;">Examining assumptions, beliefs, patterns.</div></div></div>
-          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(160,190,200,0.08),rgba(160,190,200,0.02));border:1px solid rgba(160,200,210,0.22);border-bottom:none;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#a8cdd4;min-width:34px;text-align:center;">2</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#b8d8dc;margin-bottom:4px;">Observation</div><div style="font-family:var(--sans);font-size:13px;color:rgba(200,230,235,0.62);font-weight:300;">Noticing the thinking process itself.</div></div></div>
-          <div class="map-stage" style="display:flex;align-items:center;gap:20px;padding:22px 26px;background:linear-gradient(135deg,rgba(180,160,140,0.10),rgba(180,160,140,0.03));border:1px solid rgba(180,160,140,0.20);border-radius:0 0 10px 10px;"><div style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;color:#c4a882;min-width:34px;text-align:center;">1</div><div><div style="font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;color:#d4c0a8;margin-bottom:4px;">Reaction</div><div style="font-family:var(--sans);font-size:13px;color:rgba(210,195,175,0.65);font-weight:300;">Automatic. Unconscious. Conditioned.</div></div></div>
-        </div>
-        <p style="font-family:var(--sans);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(45,212,191,0.65);text-align:right;margin-top:10px;">↑ writing moves you upward</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══ FAQ ══ -->
 
 <section id="faq" style="background:#f4fdfc;padding:72px 24px;border-top:1px solid rgba(15,184,164,0.10);">
   <div style="max-width:620px;margin:0 auto;">
@@ -4357,24 +4148,74 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
     </div>
   </div>
 </section>
-<section id="about" style="background:var(--hero-bg);padding:0 0 100px;">
+<section id="about" style="background:var(--hero-bg);padding:0 0 100px;border-top:1px solid rgba(45,212,191,0.08);">
 
-  <!-- Header -->
-  <div style="padding:72px 24px 56px;text-align:center;border-bottom:1px solid rgba(45,212,191,0.07);background:linear-gradient(to bottom,rgba(15,184,164,0.04),transparent);">
-    <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.52);margin-bottom:18px;">The Two Journeys</div>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,48px);font-weight:300;font-style:italic;color:#e8fdfb;line-height:1.22;max-width:620px;margin:0 auto 18px;">The forward path — accumulating the known.<br/><em style="color:#2dd4bf;">The return path — dissolving it.</em></h2>
-    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(14px,2.2vw,18px);color:rgba(45,212,191,0.55);max-width:520px;margin:0 auto 10px;">Observe the observer. See the movement of your thought.</p>
-    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(13px,2vw,16px);color:rgba(200,235,232,0.40);max-width:480px;margin:0 auto;">The water clears when the stirring stops.</p>
+  <!-- WARM HEADER -->
+  <div style="background:linear-gradient(180deg,rgba(15,60,68,0.90) 0%,var(--hero-bg) 100%);padding:80px 24px 60px;text-align:center;">
+    <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:6px;text-transform:uppercase;color:rgba(45,212,191,0.45);margin-bottom:18px;">The Founder</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,5.5vw,52px);font-weight:300;color:#e8fdfb;line-height:1.20;margin-bottom:16px;">A journey defined<br/>by <em style="color:#2dd4bf;">two paths.</em></h2>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(16px,2.5vw,20px);font-style:italic;color:rgba(200,235,232,0.55);line-height:1.6;max-width:480px;margin:0 auto;">One that trapped. One that freed.<br/>The same cycle — witnessed.</p>
   </div>
 
-<!-- K-Cycle Phase Explorer -->
-<div style="max-width:1200px;margin:32px auto 0;padding:0 24px;">
+  <div style="max-width:760px;margin:0 auto;padding:0 24px;">
 
-  <!-- Section label -->
-  <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.45);text-align:center;margin-bottom:20px;">The K-Cycle · Seven Phases · From Conditioning to Freedom</div>
+    <!-- FOUNDER NOTE — Nupur's words -->
+    <div style="position:relative;margin-bottom:72px;">
+      <div style="position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,rgba(45,212,191,0.60),rgba(245,197,24,0.40),rgba(45,212,191,0.10));border-radius:2px;"></div>
+      <div style="padding-left:32px;">
 
-  <!-- Phase tabs -->
-  <div id="kcTabs" style="display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap;">
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.8vw,22px);font-style:italic;color:rgba(232,253,251,0.90);line-height:1.85;margin-bottom:28px;">"The traditions I have explored and lived with — J. Krishnamurti, Ramana Maharshi, Alan Watts, and others — are not ancient curiosities. They are the most precise maps of the human mind ever drawn. And what they point at is available to anyone willing to look.</p>
+
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.8vw,22px);font-style:italic;color:rgba(232,253,251,0.88);line-height:1.85;margin-bottom:28px;">My own path moved from the conditioned loop — automatic, desire-and-fear driven, mechanical — toward something quieter. What I call Zooming Out. A subtle but complete shift: from reacting out of accumulated past to <em style="color:#2dd4bf;">responding from awareness itself.</em> Unbiased. All-encompassing. Compassionate. What the Taoists call Wu Wei — effortless action arising not from effort but from presence. Internal awareness witnessing itself and the world. Living not as a separate self fighting its way through — but as life moving through, freely, as it is.</p>
+
+        <div style="display:flex;align-items:center;gap:16px;margin:36px 0;">
+          <div style="flex:1;height:1px;background:linear-gradient(to right,rgba(45,212,191,0.25),transparent);"></div>
+          <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.40);">The moment of seeing</div>
+          <div style="flex:1;height:1px;background:linear-gradient(to left,rgba(45,212,191,0.25),transparent);"></div>
+        </div>
+
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.8vw,22px);font-style:italic;color:rgba(232,253,251,0.88);line-height:1.85;margin-bottom:28px;">I looked. Not theoretically — inwardly, at my own patterns, my own conditioning, the machinery running silently beneath every reaction and every choice. I saw it. And once seen, it could not be unseen.</p>
+
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.8vw,22px);font-style:italic;color:rgba(232,253,251,0.88);line-height:1.85;margin-bottom:36px;">LumeRI was built from that seeing — and for that seeing. Not as a product. As an act of care. For anyone ready to look at their own patterns clearly, without flinching — and discover what remains <em style="color:#2dd4bf;">when the noise settles.</em>"</p>
+
+        <div style="display:flex;align-items:center;gap:20px;padding-top:24px;border-top:1px solid rgba(45,212,191,0.10);">
+          <div style="width:40px;height:40px;border-radius:50%;background:rgba(45,212,191,0.10);border:1px solid rgba(45,212,191,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <span style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:#2dd4bf;">N</span>
+          </div>
+          <div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(45,212,191,0.82);letter-spacing:2px;text-transform:uppercase;">Nupur</div>
+            <div style="font-family:'DM Sans',sans-serif;font-size:11px;color:rgba(45,212,191,0.35);font-weight:300;margin-top:3px;">Founder · Reflective Intelligence · LumeRI</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TWO PATHS -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px;">
+      <div style="background:rgba(232,160,32,0.04);border:1px solid rgba(232,160,32,0.18);border-radius:12px;padding:28px 24px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(232,160,32,0.55);margin-bottom:14px;">Path One</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.5vw,22px);font-style:italic;color:rgba(232,220,180,0.85);margin-bottom:12px;line-height:1.3;">The Conditioned Loop</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(220,200,150,0.55);line-height:1.75;font-weight:300;">Automatic. Desire-and-fear driven. The same reactions, the same suffering — running on inherited belief without ever being seen.</p>
+      </div>
+      <div style="background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.20);border-radius:12px;padding:28px 24px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(45,212,191,0.55);margin-bottom:14px;">Path Two</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(17px,2.5vw,22px);font-style:italic;color:rgba(200,240,238,0.90);margin-bottom:12px;line-height:1.3;">The Aware Loop</div>
+        <p style="font-family:'DM Sans',sans-serif;font-size:13px;color:rgba(200,235,232,0.58);line-height:1.75;font-weight:300;">Witnessing. Whole. Compassionate. Responding from clarity, not conditioning. Wu Wei — life moving through, effortlessly, as it is.</p>
+      </div>
+    </div>
+
+    <!-- PHASE JOURNEY LABEL -->
+    <div style="text-align:center;margin-bottom:32px;">
+      <div style="font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:5px;text-transform:uppercase;color:rgba(45,212,191,0.40);margin-bottom:10px;">The journey — phase by phase</div>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(14px,2vw,17px);font-style:italic;color:rgba(200,235,232,0.45);line-height:1.6;max-width:420px;margin:0 auto;">The same cycle — first automatic, then witnessed.<br/>Seven phases. One return.</p>
+    </div>
+
+  </div>
+
+  <!-- K-CYCLE DIAGRAM — preserved exactly -->
+  <div style="max-width:1080px;margin:0 auto;padding:0 24px;">
+<div id="kcTabs" style="display:flex;justify-content:center;gap:8px;margin-bottom:24px;flex-wrap:wrap;">
     <button onclick="kcGoPhase(0)" id="kctab0" class="kc-tab kc-tab-active">
       <span class="kct-num">1</span><span class="kct-label">The Loop</span>
     </button>
@@ -4681,6 +4522,10 @@ function cl(v)  { return Math.max(0, Math.min(1, v)); }
 
 <!-- ══ CTA BOTTOM ══ -->
 
+
+  </div>
+
+</section>
 <section id="cta-bottom">
   <div class="cta-inner">
     <img src="lumeri-logo.png" alt="LumeRI" class="cta-logo"/><div style="font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;color:rgba(232,253,251,0.65);letter-spacing:1px;margin-bottom:4px;">Lume<span style="color:#2dd4bf;font-style:normal;font-weight:400;">RI</span></div><div style="font-family:'Cormorant Garamond',serif;font-size:12px;font-style:italic;font-weight:300;letter-spacing:1.5px;color:rgba(45,212,191,0.50);margin-bottom:28px;"><span style="color:#2dd4bf;">Illuminate</span><span style="color:rgba(45,212,191,0.22);margin:0 8px;">·</span><span style="color:rgba(200,235,232,0.42);">Reflect</span><span style="color:rgba(45,212,191,0.22);margin:0 8px;">·</span><span style="color:rgba(245,197,24,0.60);">Inquire</span></div>
